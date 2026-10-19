@@ -158,7 +158,7 @@ async function loadPrediction() {
     const prediction = await request('/api/predict', { method: 'POST', body: JSON.stringify({ patientId: state.patient.id, cursor: state.cursor, scenario: state.scenario }), signal: controller.signal });
     if (requestId !== state.requestId) return;
     state.prediction = prediction;
-    if (prediction.featureSet === 'clock_free_v2' && !state.robustness && !state.robustnessLoading && !state.robustnessError) loadRobustness();
+    if (prediction.driverMethod === 'group_reference_sensitivity' && !state.robustness && !state.robustnessLoading && !state.robustnessError) loadRobustness();
     clearError();
     renderTime();
     renderMetrics();
@@ -368,7 +368,7 @@ function renderEvidence() {
     return;
   }
   const fused = metrics.models?.fused || {};
-  const treeModel = state.prediction?.featureSet === 'clock_free_v2' || state.prediction?.modelKind === 'hist_gradient_boosting' || metrics.featureSet === 'clock_free_v2' || metrics.modelKind === 'hist_gradient_boosting';
+  const treeModel = state.prediction?.driverMethod === 'group_reference_sensitivity' || state.prediction?.modelKind === 'hist_gradient_boosting' || metrics.featureSet?.startsWith('clock_free_') || metrics.modelKind === 'hist_gradient_boosting';
   const treeRegression = state.prediction?.regressionKind === 'hist_gradient_boosting' || (state.prediction?.regressionKind === undefined && metrics.modelKind === 'hist_gradient_boosting');
   const treeClassification = state.prediction?.classificationKind === 'hist_gradient_boosting' || (state.prediction?.classificationKind === undefined && metrics.modelKind === 'hist_gradient_boosting');
   const algorithmRows = treeModel ? [
@@ -486,7 +486,7 @@ async function revealChallenge() {
   challenge.controller = new AbortController();
   renderChallenge();
   try {
-    const result = await request('/api/challenge/reveal', { method: 'POST', body: JSON.stringify({ challengeId }), signal: challenge.controller.signal });
+    const result = await request('/api/challenge/reveal', { method: 'POST', body: JSON.stringify({ challengeId, challengeToken: challenge.frozen.challengeToken }), signal: challenge.controller.signal });
     if (generation !== challenge.generation || challenge.context !== challengeContext()) return;
     if (result.challengeId !== challengeId || result.receipt?.patientId !== state.patient.id || Date.parse(result.receipt?.cutoffTimestamp) !== Date.parse(challenge.frozen.receipt.cutoffTimestamp)) throw new Error('The revealed record does not match this frozen challenge. Reset the experiment.');
     challenge.revealed = result;
@@ -525,7 +525,8 @@ function challengeComparisonChart(points) {
 
 function downloadChallengeReceipt() {
   if (!challenge.frozen || challenge.context !== challengeContext()) return;
-  const receipt = { schemaVersion: 1, challenge: challenge.frozen, reveal: challenge.revealed || null };
+  const { challengeToken, ...frozenReceipt } = challenge.frozen;
+  const receipt = { schemaVersion: 1, challenge: frozenReceipt, reveal: challenge.revealed || null };
   const url = URL.createObjectURL(new Blob([JSON.stringify(receipt, null, 2)], { type: 'application/json' }));
   const anchor = document.createElement('a'); anchor.href = url; anchor.download = `AURA-challenge-${state.patient.id}-${challenge.mode}-${time(challenge.frozen.receipt.cutoffTimestamp).replace(':', '')}.json`;
   document.body.append(anchor); anchor.click(); anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
@@ -544,7 +545,7 @@ function renderStressAudit() {
   const container = $('#stress-audit');
   if (!container) return;
   if (state.robustness) { container.innerHTML = routineRobustnessHTML(); return; }
-  if (state.prediction?.featureSet === 'clock_free_v2') {
+  if (state.prediction?.driverMethod === 'group_reference_sensitivity') {
     container.innerHTML = robustnessPendingHTML();
     $('[data-retry-robustness]', container)?.addEventListener('click', loadRobustness);
     if (!state.robustnessLoading && !state.robustnessError) loadRobustness();
@@ -587,21 +588,48 @@ function routineRobustnessHTML() {
   const data = state.robustness;
   const aggregate = data.aggregate;
   const fused = aggregate.models.fused;
+  const baselineKey = aggregate.models.legacyV2 ? 'legacyV2' : 'legacyV1';
+  const baselineLabel = baselineKey === 'legacyV2' ? 'Frozen v2' : 'Original v1';
+  const currentVersion = String(data.modelVersion || '').match(/(?:^|-)(\d+)\./)?.[1];
+  const currentLabel = currentVersion ? `Current v${currentVersion}` : 'Current model';
   const differences = aggregate.pairedDifferences || {};
+  const baselineDifference = differences[baselineKey] || {};
   const signed = value => isNumber(value) ? `${value > 0 ? '+' : ''}${num(value, 2)}` : '—';
   const ci = values => Array.isArray(values) ? `${signed(values[0])} to ${signed(values[1])}` : 'Not available';
   const metric = (label, value, note) => `<div><span>${label}</span><strong>${value}</strong><small>${note}</small></div>`;
   const protocol = data.protocol || {};
+  const hasHeldOutCombination = Boolean(protocol.heldOutCombination && data.cases.some(condition => condition.id === protocol.heldOutCombination.id));
+  const routineBoundary = hasHeldOutCombination ? 'Six routine families appeared in training. One held-out parameter combination tests a new combination within the same simulator; it is not a new physiological model or clinical population.' : 'The routine families appeared in training; this evaluates new identities, not unseen routine families.';
   const counts = protocol.splits ? Object.fromEntries(Object.entries(protocol.splits).map(([name, ids]) => [name, Array.isArray(ids) ? ids.length : null])) : {};
   const selectedModel = (condition, name) => condition.models?.[name] || {};
   const variableCase = data.cases.find(condition => condition.id === 'variable_routine');
   const variableLimits = variableCase?.models?.fused;
-  return `<div class="stress-heading robustness-heading"><div><div class="eyebrow">ROUTINE ROBUSTNESS / FROZEN MODEL</div><h3>Different days. Measured against the same record.</h3><p>The revised model and its comparators share ${num(aggregate.patients)} fresh synthetic identities across ${num(data.cases.length)} predefined routines. The routine families appeared in training; this evaluates new identities, not unseen routine families.</p></div><span class="robustness-version">${esc(data.modelVersion)}<small>No absolute-clock inputs</small></span></div>
-    <div class="robustness-summary">${metric('Revised +2h MAE', num(fused.mae, 2), 'mg/dL · all declared routines')}${metric('Change vs original model', signed(differences.legacyV1?.meanDifference), `mg/dL · revised minus original<br>95% paired CI ${ci(differences.legacyV1?.patientBootstrap95CI)}`)}${metric('Fusion vs wearables only', signed(differences.sensorOnly?.meanDifference), `mg/dL · fused minus sensors<br>95% paired CI ${ci(differences.sensorOnly?.patientBootstrap95CI)}`)}${metric('Interval width', num(fused.intervalMeanWidth, 1), `mg/dL · ${pct(fused.intervalCoverage, 1)} pooled coverage<br>Nominal coverage: 90%`)}</div>
+  return `<div class="stress-heading robustness-heading"><div><div class="eyebrow">ROUTINE ROBUSTNESS / FROZEN MODEL</div><h3>Different days. Measured against the same record.</h3><p>The current model and its comparators share ${num(aggregate.patients)} fresh synthetic identities across ${num(data.cases.length)} predefined routines. ${routineBoundary}</p></div><span class="robustness-version">${esc(data.modelVersion)}<small>No absolute-clock inputs</small></span></div>
+    <div class="robustness-summary">${metric(currentLabel + ' +2h MAE', num(fused.mae, 2), 'mg/dL · all declared routines')}${metric('Change vs ' + baselineLabel, signed(baselineDifference.meanDifference), `mg/dL · current minus previous<br>95% paired CI ${ci(baselineDifference.patientBootstrap95CI)}`)}${metric('Fusion vs wearables only', signed(differences.sensorOnly?.meanDifference), `mg/dL · fused minus sensors<br>95% paired CI ${ci(differences.sensorOnly?.patientBootstrap95CI)}`)}${metric('Interval width', num(fused.intervalMeanWidth, 1), `mg/dL · ${pct(fused.intervalCoverage, 1)} pooled coverage<br>Nominal coverage: 90%`)}</div>
     <div class="robustness-key"><span>${icon('layers')}EHR + past physiology</span><span>${icon('clock')}No future meals or clock features</span><span>${icon('shield')}Frozen before final evaluation</span></div>
-    <div class="table-scroll"><table class="robustness-table"><caption class="sr-only">Fresh-identity synthetic evaluation by routine, comparing original and revised models with ablations and persistence</caption><thead><tr><th scope="col">Synthetic routine</th><th scope="col">Original MAE<br><small>mg/dL</small></th><th scope="col">Revised MAE<br><small>mg/dL</small></th><th scope="col">Wearables MAE<br><small>mg/dL</small></th><th scope="col">Persistence MAE<br><small>mg/dL</small></th><th scope="col">Revised coverage<br><small>nominal 90%</small></th><th scope="col">Interval width<br><small>mg/dL</small></th><th scope="col">Event recall<br><small>fixed threshold</small></th><th scope="col">Event precision<br><small>false-alert tradeoff</small></th></tr></thead><tbody>${data.cases.map((condition, index) => `<tr><th scope="row"><span class="stress-row-index">0${index + 1}</span>${esc(condition.title)}<small>${num(condition.patients)} identities · ${num(condition.windows)} windows</small></th><td>${num(selectedModel(condition, 'legacyV1').mae, 2)}</td><td class="revised-value">${num(selectedModel(condition, 'fused').mae, 2)}</td><td>${num(selectedModel(condition, 'sensorOnly').mae, 2)}</td><td>${num(selectedModel(condition, 'persistence').mae, 2)}</td><td>${pct(selectedModel(condition, 'fused').intervalCoverage, 1)}</td><td>${num(selectedModel(condition, 'fused').intervalMeanWidth, 1)}</td><td>${pct(selectedModel(condition, 'fused').recall, 1)}</td><td>${pct(selectedModel(condition, 'fused').precision, 1)}</td></tr>`).join('')}</tbody></table></div>
+    ${alertComparisonHTML(fused, aggregate.models[baselineKey], currentLabel, baselineLabel)}<div class="table-scroll"><table class="robustness-table"><caption class="sr-only">Fresh-identity synthetic evaluation by routine, comparing original and revised models with ablations and persistence</caption><thead><tr><th scope="col">Synthetic routine</th><th scope="col">${esc(baselineLabel)} MAE<br><small>mg/dL</small></th><th scope="col">${esc(currentLabel)} MAE<br><small>mg/dL</small></th><th scope="col">Wearables MAE<br><small>mg/dL</small></th><th scope="col">Persistence MAE<br><small>mg/dL</small></th><th scope="col">Current coverage<br><small>nominal 90%</small></th><th scope="col">Interval width<br><small>mg/dL</small></th><th scope="col">Event recall<br><small>fixed threshold</small></th><th scope="col">Event precision<br><small>false-alert tradeoff</small></th></tr></thead><tbody>${data.cases.map((condition, index) => `<tr><th scope="row"><span class="stress-row-index">0${index + 1}</span>${esc(condition.title)}<small>${num(condition.patients)} identities · ${num(condition.windows)} windows</small></th><td>${num(selectedModel(condition, baselineKey).mae, 2)}</td><td class="revised-value">${num(selectedModel(condition, 'fused').mae, 2)}</td><td>${num(selectedModel(condition, 'sensorOnly').mae, 2)}</td><td>${num(selectedModel(condition, 'persistence').mae, 2)}</td><td>${pct(selectedModel(condition, 'fused').intervalCoverage, 1)}</td><td>${num(selectedModel(condition, 'fused').intervalMeanWidth, 1)}</td><td>${pct(selectedModel(condition, 'fused').recall, 1)}</td><td>${pct(selectedModel(condition, 'fused').precision, 1)}</td></tr>`).join('')}</tbody></table></div>
     <div class="robustness-interpretation"><div>${icon('info')}<p><strong>Read both error and uncertainty.</strong> Negative paired MAE differences favor the revised model. Wider bands can improve coverage without improving the point forecast. Repeated windows and routine variants are correlated; confidence intervals resample patient identities.</p></div><div>${icon('alert')}<p><strong>Unknown future meals are still unknown.</strong> The model sees only past measurements. An unexpected meal, changed sleep or new activity may still produce a missed event.${variableLimits ? ` The variable-routine case has ${pct(variableLimits.recall, 2)} recall, ${pct(variableLimits.precision, 2)} precision and ${pct(variableLimits.intervalCoverage, 1)} interval coverage.` : ''} No clinical validation or automatic drift correction is claimed.</p></div></div>
     <details class="robustness-protocol"><summary>Inspect selection, calibration and final-evaluation boundaries <span>+</span></summary><div class="robustness-protocol-grid"><div><span>Identity splits</span><p>${num(counts.train)} training · ${num(counts.selection)} selection · ${num(counts.calibration)} calibration · ${num(counts.test)} final</p></div><div><span>Regressor selection</span><p>${esc(protocol.regressionSelection || 'See the exported protocol.')}</p></div><div><span>Classifier selection</span><p>${esc(protocol.classificationSelection || 'See the exported protocol.')}</p></div><div><span>Calibration</span><p>${esc(protocol.calibration || 'Separate calibration identities.')}</p></div><div><span>Freeze boundary</span><p>${esc(protocol.finalLock || 'Model frozen before final evaluation.')}</p></div><div><span>Final model SHA-256</span><code>${esc(data.modelSHA256)}</code></div></div><ul>${(data.limitations || []).map(text => `<li>${esc(text)}</li>`).join('')}</ul></details>`;
+}
+
+function alertComparisonHTML(current, previous, currentLabel, previousLabel) {
+  const counts = result => {
+    const matrix = result?.alertPolicy?.testConfusionMatrix ?? result?.confusionMatrix;
+    if (!Array.isArray(matrix) || matrix.length !== 2 || matrix.some(row => !Array.isArray(row) || row.length !== 2 || row.some(value => !Number.isInteger(value) || value < 0))) return null;
+    const [[tn, fp], [fn, tp]] = matrix;
+    return { tn, fp, fn, tp, total: tn + fp + fn + tp };
+  };
+  const currentCounts = counts(current), previousCounts = counts(previous);
+  if (!currentCounts || !previousCounts) return '';
+  const threshold = result => result?.threshold ?? result?.alertPolicy?.threshold;
+  const recall = result => result?.alertPolicy?.testRecall ?? result?.recall;
+  const precision = result => result?.alertPolicy?.testPrecision ?? result?.precision;
+  const countChange = (key, label) => {
+    const delta = currentCounts[key] - previousCounts[key];
+    return `<div class="alert-change"><span>${label}</span><div><small>${num(previousCounts[key])}</small><span aria-hidden="true">→</span><strong>${num(currentCounts[key])}</strong></div><p>${delta === 0 ? 'Unchanged count' : `${num(Math.abs(delta))} ${delta < 0 ? 'fewer' : 'more'} windows`} · ${esc(previousLabel)} to ${esc(currentLabel)}</p></div>`;
+  };
+  const row = (label, oldValue, newValue) => `<tr><th scope="row">${label}</th><td>${oldValue}</td><td>${newValue}</td></tr>`;
+  return `<section class="alert-comparison" aria-label="Frozen model review-policy comparison"><div class="alert-comparison-heading"><div class="eyebrow">THE REVIEW-POLICY TRADEOFF</div><h3>Missed events. False alerts. Both matter.</h3><p>Compare each model at its own frozen operating threshold on the same ${num(currentCounts.total)} synthetic windows. A threshold change can change these counts independently of forecast accuracy.</p></div><div class="alert-change-grid">${countChange('fn', 'Missed events · false negatives')}${countChange('fp', 'False alerts · false positives')}</div><div class="table-scroll"><table class="alert-comparison-table"><caption class="sr-only">Confusion counts and frozen thresholds for the previous and current models</caption><thead><tr><th scope="col">Review policy</th><th scope="col">${esc(previousLabel)}</th><th scope="col">${esc(currentLabel)}</th></tr></thead><tbody>${row('Frozen probability threshold', pct(threshold(previous), 1), pct(threshold(current), 1))}${row('Events detected · true positives', num(previousCounts.tp), num(currentCounts.tp))}${row('Correct non-alerts · true negatives', num(previousCounts.tn), num(currentCounts.tn))}${row('Event recall', pct(recall(previous), 1), pct(recall(current), 1))}${row('Alert precision', pct(precision(previous), 1), pct(precision(current), 1))}${row('Brier score · lower is better', num(previous.brier, 4), num(current.brier, 4))}</tbody></table></div><p class="alert-comparison-note">Counts are overlapping replay windows, not unique clinical episodes or people. A false alert means the +120-minute glucose threshold was not met; it does not establish that an intervention was needed.</p></section>`;
 }
 
 function stopPlayback() {

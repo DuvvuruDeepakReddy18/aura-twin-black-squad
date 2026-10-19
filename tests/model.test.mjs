@@ -129,3 +129,31 @@ test('clock-free revised models do not change predictions when only the wall-clo
   assert.deepEqual(result.forecast,baseline.forecast);
   for(const name of model.featureNames)assert.equal(result.features[name],baseline.features[name]);
 });
+
+test('trajectory features handle flat histories, latest extrema ties and observed event ages',()=>{
+  try{
+    initializeModel({...model,featureSet:'trajectory_v3'});
+    const changed=structuredClone(patient);
+    for(let index=cursor-287;index<=cursor;index++)Object.assign(changed.series[index],{glucose:100,hr:80,hrv:40,steps:0,sleep:1});
+    const flat=infer(changed,cursor).features;
+    assert.equal(flat.olsSlope30,0);assert.equal(flat.olsSlope240,0);
+    assert.equal(flat.riseFraction120,0);assert.equal(flat.meanAbsChange60,0);
+    assert.equal(flat.hrZ30,0);assert.equal(flat.hrvZ30,0);
+    assert.equal(flat.minutesSinceMax120,0);assert.equal(flat.minutesSinceMin120,0);
+    assert.equal(flat.minutesSinceWake,1440);assert.equal(flat.minutesSinceActivity,1440);
+    assert.equal(flat.awakeRestingHr24h,80);assert.equal(flat.awakeRestingHr30,80);
+    changed.series[cursor-10].glucose=140;
+    changed.series[cursor-3].glucose=140;
+    changed.series[cursor-2].steps=60;
+    changed.series[cursor].sleep=0;
+    changed.series[cursor].hr=100;
+    const recent=infer(changed,cursor).features;
+    assert.equal(recent.minutesSinceMax120,15);
+    assert.equal(recent.minutesSinceMin120,0);
+    assert.equal(recent.minutesSinceActivity,10);
+    assert.equal(recent.minutesSinceWake,0);
+    assert.equal(recent.awakeRestingHr24h,100);
+    assert.equal(recent.awakeRestingHr30,100);
+    assert.equal(recent.hrAboveResting30,0);
+  }finally{initializeModel(model);}
+});

@@ -4,6 +4,7 @@ import { dirname, extname, resolve, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { initializeModel, infer, validatePatient } from './lib/model.mjs';
 import { createChallengeLab } from './lib/challenge.mjs';
+import { createSessionCodec } from './lib/session-token.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const [model, patients, metrics] = await Promise.all(
@@ -27,6 +28,15 @@ function json(res, status, payload) {
 }
 async function readJson(req) {
   if (!req.headers['content-type']?.toLowerCase().startsWith('application/json')) throw new RequestError('Content-Type must be application/json.', 415);
+  // Vercel supplies a parsed-body getter; the local Node server supplies a raw stream.
+  try {
+    if (req.body !== undefined) {
+      const value = req.body;
+      if (!value || Array.isArray(value) || typeof value !== 'object' || Buffer.isBuffer(value)) throw new RequestError('Request body must be a valid JSON object.');
+      if (Buffer.byteLength(JSON.stringify(value)) > 2_000_000) throw new RequestError('Payload exceeds the 2 MB limit.', 413);
+      return value;
+    }
+  } catch (err) { throw err instanceof RequestError ? err : new RequestError('Request body must be a valid JSON object.'); }
   const chunks = []; let size = 0;
   for await (const chunk of req) {
     size += chunk.length;
@@ -60,13 +70,14 @@ function makePrediction(body) {
   try { return { patientId: patient.id, cursor, ...infer(patient, cursor, scenario) }; }
   catch (err) { throw new RequestError(err.message); }
 }
-export function createAppServer() {
-  const challengeLab = createChallengeLab({patients, model, modelFileBytes});
-  return createServer(async (req, res) => {
+export function createAppHandler({sessionKey, allowExternalPatients = true} = {}) {
+  const sessionCodec = sessionKey ? createSessionCodec(sessionKey) : null;
+  const challengeLab = createChallengeLab({patients, model, modelFileBytes, sessionCodec});
+  return async (req, res) => {
     try {
       const url = new URL(req.url, 'http://localhost');
       const pathname = decodeURIComponent(url.pathname);
-      if (req.method === 'GET' && pathname === '/api/health') return json(res, 200, { status: 'ok', name: 'AURA Twin', synthetic: true, version: '2.0.0', modelVersion: model.modelVersion });
+      if (req.method === 'GET' && pathname === '/api/health') return json(res, 200, { status: 'ok', name: 'AURA Twin', synthetic: true, version: model.modelVersion.replace('aura-synthetic-', ''), modelVersion: model.modelVersion, challengeStorage: sessionCodec ? 'encrypted-browser-token' : 'memory' });
       if (req.method === 'GET' && pathname === '/api/patients') return json(res, 200, { patients });
       if (req.method === 'GET' && pathname.startsWith('/api/patients/')) {
         const patient = patientById.get(pathname.slice('/api/patients/'.length));
@@ -81,7 +92,11 @@ export function createAppServer() {
         try { return json(res, 200, JSON.parse(await readFile(resolve(ROOT, 'data/robustness.json'), 'utf8'))); }
         catch (err) { if (err.code === 'ENOENT') throw new RequestError('Routine robustness evaluation has not been generated.', 404); throw err; }
       }
-      if (req.method === 'POST' && pathname === '/api/predict') return json(res, 200, makePrediction(await readJson(req)));
+      if (req.method === 'POST' && pathname === '/api/predict') {
+        const body = await readJson(req);
+        if (!allowExternalPatients && body.patient !== undefined) throw new RequestError('The hosted demo accepts bundled synthetic records only. Use the local sandbox for your own synthetic data.', 403);
+        return json(res, 200, makePrediction(body));
+      }
       if (req.method === 'GET' && pathname === '/api/challenge/modes') return json(res, 200, challengeLab.modes());
       if (req.method === 'POST' && pathname === '/api/challenge') return json(res, 200, challengeLab.create(await readJson(req)));
       if (req.method === 'POST' && pathname === '/api/challenge/reveal') return json(res, 200, challengeLab.reveal(await readJson(req)));
@@ -102,7 +117,11 @@ export function createAppServer() {
       if (!res.headersSent) json(res, err.status ?? (err instanceof URIError ? 400 : 500), { error: err.status ? err.message : 'The request could not be completed.' });
       else res.end();
     }
-  });
+  };
+}
+
+export function createAppServer(options) {
+  return createServer(createAppHandler(options));
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
