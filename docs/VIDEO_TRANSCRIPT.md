@@ -1,0 +1,196 @@
+# AURA Twin — narrated walkthrough transcript
+
+**Team:** Black Squad · Amrita Vishwa Vidyapeetham, Chennai  
+**Narration:** locally synthesized Microsoft Zira voice; not a recording of either team member.  
+**Audio duration:** 21:53 (approximately 21.89 minutes).  
+**Format:** narrated presentation with screenshots of the implemented application. This is not a live screen recording of all interactions. Run the repository application to operate the prototype directly; use `DEMO_RUNBOOK.md` for a human-led interactive recording.
+
+The included MP4 and its chapter metadata are the authoritative playback artifact. A public video URL must still be inserted into the README and verified while signed out. The transcript alone does not satisfy the video requirement.
+
+## Chapters
+
+- **00:00** · Slide 01 · A patient’s history. A signal’s next chapter.
+- **01:02** · Slide 02 · Give changing signals their historical context.
+- **02:04** · Slide 03 · Predict a defined event, at a defined time.
+- **03:03** · Slide 04 · Wholly synthetic. Fully inspectable.
+- **04:10** · Slide 05 · The patient state evolves with the stream.
+- **05:11** · Slide 06 · Two streams. One inspectable patient state.
+- **06:22** · Slide 07 · Small enough to inspect. Real enough to test.
+- **07:33** · Slide 08 · Split people before fitting models.
+- **08:36** · Slide 09 · Quantify the prediction and its tradeoffs.
+- **09:37** · Slide 10 · Both streams improve this synthetic forecast.
+- **10:44** · Slide 11 · An overview designed for a clinical review.
+- **11:46** · Slide 12 · Watch the forecast change as time advances.
+- **12:50** · Slide 13 · Make the model’s inputs visible.
+- **13:58** · Slide 14 · Explore an assumption. Do not infer a treatment.
+- **15:05** · Slide 15 · Close the loop with an inspectable demo record.
+- **16:11** · Slide 16 · The evidence travels with the code.
+- **17:21** · Slide 17 · The strongest claim is an inspectable prototype.
+- **18:30** · Slide 18 · Validate in stages before pursuing deployment.
+- **19:39** · Slide 19 · A complete local package. Clear publishing steps.
+- **20:45** · Slide 20 · From two streams to one reviewable outlook.
+
+## Full transcript
+
+### 00:00 · A patient’s history. A signal’s next chapter.
+
+Welcome to AURA Twin, a Phase One digital twin prototype by Black Squad from Amrita Vishwa Vidyapeetham, Chennai. Our team members are Banu Sreya V., the team leader, and Duvvuru Deepak Reddy. This presentation explains the problem, the implemented system, the clinician interface, and the evidence supporting our prototype. It also states the limits of that evidence.
+
+Our central question is focused: can a patient-specific computational state combine historical health information and a changing wearable stream to estimate elevated glucose two hours ahead? We built the full path, from synthetic data generation to model training, local inference, and an interactive dashboard. The purpose is to make that path inspectable.
+
+Everything presented here uses generated patient data. This is not a medical product, a clinical trial, or an independently validated diagnostic system. It does not recommend medication or treatment. What we can demonstrate is a reproducible fusion-and-forecast workflow, with explicit metrics and a usable review interface. During this narrated walkthrough, distinguish implemented behavior from future work, and measured synthetic results from claims that would require real clinical evidence.
+
+### 01:02 · Give changing signals their historical context.
+
+Consider two kinds of information that describe a patient. A historical record can include age, prior diagnoses, laboratory measurements, and the duration of a condition. These values help establish context, but a record alone does not show a change that began twenty minutes ago. A wearable stream offers a different view: recent glucose, heart rate, sleep, and activity can describe what is happening now, but the stream alone does not carry the full historical profile.
+
+AURA Twin brings these perspectives together for a specific review task. The intended user is a clinician exploring a synthetic patient's trajectory, inspecting the forecast, and understanding the model's inputs. The workflow begins with patient selection, moves through context and temporal evidence, and ends with a local review or an exported summary.
+
+We have not measured whether this workflow saves clinical time or improves outcomes. Those are future evaluation questions. The current contribution is an implemented proof of concept that makes the integration tangible. A reviewer can see which patient is selected, what information is available at a timestamp, what the model predicts, and how the result changes as the simulated stream advances.
+
+### 02:04 · Predict a defined event, at a defined time.
+
+A prediction task needs a precise label. Our binary event is a glucose reading greater than or equal to one hundred and eighty milligrams per deciliter at exactly one hundred and twenty minutes after the prediction time. That final phrase matters. We are not labeling any excursion during the next two hours. A short high reading after forty minutes that resolves before the two-hour point would not be a positive example for this label.
+
+We also predict numerical glucose at thirty, sixty, ninety, and one hundred and twenty minutes. These forecasts and the binary event probability are related outputs, but they are not interchangeable. The probability describes the chance of the defined event under the fitted model; the numerical forecast describes a future glucose value.
+
+The National Institute of Diabetes and Digestive and Kidney Diseases describes seventy to one hundred and eighty as a common continuous-glucose-monitoring range context. Our inclusive one hundred and eighty boundary is an explicit engineering convention. It is not an individualized clinical target. This definition is consistent across the generator, training labels, exported model, documentation, and dashboard.
+
+### 03:03 · Wholly synthetic. Fully inspectable.
+
+The prototype uses two wholly synthetic data streams generated by code in this repository. The historical profile includes age, body mass index, hemoglobin A one C, L D L cholesterol, and diabetes duration. The dynamic stream includes continuous glucose readings, heart rate, heart rate variability, steps, and sleep. Each of two hundred and forty generated patients has four simulated days, sampled every five minutes. A fixed seed makes the experiment repeatable.
+
+We did not use real patient records, hospital exports, medical device accounts, MIMIC data, or Synthea records for the reported results. Synthea is mentioned only as a possible future integration. Synthetic data means generated data; it should not be described as anonymized data from real people.
+
+The generator includes simplified daily routines, noise, person-level variation, and relationships between historical context and glucose kinetics. These assumptions make the prototype useful for testing software behavior, but they also limit the evidence. If a generator explicitly makes a historical marker predictive, a model that includes that marker can gain an advantage by design. We therefore report success within this simulator and do not extrapolate its accuracy to clinical populations.
+
+### 04:10 · The patient state evolves with the stream.
+
+The term digital twin can mean many things, so we define what it means here. AURA Twin maintains a patient-specific computational state. A stable historical profile is paired with a time-local summary of the wearable stream. When the replay timestamp advances, the dynamic features update and the model produces a new outlook. This is a narrow, data-driven twin, not a complete mechanistic simulation of a human body.
+
+The important temporal boundary is the prediction timestamp. At that moment, feature construction uses only observations that have already occurred. Current glucose, older glucose values, trends, recent variability, heart-rate summaries, steps, and sleep describe the available history. Future measurements are reserved for training labels and evaluation.
+
+The illustrative trajectory on this slide expresses that evolving state. In the application, a user can pause replay, inspect a point, and move forward. Stable context remains attached to the same patient while the stream changes. This gives a concrete way to demonstrate fusion: the forecast is a function of both who the simulated patient is and what their recent signals show, within the assumptions of the model.
+
+### 05:11 · Two streams. One inspectable patient state.
+
+The architecture begins on the left with the historical profile and the five-minute wearable replay. Both feed causal feature construction. The feature vector then passes through preprocessing parameters fitted on the training cohort. Ridge regression produces numerical glucose forecasts, and calibrated logistic regression produces the defined event probability.
+
+The exported model is readable JSON. It contains the feature order, scaling information, coefficients, calibration parameters, and related metadata. The local Node application and browser interface use these artifacts to produce the displayed results. The implementation does not require a remote language model account or a live hospital connection. This keeps the demonstration reproducible and makes the numerical behavior available for inspection.
+
+The clinician dashboard sits downstream of inference. It combines forecasts with patient context, replay controls, model evidence, and local review interactions. The architecture PDF also shows a separate training and evaluation path. That separation is essential: future observations are labels for learning and assessment, not hidden inputs to prediction. Real device integration, authentication, shared clinical records, and regulated deployment are outside the implemented scope. The diagram describes what runs locally today, with those boundaries stated explicitly.
+
+### 06:22 · Small enough to inspect. Real enough to test.
+
+We chose an inspectable model family rather than adding complexity for its own sake. The fused input contains thirty-six features. They include historical context, current and lagged glucose, thirty- and sixty-minute slopes, rolling glucose statistics, heart-rate and variability summaries, steps, sleep, clock harmonics, and explicit interactions involving hemoglobin A one C.
+
+Standardization is fitted on training patients only. A Ridge regression with regularization produces four forecast horizons. A logistic classifier estimates the probability of the two-hour high-glucose event. A separate logistic calibration step uses validation patients to adjust the probability mapping. Validation residuals supply descriptive forecast intervals.
+
+This design is compact enough to export and reproduce across Python and JavaScript. It also allows a useful explanation of scoring behavior through feature contributions. However, a coefficient contribution is a mathematical description, not proof of causation. Correlated variables and interaction terms make simple causal interpretations especially risky. A larger model could be explored later, but it would need to demonstrate better independent performance, calibration, robustness, or workflow utility. Novel architecture alone would not establish clinical value, and we do not make that claim.
+
+### 07:33 · Split people before fitting models.
+
+Our evaluation partitions patients before fitting the model. One hundred and forty-four synthetic patients form the training cohort, forty-eight form the validation cohort, and forty-eight form the test cohort. All repeated windows from a person stay in the same partition. This avoids a common failure where the model sees very similar records from the same person during both training and testing.
+
+After the required twenty-four-hour history, we sample prediction windows every thirty minutes. This produces twenty thousand one hundred and sixty training windows, six thousand seven hundred and twenty validation windows, and the same number of test windows. The test event prevalence is about eight point zero four percent.
+
+The window count should not be confused with the number of independent people. Nearby windows overlap and are correlated. We therefore include a patient-bootstrap interval for mean absolute error. Other metrics in this release do not have uncertainty intervals. Training fits the scaler and predictive models; validation fits calibration, error intervals, and the alert policy; test data provide the final reported assessment. These roles make the evaluation easier to audit, although all partitions still come from the same designed synthetic generator.
+
+### 08:36 · Quantify the prediction and its tradeoffs.
+
+On the forty-eight held-out synthetic patients, the fused model has a two-hour mean absolute error of ten point nine five milligrams per deciliter. Its patient-bootstrap ninety-five-percent interval is approximately ten point two nine to eleven point five nine. The event classifier has an area under the receiver operating characteristic curve of zero point nine six nine, average precision of zero point seven two three, and a Brier score of approximately zero point zero three seven two.
+
+The dashboard uses a probability threshold of zero point two. We selected the highest threshold on a one-hundredth grid that achieved at least eighty percent recall on validation patients. On the test cohort, this policy achieves eighty-three point nine percent recall and fifty-three point two percent precision. It misses eighty-seven of five hundred and forty positive windows and produces three hundred and ninety-eight false-positive windows.
+
+Those tradeoffs matter more than a headline ranking score. Nearby positive windows can represent the same episode; these are not independent clinical incidents. A higher threshold of zero point five gives higher precision but only fifty-four point eight percent recall. None of these results establishes clinical safety or effectiveness.
+
+### 09:37 · Both streams improve this synthetic forecast.
+
+A fusion claim should be compared with alternatives on the same held-out cohort. We report four models or baselines. The fused model uses both historical context and wearable features. The sensor-only model removes the historical stream and related interactions. The static-only model uses historical context without the changing stream. Persistence simply carries the current glucose reading forward.
+
+At the two-hour horizon, the fused mean absolute error is ten point nine five. The sensor-only error is twelve point one seven. The static-only error is nineteen point three one, and persistence is twenty-two point one zero. Within this experiment, fusion reduces mean absolute error by approximately ten point one percent relative to sensors alone.
+
+This is evidence that both streams contribute under the generator's assumptions. It is not a causal experiment on healthcare outcomes, and it does not prove that fusion will outperform on another dataset. Regular routines and hemoglobin-A-one-C-dependent glucose kinetics can favor our feature design. Persistence also uses a hard binary event estimate, so its probability-related metrics are not calibration-equivalent to the learned classifiers. The complete result file retains all these comparisons for the jury to inspect rather than showing only the strongest number.
+
+### 10:44 · An overview designed for a clinical review.
+
+The clinician overview is designed around a clear question: what should a reviewer inspect about this synthetic patient now? The patient panel provides search and selection. The main workspace places historical glucose beside the forecast, while the surrounding cards summarize current state and risk. Context and model evidence are kept close enough that a reviewer can investigate the result without treating a single large number as the whole story.
+
+In the application, select a patient and inspect the displayed units, replay timestamp, and synthetic-data label. The current glucose value is different from the two-hour forecast. A probability is different from a glucose measurement, and the interface labels these quantities separately. The forecast includes a band to communicate model error rather than presenting the line as exact.
+
+The application also offers a patient-record view and a model-evidence view. These make the historical inputs and evaluation results accessible during the same review. This narrated presentation documents the implemented interface; the runnable application in the repository allows the evaluator to operate it directly. We have not completed a clinician usability study, so design intent should not be confused with measured usability or reduced workload.
+
+### 11:46 · Watch the forecast change as time advances.
+
+Replay makes the temporal behavior visible. The interface provides play and pause controls and a timeline slider. When a reviewer moves to a timestamp, the model uses observations available at that point. The historical portion of the chart represents generated measurements. The projected portion represents numerical forecasts at the four future horizons. Hovering a point supports more precise reading of its time and value.
+
+The uncertainty band is based on the ninetieth percentile of absolute residuals measured on validation patients. At the two-hour horizon, held-out marginal coverage is approximately eighty-nine point nine seven percent, with a mean interval width of forty-eight point four five milligrams per deciliter. Coverage and width must be considered together: an extremely wide band can cover many observations while being less useful.
+
+This band is descriptive. It is not a promise of coverage for each patient, subgroup, or future device. The simulator may change, real populations may differ, and unusual behavior may fall outside the model's experience. Replay is also synthetic playback, not a real-time connection to a medical wearable. The interface demonstrates the streaming interaction pattern while keeping those evidence boundaries visible.
+
+### 12:50 · Make the model’s inputs visible.
+
+The patient-record and explanation views are intended to make the basis of a prediction inspectable. Historical inputs include age, body mass index, hemoglobin A one C, L D L, and diabetes duration. Wearable summaries include the glucose trajectory, recent variability, heart rate, heart-rate variability, steps, and sleep. The two streams have different temporal roles, but both are associated with the selected synthetic patient.
+
+Risk drivers explain the fitted classifier's behavior through coefficient contributions. A positive contribution increases the model's log-odds relative to its baseline, and a negative contribution decreases them. A contribution is not a direct percentage-point change in probability. The relationship is transformed by the logistic function and the calibration step.
+
+These explanations should not be interpreted as a list of clinical causes. Related inputs may share information, and interaction features may carry part of a relationship that a reader expected to see under one simple feature name. We do not claim SHAP explanations or causal discovery. The value of the display is transparency about the implemented scoring function. A future clinical explanation study would need to test whether clinicians understand these distinctions and whether the information improves appropriate review.
+
+### 13:58 · Explore an assumption. Do not infer a treatment.
+
+The hypothetical sensitivity sandbox lets a user change assumptions about meal carbohydrate and activity. Applying a scenario changes the displayed numerical forecast through a simplified arithmetic adjustment. Reset returns to the baseline. This interaction can help demonstrate how a dashboard separates a baseline prediction from an exploratory scenario.
+
+The trained event probability stays at the baseline model output. The sandbox is not a learned treatment-effect model. It has not been trained on randomized interventions, and it has not been evaluated to predict how a specific person's glucose would respond to eating differently, exercising, or taking medication. It should never be presented as evidence that a proposed intervention will prevent an event.
+
+This distinction is deliberate. An attractive what-if interface can easily imply more knowledge than the system contains. We label the operation as hypothetical sensitivity and keep it separate from the measured prediction evidence. There is no medication dosing, treatment recommendation, or clinical action plan. For a genuine intervention simulator, we would need a defensible causal model, appropriate data and assumptions, independent validation, and a much more demanding safety and governance process. Those capabilities are future research, not features of this prototype.
+
+### 15:05 · Close the loop with an inspectable demo record.
+
+The review workflow follows a simple sequence. First, select a synthetic patient. Next, inspect the signal and historical context, including any quality warnings. Then examine the forecast, probability, and model drivers. A reviewer can acknowledge a displayed demo alert and write a local note. Finally, the application can download a clinician summary for inspection.
+
+These interactions make the dashboard feel like a coherent work surface, but their meaning is intentionally limited. Acknowledging an alert means that the demo user has seen it. It does not mean the patient is safe, the prediction is correct, or an escalation has been completed. Notes and acknowledgements are local prototype state, not a shared electronic health record.
+
+The exported summary provides a concrete artifact of the review context. An evaluator can inspect it alongside the screen and verify that the information is understandable. A production version would require authenticated identity, authorized access, durable audit trails, shared-state rules, retention policies, and an escalation owner. We have not implemented those governance capabilities. The current deliverable demonstrates the interaction pattern and keeps the distinction between local workflow and clinical recordkeeping explicit.
+
+### 16:11 · The evidence travels with the code.
+
+Reproducibility is part of the deliverable. The repository includes the synthetic generator, model-training code, dependency information, exported model, measured metrics, and a local application. A fixed seed identifies the generated experiment. The model version is AURA synthetic one point zero point zero. The README supplies the exact launch and verification commands for the submitted package.
+
+The training pipeline fits preprocessing only on training patients. It exports feature order and scaling values with the coefficients, so inference does not depend on guessing how inputs were prepared. The verification suite includes checks for inference agreement with Python, patient partitions, future-data invariance, and quality-related abstention. These are meaningful checks because they test the boundaries that could otherwise make a convincing demonstration misleading.
+
+The dashboard is built with vanilla JavaScript, and the local server uses Node. Training uses Python and scikit-learn. Generated artifacts are included so an evaluator can review the application without retraining first. Exact numerical reproduction can depend on library versions, so the recorded environment and pinned requirements matter. Reproducible software is not the same as clinically reproducible performance, but it gives the jury a concrete foundation for inspecting and extending the prototype.
+
+### 17:21 · The strongest claim is an inspectable prototype.
+
+Several limitations are central to the interpretation. First, the data generator is designed by us. Its regular routines and historical-profile relationships may make prediction easier than it would be on independent data. Second, four simulated days per patient do not capture the diversity of clinical behavior, medication changes, comorbidity, or device conditions.
+
+Third, the alert policy still has important errors. At the selected threshold, eighty-seven positive test windows are missed and three hundred and ninety-eight negative windows are flagged. These counts must not be hidden behind a strong area-under-the-curve result. Fourth, missing and stale data can make the model inappropriate to use. The application checks signal quality and abstains under severe missingness or stale-vital conditions, but this guardrail does not establish robustness to actual medical devices.
+
+Finally, there is no independent clinical validation, prospective trial, measured outcome benefit, or regulatory assessment. Synthetic-only development avoids ingesting real patient records in this prototype; it does not prove compliance with HIPAA, India's DPDP framework, or medical-device requirements. Our strongest justified claim is a working, inspectable software proof of concept with an explicit evaluation and clearly stated boundaries.
+
+### 18:30 · Validate in stages before pursuing deployment.
+
+Future work should proceed through evidence gates. The first stage is broader stress testing. We would vary routines, introduce clock shifts, test missingness and stale signals, examine subgroups, and challenge the model with generators that do not share the same assumptions. These experiments would reveal where the apparent fusion advantage is fragile.
+
+The second stage is independent data evaluation with appropriate permissions, provenance, and governance. This would test discrimination, error, calibration, and failure patterns outside the development simulator. Recalibration or retraining might be needed, and a negative result would be informative rather than something to conceal.
+
+The third stage is a prospective silent-mode study, where predictions can be evaluated without driving treatment. Alert burden, missed events, timing, and subgroup behavior should be measured. The fourth stage is clinician workflow research and the engineering needed for secure, accountable operation. Authentication, access control, audit logging, device integration, escalation ownership, and monitoring belong in that work.
+
+None of these stages has been completed in this submission. A sophisticated interface should not accelerate claims beyond the available evidence. We present this roadmap to show how the prototype could be tested responsibly, not to imply that deployment is already justified.
+
+### 19:39 · A complete local package. Clear publishing steps.
+
+The local submission package contains the working application and source, generated data and model artifacts, training and evaluation code, an architecture PDF, a presentation PDF, an MIT license, technical documentation, a jury question-and-answer guide, and a detailed human demonstration runbook. Team and college information are included. The leader's phone number and email are intentionally not placed in the public source documents.
+
+The final publishing steps still matter. The team should verify the actual video artifact and its duration, publish the repository with public access, insert the real repository and video links into the README, and test them while signed out. A local file or a placeholder URL is not evidence that an evaluator can access it. The platform requests the team leader's name, phone number, email address, and public GitHub repository link.
+
+The written brief requires a minimum twenty-minute demonstration, while the supplied screenshot mentions fifteen to twenty minutes. Our recording plan follows the stricter written requirement, and the team should verify the final portal rules. Publication and portal submission must be checked explicitly. This package makes those remaining actions concrete rather than claiming they have already occurred.
+
+### 20:45 · From two streams to one reviewable outlook.
+
+AURA Twin brings together four things in one inspectable prototype. First, two generated data streams represent historical context and changing wearable signals. Second, a patient-specific feature state supports a precise two-hour prediction target. Third, a trained, exported model produces forecasts and event probabilities with held-out synthetic evaluation. Fourth, the clinician-oriented interface makes the temporal outlook, context, and evidence accessible through a coherent review workflow.
+
+The measured fusion advantage is real within this experiment, and its limitations are equally important. The model is tested on a designed simulator. The selected alert threshold trades sensitivity against false positives. Uncertainty is descriptive, explanations are mathematical, and the scenario sandbox is not causal. Clinical benefit and real-world generalization remain unproven.
+
+For the jury, the repository provides a way to inspect the complete chain rather than relying on a presentation alone. The generator, feature construction, coefficients, metrics, tests, interface, and documentation are all part of the deliverable. Our next steps would be driven by independent evidence and clinician feedback. Thank you for reviewing AURA Twin by Black Squad, from Amrita Vishwa Vidyapeetham, Chennai.
+
