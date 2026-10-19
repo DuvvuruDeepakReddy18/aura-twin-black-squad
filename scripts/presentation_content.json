@@ -1,0 +1,311 @@
+[
+  {
+    "slide": 1,
+    "title": "A patient’s history. A more adaptable outlook.",
+    "kind": "cover",
+    "text": "Welcome to AURA Twin, a digital twin proof of concept by Black Squad from Amrita Vishwa Vidyapeetham, Chennai. Our team members are Banu Sreya V., the team leader, and Duvvuru Deepak Reddy. This walkthrough covers the current model, the working clinician dashboard, and the evidence behind our improvement for irregular routines.\n\nThe central task is specific: combine a synthetic historical health record with a changing wearable stream to forecast glucose at four future horizons and estimate high glucose exactly two hours ahead. We built the complete path, from generation and model selection to local inference, review, and a reproducible challenge protocol.\n\nAn earlier model performed well on regular synthetic routines but failed when meal timing changed. We treated that failure as a development signal. The current pipeline reduces its dependence on clock patterns, trains on a broader declared routine mixture, and evaluates a frozen model on new patient identities. We will show both improvement and remaining errors. All patients and measurements are generated. None of these results establish clinical efficacy, diagnosis, or treatment safety."
+  },
+  {
+    "slide": 2,
+    "title": "Give changing signals their historical context.",
+    "kind": "cards",
+    "text": "Consider two kinds of information that describe a patient. A historical record can include age, prior diagnoses, laboratory measurements, and the duration of a condition. These values help establish context, but a record alone does not show a change that began twenty minutes ago. A wearable stream offers a different view: recent glucose, heart rate, sleep, and activity can describe what is happening now, but the stream alone does not carry the full historical profile.\n\nAURA Twin brings these perspectives together for a specific review task. The intended user is a clinician exploring a synthetic patient's trajectory, inspecting the forecast, and understanding the model's inputs. The workflow begins with patient selection, moves through context and temporal evidence, and ends with a local review or an exported summary.\n\nWe have not measured whether this workflow saves clinical time or improves outcomes. Those are future evaluation questions. The current contribution is an implemented proof of concept that makes the integration tangible. A reviewer can see which patient is selected, what information is available at a timestamp, what the model predicts, and how the result changes as the simulated stream advances.",
+    "cards": [
+      [
+        "Historical context",
+        "Age, laboratory history and condition duration explain the baseline.",
+        "01"
+      ],
+      [
+        "Changing observations",
+        "Glucose, HR, HRV, activity and sleep show recent state.",
+        "02"
+      ],
+      [
+        "A reviewable forecast",
+        "One patient state supports prediction, context and evidence.",
+        "03"
+      ]
+    ],
+    "caption": "A clinician-oriented proof of concept; workflow benefit has not been measured."
+  },
+  {
+    "slide": 3,
+    "title": "Predict a defined event, at a defined time.",
+    "kind": "target",
+    "text": "A prediction task needs a precise label. Our binary event is a glucose reading greater than or equal to one hundred and eighty milligrams per deciliter at exactly one hundred and twenty minutes after the prediction time. That final phrase matters. We are not labeling any excursion during the next two hours. A short high reading after forty minutes that resolves before the two-hour point would not be a positive example for this label.\n\nWe also predict numerical glucose at thirty, sixty, ninety, and one hundred and twenty minutes. These forecasts and the binary event probability are related outputs, but they are not interchangeable. The probability describes the chance of the defined event under the fitted model; the numerical forecast describes a future glucose value.\n\nThe National Institute of Diabetes and Digestive and Kidney Diseases describes seventy to one hundred and eighty as a common continuous-glucose-monitoring range context. Our inclusive one hundred and eighty boundary is an explicit engineering convention. It is not an individualized clinical target. This definition is consistent across the generator, training labels, exported model, documentation, and dashboard."
+  },
+  {
+    "slide": 4,
+    "title": "Synthetic data with deliberately varied routines.",
+    "kind": "cards",
+    "text": "Every record in this demonstration comes from our own seeded simulator. We do not use real patient records, anonymized hospital records, live wearable accounts, Synthea exports, or the MIMIC database. Names, diagnoses, histories, and measurements are fictional. Synthetic generation makes the experiment reproducible without requiring identifiable health information, but it does not make the physiological assumptions realistic by default.\n\nThe current experiment includes six declared routine families: the regular schedule, two-hour and four-hour meal delays, substantially jittered meal timing, day-varying timing with skipped meals, and variable daily sleep and activity. These families are represented during development. The final evaluation asks how well the frozen model performs for new patient identities within that mixture. It does not establish performance for every possible unfamiliar behavior.\n\nHistorical inputs include age, body mass index, glycated hemoglobin, LDL cholesterol, and diabetes duration. Wearable observations include glucose, heart rate, heart-rate variability, steps, and asleep-or-awake flags at five-minute intervals. Fictional diagnosis text and arbitrary genetic markers are context only. The generator's own meal schedule is never supplied as a future input to the model. Future glucose is an evaluation target, not an observation available to inference.",
+    "cards": [
+      [
+        "Own seeded simulator",
+        "Wholly generated people and signals.<br/>No real records or device accounts.",
+        "01"
+      ],
+      [
+        "Six routine families",
+        "Regular, delayed, jittered, daily changes/skips, variable sleep/activity.",
+        "02"
+      ],
+      [
+        "No hidden meal oracle",
+        "Future meals and simulator latent state are excluded from inputs.",
+        "03"
+      ]
+    ],
+    "caption": "Final evaluation uses fresh identities within the declared routine mixture."
+  },
+  {
+    "slide": 5,
+    "title": "Only the available past enters the prediction.",
+    "kind": "cards",
+    "text": "A prediction is meaningful only if its information boundary is clear. At a selected timestamp, the model receives the historical patient profile and wearable observations up to that timestamp. It does not read the next meal, the next activity period, the future glucose trajectory, or a hidden simulator state. This matters because knowing a future meal would make the forecasting task artificially easy.\n\nThe current feature pipeline uses {feature_count} past-derived inputs. It includes current and lagged glucose, recent slopes and variability, sensor summaries, historical context, and observations from matching times on the previous day. A previous-day reading aligned with a future horizon is still an observation from the past: for a two-hour forecast, that corresponding reading is twenty-two hours before the current cutoff. It can describe recurrence, but it does not reveal today's future.\n\nThat distinction also exposes a limitation. Yesterday's pattern may be a poor guide after a major routine change. Past-only features prevent information leakage; they do not make an unpredictable future predictable. In the app, advancing replay moves the cutoff, rebuilds the available state, and recomputes the forecast. Tests mutate future observations and verify that the frozen prediction does not change.",
+    "cards": [
+      [
+        "Recent dynamics",
+        "Lagged CGM, slopes, variability, HR/HRV, steps and sleep.",
+        "01"
+      ],
+      [
+        "Previous-day observations",
+        "Horizon-aligned readings are at t+h−24h.<br/>Observed past, not today’s future.",
+        "02"
+      ],
+      [
+        "Explicit boundary",
+        "Changing future readings must not change a frozen prediction.",
+        "03"
+      ]
+    ],
+    "caption": "Past-only does not mean future behavior becomes predictable."
+  },
+  {
+    "slide": 6,
+    "title": "Two streams. One inspectable inference path.",
+    "kind": "architecture",
+    "text": "The implemented system has an offline development path and an interactive application path. Offline, Python generates synthetic historical records and wearable sequences. Feature construction converts available history into a fixed numerical representation. Separate patient partitions support fitting, candidate selection, probability calibration, uncertainty estimation, and final reporting.\n\nThe selected predictive pipeline is {algorithm_spoken}. Its learned parameters are exported to a readable JSON artifact. The Node.js service loads this artifact and evaluates the same computation in JavaScript. The browser requests predictions and renders the patient context, forecast horizons, probability, data quality, and evidence. The dashboard does not require an external model account, an API key, or a network call to a health provider.\n\nThis separation makes reproducibility practical. A reviewer can inspect the generator, the exported model, the feature names, and the measured results. Python-to-JavaScript fixtures compare numerical outputs from the development implementation and the application implementation. The Challenge Lab adds a further boundary: it physically truncates the patient history before inference, freezes the returned prediction, and only then makes an outcome comparison available. The system remains a local proof of concept, without clinical identity management, shared patient records, or real device connections."
+  },
+  {
+    "slide": 7,
+    "title": "Select and calibrate before opening the final cohort.",
+    "kind": "split",
+    "text": "We changed the evaluation protocol because the earlier stress results had already been inspected. Reusing those inspected patients as a supposedly untouched final test would overstate the independence of the evidence. The current final cohort therefore uses eighty new synthetic patient identities, with generator indices one thousand through one thousand and seventy-nine. None belongs to the original two-hundred-and-forty-patient experiment.\n\nDevelopment has separate roles. Two hundred and fifty-six identities support fitting. Forty-eight separate identities support candidate selection. Another forty-eight support probability calibration, residual-band estimation, and the review threshold. All routine variants and repeated windows for one identity remain within that identity's partition. A model cannot see one person's regular routine during training and then count that same person's delayed routine as a new test patient.\n\nThe selected model and calibration choices are frozen before the new final cohort is generated and scored. The evaluation records this protocol and the artifact fingerprint. Final data are used for reporting, not choosing another winner. Repeated windows and repeated routine variants remain correlated. The effective independent units are patient identities, not the much larger number of rows. Patient-level uncertainty reflects that dependence, while still remaining specific to the synthetic population."
+  },
+  {
+    "slide": 8,
+    "title": "A clock-free candidate earns the final evaluation.",
+    "kind": "cards",
+    "text": "The earlier model included clock harmonics and interactions between clock time and glycated hemoglobin. Those features made the regular synthetic meal schedule easy to exploit. When meal timing shifted, the apparent strength did not transfer. Removing clock inputs addresses that particular shortcut, but removal alone is not evidence of an accurate model.\n\nThe current candidate experiment compares {candidates_spoken}. Candidate choice uses the separate selection patients, before calibration and final scoring. The shipped model is {algorithm_spoken}. The exact hyperparameters and selection evidence are recorded with the artifacts so the decision can be reproduced. We do not replace a disappointing final result by trying more models against the same final cohort.\n\nTraining includes varied routine families, and the model can use current and past sensor dynamics together with historical EHR context. These choices aim to improve average forecasting under the declared mixture. They do not imply that future meals are observable. A model may still smooth over an unexpected meal, miss an abrupt change, or carry forward a misleading trend. We evaluate numerical error, event discrimination, calibration, and uncertainty rather than presenting a single flattering score as a complete answer.",
+    "cards": [
+      [
+        "Remove a shortcut",
+        "Clock-free inputs replace explicit time-of-day harmonics.",
+        "01"
+      ],
+      [
+        "Select on development",
+        "Compare candidate models on separate selection identities.",
+        "02"
+      ],
+      [
+        "Freeze before final",
+        "Calibration and policy are fixed before fresh final scoring.",
+        "03"
+      ]
+    ],
+    "caption": "Selection, calibration and final reporting have different patient partitions."
+  },
+  {
+    "slide": 9,
+    "title": "Measure error and the review-policy tradeoff.",
+    "kind": "results",
+    "text": "On the fresh final synthetic cohort, the fused model's two-hour mean absolute error is {mae_spoken} milligrams per deciliter. The event area under the receiver operating characteristic curve is {auroc_spoken}. These quantities answer different questions. Mean absolute error measures numerical forecast distance from the observed future. Area under the curve measures how well event probabilities rank positive versus negative windows across possible thresholds.\n\nThe displayed review policy uses a probability threshold of {threshold_spoken}, chosen on calibration patients before final reporting. At that fixed threshold, final recall is {recall_spoken} percent and precision is {precision_spoken} percent. Recall describes the fraction of positive windows that receive a flag. Precision describes the fraction of flagged windows that are positive. Both matter when interpreting potential review burden and missed positive windows.\n\nThe complete metrics include the confusion matrix, event prevalence, average precision, Brier score, calibration information, and error at each horizon. These are correlated windows, not deduplicated clinical episodes or independent alerts. A high ranking score does not erase false positives, false negatives, or the absence of clinical validation. The panel can inspect the evidence file and select a concrete window in Challenge Lab to compare a local outcome with the summary statistics."
+  },
+  {
+    "slide": 10,
+    "title": "Compare models on the same fresh routine cases.",
+    "kind": "routines",
+    "text": "To assess the improvement fairly, we compare models on the same new patient identities and routine cases. The comparison includes the current fused model, a sensor-only ablation, a static-only ablation, persistence, and the frozen earlier model where reported. Persistence predicts that the current glucose value will remain the same at the forecast horizon. It is simple, useful, and can beat a more complicated model on particular windows.\n\nThe current fused two-hour error is {mae_spoken}. Sensor-only error is {sensor_mae_spoken}, and persistence error is {persistence_mae_spoken}. The added EHR benefit over sensors is modest: about zero point one one milligrams per deciliter, or roughly one percent. The larger improvement comes from the changed history features, routine-augmented training, and nonlinear model. The routine table also separates regular timing, two- and four-hour delays, jittered timing, day-varying meals, and variable sleep or activity. A pooled improvement can hide a weak routine family, so these separate rows are part of the evidence rather than an optional appendix.\n\nDo not compare the current mixture directly with the original ten-point-nine-five result as if the cohorts and tasks were identical. The original result came from a narrower generator and different people. The valid improvement comparison uses the same new cases. Even a consistent gain over the old model establishes only a synthetic benchmark improvement. It does not validate performance for real patients, unfamiliar devices, medications, or unmodeled behavior."
+  },
+  {
+    "slide": 11,
+    "title": "Show uncertainty without promising coverage.",
+    "kind": "uncertainty",
+    "text": "A point forecast compresses many possible futures into one value. We therefore show a descriptive residual band at each horizon. Its width is estimated from absolute errors on the separate calibration patients, after the predictive model is selected. The nominal target is ninety percent marginal coverage; the final cohort is then used to measure how often observed glucose actually falls inside the band.\n\nAt two hours, measured final coverage is {coverage_spoken} percent, and the mean width is {width_spoken} milligrams per deciliter. The routine-specific coverage table matters because an overall percentage can hide undercoverage for one family. These intervals are not a guarantee for a patient, a subgroup, or a future population. They are not confidence intervals for the patient's true physiological state, and a wider band should not be interpreted as a recommendation.\n\nThe error band, event probability, and data-quality state are separate signals. A clean sensor history does not ensure a narrow or correct forecast. A plausible sensor bias may pass freshness checks. A severe gap can make the system abstain entirely. During the demonstration, we show the actual band and actual quality state rather than suppressing an inconvenient range. Uncertainty is useful only when its assumptions and observed performance remain visible."
+  },
+  {
+    "slide": 12,
+    "title": "An overview designed for a clinical review.",
+    "kind": "dashboard",
+    "text": "The clinician overview is designed around a clear question: what should a reviewer inspect about this synthetic patient now? The patient panel provides search and selection. The main workspace places historical glucose beside the forecast, while the surrounding cards summarize current state and risk. Context and model evidence are kept close enough that a reviewer can investigate the result without treating a single large number as the whole story.\n\nIn the application, select a patient and inspect the displayed units, replay timestamp, and synthetic-data label. The current glucose value is different from the two-hour forecast. A probability is different from a glucose measurement, and the interface labels these quantities separately. The forecast includes a band to communicate model error rather than presenting the line as exact.\n\nThe application also offers a patient-record view and a model-evidence view. These make the historical inputs and evaluation results accessible during the same review. This narrated presentation documents the implemented interface; the runnable application in the repository allows the evaluator to operate it directly. We have not completed a clinician usability study, so design intent should not be confused with measured usability or reduced workload.",
+    "cards": [
+      [
+        "Patient selection",
+        "Eight curated synthetic examples; clear identity and replay timestamp.",
+        "01"
+      ],
+      [
+        "Forecast workspace",
+        "Recorded history, four horizons, units and residual uncertainty.",
+        "02"
+      ],
+      [
+        "Inspectable evidence",
+        "Context, quality and model evidence stay within the review flow.",
+        "03"
+      ]
+    ]
+  },
+  {
+    "slide": 13,
+    "title": "Replay makes the information boundary tangible.",
+    "kind": "replay",
+    "text": "The replay controls let a reviewer pause the simulated stream and choose a past timestamp. The chart separates recorded history from the projected trajectory at thirty, sixty, ninety, and one hundred and twenty minutes. Units and timestamp labels remain visible, so a projected value is not mistaken for a measurement. Advancing the cursor updates the available history and produces a new estimate.\n\nThis is retrospective replay of an already generated sequence. The full dataset exists in the repository, but the inference function receives only the allowed prefix. The training and test protocol uses future readings as targets; the dashboard's forecast path does not. The Challenge Lab uses the same principle with an explicit freeze action and a separate reveal action.\n\nA useful demonstration is to stop before a rise, inspect the numerical forecast and band, then advance through the recorded future. Do not select only windows where the prediction looks good. A missed rise, an inaccurate decline, or a band that excludes the outcome reveals a real model limitation. Replay is a way to inspect those errors and the response to new information. It is not a prospective clinical evaluation, even when the animation resembles a live stream.",
+    "cards": [
+      [
+        "Pause and choose",
+        "Move the cutoff through the recorded synthetic stream.",
+        "01"
+      ],
+      [
+        "Recompute from history",
+        "Every prediction uses the permitted prefix at that timestamp.",
+        "02"
+      ],
+      [
+        "Inspect local errors",
+        "Do not confuse a good-looking example with cohort performance.",
+        "03"
+      ]
+    ]
+  },
+  {
+    "slide": 14,
+    "title": "Inspect context without turning it into a cause.",
+    "kind": "record",
+    "text": "The patient record view exposes the historical and sensor inputs behind the computational state. Age, body mass index, glycated hemoglobin, LDL, and diabetes duration describe the synthetic EHR. The recent glucose trajectory, variability, heart rate, heart-rate variability, steps, and sleep describe changing observations. Keeping these inputs visible helps a reviewer understand what the model actually receives.\n\nThe interface's explanation must match the model being served. {explanation_spoken} Explanations describe the fitted mathematical model and the chosen reference. They do not show that changing a particular feature would cause the patient to improve. Correlated inputs, interaction terms, and simplified simulator relationships can all complicate interpretation.\n\nThe fictional genetic marker is displayed as background context and excluded from prediction. Assigning it a biological effect without evidence would create an unsupported claim. Medication text is also descriptive; the model does not simulate dose-response effects. This distinction between available context and active model inputs is part of the submission. A polished record screen is useful only if the reviewer can tell which facts contribute to the prediction, which are merely displayed, and which clinically important factors are not modeled.",
+    "cards": [
+      [
+        "Visible patient context",
+        "Historical EHR and recent wearable summaries.",
+        "01"
+      ],
+      [
+        "Model-specific sensitivity",
+        "Group replacement changes the model estimate, not the patient.",
+        "02"
+      ],
+      [
+        "No causal interpretation",
+        "Correlated features and hypothetical references limit attribution.",
+        "03"
+      ]
+    ]
+  },
+  {
+    "slide": 15,
+    "title": "Explore an assumption. Do not infer a treatment.",
+    "kind": "scenario",
+    "text": "The hypothetical sensitivity sandbox lets a user change assumptions about meal carbohydrate and activity. Applying a scenario changes the displayed numerical forecast through a simplified arithmetic adjustment. Reset returns to the baseline. This interaction can help demonstrate how a dashboard separates a baseline prediction from an exploratory scenario.\n\nThe trained event probability stays at the baseline model output. The sandbox is not a learned treatment-effect model. It has not been trained on randomized interventions, and it has not been evaluated to predict how a specific person's glucose would respond to eating differently, exercising, or taking medication. It should never be presented as evidence that a proposed intervention will prevent an event.\n\nThis distinction is deliberate. An attractive what-if interface can easily imply more knowledge than the system contains. We label the operation as hypothetical sensitivity and keep it separate from the measured prediction evidence. There is no medication dosing, treatment recommendation, or clinical action plan. For a genuine intervention simulator, we would need a defensible causal model, appropriate data and assumptions, independent validation, and a much more demanding safety and governance process. Those capabilities are future research, not features of this prototype."
+  },
+  {
+    "slide": 16,
+    "title": "Freeze the prediction. Then reveal the outcome.",
+    "kind": "challenge",
+    "text": "Challenge Lab gives the jury a repeatable way to question the model. Choose a synthetic patient, a cutoff, and one of the supported sensor conditions. Freeze prediction copies the patient state, physically truncates the wearable history at the cutoff, applies the selected perturbation, and runs inference. The returned frozen object contains the forecast, event probability, quality state, and provenance information. It does not include future outcomes.\n\nAfter inference completes, the server snapshots the original recorded future at the four horizons. Reveal recorded future compares those observations with the already frozen output. It does not recompute the model after seeing the answer. The comparison includes numerical error, the persistence baseline, interval hits, and the exact two-hour threshold outcome.\n\nThis protocol is inspectable, but it is not a secure blinded clinical study. The synthetic dataset is public, and the team can read it. Its value is enforcing the computation's information boundary and making a selected prediction falsifiable. The selected-window table is not an estimate of cohort-wide performance. Missing future observations and abstained predictions do not receive invented scores. If a forecast loses to persistence, the result stays visible."
+  },
+  {
+    "slide": 17,
+    "title": "Four sensor cases expose different failure modes.",
+    "kind": "faults",
+    "text": "The four Challenge Lab cases answer different questions. Clean replay establishes the baseline at the chosen cutoff. The ten-minute CGM gap removes the final two glucose samples. Within the permitted freshness limit, the pipeline can carry the last available value forward and mark the input as degraded. This demonstrates a known handling policy, not proof that the imputation is accurate.\n\nThe thirty-minute dropout removes the final six glucose samples. The last available glucose is too old for the quality gate, so the model withholds its forecast and probability. A reviewer sees abstention rather than a fabricated confident answer. Acknowledging that state does not make the missing data safe or restore a prediction.\n\nThe final case introduces a plausible positive glucose bias over the recent input window. These values can remain fresh and numerically plausible, so basic quality checks may pass even though the forecast is wrong. This is a deliberate blind spot in the demonstration. The reference future remains unchanged, and persistence receives the same perturbed current observation as the model. Together, these cases separate missingness handling from bias detection and make clear that quality status is not a certificate of sensor truth."
+  },
+  {
+    "slide": 18,
+    "title": "Make the experiment reproducible offline.",
+    "kind": "receipt",
+    "text": "Download receipt exports the frozen experiment and any revealed outcome comparison as a JSON document. The receipt includes a SHA-two-fifty-six fingerprint of the exact model file and a fingerprint of the canonical perturbed input prefix. The model hash covers raw file bytes. The input hash uses a defined sorted-key JSON representation while preserving array order. That distinction matters when reproducing the experiment across environments.\n\nThe repository includes an offline verifier. It reconstructs the input from packaged data, checks the hashes, reruns the prediction, and compares the revealed values and scores. It can work after the live server session expires. The tests also alter forecasts, hashes, outcomes, or model bytes to check that mismatches are detected.\n\nThis is consistency verification, not trusted authorship. A hash is not a digital signature, an independent timestamp, or a clinical audit certification. Replacing every local artifact is outside its authenticity guarantee. Server sessions are memory-only and have bounded capacity and lifetime. The receipt is useful because a reviewer can take a concrete experiment away and reproduce it, rather than relying solely on a screenshot or a verbal claim."
+  },
+  {
+    "slide": 19,
+    "title": "The evidence travels with the implementation.",
+    "kind": "reproducibility",
+    "text": "The submission contains the generator, training pipeline, model export, evaluation artifacts, and application inference code. The current model version is {model_version}. Its protocol separates fitting, selection, calibration, and final reporting. The fresh final patient IDs and routine definitions are recorded with the metrics, so a reviewer can verify what was evaluated.\n\nFor the working dashboard, only Node.js is required. The application uses native HTTP handling, vanilla JavaScript, and SVG charts, with no runtime package installation or external model service. Python and the documented numerical dependencies are needed only to reproduce training or document generation. Exact commands and environment versions are in the README and artifacts.\n\nVerification covers more than a successful page load. Numerical fixtures check Python and JavaScript parity. Prefix tests protect against future leakage. Challenge tests inspect freeze, reveal, degraded input, abstention, and receipt consistency. These tests protect specified behavior; they do not establish clinical performance or complete security. Browser review checks that the patient selection, replay, charts, evidence, exports, and mobile interactions work in the actual interface. The final verification record identifies what was checked for this version and separates older evidence from current results.",
+    "cards": [
+      [
+        "Reproduce the model",
+        "Generator, selection protocol, calibration and frozen artifacts.",
+        "01"
+      ],
+      [
+        "Verify implementation",
+        "Python/JavaScript parity, prefix invariance and challenge tests.",
+        "02"
+      ],
+      [
+        "Run locally",
+        "Node.js; zero runtime dependencies and no external model account.",
+        "03"
+      ]
+    ],
+    "caption": "Metrics and fingerprints identify the exact evaluated artifact."
+  },
+  {
+    "slide": 20,
+    "title": "Improved synthetic robustness still has limits.",
+    "kind": "cards",
+    "text": "The current model addresses a measured weakness in the earlier routine-dependent system. It does not solve general glucose prediction. Future meals and abrupt behavior may be unobservable at the cutoff. A model trained on a declared family of generators can fail when the assumptions behind that family change. Removing explicit clock features also does not remove every routine cue: sleep, activity, heart rate, and previous-day trajectories may still carry recurrent structure.\n\nSynthetic EHR relationships are designed, and some may favor fusion. Medication effects, complex comorbidity, sensor physics, pregnancy, acute illness, and real-world adherence are not validated. False-positive and false-negative windows remain in the results. The residual bands can miss outcomes, and plausible sensor bias can pass the quality gate. Local notes and acknowledgements are demonstration state, not a governed clinical record.\n\nThe practical claim is therefore bounded: an implemented, reproducible patient-state model improves selected synthetic benchmark comparisons under an explicitly defined evaluation protocol. It is inspectable enough to reveal failures and reproduce predictions. Clinical benefit, clinical safety, workflow efficiency, legal compliance, and readiness for autonomous care would require separate evidence and engineering. We keep those future claims separate from the working prototype.",
+    "cards": [
+      [
+        "Unobserved future behavior",
+        "Unexpected meals and abrupt behavior remain difficult to anticipate.",
+        "01"
+      ],
+      [
+        "Synthetic assumptions",
+        "Designed physiology and routine families may favor the model.",
+        "02"
+      ],
+      [
+        "Real-world evidence gap",
+        "No clinical, device, outcome or compliance validation.",
+        "03"
+      ]
+    ],
+    "caption": "Synthetic benchmark improvement is not clinical robustness."
+  },
+  {
+    "slide": 21,
+    "title": "Use the remaining failures to guide validation.",
+    "kind": "cards",
+    "text": "The next validation step is broader evidence, not a stronger claim based on the same simulator. Independent synthetic generators can challenge different assumptions about glucose dynamics and behavior. Held-out routine families, longer histories, new missingness processes, and plausible sensor drift can test boundaries not covered by the current final mixture. Such studies should define their protocol before inspecting the final outcomes.\n\nAppropriately permitted real-world data would then be needed to assess external validity. That work includes calibration, subgroup behavior, device differences, and uncertainty. A prospective silent-mode study could measure performance and potential review burden without allowing model outputs to direct care. Episode-level alert analysis would be needed because overlapping positive windows are not independent clinical events.\n\nClinical participation is equally important for workflow design. Review ownership, escalation rules, access control, consent, audit logging, data retention, and integration responsibilities cannot be inferred from a polished screen. The prototype currently has no production clinical authentication or governed record system. These are explicit future tasks. The value of the present challenge workflow is that it identifies concrete weaknesses and gives reviewers an inspectable baseline from which to design those next studies.",
+    "cards": [
+      [
+        "Broader tests",
+        "Independent simulators, held-out routine families and device faults.",
+        "01"
+      ],
+      [
+        "Independent evaluation",
+        "Permitted external data, calibration, subgroups and silent studies.",
+        "02"
+      ],
+      [
+        "Governed workflows",
+        "Clinical ownership, access control, audit and usability validation.",
+        "03"
+      ]
+    ],
+    "caption": "These are future validation steps, not implemented clinical capabilities."
+  },
+  {
+    "slide": 22,
+    "title": "A complete local prototype, with evidence attached.",
+    "kind": "closing",
+    "text": "AURA Twin combines the two required streams in a working local application. The historical profile and changing wearable state produce four numerical forecasts and a precisely defined two-hour event probability. The clinician interface makes context, replay, uncertainty, model evidence, and local review accessible. Challenge Lab lets a reviewer freeze an estimate, inspect the recorded outcome, compare persistence, and verify a downloaded experiment offline.\n\nThe current robustness upgrade follows a visible chain of evidence. We observed a routine-shift failure, changed the feature and training strategy, separated development roles, and evaluated the frozen model on new patient identities. The result is a measured synthetic improvement with stated limits, rather than a claim that irregular human behavior has become predictable.\n\nThe local package includes source, model and data artifacts, architecture and presentation PDFs, technical documentation, tests, and this narrated demonstration. Before submission, the team must publish the repository as public, upload the actual video, add accessible links to the README, and verify them while signed out. The team leader's contact details belong in the submission platform. Thank you for reviewing Black Squad's AURA Twin. The repository and live challenge are designed to let you inspect both the forecast and the evidence behind it."
+  }
+]

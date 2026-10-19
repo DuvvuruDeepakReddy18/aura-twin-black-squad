@@ -83,3 +83,49 @@ test('malformed input is rejected before model arithmetic',()=>{
   const ambiguousTime=structuredClone(patient);ambiguousTime.series[0].timestamp='2026-10-12T00:00:00';
   assert.equal(validatePatient(ambiguousTime).valid,false);
 });
+
+test('exported tree traversal uses raw features, inclusive left splits and already-scaled leaf values',()=>{
+  const stump={nodes:[[0,150,1,2,0,1],[-1,0,0,0,-10,0],[-1,0,0,0,20,0]]};
+  const classifier={nodes:[[0,150,1,2,0,1],[-1,0,0,0,-.5,0],[-1,0,0,0,.75,0]]};
+  const artifact={modelKind:'hist_gradient_boosting',modelVersion:'tree-test',featureNames:['glucose'],
+    mean:[1000],scale:[10],referenceValues:{glucose:140},featureGroups:[{name:'CGM',source:'Wearable',features:['glucose']}],
+    horizons:[30,60,90,120],regression:{models:Array.from({length:4},()=>({baseline:100,trees:[stump]}))},
+    classification:{baseline:-1,trees:[classifier],calibrationSlope:2,calibrationIntercept:.3},
+    interval:{halfWidths:[5,6,7,8]},alertPolicy:{threshold:.2},disclaimer:'Synthetic test'};
+  try{
+    initializeModel(artifact);
+    const p=structuredClone(patient);
+    p.series[cursor].glucose=150;
+    const left=infer(p,cursor);
+    assert.equal(left.forecast[3].glucose,90);
+    assert(Math.abs(left.risk-1/(1+Math.exp(2.7)))<1e-14);
+    p.series[cursor].glucose=150.1;
+    const right=infer(p,cursor);
+    assert.equal(right.forecast[3].glucose,120);
+    assert(Math.abs(right.risk-1/(1+Math.exp(.2)))<1e-14);
+    assert.equal(right.driverMethod,'group_reference_sensitivity');
+    assert.equal(right.drivers[0].unit,'percentage_points');
+    assert(Math.abs(right.drivers[0].contribution-(right.risk-left.risk)*100)<.000051);
+    assert.match(right.driverExplanation,/not additive attributions or causal effects/);
+    p.series[cursor].glucose=150;
+    initializeModel({...artifact,mean:[100],scale:[10],classification:{coefficients:[1],intercept:0,calibrationSlope:1,calibrationIntercept:0}});
+    const treeRegressionLinearClassifier=infer(p,cursor);
+    assert.equal(treeRegressionLinearClassifier.forecast[3].glucose,90);
+    assert(Math.abs(treeRegressionLinearClassifier.risk-1/(1+Math.exp(-5)))<1e-14);
+    initializeModel({...artifact,mean:[100],scale:[10],regression:{coefficients:[[2],[2],[2],[2]],intercepts:[10,10,10,10]}});
+    const linearRegressionTreeClassifier=infer(p,cursor);
+    assert.equal(linearRegressionTreeClassifier.forecast[3].glucose,20);
+    assert(Math.abs(linearRegressionTreeClassifier.risk-1/(1+Math.exp(2.7)))<1e-14);
+  }finally{initializeModel(model);}
+});
+
+test('clock-free revised models do not change predictions when only the wall-clock labels shift',()=>{
+  if(model.modelKind!=='hist_gradient_boosting')return;
+  assert(model.featureNames.every(name=>!/clock|hour|mealTime|future/i.test(name)));
+  const baseline=infer(patient,cursor),shifted=structuredClone(patient);
+  for(const row of shifted.series)row.timestamp=new Date(Date.parse(row.timestamp)+2*3600000).toISOString();
+  const result=infer(shifted,cursor);
+  assert.equal(result.risk,baseline.risk);
+  assert.deepEqual(result.forecast,baseline.forecast);
+  for(const name of model.featureNames)assert.equal(result.features[name],baseline.features[name]);
+});

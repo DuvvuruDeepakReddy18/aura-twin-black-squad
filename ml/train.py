@@ -86,6 +86,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--patients", type=int, default=240)
     parser.add_argument("--days", type=int, default=4)
+    parser.add_argument("--output-dir", default="data/baseline-v1-retrained", help="Destination relative to repository root; keeps the active v2 model unchanged.")
     args = parser.parse_args()
     if args.patients < 80 or args.days < 3:
         parser.error("Use at least 80 patients and 3 days for all splits and display examples.")
@@ -198,8 +199,8 @@ def main():
         parity.append({"id":patient["id"], "cursor":cursor, "features":f, "forecast":preds.tolist(), "risk":float(probabilities[chosen])})
     # Lead with the selected high-risk example while keeping stable patient IDs.
     display.sort(key=lambda p: -next(v["risk"] for v in parity if v["id"]==p["id"]))
-    data = ROOT / "data"
-    data.mkdir(exist_ok=True)
+    data = ROOT / args.output_dir
+    data.mkdir(parents=True, exist_ok=True)
     for filename, payload in [("model.json",exported), ("metrics.json",metrics), ("patients.json",display), ("parity.json",parity)]:
         (data/filename).write_text(json.dumps(payload, indent=2 if filename!="patients.json" else None, allow_nan=False), encoding="utf-8")
     print(json.dumps({"cohort":metrics["cohort"],"models":{k:{kk:v[kk] for kk in ["mae","auroc","brier","recall"]} for k,v in model_results.items()}},indent=2))

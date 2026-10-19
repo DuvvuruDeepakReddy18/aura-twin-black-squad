@@ -1,103 +1,126 @@
-"""Audit the frozen model under specified synthetic meal-timing shifts.
+"""Reproduce routine scores from exported JSON only: no fitting or recalibration.
 
-No fitting, threshold selection, or recalibration occurs here. Uses the original
-48 test identities, including ALL eligible 30-minute-stride windows, not just the
-eight curated dashboard examples. Run: python ml/stress_test.py
+python ml/stress_test.py            # current model, fresh final identities
+python ml/stress_test.py --legacy   # archived v1, original 48 test identities
 """
 from pathlib import Path
+from datetime import datetime, timezone
+import argparse
 import hashlib
 import json
 import numpy as np
-from sklearn.metrics import mean_absolute_error, roc_auc_score, brier_score_loss, precision_score, recall_score
-from generate import generate_patient, SEED
-from train import features
+from generate import generate_patient
+from train import features as legacy_features
+from train_robust import robust_features, score, bootstrap
 
 ROOT = Path(__file__).resolve().parents[1]
-CASES = [
-    ("reference", "Original meal schedule", 0., .38),
-    ("late_meals_2h", "Meals delayed by 2 hours", 2., .38),
-    ("late_meals_4h", "Meals delayed by 4 hours", 4., .38),
-    ("irregular_meals", "Irregular meal timing", 0., 1.5),
-]
 
 
-def evaluate(model, patients):
-    rows, actual, current, groups = [], [], [], []
-    horizons = model["horizons"]
-    for patient in patients:
-        for cursor in range(288, len(patient["series"])-24, 6):
-            f = features(patient, cursor)
-            rows.append([f[name] for name in model["featureNames"]])
-            actual.append([patient["series"][cursor+h//5]["glucose"] for h in horizons])
-            current.append(patient["series"][cursor]["glucose"])
-            groups.append(patient["id"])
-    x, y, groups = np.array(rows), np.array(actual), np.array(groups)
-    z = (x-np.array(model["mean"]))/np.array(model["scale"])
-    prediction = z @ np.array(model["regression"]["coefficients"]).T + model["regression"]["intercepts"]
-    c = model["classification"]
-    logits = (z @ c["coefficients"] + c["intercept"]) * c["calibrationSlope"] + c["calibrationIntercept"]
-    probability = 1/(1+np.exp(-np.clip(logits, -700, 700)))
-    labels = y[:, -1] >= model["event"]["thresholdMgDl"]
-    flagged = probability >= model["alertPolicy"]["threshold"]
-    residual = np.abs(y-prediction)
-    coverage = residual <= model["interval"]["halfWidths"]
-    patient_mae = np.array([residual[groups == p["id"], -1].mean() for p in patients])
-    rng = np.random.default_rng(SEED + 9001)
-    bootstrap = rng.choice(patient_mae, size=(1000, len(patient_mae)), replace=True).mean(axis=1)
-    return {
-        "patients": len(patients), "windows": len(rows), "positiveRate": float(labels.mean()),
-        "mae": float(residual[:, -1].mean()), "maePatientBootstrap95CI": np.quantile(bootstrap, [.025,.975]).tolist(),
-        "persistenceMae": float(mean_absolute_error(y[:, -1], current)),
-        "auroc": float(roc_auc_score(labels, probability)) if len(np.unique(labels)) == 2 else None,
-        "brier": float(brier_score_loss(labels, probability)),
-        "recall": float(recall_score(labels, flagged, zero_division=0)),
-        "precision": float(precision_score(labels, flagged, zero_division=0)),
-        "intervalCoverage": float(coverage[:, -1].mean()),
-        "byHorizon": [{"minutes": h, "mae": float(residual[:, i].mean()), "intervalCoverage": float(coverage[:, i].mean())} for i,h in enumerate(horizons)],
-    }
+def predict_tree(ensemble, x):
+    """Independent vectorized traversal of exported numerical sklearn trees."""
+    output = np.full(len(x), ensemble['baseline'], dtype=float)
+    for tree in ensemble['trees']:
+        nodes = tree['nodes']
+        stack = [(0, np.arange(len(x)))]
+        while stack:
+            index, rows = stack.pop()
+            if not len(rows):
+                continue
+            feature, threshold, left, right, value, missing_left = nodes[index]
+            if feature == -1:
+                output[rows] += value
+                continue
+            observed = x[rows, feature]
+            choose_left = np.where(np.isfinite(observed), observed <= threshold, missing_left)
+            stack.append((left, rows[choose_left]))
+            stack.append((right, rows[~choose_left]))
+    return output
+
+
+def predict_export(model, x):
+    z = (x-np.asarray(model['mean']))/np.asarray(model['scale'])
+    regression, classifier = model['regression'], model['classification']
+    prediction = (np.column_stack([predict_tree(tree, x) for tree in regression['models']])
+                  if 'models' in regression else z@np.asarray(regression['coefficients']).T+regression['intercepts'])
+    raw = (predict_tree(classifier, x) if 'trees' in classifier
+           else z@np.asarray(classifier['coefficients'])+classifier['intercept'])
+    logit = raw*classifier['calibrationSlope']+classifier['calibrationIntercept']
+    return prediction, 1/(1+np.exp(-np.clip(logit, -700, 700)))
+
+
+def evaluate(model, ids, params, days):
+    rows, targets, current, groups = [], [], [], []
+    extractor = robust_features if 'priorDayMean120' in model['featureNames'] else legacy_features
+    for patient_id in ids:
+        patient = generate_patient(int(patient_id.split('-')[1])-1, days, **params)
+        for cursor in range(288, len(patient['series'])-24, 6):
+            features = extractor(patient, cursor)
+            rows.append([features[name] for name in model['featureNames']])
+            targets.append([patient['series'][cursor+h//5]['glucose'] for h in model['horizons']])
+            current.append(patient['series'][cursor]['glucose'])
+            groups.append(patient_id)
+    x, y, groups = np.asarray(rows), np.asarray(targets), np.asarray(groups)
+    prediction, probability = predict_export(model, x)
+    result = score(y, prediction, probability, model['interval']['halfWidths'], model['alertPolicy']['threshold'])
+    result.update(patients=len(ids), windows=len(rows),
+                  persistenceMae=float(np.mean(np.abs(y[:, -1]-np.asarray(current)))),
+                  maePatientBootstrap95CI=bootstrap(np.abs(y[:, -1]-prediction[:, -1]), groups))
+    return result
 
 
 def main():
-    model_bytes = (ROOT/"data/model.json").read_bytes()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--legacy', action='store_true')
+    args = parser.parse_args()
+    folder = ROOT/'data'/('baseline-v1' if args.legacy else '')
+    model_bytes = (folder/'model.json').read_bytes()
     model = json.loads(model_bytes)
-    metrics = json.loads((ROOT/"data/metrics.json").read_text())
-    indices = [int(pid.split("-")[-1])-1 for pid in metrics["splits"]["test"]]
-    cases = []
-    for case_id, title, shift, jitter in CASES:
-        cohort = [generate_patient(index, metrics["cohort"]["days"], meal_shift_hours=shift, meal_jitter_hours=jitter) for index in indices]
-        result = evaluate(model, cohort)
-        cases.append({"id": case_id, "title": title, "mealShiftHours": shift, "mealJitterHoursSD": jitter, **result})
-        print(f"{title}: MAE {result['mae']:.2f} mg/dL; coverage {result['intervalCoverage']:.1%}; recall {result['recall']:.1%}")
-    # Audit prevents accidentally presenting a changed evaluation as the reference.
-    for key in ["mae", "auroc", "brier", "intervalCoverage"]:
-        if not np.isclose(cases[0][key], metrics["models"]["fused"][key], atol=1e-9):
-            raise AssertionError(f"Reference does not reproduce held-out {key}")
-    if (ROOT/"data/model.json").read_bytes() != model_bytes:
-        raise AssertionError("Model artifact changed during a frozen-model audit")
-    report = {
-        "schemaVersion": 1, "syntheticOnly": True, "modelVersion": model["modelVersion"],
-        "modelSHA256": hashlib.sha256(model_bytes).hexdigest(), "seed": SEED,
-        "protocol": "Frozen coefficients, scaling, calibration, intervals and alert threshold. Same held-out patient identities; all eligible 30-minute-stride windows. Only main-meal timing is altered; snack, activity and noise draw sequences remain unchanged.",
-        "target": metrics["target"], "alertThreshold": model["alertPolicy"]["threshold"],
-        "testPatientIds": metrics["splits"]["test"], "cases": cases,
-        "limitations": [
-            "Synthetic sensitivity audit, not external or clinical validation.",
-            "These stress cases were specified after examining the model's clock features; this is a transparent post-hoc audit, not a preregistered benchmark.",
-            "The same test patients recur across cases, so comparisons are paired and observations are not independent.",
-            "The model is not retrained on stress cases. No automatic drift detector is claimed.",
-            "A nominal 90% interval is not guaranteed to retain coverage under distribution shift.",
-            "Missing-sensor handling is exercised separately in Challenge lab; plausible CGM bias is a known undetected failure mode.",
-        ],
-    }
-    (ROOT/"data/stress.json").write_text(json.dumps(report, indent=2, allow_nan=False)+"\n", encoding="utf-8")
-    lines = ["# Frozen-model stress audit", "", "Generated by `python ml/stress_test.py`. All results below are synthetic. The trained model was not changed.", "", report["protocol"], "", "| Case | +120 min MAE (mg/dL) | Persistence MAE | 90% interval coverage | Recall at fixed 20% threshold | AUROC |", "|---|---:|---:|---:|---:|---:|"]
-    for c in cases:
-        lines.append(f"| {c['title']} | {c['mae']:.2f} | {c['persistenceMae']:.2f} | {c['intervalCoverage']:.1%} | {c['recall']:.1%} | {c['auroc']:.4f} |")
-    lines += ["", f"Each case uses **{cases[0]['patients']} held-out synthetic patients and {cases[0]['windows']:,} correlated windows**. Target: glucose >=180 mg/dL at exactly +120 minutes. Confidence intervals and all horizons are in [`data/stress.json`](../data/stress.json).", "", "## Interpretation", "", "Regular meal timing makes this simulator easier to predict. Delaying or varying meals challenges the clock features and can sharply reduce interval coverage and event recall. A good score on the original generator does not establish robustness. The product exposes this limitation rather than silently treating its interval as a safety guarantee.", "", "## Protocol and limits", ""]
-    lines += [f"- {line}" for line in report["limitations"]]
-    lines += ["", f"Frozen model file SHA-256: `{report['modelSHA256']}`. This is an artifact fingerprint, not a digital signature or authenticity guarantee.", ""]
-    (ROOT/"docs/STRESS_AUDIT.md").write_text("\n".join(lines), encoding="utf-8")
+    model_hash = hashlib.sha256(model_bytes).hexdigest()
+    if args.legacy:
+        metrics = json.loads((folder/'metrics.json').read_text(encoding='utf8'))
+        ids, days = metrics['splits']['test'], metrics['cohort']['days']
+        routines = [
+            {'id':'reference', 'title':'Original meal schedule', 'params':{}},
+            {'id':'late_meals_2h', 'title':'Meals delayed by 2 hours', 'params':{'meal_shift_hours':2}},
+            {'id':'late_meals_4h', 'title':'Meals delayed by 4 hours', 'params':{'meal_shift_hours':4}},
+            {'id':'irregular_meals', 'title':'Irregular meal timing', 'params':{'meal_jitter_hours':1.5}},
+        ]
+        expected = {case['id']:case for case in json.loads((folder/'stress.json').read_text(encoding='utf8'))['cases']}
+        report = {'schemaVersion':1, 'syntheticOnly':True, 'modelVersion':model['modelVersion'],
+                  'modelSHA256':model_hash, 'testPatientIds':ids,
+                  'protocol':'Reproduction of archived v1 post-hoc audit. Frozen JSON coefficients, calibration, threshold and interval widths.',
+                  'target':metrics['target'], 'alertThreshold':model['alertPolicy']['threshold']}
+        output = folder/'stress-reproduced.json'
+    else:
+        if model['modelVersion'] != 'aura-synthetic-2.0.0':
+            raise RuntimeError('Train and freeze v2 before running the current audit; use --legacy for archived v1.')
+        protocol = json.loads((folder/'robustness-protocol.json').read_text(encoding='utf8'))
+        robustness = json.loads((folder/'robustness.json').read_text(encoding='utf8'))
+        if robustness['modelSHA256'] != model_hash:
+            raise RuntimeError('Current model does not match the recorded final evaluation fingerprint.')
+        ids, days, routines = protocol['splits']['test'], protocol['days'], protocol['routines']
+        expected = {case['id']:case['models']['fused'] for case in robustness['cases']}
+        report = json.loads((folder/'stress.json').read_text(encoding='utf8'))
+        output = folder/'stress.json'
+    reproduced = []
+    existing = {case['id']:case for case in report.get('cases', [])}
+    for routine in routines:
+        result = evaluate(model, ids, routine['params'], days)
+        reference = expected[routine['id']]
+        for key in ['mae', 'auroc', 'brier', 'intervalCoverage', 'recall', 'precision']:
+            if not np.isclose(result[key], reference[key], atol=1e-10, rtol=1e-10):
+                raise AssertionError(f"{routine['id']} {key}: exported JSON {result[key]} differs from recorded {reference[key]}")
+        reproduced.append({**existing.get(routine['id'], {}), 'id':routine['id'], 'title':routine['title'], **result})
+        print(f"{routine['title']}: MAE {result['mae']:.3f}; coverage {result['intervalCoverage']:.1%}; recall {result['recall']:.1%}; reproduced", flush=True)
+    if (folder/'model.json').read_bytes() != model_bytes:
+        raise AssertionError('Model changed during the audit.')
+    report.update(cases=reproduced, reproduction={
+        'at':datetime.now(timezone.utc).isoformat(), 'modelSHA256':model_hash,
+        'method':'Independent traversal of the exported JSON; no estimator objects, fitting, threshold changes or recalibration.',
+        'matchedMetrics':['mae','auroc','brier','intervalCoverage','recall','precision']})
+    output.write_text(json.dumps(report, indent=2, allow_nan=False)+'\n', encoding='utf8')
+    print(f'PASS: all {len(routines)} cases reproduce; {output}', flush=True)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

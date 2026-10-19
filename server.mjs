@@ -66,7 +66,7 @@ export function createAppServer() {
     try {
       const url = new URL(req.url, 'http://localhost');
       const pathname = decodeURIComponent(url.pathname);
-      if (req.method === 'GET' && pathname === '/api/health') return json(res, 200, { status: 'ok', name: 'AURA Twin', synthetic: true, version: '1.1.0' });
+      if (req.method === 'GET' && pathname === '/api/health') return json(res, 200, { status: 'ok', name: 'AURA Twin', synthetic: true, version: '2.0.0', modelVersion: model.modelVersion });
       if (req.method === 'GET' && pathname === '/api/patients') return json(res, 200, { patients });
       if (req.method === 'GET' && pathname.startsWith('/api/patients/')) {
         const patient = patientById.get(pathname.slice('/api/patients/'.length));
@@ -76,6 +76,10 @@ export function createAppServer() {
       if (req.method === 'GET' && pathname === '/api/stress') {
         try { return json(res, 200, JSON.parse(await readFile(resolve(ROOT, 'data/stress.json'), 'utf8'))); }
         catch (err) { if (err.code === 'ENOENT') throw new RequestError('Stress audit has not been generated.', 404); throw err; }
+      }
+      if (req.method === 'GET' && pathname === '/api/robustness') {
+        try { return json(res, 200, JSON.parse(await readFile(resolve(ROOT, 'data/robustness.json'), 'utf8'))); }
+        catch (err) { if (err.code === 'ENOENT') throw new RequestError('Routine robustness evaluation has not been generated.', 404); throw err; }
       }
       if (req.method === 'POST' && pathname === '/api/predict') return json(res, 200, makePrediction(await readJson(req)));
       if (req.method === 'GET' && pathname === '/api/challenge/modes') return json(res, 200, challengeLab.modes());

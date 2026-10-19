@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "syntheticOnly": true,
+  "modelVersion": "aura-synthetic-1.0.0",
+  "modelSHA256": "1942ae5b50be0f2824394b0846571181731964f1e7b097be24cfd21afcc7476f",
+  "seed": 20261019,
+  "protocol": "Frozen coefficients, scaling, calibration, intervals and alert threshold. Same held-out patient identities; all eligible 30-minute-stride windows. Only main-meal timing is altered; snack, activity and noise draw sequences remain unchanged.",
+  "target": "CGM glucose >=180 mg/dL at exactly +120 minutes; not any excursion within two hours",
+  "alertThreshold": 0.2,
+  "testPatientIds": [
+    "SYN-032",
+    "SYN-026",
+    "SYN-173",
+    "SYN-166",
+    "SYN-005",
+    "SYN-158",
+    "SYN-035",
+    "SYN-044",
+    "SYN-039",
+    "SYN-006",
+    "SYN-051",
+    "SYN-145",
+    "SYN-110",
+    "SYN-232",
+    "SYN-172",
+    "SYN-029",
+    "SYN-083",
+    "SYN-140",
+    "SYN-022",
+    "SYN-229",
+    "SYN-103",
+    "SYN-174",
+    "SYN-171",
+    "SYN-200",
+    "SYN-202",
+    "SYN-129",
+    "SYN-220",
+    "SYN-093",
+    "SYN-156",
+    "SYN-038",
+    "SYN-178",
+    "SYN-074",
+    "SYN-177",
+    "SYN-009",
+    "SYN-028",
+    "SYN-124",
+    "SYN-211",
+    "SYN-141",
+    "SYN-063",
+    "SYN-095",
+    "SYN-193",
+    "SYN-122",
+    "SYN-223",
+    "SYN-142",
+    "SYN-214",
+    "SYN-046",
+    "SYN-078",
+    "SYN-015"
+  ],
+  "cases": [
+    {
+      "id": "reference",
+      "title": "Original meal schedule",
+      "mealShiftHours": 0.0,
+      "mealJitterHoursSD": 0.38,
+      "patients": 48,
+      "windows": 6720,
+      "positiveRate": 0.08035714285714286,
+      "mae": 10.945925606511853,
+      "maePatientBootstrap95CI": [
+        10.30879590464529,
+        11.546572229884674
+      ],
+      "persistenceMae": 22.09808035714286,
+      "auroc": 0.9691693635382955,
+      "brier": 0.037227921817100565,
+      "recall": 0.8388888888888889,
+      "precision": 0.5323149236192715,
+      "intervalCoverage": 0.899702380952381,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 5.59808434072572,
+          "intervalCoverage": 0.8992559523809524
+        },
+        {
+          "minutes": 60,
+          "mae": 9.031415866931303,
+          "intervalCoverage": 0.9004464285714285
+        },
+        {
+          "minutes": 90,
+          "mae": 10.598963766658667,
+          "intervalCoverage": 0.896875
+        },
+        {
+          "minutes": 120,
+          "mae": 10.945925606511853,
+          "intervalCoverage": 0.899702380952381
+        }
+      ]
+    },
+    {
+      "id": "late_meals_2h",
+      "title": "Meals delayed by 2 hours",
+      "mealShiftHours": 2.0,
+      "mealJitterHoursSD": 0.38,
+      "patients": 48,
+      "windows": 6720,
+      "positiveRate": 0.07663690476190477,
+      "mae": 21.624653014001876,
+      "maePatientBootstrap95CI": [
+        20.197429576214457,
+        22.933405186023077
+      ],
+      "persistenceMae": 21.65931547619048,
+      "auroc": 0.7774037536280638,
+      "brier": 0.09423764617658646,
+      "recall": 0.287378640776699,
+      "precision": 0.16610549943883277,
+      "intervalCoverage": 0.6166666666666667,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 8.17080442994787,
+          "intervalCoverage": 0.7614583333333333
+        },
+        {
+          "minutes": 60,
+          "mae": 15.572908705512713,
+          "intervalCoverage": 0.690029761904762
+        },
+        {
+          "minutes": 90,
+          "mae": 20.01172704825925,
+          "intervalCoverage": 0.6398809523809523
+        },
+        {
+          "minutes": 120,
+          "mae": 21.624653014001876,
+          "intervalCoverage": 0.6166666666666667
+        }
+      ]
+    },
+    {
+      "id": "late_meals_4h",
+      "title": "Meals delayed by 4 hours",
+      "mealShiftHours": 4.0,
+      "mealJitterHoursSD": 0.38,
+      "patients": 48,
+      "windows": 6720,
+      "positiveRate": 0.0644345238095238,
+      "mae": 22.7798605754644,
+      "maePatientBootstrap95CI": [
+        20.960936353709982,
+        24.47800594152722
+      ],
+      "persistenceMae": 19.98998511904762,
+      "auroc": 0.7010363773481774,
+      "brier": 0.08539923735344288,
+      "recall": 0.21709006928406466,
+      "precision": 0.11853720050441362,
+      "intervalCoverage": 0.6130952380952381,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 7.85670734074541,
+          "intervalCoverage": 0.7944940476190476
+        },
+        {
+          "minutes": 60,
+          "mae": 15.29974461179165,
+          "intervalCoverage": 0.725297619047619
+        },
+        {
+          "minutes": 90,
+          "mae": 20.332299704276423,
+          "intervalCoverage": 0.6636904761904762
+        },
+        {
+          "minutes": 120,
+          "mae": 22.7798605754644,
+          "intervalCoverage": 0.6130952380952381
+        }
+      ]
+    },
+    {
+      "id": "irregular_meals",
+      "title": "Irregular meal timing",
+      "mealShiftHours": 0.0,
+      "mealJitterHoursSD": 1.5,
+      "patients": 48,
+      "windows": 6720,
+      "positiveRate": 0.08616071428571428,
+      "mae": 16.596931221047157,
+      "maePatientBootstrap95CI": [
+        15.404568472944172,
+        17.788522986387026
+      ],
+      "persistenceMae": 21.64126488095238,
+      "auroc": 0.8832254905517686,
+      "brier": 0.06750689110468068,
+      "recall": 0.5734024179620034,
+      "precision": 0.3905882352941176,
+      "intervalCoverage": 0.7650297619047619,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 6.712386353155358,
+          "intervalCoverage": 0.8449404761904762
+        },
+        {
+          "minutes": 60,
+          "mae": 12.117574910662327,
+          "intervalCoverage": 0.8142857142857143
+        },
+        {
+          "minutes": 90,
+          "mae": 15.344261481090848,
+          "intervalCoverage": 0.7849702380952381
+        },
+        {
+          "minutes": 120,
+          "mae": 16.596931221047157,
+          "intervalCoverage": 0.7650297619047619
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Synthetic sensitivity audit, not external or clinical validation.",
+    "These stress cases were specified after examining the model's clock features; this is a transparent post-hoc audit, not a preregistered benchmark.",
+    "The same test patients recur across cases, so comparisons are paired and observations are not independent.",
+    "The model is not retrained on stress cases. No automatic drift detector is claimed.",
+    "A nominal 90% interval is not guaranteed to retain coverage under distribution shift.",
+    "Missing-sensor handling is exercised separately in Challenge lab; plausible CGM bias is a known undetected failure mode."
+  ]
+}

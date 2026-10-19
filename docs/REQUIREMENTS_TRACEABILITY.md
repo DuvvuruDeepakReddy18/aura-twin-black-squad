@@ -1,28 +1,23 @@
-# Requirement-to-evidence map
+# Requirement-to-evidence map — current model
 
-This map separates implemented local artifacts from publishing actions still requiring completion. Read the root README for launch instructions.
+| Phase 1 requirement | Current artifact | Evidence boundary |
+| --- | --- | --- |
+| Digital twin proof of concept | Patient-specific EHR + wearable state; past-only forecasts update with replay | Narrow predictive twin, not a whole-body model |
+| Historical/EHR stream | Generated age, BMI, HbA1c, LDL and diabetes duration | Synthetic only; arbitrary genetic markers excluded |
+| Dynamic sensor stream | Five-minute CGM, HR, HRV, steps and asleep/awake replay | Simulated, no device account or live clinical feed |
+| Working adverse-event algorithm | Current boosting model forecasts four horizons and exact +120 min glucose ≥180 probability | Exact endpoint, not any excursion; no clinical validation |
+| Demonstrate fusion | Fused/sensor/static/persistence/legacy comparisons on same new cases | EHR increment is modest 0.107 mg/dL; generator assumptions apply |
+| Clinician UI | Overview, record, evidence, replay, scenarios, notes, exports, Challenge Lab | Conceptual workflow; no measured clinical usability benefit |
+| Data constraints | Own seeded synthetic generator; no PHI | Not a compliance certification |
+| Team/college/title/problem/use case/stack/model | README and current presentation/model card | Black Squad; Amrita Vishwa Vidyapeetham, Chennai |
+| Architecture PDF/PPT | `AURA_Twin_Architecture.pdf`, three current pages | Runtime, partition/freeze protocol, Challenge Lab |
+| Presentation PDF/PPT | `AURA_Twin_Presentation.pdf`,22 current pages; six-page lab supplement | Current model 2.0.0 evidence |
+| Minimum 20-minute video | Current narration and regenerated full walkthrough | Verify actual current MP4 duration/playback; old recordings are historical |
+| Open-source license | Root `LICENSE` | MIT; dependency licenses separate |
+| Robustness improvement | `data/robustness.json`, protocol/selection/audit files and `STRESS_AUDIT.md` | Fresh identities within six seen routine families; not unseen-routine validation |
+| Reproducible experiments | Freeze/reveal, JSON receipt, `scripts/verify_receipt.mjs` | Hash consistency, not trusted signatures or clinical audit certification |
+| Public repository link | Publish local repository and insert actual URL | Pending signed-out accessibility check |
+| Public video/files | Upload current video and test every README link | Pending upload and verification |
+| Submission platform fields | Leader name, phone, email, public GitHub URL | Contact details are outside public repo |
 
-| Phase 1 requirement | Implementation or artifact | Evidence boundary |
-|---|---|---|
-| Digital Twin proof of concept | Patient-specific historical profile fused with a changing wearable state; predictions update during replay | Narrow data-driven twin; not a whole-body physiological model |
-| Static / historical EHR stream | Generated age, BMI, HbA1c, LDL and diabetes-duration context | Entirely synthetic; genetic markers are excluded from prediction |
-| Dynamic / real-time stream | Five-minute generated CGM, heart rate, HRV, steps and sleep replay | Simulated stream; no real wearable account or device connection |
-| Algorithm predicts an adverse-event example | Probability of CGM glucose ≥180 mg/dL at exactly +120 minutes; numerical forecasts at four horizons | Exact endpoint, not any excursion during the interval; no clinical validation |
-| Demonstrate data fusion | Fused versus sensor-only, static-only and persistence ablations on held-out patients | Generator assumptions can favor fusion; external utility unproven |
-| Conceptual clinician dashboard | Runnable Overview, Patient record, Model evidence and Challenge lab views with replay, explanation, hypothetical scenarios and local review/export | Prototype workflow; no production clinical identity or record governance |
-| Privacy-safe training data | Repository's seeded synthetic generator; no real patient records | Synthetic development is not a legal compliance certification |
-| Team and college details | Root README and presentation | Black Squad; Amrita Vishwa Vidyapeetham, Chennai |
-| Title, problem, use case, stack/model | Root README, `docs/MODEL_DATA_CARD.md`, source and training files | Claims are bound to the submitted version |
-| Architecture PDF/PPT | `docs/AURA_Twin_Architecture.pdf`; v2 flow in `docs/AURA_Twin_Challenge_Lab.pdf` | Core data flow plus the truncated-history / freeze / reveal / receipt sequence |
-| Presentation PDF/PPT | `docs/AURA_Twin_Presentation.pdf`; separate `docs/AURA_Twin_Challenge_Lab.pdf` | Original twenty-page presentation plus a six-page upgrade supplement |
-| Added differentiation: challengeable prediction | Freeze, reveal, four sensor cases, persistence comparison and receipt export | Selected-window demonstrations, not clinical validation or secure blinding |
-| Added differentiation: reproducibility | `scripts/verify_receipt.mjs` checks hashes and recomputes results | Consistency with packaged artifacts, not signature/authenticity proof |
-| Added differentiation: failure evidence | `docs/STRESS_AUDIT.md` and `data/stress.json` | Post-hoc changed-meal-timing synthetic audit exposes substantial degradation |
-| Open-source license | Root `LICENSE` | MIT for project content; dependencies retain their own licenses |
-| Minimum 20-minute video | v1 `docs/AURA_Twin_Walkthrough.mp4`, approximately 21:54; `docs/VIDEO_TRANSCRIPT.md` contains its timed script; `docs/DEMO_RUNBOOK.md` and `docs/JURY_CHALLENGE_SCRIPT.md` support an updated recording | Original video predates Challenge Lab; add a clearly labeled supplement. A short v2 clip alone does not meet the minimum. |
-| Public GitHub link | Team publishes the local project and inserts actual URL | Pending until public link is tested signed out |
-| Publicly accessible video and files | Team inserts actual video URL and tests all README links | Pending until independently accessible |
-| Portal submission | Leader name, phone, email and public GitHub URL | Team action; personal contact details omitted from public docs |
-
-The required project folder name is `Black Squad_Amrita Vishwa Vidyapeetham Chennai`. Do not mark a portal checkbox complete merely because this map lists the requirement; verify the associated file or public link.
-
+Required folder: `Black Squad_Amrita Vishwa Vidyapeetham Chennai`. A listed artifact is not proof that an external publication step has been completed.

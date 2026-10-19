@@ -1,5 +1,6 @@
 * text=auto eol=lf
 data/model.json -text
+data/baseline-v1/model.json -text whitespace=cr-at-eol
 *.cmd text eol=crlf
 *.pdf binary
 *.mp4 binary

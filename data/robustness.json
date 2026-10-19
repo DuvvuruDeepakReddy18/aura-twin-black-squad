@@ -1,0 +1,3370 @@
+{
+  "schemaVersion": 2,
+  "modelVersion": "aura-synthetic-2.0.0",
+  "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+  "syntheticOnly": true,
+  "protocol": {
+    "version": "2.0.0",
+    "seed": 20261019,
+    "createdAt": "2026-10-19T16:05:59.341782+00:00",
+    "days": 4,
+    "historyMinutes": 1440,
+    "splits": {
+      "train": [
+        "SYN-001",
+        "SYN-002",
+        "SYN-003",
+        "SYN-004",
+        "SYN-005",
+        "SYN-006",
+        "SYN-007",
+        "SYN-008",
+        "SYN-009",
+        "SYN-010",
+        "SYN-011",
+        "SYN-012",
+        "SYN-013",
+        "SYN-014",
+        "SYN-015",
+        "SYN-016",
+        "SYN-017",
+        "SYN-018",
+        "SYN-019",
+        "SYN-020",
+        "SYN-021",
+        "SYN-022",
+        "SYN-023",
+        "SYN-024",
+        "SYN-025",
+        "SYN-026",
+        "SYN-027",
+        "SYN-028",
+        "SYN-029",
+        "SYN-030",
+        "SYN-031",
+        "SYN-032",
+        "SYN-033",
+        "SYN-034",
+        "SYN-035",
+        "SYN-036",
+        "SYN-037",
+        "SYN-038",
+        "SYN-039",
+        "SYN-040",
+        "SYN-041",
+        "SYN-042",
+        "SYN-043",
+        "SYN-044",
+        "SYN-045",
+        "SYN-046",
+        "SYN-047",
+        "SYN-048",
+        "SYN-049",
+        "SYN-050",
+        "SYN-051",
+        "SYN-052",
+        "SYN-053",
+        "SYN-054",
+        "SYN-055",
+        "SYN-056",
+        "SYN-057",
+        "SYN-058",
+        "SYN-059",
+        "SYN-060",
+        "SYN-061",
+        "SYN-062",
+        "SYN-063",
+        "SYN-064",
+        "SYN-065",
+        "SYN-066",
+        "SYN-067",
+        "SYN-068",
+        "SYN-069",
+        "SYN-070",
+        "SYN-071",
+        "SYN-072",
+        "SYN-073",
+        "SYN-074",
+        "SYN-075",
+        "SYN-076",
+        "SYN-077",
+        "SYN-078",
+        "SYN-079",
+        "SYN-080",
+        "SYN-081",
+        "SYN-082",
+        "SYN-083",
+        "SYN-084",
+        "SYN-085",
+        "SYN-086",
+        "SYN-087",
+        "SYN-088",
+        "SYN-089",
+        "SYN-090",
+        "SYN-091",
+        "SYN-092",
+        "SYN-093",
+        "SYN-094",
+        "SYN-095",
+        "SYN-096",
+        "SYN-097",
+        "SYN-098",
+        "SYN-099",
+        "SYN-100",
+        "SYN-101",
+        "SYN-102",
+        "SYN-103",
+        "SYN-104",
+        "SYN-105",
+        "SYN-106",
+        "SYN-107",
+        "SYN-108",
+        "SYN-109",
+        "SYN-110",
+        "SYN-111",
+        "SYN-112",
+        "SYN-113",
+        "SYN-114",
+        "SYN-115",
+        "SYN-116",
+        "SYN-117",
+        "SYN-118",
+        "SYN-119",
+        "SYN-120",
+        "SYN-121",
+        "SYN-122",
+        "SYN-123",
+        "SYN-124",
+        "SYN-125",
+        "SYN-126",
+        "SYN-127",
+        "SYN-128",
+        "SYN-129",
+        "SYN-130",
+        "SYN-131",
+        "SYN-132",
+        "SYN-133",
+        "SYN-134",
+        "SYN-135",
+        "SYN-136",
+        "SYN-137",
+        "SYN-138",
+        "SYN-139",
+        "SYN-140",
+        "SYN-141",
+        "SYN-142",
+        "SYN-143",
+        "SYN-144",
+        "SYN-145",
+        "SYN-146",
+        "SYN-147",
+        "SYN-148",
+        "SYN-149",
+        "SYN-150",
+        "SYN-151",
+        "SYN-152",
+        "SYN-153",
+        "SYN-154",
+        "SYN-155",
+        "SYN-156",
+        "SYN-157",
+        "SYN-158",
+        "SYN-159",
+        "SYN-160",
+        "SYN-161",
+        "SYN-162",
+        "SYN-163",
+        "SYN-164",
+        "SYN-165",
+        "SYN-166",
+        "SYN-167",
+        "SYN-168",
+        "SYN-169",
+        "SYN-170",
+        "SYN-171",
+        "SYN-172",
+        "SYN-173",
+        "SYN-174",
+        "SYN-175",
+        "SYN-176",
+        "SYN-177",
+        "SYN-178",
+        "SYN-179",
+        "SYN-180",
+        "SYN-181",
+        "SYN-182",
+        "SYN-183",
+        "SYN-184",
+        "SYN-185",
+        "SYN-186",
+        "SYN-187",
+        "SYN-188",
+        "SYN-189",
+        "SYN-190",
+        "SYN-191",
+        "SYN-192",
+        "SYN-193",
+        "SYN-194",
+        "SYN-195",
+        "SYN-196",
+        "SYN-197",
+        "SYN-198",
+        "SYN-199",
+        "SYN-200",
+        "SYN-201",
+        "SYN-202",
+        "SYN-203",
+        "SYN-204",
+        "SYN-205",
+        "SYN-206",
+        "SYN-207",
+        "SYN-208",
+        "SYN-209",
+        "SYN-210",
+        "SYN-211",
+        "SYN-212",
+        "SYN-213",
+        "SYN-214",
+        "SYN-215",
+        "SYN-216",
+        "SYN-217",
+        "SYN-218",
+        "SYN-219",
+        "SYN-220",
+        "SYN-221",
+        "SYN-222",
+        "SYN-223",
+        "SYN-224",
+        "SYN-225",
+        "SYN-226",
+        "SYN-227",
+        "SYN-228",
+        "SYN-229",
+        "SYN-230",
+        "SYN-231",
+        "SYN-232",
+        "SYN-233",
+        "SYN-234",
+        "SYN-235",
+        "SYN-236",
+        "SYN-237",
+        "SYN-238",
+        "SYN-239",
+        "SYN-240",
+        "SYN-241",
+        "SYN-242",
+        "SYN-243",
+        "SYN-244",
+        "SYN-245",
+        "SYN-246",
+        "SYN-247",
+        "SYN-248",
+        "SYN-249",
+        "SYN-250",
+        "SYN-251",
+        "SYN-252",
+        "SYN-253",
+        "SYN-254",
+        "SYN-255",
+        "SYN-256"
+      ],
+      "selection": [
+        "SYN-321",
+        "SYN-322",
+        "SYN-323",
+        "SYN-324",
+        "SYN-325",
+        "SYN-326",
+        "SYN-327",
+        "SYN-328",
+        "SYN-329",
+        "SYN-330",
+        "SYN-331",
+        "SYN-332",
+        "SYN-333",
+        "SYN-334",
+        "SYN-335",
+        "SYN-336",
+        "SYN-337",
+        "SYN-338",
+        "SYN-339",
+        "SYN-340",
+        "SYN-341",
+        "SYN-342",
+        "SYN-343",
+        "SYN-344",
+        "SYN-345",
+        "SYN-346",
+        "SYN-347",
+        "SYN-348",
+        "SYN-349",
+        "SYN-350",
+        "SYN-351",
+        "SYN-352",
+        "SYN-353",
+        "SYN-354",
+        "SYN-355",
+        "SYN-356",
+        "SYN-357",
+        "SYN-358",
+        "SYN-359",
+        "SYN-360",
+        "SYN-361",
+        "SYN-362",
+        "SYN-363",
+        "SYN-364",
+        "SYN-365",
+        "SYN-366",
+        "SYN-367",
+        "SYN-368"
+      ],
+      "calibration": [
+        "SYN-513",
+        "SYN-514",
+        "SYN-515",
+        "SYN-516",
+        "SYN-517",
+        "SYN-518",
+        "SYN-519",
+        "SYN-520",
+        "SYN-521",
+        "SYN-522",
+        "SYN-523",
+        "SYN-524",
+        "SYN-525",
+        "SYN-526",
+        "SYN-527",
+        "SYN-528",
+        "SYN-529",
+        "SYN-530",
+        "SYN-531",
+        "SYN-532",
+        "SYN-533",
+        "SYN-534",
+        "SYN-535",
+        "SYN-536",
+        "SYN-537",
+        "SYN-538",
+        "SYN-539",
+        "SYN-540",
+        "SYN-541",
+        "SYN-542",
+        "SYN-543",
+        "SYN-544",
+        "SYN-545",
+        "SYN-546",
+        "SYN-547",
+        "SYN-548",
+        "SYN-549",
+        "SYN-550",
+        "SYN-551",
+        "SYN-552",
+        "SYN-553",
+        "SYN-554",
+        "SYN-555",
+        "SYN-556",
+        "SYN-557",
+        "SYN-558",
+        "SYN-559",
+        "SYN-560"
+      ],
+      "test": [
+        "SYN-1001",
+        "SYN-1002",
+        "SYN-1003",
+        "SYN-1004",
+        "SYN-1005",
+        "SYN-1006",
+        "SYN-1007",
+        "SYN-1008",
+        "SYN-1009",
+        "SYN-1010",
+        "SYN-1011",
+        "SYN-1012",
+        "SYN-1013",
+        "SYN-1014",
+        "SYN-1015",
+        "SYN-1016",
+        "SYN-1017",
+        "SYN-1018",
+        "SYN-1019",
+        "SYN-1020",
+        "SYN-1021",
+        "SYN-1022",
+        "SYN-1023",
+        "SYN-1024",
+        "SYN-1025",
+        "SYN-1026",
+        "SYN-1027",
+        "SYN-1028",
+        "SYN-1029",
+        "SYN-1030",
+        "SYN-1031",
+        "SYN-1032",
+        "SYN-1033",
+        "SYN-1034",
+        "SYN-1035",
+        "SYN-1036",
+        "SYN-1037",
+        "SYN-1038",
+        "SYN-1039",
+        "SYN-1040",
+        "SYN-1041",
+        "SYN-1042",
+        "SYN-1043",
+        "SYN-1044",
+        "SYN-1045",
+        "SYN-1046",
+        "SYN-1047",
+        "SYN-1048",
+        "SYN-1049",
+        "SYN-1050",
+        "SYN-1051",
+        "SYN-1052",
+        "SYN-1053",
+        "SYN-1054",
+        "SYN-1055",
+        "SYN-1056",
+        "SYN-1057",
+        "SYN-1058",
+        "SYN-1059",
+        "SYN-1060",
+        "SYN-1061",
+        "SYN-1062",
+        "SYN-1063",
+        "SYN-1064",
+        "SYN-1065",
+        "SYN-1066",
+        "SYN-1067",
+        "SYN-1068",
+        "SYN-1069",
+        "SYN-1070",
+        "SYN-1071",
+        "SYN-1072",
+        "SYN-1073",
+        "SYN-1074",
+        "SYN-1075",
+        "SYN-1076",
+        "SYN-1077",
+        "SYN-1078",
+        "SYN-1079",
+        "SYN-1080"
+      ]
+    },
+    "routines": [
+      {
+        "id": "reference",
+        "title": "Regular routine",
+        "params": {}
+      },
+      {
+        "id": "late_meals_2h",
+        "title": "Meals delayed by 2 hours",
+        "params": {
+          "meal_shift_hours": 2.0
+        }
+      },
+      {
+        "id": "late_meals_4h",
+        "title": "Meals delayed by 4 hours",
+        "params": {
+          "meal_shift_hours": 4.0
+        }
+      },
+      {
+        "id": "irregular_meals",
+        "title": "Irregular meal timing",
+        "params": {
+          "meal_jitter_hours": 1.5
+        }
+      },
+      {
+        "id": "day_varying_skips",
+        "title": "Daily timing changes and skipped meals",
+        "params": {
+          "meal_jitter_hours": 0.7,
+          "day_shift_hours_sd": 1.8,
+          "meal_skip_probability": 0.18
+        }
+      },
+      {
+        "id": "variable_routine",
+        "title": "Variable sleep, activity and meals",
+        "params": {
+          "meal_jitter_hours": 1.2,
+          "day_shift_hours_sd": 2.2,
+          "meal_skip_probability": 0.22,
+          "variable_routine": true
+        }
+      }
+    ],
+    "weighting": "Equal routine and patient weight; all variants of an identity stay in its split.",
+    "developmentStrideMinutes": 60,
+    "calibrationAndFinalStrideMinutes": 30,
+    "candidateModels": [
+      "clock-free StandardScaler+Ridge(alpha=50)/LogisticRegression(C=.3)",
+      "clock-free HistGradientBoosting:160 iterations,31 leaves,.07 learning rate,60 minimum leaf,10 L2,63 bins; absolute-error regression"
+    ],
+    "regressionSelection": "Lowest selection-patient +120-minute MAE, averaged equally over six routines.",
+    "classificationSelection": "Lowest uncalibrated selection-patient Brier score, reported with AUROC/AP/recall/precision; independent of regression selection.",
+    "calibration": "Separate calibration identities only: Platt mapping, 90th absolute residual quantiles, highest .01-grid alert threshold with >=80% calibration recall.",
+    "finalLock": "No final identity is generated until chosen models, preprocessing, calibration, interval widths and threshold are exported and SHA-256 recorded.",
+    "finalInterpretation": "Fresh-identity generalization within a declared six-routine mixture. Routine families appear in training; this is not unseen-routine or clinical validation.",
+    "features": [
+      "age",
+      "bmi",
+      "hba1c",
+      "ldl",
+      "diabetesYears",
+      "glucose",
+      "lag30",
+      "lag60",
+      "lag120",
+      "mean120",
+      "std120",
+      "slope30",
+      "slope60",
+      "hrMean60",
+      "hrvMean60",
+      "steps60",
+      "steps24h",
+      "sleep24h",
+      "lag15",
+      "lag45",
+      "lag90",
+      "lag180",
+      "lag240",
+      "lag360",
+      "mean30",
+      "std30",
+      "mean60",
+      "std60",
+      "mean360",
+      "std360",
+      "mean24h",
+      "std24h",
+      "min120",
+      "max120",
+      "q25_120",
+      "q75_120",
+      "q10_24h",
+      "q50_24h",
+      "q90_24h",
+      "slope15",
+      "slope120",
+      "acceleration30",
+      "priorDay30",
+      "priorDay60",
+      "priorDay90",
+      "priorDay120",
+      "priorDayMean120",
+      "hrSlope30",
+      "hrvSlope30",
+      "hrMean120",
+      "hrvMean120",
+      "steps120",
+      "sleepLast6h"
+    ],
+    "featureCount": 53,
+    "absoluteClockFeatures": false,
+    "limitations": [
+      "The simulator and candidate features were designed after examining v1 failures; final IDs are fresh but model development is not independent of simulator design.",
+      "Previous-day horizon-aligned readings assume some recurrence; future unannounced meals remain unpredictable.",
+      "HR includes a contemporaneous synthetic meal response. No future meal annotation or latent simulator state is a predictor."
+    ]
+  },
+  "selection": {
+    "linear": {
+      "mae": 13.47203215748848,
+      "rmse": 18.600534257445776,
+      "auroc": 0.9159595860065173,
+      "averagePrecision": 0.46810749410163777,
+      "brier": 0.044203766328246845,
+      "precision": 0.5946843853820598,
+      "recall": 0.2739097169089518,
+      "f1": 0.3750654793085385,
+      "confusionMatrix": [
+        [
+          18609,
+          244
+        ],
+        [
+          949,
+          358
+        ]
+      ],
+      "positiveRate": 0.06483134920634921,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 5.223178502381175,
+          "rmse": 8.220873993767531
+        },
+        {
+          "minutes": 60,
+          "mae": 9.113905583830286,
+          "rmse": 13.887630868290703
+        },
+        {
+          "minutes": 90,
+          "mae": 11.85289904660452,
+          "rmse": 17.05887583971484
+        },
+        {
+          "minutes": 120,
+          "mae": 13.47203215748848,
+          "rmse": 18.600534257445776
+        }
+      ]
+    },
+    "hist_gradient_boosting": {
+      "mae": 11.607902696724537,
+      "rmse": 18.544964095470046,
+      "auroc": 0.9385133342080318,
+      "averagePrecision": 0.6013720453408639,
+      "brier": 0.038119373010180604,
+      "precision": 0.7169517884914464,
+      "recall": 0.3527161438408569,
+      "f1": 0.4728205128205128,
+      "confusionMatrix": [
+        [
+          18671,
+          182
+        ],
+        [
+          846,
+          461
+        ]
+      ],
+      "positiveRate": 0.06483134920634921,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 4.585497859515385,
+          "rmse": 8.230171967503034
+        },
+        {
+          "minutes": 60,
+          "mae": 7.918581465721864,
+          "rmse": 14.413654071152747
+        },
+        {
+          "minutes": 90,
+          "mae": 10.225047998358614,
+          "rmse": 17.18947888434102
+        },
+        {
+          "minutes": 120,
+          "mae": 11.607902696724537,
+          "rmse": 18.544964095470046
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "event": "protocol_locked",
+      "at": "2026-10-19T16:05:59.343288+00:00",
+      "finalPatientsGenerated": false
+    },
+    {
+      "event": "models_selected",
+      "at": "2026-10-19T16:06:54.323512+00:00",
+      "regressionChoice": "hist_gradient_boosting",
+      "classificationChoice": "hist_gradient_boosting",
+      "finalPatientsGenerated": false
+    },
+    {
+      "event": "model_calibration_threshold_and_intervals_frozen",
+      "at": "2026-10-19T16:07:25.805427+00:00",
+      "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+      "finalPatientsGenerated": false
+    },
+    {
+      "event": "final_generation_started",
+      "at": "2026-10-19T16:07:25.807390+00:00",
+      "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+      "finalPatientsGenerated": false
+    },
+    {
+      "event": "final_evaluation_completed",
+      "at": "2026-10-19T16:08:03.649348+00:00",
+      "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+      "finalPatientsGenerated": true
+    }
+  ],
+  "aggregate": {
+    "models": {
+      "fused": {
+        "mae": 11.622403248007705,
+        "rmse": 18.57743389092879,
+        "auroc": 0.9362888603397425,
+        "averagePrecision": 0.5973834993796255,
+        "brier": 0.0436003211567131,
+        "precision": 0.6593760051463493,
+        "recall": 0.4118119726797911,
+        "f1": 0.506986521577841,
+        "confusionMatrix": [
+          [
+            61163,
+            1059
+          ],
+          [
+            2928,
+            2050
+          ]
+        ],
+        "positiveRate": 0.07407738095238095,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.595350414920798,
+            "rmse": 8.303980730529778,
+            "intervalCoverage": 0.8953720238095239,
+            "intervalMeanWidth": 16.624557157892355
+          },
+          {
+            "minutes": 60,
+            "mae": 7.839663393991752,
+            "rmse": 14.310610140506167,
+            "intervalCoverage": 0.8973660714285714,
+            "intervalMeanWidth": 36.94980896410476
+          },
+          {
+            "minutes": 90,
+            "mae": 10.180205540480241,
+            "rmse": 17.100703090328178,
+            "intervalCoverage": 0.8944196428571428,
+            "intervalMeanWidth": 55.125390355484285
+          },
+          {
+            "minutes": 120,
+            "mae": 11.622403248007705,
+            "rmse": 18.57743389092879,
+            "intervalCoverage": 0.8942113095238096,
+            "intervalMeanWidth": 61.659650458173246
+          }
+        ],
+        "intervalCoverage": 0.8942113095238096,
+        "intervalMeanWidth": 61.659650458173246,
+        "alertPolicy": {
+          "threshold": 0.16,
+          "selection": "Highest 0.01-grid threshold achieving >=80% recall on separate calibration identities",
+          "calibrationRecall": 0.8092150170648464,
+          "calibrationPrecision": 0.42106197833422127,
+          "testPrecision": 0.40498088250490855,
+          "testRecall": 0.7872639614302933,
+          "testF1": 0.534834527465029,
+          "testConfusionMatrix": [
+            [
+              56464,
+              5758
+            ],
+            [
+              1059,
+              3919
+            ]
+          ]
+        },
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 54641,
+            "predicted": 0.012848451978332755,
+            "observed": 0.013323328636005929
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 4178,
+            "predicted": 0.14339914006301113,
+            "observed": 0.14097654380086166
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 2397,
+            "predicted": 0.24647424269092602,
+            "observed": 0.24488944513975802
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 1655,
+            "predicted": 0.3463690329407913,
+            "observed": 0.3323262839879154
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 1220,
+            "predicted": 0.44756522755211825,
+            "observed": 0.3885245901639344
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 1076,
+            "predicted": 0.5493760465942855,
+            "observed": 0.5381040892193308
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 837,
+            "predicted": 0.6462141247781726,
+            "observed": 0.6009557945041816
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 556,
+            "predicted": 0.743997439118473,
+            "observed": 0.6798561151079137
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 314,
+            "predicted": 0.8463151700742659,
+            "observed": 0.8694267515923567
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 326,
+            "predicted": 0.9473356916499329,
+            "observed": 0.9723926380368099
+          }
+        ],
+        "maePatientBootstrap95CI": [
+          11.008349382405946,
+          12.211800520477667
+        ]
+      },
+      "sensorOnly": {
+        "mae": 11.729452490520302,
+        "rmse": 18.761655004514626,
+        "auroc": 0.9292440126030926,
+        "averagePrecision": 0.5776345043295463,
+        "brier": 0.04481376807745074,
+        "precision": 0.6486574983628028,
+        "recall": 0.39795098433105663,
+        "f1": 0.4932768924302789,
+        "confusionMatrix": [
+          [
+            61149,
+            1073
+          ],
+          [
+            2997,
+            1981
+          ]
+        ],
+        "positiveRate": 0.07407738095238095,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.627865286562729,
+            "rmse": 8.345623915292204,
+            "intervalCoverage": 0.8961011904761905,
+            "intervalMeanWidth": 16.791402455566868
+          },
+          {
+            "minutes": 60,
+            "mae": 7.907682410327689,
+            "rmse": 14.358005124565397,
+            "intervalCoverage": 0.8980952380952381,
+            "intervalMeanWidth": 37.58655567751529
+          },
+          {
+            "minutes": 90,
+            "mae": 10.280247253402855,
+            "rmse": 17.214646245339836,
+            "intervalCoverage": 0.8953571428571429,
+            "intervalMeanWidth": 55.31807153526023
+          },
+          {
+            "minutes": 120,
+            "mae": 11.729452490520302,
+            "rmse": 18.761655004514626,
+            "intervalCoverage": 0.8941666666666667,
+            "intervalMeanWidth": 61.69120709427534
+          }
+        ],
+        "intervalCoverage": 0.8941666666666667,
+        "intervalMeanWidth": 61.69120709427534,
+        "alertPolicy": {
+          "threshold": 0.15,
+          "selection": "Highest 0.01-grid threshold achieving >=80% recall on separate calibration identities",
+          "calibrationRecall": 0.8006825938566553,
+          "calibrationPrecision": 0.40963855421686746,
+          "testPrecision": 0.3825496655685335,
+          "testRecall": 0.7697870630775412,
+          "testF1": 0.5111037012337446,
+          "testConfusionMatrix": [
+            [
+              56037,
+              6185
+            ],
+            [
+              1146,
+              3832
+            ]
+          ]
+        },
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 54615,
+            "predicted": 0.014112841629647205,
+            "observed": 0.015014190240776343
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 4322,
+            "predicted": 0.14328645024654746,
+            "observed": 0.13905599259602036
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 2234,
+            "predicted": 0.2469106201925051,
+            "observed": 0.2350044762757386
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 1667,
+            "predicted": 0.3466013682244477,
+            "observed": 0.30293941211757647
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 1308,
+            "predicted": 0.44881071235953995,
+            "observed": 0.41743119266055045
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 986,
+            "predicted": 0.5479470739709857,
+            "observed": 0.513184584178499
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 862,
+            "predicted": 0.6506857547612461,
+            "observed": 0.6160092807424594
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 628,
+            "predicted": 0.7480669412336195,
+            "observed": 0.678343949044586
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 307,
+            "predicted": 0.8453645216864557,
+            "observed": 0.8241042345276873
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 271,
+            "predicted": 0.9442409084194395,
+            "observed": 0.977859778597786
+          }
+        ],
+        "maePatientBootstrap95CI": [
+          11.117699184829387,
+          12.322123967764101
+        ]
+      },
+      "staticOnly": {
+        "mae": 18.482813528595678,
+        "rmse": 24.8322769235076,
+        "auroc": 0.8337017743553297,
+        "averagePrecision": 0.21376978053975104,
+        "brier": 0.061517932778887605,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "confusionMatrix": [
+          [
+            62222,
+            0
+          ],
+          [
+            4978,
+            0
+          ]
+        ],
+        "positiveRate": 0.07407738095238095,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 18.366493728931122,
+            "rmse": 24.771363799921744,
+            "intervalCoverage": 0.8977529761904762,
+            "intervalMeanWidth": 81.59562502752613
+          },
+          {
+            "minutes": 60,
+            "mae": 18.447882464872055,
+            "rmse": 24.787815079037866,
+            "intervalCoverage": 0.8998511904761904,
+            "intervalMeanWidth": 82.43775532832504
+          },
+          {
+            "minutes": 90,
+            "mae": 18.44315943590838,
+            "rmse": 24.83564427858852,
+            "intervalCoverage": 0.8973214285714286,
+            "intervalMeanWidth": 81.70011670271089
+          },
+          {
+            "minutes": 120,
+            "mae": 18.482813528595678,
+            "rmse": 24.8322769235076,
+            "intervalCoverage": 0.9000744047619048,
+            "intervalMeanWidth": 82.27118431435287
+          }
+        ],
+        "intervalCoverage": 0.9000744047619048,
+        "intervalMeanWidth": 82.27118431435287,
+        "alertPolicy": {
+          "threshold": 0.11,
+          "selection": "Highest 0.01-grid threshold achieving >=80% recall on separate calibration identities",
+          "calibrationRecall": 0.8607508532423208,
+          "calibrationPrecision": 0.20015873015873015,
+          "testPrecision": 0.18617216117216118,
+          "testRecall": 0.816793893129771,
+          "testF1": 0.3032291744350809,
+          "testConfusionMatrix": [
+            [
+              44448,
+              17774
+            ],
+            [
+              912,
+              4066
+            ]
+          ]
+        },
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 44520,
+            "predicted": 0.014974333702016873,
+            "observed": 0.01738544474393531
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 8400,
+            "predicted": 0.14769553697111817,
+            "observed": 0.12785714285714286
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 12600,
+            "predicted": 0.24137860649852586,
+            "observed": 0.21595238095238095
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 1680,
+            "predicted": 0.3183843966698219,
+            "observed": 0.24345238095238095
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          }
+        ],
+        "maePatientBootstrap95CI": [
+          17.229842199895714,
+          19.67605257134188
+        ]
+      },
+      "persistence": {
+        "mae": 20.322622023809526,
+        "rmse": 27.352982361117757,
+        "auroc": 0.5833412345553762,
+        "averagePrecision": 0.1095272427119578,
+        "brier": 0.11379464285714286,
+        "precision": 0.2296941462426575,
+        "recall": 0.2278023302531137,
+        "f1": 0.22874432677760967,
+        "confusionMatrix": [
+          [
+            58419,
+            3803
+          ],
+          [
+            3844,
+            1134
+          ]
+        ],
+        "positiveRate": 0.07407738095238095,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 7.021934523809524,
+            "rmse": 10.84896935251938
+          },
+          {
+            "minutes": 60,
+            "mae": 12.382793154761906,
+            "rmse": 18.297347660215934
+          },
+          {
+            "minutes": 90,
+            "mae": 16.853662202380953,
+            "rmse": 23.63805780800368
+          },
+          {
+            "minutes": 120,
+            "mae": 20.322622023809526,
+            "rmse": 27.352982361117757
+          }
+        ],
+        "alertPolicy": {
+          "threshold": 0.5,
+          "testPrecision": 0.2296941462426575,
+          "testRecall": 0.2278023302531137,
+          "testF1": 0.22874432677760967,
+          "testConfusionMatrix": [
+            [
+              58419,
+              3803
+            ],
+            [
+              3844,
+              1134
+            ]
+          ]
+        },
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 62263,
+            "predicted": 0.0,
+            "observed": 0.06173811091659573
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 4937,
+            "predicted": 1.0,
+            "observed": 0.2296941462426575
+          }
+        ],
+        "maePatientBootstrap95CI": [
+          19.3233962797619,
+          21.29564252232143
+        ]
+      },
+      "legacyV1": {
+        "mae": 18.297614525888008,
+        "rmse": 24.671766146781575,
+        "auroc": 0.8481501354828205,
+        "averagePrecision": 0.32455014584611425,
+        "brier": 0.07369093493092667,
+        "precision": 0.34084672677381417,
+        "recall": 0.3493370831659301,
+        "f1": 0.34503968253968254,
+        "confusionMatrix": [
+          [
+            58859,
+            3363
+          ],
+          [
+            3239,
+            1739
+          ]
+        ],
+        "positiveRate": 0.07407738095238095,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 7.153846803998884,
+            "rmse": 10.090482577140406,
+            "intervalCoverage": 0.8183630952380953,
+            "intervalMeanWidth": 23.06637728784392
+          },
+          {
+            "minutes": 60,
+            "mae": 13.14625195705522,
+            "rmse": 17.876254492677372,
+            "intervalCoverage": 0.7751339285714286,
+            "intervalMeanWidth": 40.30873002969372
+          },
+          {
+            "minutes": 90,
+            "mae": 16.80654044553102,
+            "rmse": 22.62669248957753,
+            "intervalCoverage": 0.7384226190476191,
+            "intervalMeanWidth": 47.394617761511824
+          },
+          {
+            "minutes": 120,
+            "mae": 18.297614525888008,
+            "rmse": 24.671766146781575,
+            "intervalCoverage": 0.7157738095238095,
+            "intervalMeanWidth": 48.454906662406756
+          }
+        ],
+        "intervalCoverage": 0.7157738095238095,
+        "intervalMeanWidth": 48.454906662406756,
+        "alertPolicy": {
+          "threshold": 0.2,
+          "testPrecision": 0.2771227690643591,
+          "testRecall": 0.5146645239051828,
+          "testF1": 0.360261548196583,
+          "testConfusionMatrix": [
+            [
+              55539,
+              6683
+            ],
+            [
+              2416,
+              2562
+            ]
+          ]
+        },
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 54891,
+            "predicted": 0.008721915475467957,
+            "observed": 0.03539742398571715
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 3064,
+            "predicted": 0.14294322577109936,
+            "observed": 0.1543733681462141
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 1745,
+            "predicted": 0.24656426998558909,
+            "observed": 0.17765042979942694
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 1359,
+            "predicted": 0.3494466379746333,
+            "observed": 0.19646799116997793
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 1039,
+            "predicted": 0.4474442546161144,
+            "observed": 0.23676612127045235
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 1088,
+            "predicted": 0.5497818026617547,
+            "observed": 0.265625
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 1042,
+            "predicted": 0.6471409790597579,
+            "observed": 0.263915547024952
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 964,
+            "predicted": 0.7509006275672421,
+            "observed": 0.3029045643153527
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 1061,
+            "predicted": 0.8506057578088382,
+            "observed": 0.34967012252591895
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 947,
+            "predicted": 0.9446100448353418,
+            "observed": 0.5406546990496304
+          }
+        ],
+        "maePatientBootstrap95CI": [
+          17.27357659454704,
+          19.22465676647859
+        ]
+      }
+    },
+    "pairedDifferences": {
+      "legacyV1": {
+        "meanDifference": -6.675211277880301,
+        "patientBootstrap95CI": [
+          -7.152966561741729,
+          -6.176773957738777
+        ],
+        "direction": "v2 fused minus comparator MAE; negative favors v2"
+      },
+      "sensorOnly": {
+        "meanDifference": -0.10704924251259643,
+        "patientBootstrap95CI": [
+          -0.150425564068443,
+          -0.059400814494748266
+        ],
+        "direction": "v2 fused minus comparator MAE; negative favors v2"
+      },
+      "persistence": {
+        "meanDifference": -8.700218775801819,
+        "patientBootstrap95CI": [
+          -9.288630290549198,
+          -8.105581894116144
+        ],
+        "direction": "v2 fused minus comparator MAE; negative favors v2"
+      }
+    },
+    "patients": 80,
+    "windows": 67200
+  },
+  "cases": [
+    {
+      "id": "reference",
+      "title": "Regular routine",
+      "parameters": {},
+      "patients": 80,
+      "windows": 11200,
+      "models": {
+        "fused": {
+          "mae": 10.062255416069414,
+          "rmse": 15.811336684510483,
+          "auroc": 0.9596537619214611,
+          "averagePrecision": 0.7076127607998992,
+          "brier": 0.03868066242392987,
+          "precision": 0.5025906735751295,
+          "recall": 0.8584070796460177,
+          "f1": 0.6339869281045751,
+          "confusionMatrix": [
+            [
+              9528,
+              768
+            ],
+            [
+              128,
+              776
+            ]
+          ],
+          "positiveRate": 0.08071428571428571,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.6652340050562335,
+              "rmse": 8.399002513701008,
+              "intervalCoverage": 0.8923214285714286,
+              "intervalMeanWidth": 16.624557157892355
+            },
+            {
+              "minutes": 60,
+              "mae": 7.859673597597816,
+              "rmse": 14.21861305065347,
+              "intervalCoverage": 0.8922321428571428,
+              "intervalMeanWidth": 36.94980896410476
+            },
+            {
+              "minutes": 90,
+              "mae": 9.34113694778358,
+              "rmse": 15.327697098994824,
+              "intervalCoverage": 0.9100892857142857,
+              "intervalMeanWidth": 55.125390355484285
+            },
+            {
+              "minutes": 120,
+              "mae": 10.062255416069414,
+              "rmse": 15.811336684510483,
+              "intervalCoverage": 0.9227678571428571,
+              "intervalMeanWidth": 61.659650458173246
+            }
+          ],
+          "intervalCoverage": 0.9227678571428571,
+          "intervalMeanWidth": 61.659650458173246,
+          "threshold": 0.16,
+          "maePatientBootstrap95CI": [
+            9.482980222684033,
+            10.651276248154259
+          ]
+        },
+        "sensorOnly": {
+          "mae": 10.086250179268868,
+          "rmse": 15.89929944382998,
+          "auroc": 0.9575470927793938,
+          "averagePrecision": 0.696618163054239,
+          "brier": 0.03959556517224949,
+          "precision": 0.46788990825688076,
+          "recall": 0.8462389380530974,
+          "f1": 0.6025994486018117,
+          "confusionMatrix": [
+            [
+              9426,
+              870
+            ],
+            [
+              139,
+              765
+            ]
+          ],
+          "positiveRate": 0.08071428571428571,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.6765706602828585,
+              "rmse": 8.402047249170415,
+              "intervalCoverage": 0.8930357142857143,
+              "intervalMeanWidth": 16.791402455566868
+            },
+            {
+              "minutes": 60,
+              "mae": 7.91166316258193,
+              "rmse": 14.226326901500352,
+              "intervalCoverage": 0.89375,
+              "intervalMeanWidth": 37.58655567751529
+            },
+            {
+              "minutes": 90,
+              "mae": 9.409089876932113,
+              "rmse": 15.392945636486905,
+              "intervalCoverage": 0.9116964285714285,
+              "intervalMeanWidth": 55.31807153526023
+            },
+            {
+              "minutes": 120,
+              "mae": 10.086250179268868,
+              "rmse": 15.89929944382998,
+              "intervalCoverage": 0.9234821428571428,
+              "intervalMeanWidth": 61.69120709427534
+            }
+          ],
+          "intervalCoverage": 0.9234821428571428,
+          "intervalMeanWidth": 61.69120709427534,
+          "threshold": 0.15,
+          "maePatientBootstrap95CI": [
+            9.491386702929063,
+            10.67311881184869
+          ]
+        },
+        "staticOnly": {
+          "mae": 19.34607849193124,
+          "rmse": 25.390617718393575,
+          "auroc": 0.8427656414382079,
+          "averagePrecision": 0.24118081767942784,
+          "brier": 0.06495662409624542,
+          "precision": 0.20714285714285716,
+          "recall": 0.834070796460177,
+          "f1": 0.33186619718309857,
+          "confusionMatrix": [
+            [
+              7410,
+              2886
+            ],
+            [
+              150,
+              754
+            ]
+          ],
+          "positiveRate": 0.08071428571428571,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 19.315541397600608,
+              "rmse": 25.39613205658067,
+              "intervalCoverage": 0.8890178571428572,
+              "intervalMeanWidth": 81.59562502752613
+            },
+            {
+              "minutes": 60,
+              "mae": 19.38445852293933,
+              "rmse": 25.40215542816178,
+              "intervalCoverage": 0.8908035714285715,
+              "intervalMeanWidth": 82.43775532832504
+            },
+            {
+              "minutes": 90,
+              "mae": 19.359960298406424,
+              "rmse": 25.43654604456978,
+              "intervalCoverage": 0.889375,
+              "intervalMeanWidth": 81.70011670271089
+            },
+            {
+              "minutes": 120,
+              "mae": 19.34607849193124,
+              "rmse": 25.390617718393575,
+              "intervalCoverage": 0.8916964285714286,
+              "intervalMeanWidth": 82.27118431435287
+            }
+          ],
+          "intervalCoverage": 0.8916964285714286,
+          "intervalMeanWidth": 82.27118431435287,
+          "threshold": 0.11,
+          "maePatientBootstrap95CI": [
+            18.06748939566161,
+            20.522671509884994
+          ]
+        },
+        "persistence": {
+          "mae": 21.676607142857144,
+          "rmse": 28.313976987649454,
+          "auroc": 0.5754709277939367,
+          "averagePrecision": 0.11127515437155203,
+          "brier": 0.125625,
+          "precision": 0.22024471635150167,
+          "recall": 0.21902654867256638,
+          "f1": 0.21963394342762063,
+          "confusionMatrix": [
+            [
+              9595,
+              701
+            ],
+            [
+              706,
+              198
+            ]
+          ],
+          "positiveRate": 0.08071428571428571,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 7.400803571428572,
+              "rmse": 11.247050565751513
+            },
+            {
+              "minutes": 60,
+              "mae": 13.177973214285712,
+              "rmse": 19.007794759180847
+            },
+            {
+              "minutes": 90,
+              "mae": 17.966901785714285,
+              "rmse": 24.54288402470256
+            },
+            {
+              "minutes": 120,
+              "mae": 21.676607142857144,
+              "rmse": 28.313976987649454
+            }
+          ],
+          "threshold": 0.5,
+          "maePatientBootstrap95CI": [
+            20.69436160714286,
+            22.613423437500003
+          ]
+        },
+        "legacyV1": {
+          "mae": 10.876024256588748,
+          "rmse": 14.77684859100633,
+          "auroc": 0.9662555825442994,
+          "averagePrecision": 0.7014703187018687,
+          "brier": 0.0385806274128022,
+          "precision": 0.5058214747736093,
+          "recall": 0.8650442477876106,
+          "f1": 0.6383673469387755,
+          "confusionMatrix": [
+            [
+              9532,
+              764
+            ],
+            [
+              122,
+              782
+            ]
+          ],
+          "positiveRate": 0.08071428571428571,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 5.699410247380165,
+              "rmse": 8.248155552378476,
+              "intervalCoverage": 0.8921428571428571,
+              "intervalMeanWidth": 23.06637728784392
+            },
+            {
+              "minutes": 60,
+              "mae": 9.107073202715831,
+              "rmse": 12.522144749302827,
+              "intervalCoverage": 0.8982142857142857,
+              "intervalMeanWidth": 40.30873002969372
+            },
+            {
+              "minutes": 90,
+              "mae": 10.570944266136198,
+              "rmse": 14.267388986124123,
+              "intervalCoverage": 0.905625,
+              "intervalMeanWidth": 47.394617761511824
+            },
+            {
+              "minutes": 120,
+              "mae": 10.876024256588748,
+              "rmse": 14.77684859100633,
+              "intervalCoverage": 0.9076785714285714,
+              "intervalMeanWidth": 48.454906662406756
+            }
+          ],
+          "intervalCoverage": 0.9076785714285714,
+          "intervalMeanWidth": 48.454906662406756,
+          "threshold": 0.2,
+          "maePatientBootstrap95CI": [
+            10.246706537815895,
+            11.496606629826287
+          ]
+        }
+      },
+      "pairedDifferences": {
+        "legacyV1": {
+          "meanDifference": -0.8137688405193321,
+          "patientBootstrap95CI": [
+            -1.0700052611224258,
+            -0.5618056313558479
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "sensorOnly": {
+          "meanDifference": -0.023994763199453435,
+          "patientBootstrap95CI": [
+            -0.08864769551140513,
+            0.04449306988326382
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "persistence": {
+          "meanDifference": -11.614351726787728,
+          "patientBootstrap95CI": [
+            -12.33844689683815,
+            -10.860055499618683
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        }
+      }
+    },
+    {
+      "id": "late_meals_2h",
+      "title": "Meals delayed by 2 hours",
+      "parameters": {
+        "meal_shift_hours": 2.0
+      },
+      "patients": 80,
+      "windows": 11200,
+      "models": {
+        "fused": {
+          "mae": 9.724605542081152,
+          "rmse": 15.558792920924834,
+          "auroc": 0.9644167708467889,
+          "averagePrecision": 0.7084915279354134,
+          "brier": 0.03648674123392335,
+          "precision": 0.47766749379652607,
+          "recall": 0.8891454965357968,
+          "f1": 0.6214689265536724,
+          "confusionMatrix": [
+            [
+              9492,
+              842
+            ],
+            [
+              96,
+              770
+            ]
+          ],
+          "positiveRate": 0.07732142857142857,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.645617027143202,
+              "rmse": 8.41540419444285,
+              "intervalCoverage": 0.8915178571428571,
+              "intervalMeanWidth": 16.624557157892355
+            },
+            {
+              "minutes": 60,
+              "mae": 7.827319262032267,
+              "rmse": 14.217829276651905,
+              "intervalCoverage": 0.8976785714285714,
+              "intervalMeanWidth": 36.94980896410476
+            },
+            {
+              "minutes": 90,
+              "mae": 9.143996754807903,
+              "rmse": 15.192188597511022,
+              "intervalCoverage": 0.9151785714285714,
+              "intervalMeanWidth": 55.125390355484285
+            },
+            {
+              "minutes": 120,
+              "mae": 9.724605542081152,
+              "rmse": 15.558792920924834,
+              "intervalCoverage": 0.9283928571428571,
+              "intervalMeanWidth": 61.659650458173246
+            }
+          ],
+          "intervalCoverage": 0.9283928571428571,
+          "intervalMeanWidth": 61.659650458173246,
+          "threshold": 0.16,
+          "maePatientBootstrap95CI": [
+            9.166486365255551,
+            10.26210903334054
+          ]
+        },
+        "sensorOnly": {
+          "mae": 9.81550780963651,
+          "rmse": 15.727214432396622,
+          "auroc": 0.9599395211483785,
+          "averagePrecision": 0.6952511995968003,
+          "brier": 0.03784169411767768,
+          "precision": 0.45346769413159455,
+          "recall": 0.8833718244803695,
+          "f1": 0.599294947121034,
+          "confusionMatrix": [
+            [
+              9412,
+              922
+            ],
+            [
+              101,
+              765
+            ]
+          ],
+          "positiveRate": 0.07732142857142857,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.653125833209305,
+              "rmse": 8.428523178957112,
+              "intervalCoverage": 0.8935714285714286,
+              "intervalMeanWidth": 16.791402455566868
+            },
+            {
+              "minutes": 60,
+              "mae": 7.854114200977779,
+              "rmse": 14.183056198005449,
+              "intervalCoverage": 0.8988392857142857,
+              "intervalMeanWidth": 37.58655567751529
+            },
+            {
+              "minutes": 90,
+              "mae": 9.19195342577472,
+              "rmse": 15.204261861127495,
+              "intervalCoverage": 0.9163392857142857,
+              "intervalMeanWidth": 55.31807153526023
+            },
+            {
+              "minutes": 120,
+              "mae": 9.81550780963651,
+              "rmse": 15.727214432396622,
+              "intervalCoverage": 0.9272321428571428,
+              "intervalMeanWidth": 61.69120709427534
+            }
+          ],
+          "intervalCoverage": 0.9272321428571428,
+          "intervalMeanWidth": 61.69120709427534,
+          "threshold": 0.15,
+          "maePatientBootstrap95CI": [
+            9.24328724675726,
+            10.367293488252432
+          ]
+        },
+        "staticOnly": {
+          "mae": 18.359752730682885,
+          "rmse": 24.88382232099704,
+          "auroc": 0.8315855506900918,
+          "averagePrecision": 0.21693396273627635,
+          "brier": 0.06370685680755436,
+          "precision": 0.19478021978021978,
+          "recall": 0.8187066974595842,
+          "f1": 0.3146915224145584,
+          "confusionMatrix": [
+            [
+              7403,
+              2931
+            ],
+            [
+              157,
+              709
+            ]
+          ],
+          "positiveRate": 0.07732142857142857,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 17.911531711982793,
+              "rmse": 24.46350196945793,
+              "intervalCoverage": 0.8978571428571429,
+              "intervalMeanWidth": 81.59562502752613
+            },
+            {
+              "minutes": 60,
+              "mae": 18.13288710274865,
+              "rmse": 24.65410258209124,
+              "intervalCoverage": 0.8979464285714286,
+              "intervalMeanWidth": 82.43775532832504
+            },
+            {
+              "minutes": 90,
+              "mae": 18.251990834799038,
+              "rmse": 24.825579250098624,
+              "intervalCoverage": 0.8938392857142857,
+              "intervalMeanWidth": 81.70011670271089
+            },
+            {
+              "minutes": 120,
+              "mae": 18.359752730682885,
+              "rmse": 24.88382232099704,
+              "intervalCoverage": 0.8961607142857143,
+              "intervalMeanWidth": 82.27118431435287
+            }
+          ],
+          "intervalCoverage": 0.8961607142857143,
+          "intervalMeanWidth": 82.27118431435287,
+          "threshold": 0.11,
+          "maePatientBootstrap95CI": [
+            17.18926706491355,
+            19.487212093311236
+          ]
+        },
+        "persistence": {
+          "mae": 21.471107142857143,
+          "rmse": 28.74063049189124,
+          "auroc": 0.548365761398393,
+          "averagePrecision": 0.09272869670616941,
+          "brier": 0.12473214285714286,
+          "precision": 0.17262638717632553,
+          "recall": 0.16166281755196305,
+          "f1": 0.16696481812760883,
+          "confusionMatrix": [
+            [
+              9663,
+              671
+            ],
+            [
+              726,
+              140
+            ]
+          ],
+          "positiveRate": 0.07732142857142857,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 7.3258125000000005,
+              "rmse": 11.342723871338338
+            },
+            {
+              "minutes": 60,
+              "mae": 13.014866071428571,
+              "rmse": 19.22637448644068
+            },
+            {
+              "minutes": 90,
+              "mae": 17.807044642857146,
+              "rmse": 24.879061603083024
+            },
+            {
+              "minutes": 120,
+              "mae": 21.471107142857143,
+              "rmse": 28.74063049189124
+            }
+          ],
+          "threshold": 0.5,
+          "maePatientBootstrap95CI": [
+            20.44375625,
+            22.464885491071428
+          ]
+        },
+        "legacyV1": {
+          "mae": 21.920436420123917,
+          "rmse": 27.683841517752036,
+          "auroc": 0.790406653344126,
+          "averagePrecision": 0.17412257673289397,
+          "brier": 0.09926692400542166,
+          "precision": 0.168,
+          "recall": 0.31524249422632794,
+          "f1": 0.21918908069048576,
+          "confusionMatrix": [
+            [
+              8982,
+              1352
+            ],
+            [
+              593,
+              273
+            ]
+          ],
+          "positiveRate": 0.07732142857142857,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 8.269875498395853,
+              "rmse": 11.012533963926629,
+              "intervalCoverage": 0.7486607142857142,
+              "intervalMeanWidth": 23.06637728784392
+            },
+            {
+              "minutes": 60,
+              "mae": 15.774852346466039,
+              "rmse": 20.0267756240879,
+              "intervalCoverage": 0.6791071428571429,
+              "intervalMeanWidth": 40.30873002969372
+            },
+            {
+              "minutes": 90,
+              "mae": 20.293288072020434,
+              "rmse": 25.535425083025736,
+              "intervalCoverage": 0.6286607142857142,
+              "intervalMeanWidth": 47.394617761511824
+            },
+            {
+              "minutes": 120,
+              "mae": 21.920436420123917,
+              "rmse": 27.683841517752036,
+              "intervalCoverage": 0.6067857142857143,
+              "intervalMeanWidth": 48.454906662406756
+            }
+          ],
+          "intervalCoverage": 0.6067857142857143,
+          "intervalMeanWidth": 48.454906662406756,
+          "threshold": 0.2,
+          "maePatientBootstrap95CI": [
+            20.75281395238288,
+            23.035339773684175
+          ]
+        }
+      },
+      "pairedDifferences": {
+        "legacyV1": {
+          "meanDifference": -12.195830878042765,
+          "patientBootstrap95CI": [
+            -12.965740034939405,
+            -11.47601661703758
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "sensorOnly": {
+          "meanDifference": -0.09090226755535696,
+          "patientBootstrap95CI": [
+            -0.1528126503073087,
+            -0.025733006879632443
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "persistence": {
+          "meanDifference": -11.746501600775991,
+          "patientBootstrap95CI": [
+            -12.560048102548041,
+            -10.971774815404789
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        }
+      }
+    },
+    {
+      "id": "late_meals_4h",
+      "title": "Meals delayed by 4 hours",
+      "parameters": {
+        "meal_shift_hours": 4.0
+      },
+      "patients": 80,
+      "windows": 11200,
+      "models": {
+        "fused": {
+          "mae": 9.291921458485165,
+          "rmse": 15.11315636204014,
+          "auroc": 0.9633576506705551,
+          "averagePrecision": 0.6766034431139754,
+          "brier": 0.03357442204094952,
+          "precision": 0.4309210526315789,
+          "recall": 0.896032831737346,
+          "f1": 0.5819635717458908,
+          "confusionMatrix": [
+            [
+              9604,
+              865
+            ],
+            [
+              76,
+              655
+            ]
+          ],
+          "positiveRate": 0.06526785714285714,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.395342150375482,
+              "rmse": 7.9169166679493355,
+              "intervalCoverage": 0.90375,
+              "intervalMeanWidth": 16.624557157892355
+            },
+            {
+              "minutes": 60,
+              "mae": 7.239560152634079,
+              "rmse": 13.18786901071083,
+              "intervalCoverage": 0.9059821428571428,
+              "intervalMeanWidth": 36.94980896410476
+            },
+            {
+              "minutes": 90,
+              "mae": 8.577479302201167,
+              "rmse": 14.494805647563666,
+              "intervalCoverage": 0.9241071428571429,
+              "intervalMeanWidth": 55.125390355484285
+            },
+            {
+              "minutes": 120,
+              "mae": 9.291921458485165,
+              "rmse": 15.11315636204014,
+              "intervalCoverage": 0.9333928571428571,
+              "intervalMeanWidth": 61.659650458173246
+            }
+          ],
+          "intervalCoverage": 0.9333928571428571,
+          "intervalMeanWidth": 61.659650458173246,
+          "threshold": 0.16,
+          "maePatientBootstrap95CI": [
+            8.72877257873129,
+            9.7986969908379
+          ]
+        },
+        "sensorOnly": {
+          "mae": 9.410102091877881,
+          "rmse": 15.28886910395228,
+          "auroc": 0.9581516088343163,
+          "averagePrecision": 0.6590496662848692,
+          "brier": 0.03457413777886144,
+          "precision": 0.4133077415227127,
+          "recall": 0.8837209302325582,
+          "f1": 0.5632083696599826,
+          "confusionMatrix": [
+            [
+              9552,
+              917
+            ],
+            [
+              85,
+              646
+            ]
+          ],
+          "positiveRate": 0.06526785714285714,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.421385706194979,
+              "rmse": 7.942922305597279,
+              "intervalCoverage": 0.9049107142857142,
+              "intervalMeanWidth": 16.791402455566868
+            },
+            {
+              "minutes": 60,
+              "mae": 7.2917649132080316,
+              "rmse": 13.20784718614683,
+              "intervalCoverage": 0.906875,
+              "intervalMeanWidth": 37.58655567751529
+            },
+            {
+              "minutes": 90,
+              "mae": 8.688137450891972,
+              "rmse": 14.612249403318577,
+              "intervalCoverage": 0.9234821428571428,
+              "intervalMeanWidth": 55.31807153526023
+            },
+            {
+              "minutes": 120,
+              "mae": 9.410102091877881,
+              "rmse": 15.28886910395228,
+              "intervalCoverage": 0.9338392857142858,
+              "intervalMeanWidth": 61.69120709427534
+            }
+          ],
+          "intervalCoverage": 0.9338392857142858,
+          "intervalMeanWidth": 61.69120709427534,
+          "threshold": 0.15,
+          "maePatientBootstrap95CI": [
+            8.852830164739535,
+            9.92323710670797
+          ]
+        },
+        "staticOnly": {
+          "mae": 16.6787813726466,
+          "rmse": 22.75618065266911,
+          "auroc": 0.8462937087791864,
+          "averagePrecision": 0.20400997301088794,
+          "brier": 0.05514569416314495,
+          "precision": 0.17087912087912088,
+          "recall": 0.8508891928864569,
+          "f1": 0.284603065660032,
+          "confusionMatrix": [
+            [
+              7451,
+              3018
+            ],
+            [
+              109,
+              622
+            ]
+          ],
+          "positiveRate": 0.06526785714285714,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 16.85334051293495,
+              "rmse": 23.026933140037666,
+              "intervalCoverage": 0.9120535714285715,
+              "intervalMeanWidth": 81.59562502752613
+            },
+            {
+              "minutes": 60,
+              "mae": 16.739703798589744,
+              "rmse": 22.823410777490885,
+              "intervalCoverage": 0.9172321428571428,
+              "intervalMeanWidth": 82.43775532832504
+            },
+            {
+              "minutes": 90,
+              "mae": 16.654435427944232,
+              "rmse": 22.725240338235913,
+              "intervalCoverage": 0.9149107142857142,
+              "intervalMeanWidth": 81.70011670271089
+            },
+            {
+              "minutes": 120,
+              "mae": 16.6787813726466,
+              "rmse": 22.75618065266911,
+              "intervalCoverage": 0.9185714285714286,
+              "intervalMeanWidth": 82.27118431435287
+            }
+          ],
+          "intervalCoverage": 0.9185714285714286,
+          "intervalMeanWidth": 82.27118431435287,
+          "threshold": 0.11,
+          "maePatientBootstrap95CI": [
+            15.479883370439888,
+            17.8109172692342
+          ]
+        },
+        "persistence": {
+          "mae": 19.573294642857142,
+          "rmse": 26.02232439587759,
+          "auroc": 0.57095131623702,
+          "averagePrecision": 0.09037125977197516,
+          "brier": 0.10866071428571429,
+          "precision": 0.18925831202046037,
+          "recall": 0.2024623803009576,
+          "f1": 0.19563780568407138,
+          "confusionMatrix": [
+            [
+              9835,
+              634
+            ],
+            [
+              583,
+              148
+            ]
+          ],
+          "positiveRate": 0.06526785714285714,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 6.8101071428571425,
+              "rmse": 10.428496330453672
+            },
+            {
+              "minutes": 60,
+              "mae": 11.93657142857143,
+              "rmse": 17.45619011165626
+            },
+            {
+              "minutes": 90,
+              "mae": 16.217875,
+              "rmse": 22.476872280190587
+            },
+            {
+              "minutes": 120,
+              "mae": 19.573294642857142,
+              "rmse": 26.02232439587759
+            }
+          ],
+          "threshold": 0.5,
+          "maePatientBootstrap95CI": [
+            18.55096205357143,
+            20.570816071428574
+          ]
+        },
+        "legacyV1": {
+          "mae": 22.915895079067216,
+          "rmse": 29.696972263727467,
+          "auroc": 0.7338487063428357,
+          "averagePrecision": 0.16278384291876413,
+          "brier": 0.08776671490039832,
+          "precision": 0.14206896551724138,
+          "recall": 0.2818057455540356,
+          "f1": 0.18890417239798257,
+          "confusionMatrix": [
+            [
+              9225,
+              1244
+            ],
+            [
+              525,
+              206
+            ]
+          ],
+          "positiveRate": 0.06526785714285714,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 7.888520810362422,
+              "rmse": 11.161784002691702,
+              "intervalCoverage": 0.796875,
+              "intervalMeanWidth": 23.06637728784392
+            },
+            {
+              "minutes": 60,
+              "mae": 15.335493885348894,
+              "rmse": 20.689433500939508,
+              "intervalCoverage": 0.7275,
+              "intervalMeanWidth": 40.30873002969372
+            },
+            {
+              "minutes": 90,
+              "mae": 20.408078044415102,
+              "rmse": 26.838920847499782,
+              "intervalCoverage": 0.6570535714285715,
+              "intervalMeanWidth": 47.394617761511824
+            },
+            {
+              "minutes": 120,
+              "mae": 22.915895079067216,
+              "rmse": 29.696972263727467,
+              "intervalCoverage": 0.6075,
+              "intervalMeanWidth": 48.454906662406756
+            }
+          ],
+          "intervalCoverage": 0.6075,
+          "intervalMeanWidth": 48.454906662406756,
+          "threshold": 0.2,
+          "maePatientBootstrap95CI": [
+            21.5017723436423,
+            24.188674530807234
+          ]
+        }
+      },
+      "pairedDifferences": {
+        "legacyV1": {
+          "meanDifference": -13.623973620582053,
+          "patientBootstrap95CI": [
+            -14.548652089729728,
+            -12.615885537168193
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "sensorOnly": {
+          "meanDifference": -0.11818063339271719,
+          "patientBootstrap95CI": [
+            -0.17470001428904056,
+            -0.06147239754784917
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "persistence": {
+          "meanDifference": -10.28137318437198,
+          "patientBootstrap95CI": [
+            -11.044462167122745,
+            -9.544226242227083
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        }
+      }
+    },
+    {
+      "id": "irregular_meals",
+      "title": "Irregular meal timing",
+      "parameters": {
+        "meal_jitter_hours": 1.5
+      },
+      "patients": 80,
+      "windows": 11200,
+      "models": {
+        "fused": {
+          "mae": 13.967104362109286,
+          "rmse": 21.787503937948372,
+          "auroc": 0.9055241057561769,
+          "averagePrecision": 0.5310495750767554,
+          "brier": 0.05592744609423025,
+          "precision": 0.3946731234866828,
+          "recall": 0.6798748696558915,
+          "f1": 0.4994255074684029,
+          "confusionMatrix": [
+            [
+              9241,
+              1000
+            ],
+            [
+              307,
+              652
+            ]
+          ],
+          "positiveRate": 0.085625,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.819567212356419,
+              "rmse": 8.750535661937896,
+              "intervalCoverage": 0.885,
+              "intervalMeanWidth": 16.624557157892355
+            },
+            {
+              "minutes": 60,
+              "mae": 8.482188027541431,
+              "rmse": 15.407342523760983,
+              "intervalCoverage": 0.8852678571428572,
+              "intervalMeanWidth": 36.94980896410476
+            },
+            {
+              "minutes": 90,
+              "mae": 11.803976738891043,
+              "rmse": 19.58136085581779,
+              "intervalCoverage": 0.8625,
+              "intervalMeanWidth": 55.125390355484285
+            },
+            {
+              "minutes": 120,
+              "mae": 13.967104362109286,
+              "rmse": 21.787503937948372,
+              "intervalCoverage": 0.853125,
+              "intervalMeanWidth": 61.659650458173246
+            }
+          ],
+          "intervalCoverage": 0.853125,
+          "intervalMeanWidth": 61.659650458173246,
+          "threshold": 0.16,
+          "maePatientBootstrap95CI": [
+            13.261179029071384,
+            14.662561217700825
+          ]
+        },
+        "sensorOnly": {
+          "mae": 14.13529721378467,
+          "rmse": 22.05129397076381,
+          "auroc": 0.8926360631614381,
+          "averagePrecision": 0.5032155482912904,
+          "brier": 0.057984853236234354,
+          "precision": 0.3463775780010576,
+          "recall": 0.6830031282586028,
+          "f1": 0.45964912280701753,
+          "confusionMatrix": [
+            [
+              9005,
+              1236
+            ],
+            [
+              304,
+              655
+            ]
+          ],
+          "positiveRate": 0.085625,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.8698427307454,
+              "rmse": 8.810371491711564,
+              "intervalCoverage": 0.8858928571428571,
+              "intervalMeanWidth": 16.791402455566868
+            },
+            {
+              "minutes": 60,
+              "mae": 8.550186766360042,
+              "rmse": 15.475792632726103,
+              "intervalCoverage": 0.8871428571428571,
+              "intervalMeanWidth": 37.58655567751529
+            },
+            {
+              "minutes": 90,
+              "mae": 11.931569309162214,
+              "rmse": 19.741583582919876,
+              "intervalCoverage": 0.8633035714285714,
+              "intervalMeanWidth": 55.31807153526023
+            },
+            {
+              "minutes": 120,
+              "mae": 14.13529721378467,
+              "rmse": 22.05129397076381,
+              "intervalCoverage": 0.8533928571428572,
+              "intervalMeanWidth": 61.69120709427534
+            }
+          ],
+          "intervalCoverage": 0.8533928571428572,
+          "intervalMeanWidth": 61.69120709427534,
+          "threshold": 0.15,
+          "maePatientBootstrap95CI": [
+            13.38862214724144,
+            14.849616716030239
+          ]
+        },
+        "staticOnly": {
+          "mae": 19.886857206302576,
+          "rmse": 26.79232466036394,
+          "auroc": 0.8301385514216862,
+          "averagePrecision": 0.23954148610684656,
+          "brier": 0.06912141084613779,
+          "precision": 0.21126373626373626,
+          "recall": 0.8018769551616267,
+          "f1": 0.3344205262013481,
+          "confusionMatrix": [
+            [
+              7370,
+              2871
+            ],
+            [
+              190,
+              769
+            ]
+          ],
+          "positiveRate": 0.085625,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 19.76328087348769,
+              "rmse": 26.723484717611708,
+              "intervalCoverage": 0.8816964285714286,
+              "intervalMeanWidth": 81.59562502752613
+            },
+            {
+              "minutes": 60,
+              "mae": 19.86896009039877,
+              "rmse": 26.759424289946008,
+              "intervalCoverage": 0.8827678571428571,
+              "intervalMeanWidth": 82.43775532832504
+            },
+            {
+              "minutes": 90,
+              "mae": 19.86219440650734,
+              "rmse": 26.816733869147185,
+              "intervalCoverage": 0.8804464285714285,
+              "intervalMeanWidth": 81.70011670271089
+            },
+            {
+              "minutes": 120,
+              "mae": 19.886857206302576,
+              "rmse": 26.79232466036394,
+              "intervalCoverage": 0.8828571428571429,
+              "intervalMeanWidth": 82.27118431435287
+            }
+          ],
+          "intervalCoverage": 0.8828571428571429,
+          "intervalMeanWidth": 82.27118431435287,
+          "threshold": 0.11,
+          "maePatientBootstrap95CI": [
+            18.532721284222703,
+            21.169323267368497
+          ]
+        },
+        "persistence": {
+          "mae": 21.11374107142857,
+          "rmse": 28.361963131605883,
+          "auroc": 0.614804738645362,
+          "averagePrecision": 0.14847602415600114,
+          "brier": 0.119375,
+          "precision": 0.29936305732484075,
+          "recall": 0.2940563086548488,
+          "f1": 0.2966859547606523,
+          "confusionMatrix": [
+            [
+              9581,
+              660
+            ],
+            [
+              677,
+              282
+            ]
+          ],
+          "positiveRate": 0.085625,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 7.2876964285714285,
+              "rmse": 11.199977678549185
+            },
+            {
+              "minutes": 60,
+              "mae": 12.878330357142856,
+              "rmse": 18.9217884848205
+            },
+            {
+              "minutes": 90,
+              "mae": 17.50529464285714,
+              "rmse": 24.455329520664524
+            },
+            {
+              "minutes": 120,
+              "mae": 21.11374107142857,
+              "rmse": 28.361963131605883
+            }
+          ],
+          "threshold": 0.5,
+          "maePatientBootstrap95CI": [
+            20.036931026785716,
+            22.157445089285716
+          ]
+        },
+        "legacyV1": {
+          "mae": 17.04869237517465,
+          "rmse": 23.46565046057295,
+          "auroc": 0.8720007363723014,
+          "averagePrecision": 0.4149762156180974,
+          "brier": 0.07318114381564993,
+          "precision": 0.34135528815706145,
+          "recall": 0.5620437956204379,
+          "f1": 0.4247438928289992,
+          "confusionMatrix": [
+            [
+              9201,
+              1040
+            ],
+            [
+              420,
+              539
+            ]
+          ],
+          "positiveRate": 0.085625,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 6.855528498854371,
+              "rmse": 9.865665192746286,
+              "intervalCoverage": 0.8349107142857143,
+              "intervalMeanWidth": 23.06637728784392
+            },
+            {
+              "minutes": 60,
+              "mae": 12.326939275874254,
+              "rmse": 17.116944889185156,
+              "intervalCoverage": 0.8033928571428571,
+              "intervalMeanWidth": 40.30873002969372
+            },
+            {
+              "minutes": 90,
+              "mae": 15.649483377834299,
+              "rmse": 21.466634675285235,
+              "intervalCoverage": 0.7755357142857143,
+              "intervalMeanWidth": 47.394617761511824
+            },
+            {
+              "minutes": 120,
+              "mae": 17.04869237517465,
+              "rmse": 23.46565046057295,
+              "intervalCoverage": 0.7517857142857143,
+              "intervalMeanWidth": 48.454906662406756
+            }
+          ],
+          "intervalCoverage": 0.7517857142857143,
+          "intervalMeanWidth": 48.454906662406756,
+          "threshold": 0.2,
+          "maePatientBootstrap95CI": [
+            15.99682683395952,
+            18.111848135074464
+          ]
+        }
+      },
+      "pairedDifferences": {
+        "legacyV1": {
+          "meanDifference": -3.0815880130653657,
+          "patientBootstrap95CI": [
+            -3.556998470166522,
+            -2.58335855637172
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "sensorOnly": {
+          "meanDifference": -0.1681928516753806,
+          "patientBootstrap95CI": [
+            -0.23446906594418732,
+            -0.09287118307790102
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "persistence": {
+          "meanDifference": -7.146636709319285,
+          "patientBootstrap95CI": [
+            -7.7574246741465505,
+            -6.535598332037625
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        }
+      }
+    },
+    {
+      "id": "day_varying_skips",
+      "title": "Daily timing changes and skipped meals",
+      "parameters": {
+        "meal_jitter_hours": 0.7,
+        "day_shift_hours_sd": 1.8,
+        "meal_skip_probability": 0.18
+      },
+      "patients": 80,
+      "windows": 11200,
+      "models": {
+        "fused": {
+          "mae": 13.117029985318544,
+          "rmse": 20.466347776305447,
+          "auroc": 0.9261776843748684,
+          "averagePrecision": 0.513847444111289,
+          "brier": 0.04540982560628569,
+          "precision": 0.34192037470725994,
+          "recall": 0.7643979057591623,
+          "f1": 0.47249190938511326,
+          "confusionMatrix": [
+            [
+              9312,
+              1124
+            ],
+            [
+              180,
+              584
+            ]
+          ],
+          "positiveRate": 0.06821428571428571,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.526178841325886,
+              "rmse": 8.187423932641137,
+              "intervalCoverage": 0.8990178571428571,
+              "intervalMeanWidth": 16.624557157892355
+            },
+            {
+              "minutes": 60,
+              "mae": 7.849735144674222,
+              "rmse": 14.379166662704737,
+              "intervalCoverage": 0.8994642857142857,
+              "intervalMeanWidth": 36.94980896410476
+            },
+            {
+              "minutes": 90,
+              "mae": 11.045622589944186,
+              "rmse": 18.428102572335273,
+              "intervalCoverage": 0.878125,
+              "intervalMeanWidth": 55.125390355484285
+            },
+            {
+              "minutes": 120,
+              "mae": 13.117029985318544,
+              "rmse": 20.466347776305447,
+              "intervalCoverage": 0.8675,
+              "intervalMeanWidth": 61.659650458173246
+            }
+          ],
+          "intervalCoverage": 0.8675,
+          "intervalMeanWidth": 61.659650458173246,
+          "threshold": 0.16,
+          "maePatientBootstrap95CI": [
+            12.37454892423054,
+            13.865676956464728
+          ]
+        },
+        "sensorOnly": {
+          "mae": 13.227711815477083,
+          "rmse": 20.641923384190772,
+          "auroc": 0.9179106405736087,
+          "averagePrecision": 0.4825022755155062,
+          "brier": 0.046880930146467076,
+          "precision": 0.3303194695599759,
+          "recall": 0.7172774869109948,
+          "f1": 0.4523318200577796,
+          "confusionMatrix": [
+            [
+              9325,
+              1111
+            ],
+            [
+              216,
+              548
+            ]
+          ],
+          "positiveRate": 0.06821428571428571,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.570287813896149,
+              "rmse": 8.244925242285928,
+              "intervalCoverage": 0.8991964285714286,
+              "intervalMeanWidth": 16.791402455566868
+            },
+            {
+              "minutes": 60,
+              "mae": 7.944187449457578,
+              "rmse": 14.470382761957113,
+              "intervalCoverage": 0.89875,
+              "intervalMeanWidth": 37.58655567751529
+            },
+            {
+              "minutes": 90,
+              "mae": 11.146031582562841,
+              "rmse": 18.549281152545493,
+              "intervalCoverage": 0.8784821428571429,
+              "intervalMeanWidth": 55.31807153526023
+            },
+            {
+              "minutes": 120,
+              "mae": 13.227711815477083,
+              "rmse": 20.641923384190772,
+              "intervalCoverage": 0.8669642857142857,
+              "intervalMeanWidth": 61.69120709427534
+            }
+          ],
+          "intervalCoverage": 0.8669642857142857,
+          "intervalMeanWidth": 61.69120709427534,
+          "threshold": 0.15,
+          "maePatientBootstrap95CI": [
+            12.448050947159254,
+            13.973076144656188
+          ]
+        },
+        "staticOnly": {
+          "mae": 18.33745378404215,
+          "rmse": 24.444401305655894,
+          "auroc": 0.829881561810808,
+          "averagePrecision": 0.19305440165287846,
+          "brier": 0.058144713875578374,
+          "precision": 0.1697802197802198,
+          "recall": 0.8089005235602095,
+          "f1": 0.28065395095367845,
+          "confusionMatrix": [
+            [
+              7414,
+              3022
+            ],
+            [
+              146,
+              618
+            ]
+          ],
+          "positiveRate": 0.06821428571428571,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 18.206538808862305,
+              "rmse": 24.37913116930485,
+              "intervalCoverage": 0.901875,
+              "intervalMeanWidth": 81.59562502752613
+            },
+            {
+              "minutes": 60,
+              "mae": 18.302339329790836,
+              "rmse": 24.400634703947475,
+              "intervalCoverage": 0.9047321428571429,
+              "intervalMeanWidth": 82.43775532832504
+            },
+            {
+              "minutes": 90,
+              "mae": 18.289895051569612,
+              "rmse": 24.45856920267176,
+              "intervalCoverage": 0.9011607142857143,
+              "intervalMeanWidth": 81.70011670271089
+            },
+            {
+              "minutes": 120,
+              "mae": 18.33745378404215,
+              "rmse": 24.444401305655894,
+              "intervalCoverage": 0.9044642857142857,
+              "intervalMeanWidth": 82.27118431435287
+            }
+          ],
+          "intervalCoverage": 0.9044642857142857,
+          "intervalMeanWidth": 82.27118431435287,
+          "threshold": 0.11,
+          "maePatientBootstrap95CI": [
+            17.01492416267416,
+            19.548220918515057
+          ]
+        },
+        "persistence": {
+          "mae": 19.454794642857145,
+          "rmse": 26.594849813585014,
+          "auroc": 0.5790623074777401,
+          "averagePrecision": 0.10026133371953917,
+          "brier": 0.10625,
+          "precision": 0.21750663129973474,
+          "recall": 0.21465968586387435,
+          "f1": 0.2160737812911726,
+          "confusionMatrix": [
+            [
+              9846,
+              590
+            ],
+            [
+              600,
+              164
+            ]
+          ],
+          "positiveRate": 0.06821428571428571,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 6.7598125,
+              "rmse": 10.539217111409583
+            },
+            {
+              "minutes": 60,
+              "mae": 11.872124999999999,
+              "rmse": 17.7664509278423
+            },
+            {
+              "minutes": 90,
+              "mae": 16.147723214285715,
+              "rmse": 22.98142738091535
+            },
+            {
+              "minutes": 120,
+              "mae": 19.454794642857145,
+              "rmse": 26.594849813585014
+            }
+          ],
+          "threshold": 0.5,
+          "maePatientBootstrap95CI": [
+            18.39796339285714,
+            20.514121205357142
+          ]
+        },
+        "legacyV1": {
+          "mae": 17.636296411574275,
+          "rmse": 23.704545953605223,
+          "auroc": 0.8624386437201872,
+          "averagePrecision": 0.32791757274518146,
+          "brier": 0.07003169163662228,
+          "precision": 0.2637434554973822,
+          "recall": 0.5274869109947644,
+          "f1": 0.35165794066317624,
+          "confusionMatrix": [
+            [
+              9311,
+              1125
+            ],
+            [
+              361,
+              403
+            ]
+          ],
+          "positiveRate": 0.06821428571428571,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 6.942001167855674,
+              "rmse": 9.786247193318784,
+              "intervalCoverage": 0.828125,
+              "intervalMeanWidth": 23.06637728784392
+            },
+            {
+              "minutes": 60,
+              "mae": 12.711968449734902,
+              "rmse": 17.230361447301224,
+              "intervalCoverage": 0.7858928571428572,
+              "intervalMeanWidth": 40.30873002969372
+            },
+            {
+              "minutes": 90,
+              "mae": 16.217544026139205,
+              "rmse": 21.76389743203081,
+              "intervalCoverage": 0.74875,
+              "intervalMeanWidth": 47.394617761511824
+            },
+            {
+              "minutes": 120,
+              "mae": 17.636296411574275,
+              "rmse": 23.704545953605223,
+              "intervalCoverage": 0.7300892857142857,
+              "intervalMeanWidth": 48.454906662406756
+            }
+          ],
+          "intervalCoverage": 0.7300892857142857,
+          "intervalMeanWidth": 48.454906662406756,
+          "threshold": 0.2,
+          "maePatientBootstrap95CI": [
+            16.50887333504067,
+            18.655660891231996
+          ]
+        }
+      },
+      "pairedDifferences": {
+        "legacyV1": {
+          "meanDifference": -4.51926642625573,
+          "patientBootstrap95CI": [
+            -5.117631236896693,
+            -3.8710702762644678
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "sensorOnly": {
+          "meanDifference": -0.11068183015853912,
+          "patientBootstrap95CI": [
+            -0.1849094362807543,
+            -0.03848542293250414
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "persistence": {
+          "meanDifference": -6.3377646575385995,
+          "patientBootstrap95CI": [
+            -6.97475637856379,
+            -5.698304921788532
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        }
+      }
+    },
+    {
+      "id": "variable_routine",
+      "title": "Variable sleep, activity and meals",
+      "parameters": {
+        "meal_jitter_hours": 1.2,
+        "day_shift_hours_sd": 2.2,
+        "meal_skip_probability": 0.22,
+        "variable_routine": true
+      },
+      "patients": 80,
+      "windows": 11200,
+      "models": {
+        "fused": {
+          "mae": 13.571502723982672,
+          "rmse": 21.37001826282647,
+          "auroc": 0.8894426610315219,
+          "averagePrecision": 0.40798363744640526,
+          "brier": 0.05152282954095995,
+          "precision": 0.29372333942717854,
+          "recall": 0.6392572944297082,
+          "f1": 0.4025052192066806,
+          "confusionMatrix": [
+            [
+              9287,
+              1159
+            ],
+            [
+              272,
+              482
+            ]
+          ],
+          "positiveRate": 0.06732142857142857,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.52016325326757,
+              "rmse": 8.12963408193576,
+              "intervalCoverage": 0.900625,
+              "intervalMeanWidth": 16.624557157892355
+            },
+            {
+              "minutes": 60,
+              "mae": 7.779504179470698,
+              "rmse": 14.365904863081706,
+              "intervalCoverage": 0.9035714285714286,
+              "intervalMeanWidth": 36.94980896410476
+            },
+            {
+              "minutes": 90,
+              "mae": 11.16902090925356,
+              "rmse": 18.86105342279622,
+              "intervalCoverage": 0.8765178571428571,
+              "intervalMeanWidth": 55.125390355484285
+            },
+            {
+              "minutes": 120,
+              "mae": 13.571502723982672,
+              "rmse": 21.37001826282647,
+              "intervalCoverage": 0.8600892857142857,
+              "intervalMeanWidth": 61.659650458173246
+            }
+          ],
+          "intervalCoverage": 0.8600892857142857,
+          "intervalMeanWidth": 61.659650458173246,
+          "threshold": 0.16,
+          "maePatientBootstrap95CI": [
+            12.774184737156363,
+            14.391216984438664
+          ]
+        },
+        "sensorOnly": {
+          "mae": 13.701845833076801,
+          "rmse": 21.581638241379704,
+          "auroc": 0.8795313881520777,
+          "averagePrecision": 0.3877819035485977,
+          "brier": 0.05200542801321439,
+          "precision": 0.286346396965866,
+          "recall": 0.6007957559681698,
+          "f1": 0.3878424657534247,
+          "confusionMatrix": [
+            [
+              9317,
+              1129
+            ],
+            [
+              301,
+              453
+            ]
+          ],
+          "positiveRate": 0.06732142857142857,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.57597897504768,
+              "rmse": 8.220144611372195,
+              "intervalCoverage": 0.9,
+              "intervalMeanWidth": 16.791402455566868
+            },
+            {
+              "minutes": 60,
+              "mae": 7.8941779693807765,
+              "rmse": 14.49230984132108,
+              "intervalCoverage": 0.9032142857142857,
+              "intervalMeanWidth": 37.58655567751529
+            },
+            {
+              "minutes": 90,
+              "mae": 11.314701875093272,
+              "rmse": 19.04279737174151,
+              "intervalCoverage": 0.8788392857142857,
+              "intervalMeanWidth": 55.31807153526023
+            },
+            {
+              "minutes": 120,
+              "mae": 13.701845833076801,
+              "rmse": 21.581638241379704,
+              "intervalCoverage": 0.8600892857142857,
+              "intervalMeanWidth": 61.69120709427534
+            }
+          ],
+          "intervalCoverage": 0.8600892857142857,
+          "intervalMeanWidth": 61.69120709427534,
+          "threshold": 0.15,
+          "maePatientBootstrap95CI": [
+            12.890790792546754,
+            14.510212509408717
+          ]
+        },
+        "staticOnly": {
+          "mae": 18.287957585968616,
+          "rmse": 24.551224165300745,
+          "auroc": 0.8233072855168758,
+          "averagePrecision": 0.19020723834642356,
+          "brier": 0.05803229688466469,
+          "precision": 0.1631868131868132,
+          "recall": 0.7877984084880637,
+          "f1": 0.270368684569868,
+          "confusionMatrix": [
+            [
+              7400,
+              3046
+            ],
+            [
+              160,
+              594
+            ]
+          ],
+          "positiveRate": 0.06732142857142857,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 18.148729068718392,
+              "rmse": 24.486118784836478,
+              "intervalCoverage": 0.9040178571428571,
+              "intervalMeanWidth": 81.59562502752613
+            },
+            {
+              "minutes": 60,
+              "mae": 18.258945944765006,
+              "rmse": 24.518453092064554,
+              "intervalCoverage": 0.905625,
+              "intervalMeanWidth": 82.43775532832504
+            },
+            {
+              "minutes": 90,
+              "mae": 18.240480596223627,
+              "rmse": 24.570973308640824,
+              "intervalCoverage": 0.9041964285714286,
+              "intervalMeanWidth": 81.70011670271089
+            },
+            {
+              "minutes": 120,
+              "mae": 18.287957585968616,
+              "rmse": 24.551224165300745,
+              "intervalCoverage": 0.9066964285714286,
+              "intervalMeanWidth": 82.27118431435287
+            }
+          ],
+          "intervalCoverage": 0.9066964285714286,
+          "intervalMeanWidth": 82.27118431435287,
+          "threshold": 0.11,
+          "maePatientBootstrap95CI": [
+            16.946740804262692,
+            19.525936491590347
+          ]
+        },
+        "persistence": {
+          "mae": 18.6461875,
+          "rmse": 25.933768991551204,
+          "auroc": 0.6077699839162732,
+          "averagePrecision": 0.12153766472006884,
+          "brier": 0.098125,
+          "precision": 0.2696929238985314,
+          "recall": 0.26790450928381965,
+          "f1": 0.26879574184963406,
+          "confusionMatrix": [
+            [
+              9899,
+              547
+            ],
+            [
+              552,
+              202
+            ]
+          ],
+          "positiveRate": 0.06732142857142857,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 6.547375000000001,
+              "rmse": 10.284899211256972
+            },
+            {
+              "minutes": 60,
+              "mae": 11.416892857142857,
+              "rmse": 17.303422194550336
+            },
+            {
+              "minutes": 90,
+              "mae": 15.47713392857143,
+              "rmse": 22.356360731983447
+            },
+            {
+              "minutes": 120,
+              "mae": 18.6461875,
+              "rmse": 25.933768991551204
+            }
+          ],
+          "threshold": 0.5,
+          "maePatientBootstrap95CI": [
+            17.574722321428574,
+            19.63674375
+          ]
+        },
+        "legacyV1": {
+          "mae": 19.388342612799228,
+          "rmse": 25.94173319788714,
+          "auroc": 0.8374784352621109,
+          "averagePrecision": 0.29251673016593127,
+          "brier": 0.07331850781466565,
+          "precision": 0.23665128543177325,
+          "recall": 0.4761273209549072,
+          "f1": 0.31616028181417877,
+          "confusionMatrix": [
+            [
+              9288,
+              1158
+            ],
+            [
+              395,
+              359
+            ]
+          ],
+          "positiveRate": 0.06732142857142857,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 7.267744601144823,
+              "rmse": 10.193706468587637,
+              "intervalCoverage": 0.8094642857142857,
+              "intervalMeanWidth": 23.06637728784392
+            },
+            {
+              "minutes": 60,
+              "mae": 13.621184582191395,
+              "rmse": 18.481319773433654,
+              "intervalCoverage": 0.7566964285714286,
+              "intervalMeanWidth": 40.30873002969372
+            },
+            {
+              "minutes": 90,
+              "mae": 17.69990488664086,
+              "rmse": 23.693367162198683,
+              "intervalCoverage": 0.7149107142857143,
+              "intervalMeanWidth": 47.394617761511824
+            },
+            {
+              "minutes": 120,
+              "mae": 19.388342612799228,
+              "rmse": 25.94173319788714,
+              "intervalCoverage": 0.6908035714285714,
+              "intervalMeanWidth": 48.454906662406756
+            }
+          ],
+          "intervalCoverage": 0.6908035714285714,
+          "intervalMeanWidth": 48.454906662406756,
+          "threshold": 0.2,
+          "maePatientBootstrap95CI": [
+            18.182515346519164,
+            20.456092709871076
+          ]
+        }
+      },
+      "pairedDifferences": {
+        "legacyV1": {
+          "meanDifference": -5.816839888816556,
+          "patientBootstrap95CI": [
+            -6.493057689153933,
+            -5.127805762659046
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "sensorOnly": {
+          "meanDifference": -0.13034310909413133,
+          "patientBootstrap95CI": [
+            -0.1941774951679909,
+            -0.059017334811024585
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        },
+        "persistence": {
+          "meanDifference": -5.074684776017329,
+          "patientBootstrap95CI": [
+            -5.60991977041112,
+            -4.5416661594850956
+          ],
+          "direction": "v2 fused minus comparator MAE; negative favors v2"
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "The simulator and candidate features were designed after examining v1 failures; final IDs are fresh but model development is not independent of simulator design.",
+    "Previous-day horizon-aligned readings assume some recurrence; future unannounced meals remain unpredictable.",
+    "HR includes a contemporaneous synthetic meal response. No future meal annotation or latent simulator state is a predictor.",
+    "All outcomes are synthetic; no external or clinical accuracy is demonstrated.",
+    "Routine families are present in augmented training. Fresh identities are held out; these are not unseen routine families.",
+    "Repeated windows and routine variants are correlated; uncertainty resamples identities, keeping variants paired.",
+    "The calibration residual band is marginal and can be wider than v1; report width and per-routine coverage together.",
+    "The event threshold trades recall for false positives. Future unpredictable meals set a ceiling on advance prediction.",
+    "Counterfactual controls remain illustrative arithmetic; no treatment effects are learned."
+  ]
+}

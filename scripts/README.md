@@ -1,55 +1,31 @@
-# Optional document and video source
+# Document and video source — current model
 
-The working dashboard and ML pipeline do not depend on these authoring tools. The finished PDFs and MP4 are already in `docs/`.
-
-To join the original walkthrough and Challenge Lab supplement into one upload, preserving both originals:
+The finished PDFs are generated from the frozen current model/evidence artifacts. Authoring tools are optional; the dashboard has no dependency on them.
 
 ```bash
-python scripts/combine_walkthrough.py --output "AURA-Twin-Walkthrough.mp4"
-```
-
-This requires Python, FFmpeg and ffprobe on PATH; it uses no Python packages. It verifies matching stream formats, copies the streams without re-encoding, combines 26 chapters, checks the approximately 25:44 duration, and decodes the result before replacing the chosen output. It also writes a `.chapters.json` sidecar. If `--output` is omitted, the default is `docs/AURA_Twin_Complete_Walkthrough.mp4`. The delivered combined copy is outside the repository to avoid storing a third duplicate video.
-
-To regenerate the PDFs after modifying the deck content:
-
-```bash
-python -m pip install reportlab pypdf
+python -m pip install reportlab pypdf pillow
 python scripts/build_docs.py
-```
-
-The v2 supplement is generated separately and does not overwrite the original presentation or narration:
-
-```bash
 python scripts/build_upgrade_docs.py
 ```
 
-It reads `data/stress.json` and writes `docs/AURA_Twin_Challenge_Lab.pdf` plus `docs/narration-upgrade.json`. Re-run `python ml/stress_test.py` first if the stress protocol or model changes. Recheck every numerical claim and slide after regeneration.
+`build_docs.py` reads current model, metrics and robustness JSON plus `presentation_content.json`, then writes the 22-page presentation, three-page architecture, matching full narration and model/data card. `doc_layout.py` supplies visual layout. It deliberately requires model 2.0.0: changing the model version requires reviewing the claims. Actual screenshots are read from `docs/assets/*-current.png`.
 
-To regenerate the supplied narration on Windows, install/enable the Microsoft Zira Desktop voice, then run PowerShell from the repository root:
+`build_upgrade_docs.py` extracts six checked pages and their matching narration from the current full presentation. It does not regenerate or preserve an old-model result. Source slide numbers are intentionally retained in the PDF. The complete current video already includes Challenge Lab; a separate short recording is optional.
+
+For locally synthesized narration on Windows, use Microsoft Zira Desktop:
 
 ```powershell
 ./scripts/narrate.ps1 -Narration ./docs/narration.json -AudioDirectory ./work/audio -Rate 2
 ```
 
-To assemble slide images and narration into video, install FFmpeg from its official distribution and make `ffmpeg` available on PATH. Then:
+The source contains about 4,286 words. Check actual audio duration rather than assuming a speaking rate. To encode the full current walkthrough, with FFmpeg on PATH:
 
 ```bash
 python -m pip install pymupdf
 python scripts/build_video.py --pdf docs/AURA_Twin_Presentation.pdf --narration docs/narration.json --audio work/audio --output docs/AURA_Twin_Walkthrough.mp4
 ```
 
-These tools write local artifacts only. They do not upload, publish or submit anything. Check all slides, narration, final duration and actual playback after changing content. By default, the video builder enforces a 20-minute minimum for the main walkthrough.
+The main builder enforces a 1,200-second minimum by default. Use `--minimum-seconds 0` only for an explicitly supplementary recording, never to bypass the required main-video duration. It writes chapter metadata and a `.chapters.json` sidecar. Render/inspect all pages, verify narration, probe duration, decode the complete MP4 and inspect playback before uploading.
 
-For the short **supplementary** v2 video, synthesize its separate narration and explicitly override the main-video minimum:
 
-```powershell
-./scripts/narrate.ps1 -Narration ./docs/narration-upgrade.json -AudioDirectory ./work/audio-upgrade -Rate 2
-```
-
-```bash
-python scripts/build_video.py --pdf docs/AURA_Twin_Challenge_Lab.pdf --narration docs/narration-upgrade.json --audio work/audio-upgrade --output docs/AURA_Twin_Challenge_Lab.mp4 --minimum-seconds 0 --title "AURA Twin | v2 Challenge Lab supplement"
-```
-
-The default minimum remains 1,200 seconds for the required main walkthrough. The override is appropriate only for a clearly labeled supplement; the short video does not replace the organizer's minimum-length main video.
-
-Authoring dependencies are separately licensed: ReportLab and pypdf use BSD licenses; PyMuPDF is offered under AGPL/commercial terms; FFmpeg's license depends on the build. Consult their original licenses before changing or redistributing those dependencies. They are not bundled here. The included narration is explicitly synthesized, not a recording of a team member's voice.
+These tools do not upload, publish or submit anything. The narration is disclosed as synthesized, not a recording of a team member. ReportLab/pypdf/Pillow/PyMuPDF/FFmpeg retain their own licenses; consult their official terms before distributing those authoring dependencies. They are not bundled in the application.

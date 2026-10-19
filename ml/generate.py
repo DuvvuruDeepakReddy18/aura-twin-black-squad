@@ -8,18 +8,26 @@ NAMES = ["Maya Rao", "Arjun Mehta", "Leela Shah", "Kabir Nair", "Anika Sen", "Ro
 COLORS = ["#6366f1", "#14b8a6", "#f59e0b", "#ec4899", "#3b82f6", "#8b5cf6", "#10b981", "#f97316"]
 
 
-def generate_patient(index, days=4, *, meal_shift_hours=0.0, meal_jitter_hours=.38):
-    """Generate a patient; optional meal timing changes are for out-of-distribution audits.
+def generate_patient(index, days=4, *, meal_shift_hours=0.0, meal_jitter_hours=.38,
+                     day_shift_hours_sd=0.0, meal_skip_probability=.06, variable_routine=False):
+    """Generate a patient for paired routine audits and augmented training.
 
     Defaults preserve the original training generator exactly. Timing controls change
-    only the timing expression and consume the same random draws, allowing paired
-    synthetic stress comparisons without fitting a new model.
+    only the timing expression and consume the same original random draws. Daily
+    timing and sleep/activity variations use separate random streams. These controls
+    support paired synthetic comparisons; a routine used in training is not unseen.
     """
     if not np.isfinite(meal_shift_hours) or not -6 <= meal_shift_hours <= 6:
         raise ValueError("meal_shift_hours must be finite and between -6 and 6")
     if not np.isfinite(meal_jitter_hours) or not 0 <= meal_jitter_hours <= 3:
         raise ValueError("meal_jitter_hours must be finite and between 0 and 3")
+    if not np.isfinite(day_shift_hours_sd) or not 0 <= day_shift_hours_sd <= 4:
+        raise ValueError("day_shift_hours_sd must be finite and between 0 and 4")
+    if not np.isfinite(meal_skip_probability) or not .06 <= meal_skip_probability <= .5:
+        raise ValueError("meal_skip_probability must be between .06 and .5")
     rng = np.random.default_rng(SEED + index * 104729)
+    timing_rng = np.random.default_rng(SEED + index * 104729 + 700000003)
+    routine_rng = np.random.default_rng(SEED + index * 104729 + 900000011)
     age = int(rng.integers(28, 75))
     bmi = round(float(rng.uniform(21, 36)), 1)
     hba1c = round(float(rng.uniform(5.5, 9.1)), 1)
@@ -42,11 +50,16 @@ def generate_patient(index, days=4, *, meal_shift_hours=0.0, meal_jitter_hours=.
     tau = 48 + 11 * (hba1c - 5.5)
     # Prior-day pulses initialize the first day without a cold-start meal artifact.
     for day in range(-1, days):
+        day_shift = timing_rng.normal(0, day_shift_hours_sd)
         for meal_hour, carbs in [(7.7, 48), (12.7, 68), (19.0, 62)]:
-            if rng.random() < .06:
+            skip_draw = rng.random()
+            if skip_draw < .06:
                 continue
-            meal_minute = (day * 24 + meal_hour + meal_shift_hours + rng.normal(0, meal_jitter_hours)) * 60
+            meal_minute = (day * 24 + meal_hour + meal_shift_hours + day_shift + rng.normal(0, meal_jitter_hours)) * 60
             amount = max(15, rng.normal(carbs, 12))
+            # Extra skips consume the original jitter/amount draws, preserving other streams.
+            if skip_draw < meal_skip_probability:
+                continue
             elapsed = np.maximum(0, minute - meal_minute)
             pulse = (elapsed / tau) * np.exp(1 - elapsed / tau)
             pulse[minute < meal_minute] = 0
@@ -64,6 +77,21 @@ def generate_patient(index, days=4, *, meal_shift_hours=0.0, meal_jitter_hours=.
         effect = 12 * elapsed / 45 * np.exp(1 - elapsed / 45)
         effect[minute < walk_start] = 0
         activity += effect
+    if variable_routine:
+        # Separate RNG changes daily sleep/activity without perturbing the original noise draws.
+        for day in range(days):
+            block = slice(day*288, (day+1)*288)
+            sleep_shift = routine_rng.normal(0, 1.25)
+            wake_shift = sleep_shift + routine_rng.normal(0, .6)
+            local_hour = hour[block]
+            bedtime, waketime = (sleep_start+sleep_shift)%24, (wake+wake_shift)%24
+            asleep = ((local_hour >= bedtime) & (local_hour < waketime)) if bedtime < waketime else ((local_hour >= bedtime) | (local_hour < waketime))
+            sleep[block] = asleep.astype(float)
+            activity_shift = int(round(routine_rng.uniform(-3, 3)*12))
+            activity[block] = np.roll(activity[block], activity_shift)
+            steps[block] = np.roll(steps[block], activity_shift)
+        sleeping = sleep > 0
+        steps[sleeping] = routine_rng.poisson(.3, int(sleeping.sum()))
     noise = np.zeros(count)
     for i in range(1, count):
         noise[i] = .93 * noise[i-1] + rng.normal(0, 1.5)

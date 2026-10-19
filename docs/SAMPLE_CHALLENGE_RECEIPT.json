@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "challenge": {
-    "challengeId": "2bf5b22b-7084-43c6-92d8-90204d7fc6bd",
+    "challengeId": "dc5bc007-37ad-4780-9e69-6718a28a9728",
     "mode": "baseline",
     "modeLabel": "Clean replay",
     "perturbation": {
@@ -11,50 +11,67 @@
     },
     "prediction": {
       "features": {
-        "age": 37,
-        "bmi": 23.7,
-        "hba1c": 8.5,
-        "ldl": 145,
-        "diabetesYears": 10.2,
-        "glucose": 157.6,
-        "lag30": 162.6,
-        "lag60": 174.5,
-        "lag120": 191.7,
-        "mean120": 173.69600000000003,
-        "std120": 11.391978932564786,
-        "slope30": -0.16666666666666666,
-        "slope60": -0.2816666666666668,
-        "hrMean60": 68.84166666666665,
-        "hrvMean60": 44.725,
-        "steps60": 98,
-        "steps24h": 3623,
-        "sleep24h": 6.833333333333333,
-        "clock1Sin": 1.2246467991473532e-16,
-        "clock1Cos": -1,
-        "hba1cClock1Sin": 2.4492935982947064e-16,
-        "hba1cClock1Cos": -2,
-        "clock2Sin": -2.4492935982947064e-16,
-        "clock2Cos": 1,
-        "hba1cClock2Sin": -4.898587196589413e-16,
-        "hba1cClock2Cos": 2,
-        "clock3Sin": 3.6739403974420594e-16,
-        "clock3Cos": -1,
-        "hba1cClock3Sin": 7.347880794884119e-16,
-        "hba1cClock3Cos": -2,
-        "clock4Sin": -4.898587196589413e-16,
-        "clock4Cos": 1,
-        "hba1cClock4Sin": -9.797174393178826e-16,
-        "hba1cClock4Cos": 2,
-        "hba1cGlucose": 75.19999999999999,
-        "hba1cSlope": -0.3333333333333333
+        "age": 67,
+        "bmi": 34.9,
+        "hba1c": 7.1,
+        "ldl": 155,
+        "diabetesYears": 5.1,
+        "glucose": 114.1,
+        "lag30": 102.6,
+        "lag60": 101.3,
+        "lag120": 115.9,
+        "mean120": 107.24799999999998,
+        "std120": 5.729441159484929,
+        "slope30": 0.38333333333333336,
+        "slope60": 0.2133333333333333,
+        "hrMean60": 72.575,
+        "hrvMean60": 40.90833333333334,
+        "steps60": 91,
+        "steps24h": 2835,
+        "sleep24h": 8.416666666666666,
+        "lag15": 102,
+        "lag45": 101.9,
+        "lag90": 112.7,
+        "lag180": 120.8,
+        "lag240": 115.4,
+        "lag360": 125.9,
+        "mean30": 104.58571428571429,
+        "std30": 4.097186690341336,
+        "mean60": 103.71538461538461,
+        "std60": 3.201164728860695,
+        "mean360": 115.43698630136988,
+        "std360": 7.5325686799139495,
+        "mean24h": 128.09270833333335,
+        "std24h": 22.524093171989996,
+        "min120": 101.2,
+        "max120": 116.7,
+        "q25_120": 102.6,
+        "q75_120": 114.1,
+        "q10_24h": 107.64,
+        "q50_24h": 119.6,
+        "q90_24h": 168.4,
+        "slope15": 0.8066666666666663,
+        "slope120": -0.015000000000000095,
+        "acceleration30": 0.34000000000000014,
+        "priorDayMean120": 155.66666666666669,
+        "hrSlope30": 0.1099999999999999,
+        "hrvSlope30": 0.35,
+        "hrMean120": 75.54583333333333,
+        "hrvMean120": 39.30833333333333,
+        "steps120": 1464,
+        "sleepLast6h": 0,
+        "priorDay30": 166.5,
+        "priorDay60": 156.2,
+        "priorDay90": 146.9,
+        "priorDay120": 138.3
       },
       "current": {
-        "glucose": 157.6,
-        "hr": 74,
-        "hrv": 43.1,
-        "steps": 3623,
-        "sleep": 6.83,
-        "timestamp": "2026-10-14T12:00:00Z"
+        "glucose": 114.1,
+        "hr": 76.6,
+        "hrv": 45.8,
+        "steps": 2835,
+        "sleep": 8.42,
+        "timestamp": "2026-10-14T19:30:00Z"
       },
       "quality": {
         "score": 100,
@@ -72,153 +89,134 @@
         "note": "Quality is relative to the selected replay time, not wall-clock time."
       },
       "abstained": false,
-      "modelVersion": "aura-synthetic-1.0.0",
+      "modelVersion": "aura-synthetic-2.0.0",
       "disclaimer": "Synthetic research prototype. Not clinically validated and not for diagnosis or treatment.",
-      "risk": 0.889775958418218,
+      "modelKind": "hist_gradient_boosting",
+      "featureSet": "clock_free_v2",
+      "regressionKind": "hist_gradient_boosting",
+      "classificationKind": "hist_gradient_boosting",
+      "driverMethod": "group_reference_sensitivity",
+      "risk": 0.00820507782863777,
       "forecast": [
         {
           "minutes": 30,
-          "glucose": 162.357,
-          "lower": 150.824,
-          "upper": 173.89,
-          "baseline": 162.357,
+          "glucose": 138.281,
+          "lower": 129.968,
+          "upper": 146.593,
+          "baseline": 138.281,
           "illustrative": false
         },
         {
           "minutes": 60,
-          "glucose": 173.348,
-          "lower": 153.193,
-          "upper": 193.502,
-          "baseline": 173.348,
+          "glucose": 145.171,
+          "lower": 126.697,
+          "upper": 163.646,
+          "baseline": 145.171,
           "illustrative": false
         },
         {
           "minutes": 90,
-          "glucose": 185.915,
-          "lower": 162.218,
-          "upper": 209.612,
-          "baseline": 185.915,
+          "glucose": 140.752,
+          "lower": 113.189,
+          "upper": 168.314,
+          "baseline": 140.752,
           "illustrative": false
         },
         {
           "minutes": 120,
-          "glucose": 195.997,
-          "lower": 171.77,
-          "upper": 220.225,
-          "baseline": 195.997,
+          "glucose": 141.764,
+          "lower": 110.934,
+          "upper": 172.594,
+          "baseline": 141.764,
           "illustrative": false
         }
       ],
       "drivers": [
         {
-          "name": "Daily timing pattern",
-          "value": "Synthetic daily rhythm",
-          "contribution": 5.1815,
-          "source": "Wearable"
+          "name": "Historical EHR",
+          "source": "EHR",
+          "value": "5 features replaced by training medians",
+          "contribution": -1.7309,
+          "referenceRisk": 0.025513898358859515,
+          "unit": "percentage_points"
         },
         {
-          "name": "CGM level & trajectory",
-          "value": 157.6,
-          "contribution": 1.9778,
-          "source": "Wearable"
+          "name": "Recent glucose trajectory",
+          "source": "Wearable",
+          "value": "32 features replaced by training medians",
+          "contribution": -1.4584,
+          "referenceRisk": 0.022788955652668044,
+          "unit": "percentage_points"
         },
         {
-          "name": "HbA1c history",
-          "value": 8.5,
-          "contribution": 1.7965,
-          "source": "EHR"
-        },
-        {
-          "name": "Body mass index",
-          "value": 23.7,
-          "contribution": -0.3277,
-          "source": "EHR"
-        },
-        {
-          "name": "EHR × wearable interaction",
-          "value": 8.5,
-          "contribution": -0.2938,
-          "source": "Fused"
-        },
-        {
-          "name": "Heart-rate variability",
-          "value": 44.7,
-          "contribution": 0.1136,
-          "source": "Wearable"
-        },
-        {
-          "name": "Age",
-          "value": 37,
-          "contribution": -0.1128,
-          "source": "EHR"
-        },
-        {
-          "name": "Sleep history",
-          "value": 6.8,
-          "contribution": 0.1107,
-          "source": "Wearable"
+          "name": "Heart rate and HRV",
+          "source": "Wearable",
+          "value": "6 features replaced by training medians",
+          "contribution": -0.2392,
+          "referenceRisk": 0.010597233780369015,
+          "unit": "percentage_points"
         },
         {
           "name": "Activity history",
-          "value": 3623,
-          "contribution": -0.0343,
-          "source": "Wearable"
+          "source": "Wearable",
+          "value": "3 features replaced by training medians",
+          "contribution": -0.0128,
+          "referenceRisk": 0.008333352077637348,
+          "unit": "percentage_points"
         },
         {
-          "name": "Diabetes history",
-          "value": 10.2,
-          "contribution": -0.0229,
-          "source": "EHR"
+          "name": "Sleep history",
+          "source": "Wearable",
+          "value": "2 features replaced by training medians",
+          "contribution": -0.0095,
+          "referenceRisk": 0.008299658613567214,
+          "unit": "percentage_points"
         },
         {
-          "name": "Heart rate",
-          "value": 68.8,
-          "contribution": 0.0122,
-          "source": "Wearable"
-        },
-        {
-          "name": "LDL history",
-          "value": 145,
-          "contribution": 0.0115,
-          "source": "EHR"
+          "name": "Prior-day glucose pattern",
+          "source": "Wearable",
+          "value": "5 features replaced by training medians",
+          "contribution": 0.0062,
+          "referenceRisk": 0.008143297607396313,
+          "unit": "percentage_points"
         }
       ],
-      "driverExplanation": "Additive contributions to calibrated log-odds relative to training feature means; associations, not causal effects.",
+      "driverExplanation": "Probability difference, in percentage points, after replacing one feature group with its training medians. These reference sensitivities are not additive attributions or causal effects; replacement combinations may be unrealistic.",
       "alert": {
-        "triggered": true,
-        "threshold": 0.2,
-        "label": "Review suggested"
+        "triggered": false,
+        "threshold": 0.16,
+        "label": "Below review threshold"
       },
       "scenario": {
         "active": false,
         "illustrative": true,
         "label": "Baseline prediction",
-        "baselineRisk": 0.889775958418218,
+        "baselineRisk": 0.00820507782863777,
         "glucoseDelta": 0,
         "note": "Arithmetic illustration only, not a trained causal model or treatment recommendation. Shifted bands have no measured scenario coverage."
       }
     },
     "receipt": {
-      "patientId": "SYN-032",
-      "cursor": 720,
-      "cutoffTimestamp": "2026-10-14T12:00:00Z",
-      "modelVersion": "aura-synthetic-1.0.0",
-      "modelSHA256": "1942ae5b50be0f2824394b0846571181731964f1e7b097be24cfd21afcc7476f",
-      "inputSHA256": "a95dca26c912e5c997d4f4002640a4766373e399d669a36c45be5cb937b088d0",
+      "patientId": "SYN-1001",
+      "cursor": 810,
+      "cutoffTimestamp": "2026-10-14T19:30:00Z",
+      "modelVersion": "aura-synthetic-2.0.0",
+      "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+      "inputSHA256": "af9c00d69d9ef11e42e51ee8783427e6b774135fee8b1d1c6bc736ed63b9ecbb",
       "hashFormat": "sha256-receipt-v1",
       "hashEncoding": {
         "model": "raw-file-bytes",
         "input": "canonical-json-sorted-keys-v1"
       },
       "featureWindow": {
-        "startTimestamp": "2026-10-13T12:05:00.000Z",
-        "endTimestamp": "2026-10-14T12:00:00Z",
+        "startTimestamp": "2026-10-13T19:35:00.000Z",
+        "endTimestamp": "2026-10-14T19:30:00Z",
         "historyMinutes": 1440,
         "availableHistoryMinutes": 1440
       },
-      "latestUsedTimestamp": "2026-10-14T12:00:00Z",
-      "createdAt": "2026-10-19T14:41:00.998Z",
-      "expiresAt": "2026-10-19T15:41:00.998Z",
+      "latestUsedTimestamp": "2026-10-14T19:30:00Z",
+      "createdAt": "2026-10-19T16:15:39.839Z",
+      "expiresAt": "2026-10-19T17:15:39.839Z",
       "limitations": [
         "Selected-window synthetic stress demonstration, not a clinical validation study or aggregate benchmark.",
         "SHA-256 hashes identify the input and model using the declared hash encodings; they are not digital signatures or proof of independent timestamping.",
@@ -230,29 +228,29 @@
     "revealAvailable": true
   },
   "reveal": {
-    "challengeId": "2bf5b22b-7084-43c6-92d8-90204d7fc6bd",
+    "challengeId": "dc5bc007-37ad-4780-9e69-6718a28a9728",
     "mode": "baseline",
     "receipt": {
-      "patientId": "SYN-032",
-      "cursor": 720,
-      "cutoffTimestamp": "2026-10-14T12:00:00Z",
-      "modelVersion": "aura-synthetic-1.0.0",
-      "modelSHA256": "1942ae5b50be0f2824394b0846571181731964f1e7b097be24cfd21afcc7476f",
-      "inputSHA256": "a95dca26c912e5c997d4f4002640a4766373e399d669a36c45be5cb937b088d0",
+      "patientId": "SYN-1001",
+      "cursor": 810,
+      "cutoffTimestamp": "2026-10-14T19:30:00Z",
+      "modelVersion": "aura-synthetic-2.0.0",
+      "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+      "inputSHA256": "af9c00d69d9ef11e42e51ee8783427e6b774135fee8b1d1c6bc736ed63b9ecbb",
       "hashFormat": "sha256-receipt-v1",
       "hashEncoding": {
         "model": "raw-file-bytes",
         "input": "canonical-json-sorted-keys-v1"
       },
       "featureWindow": {
-        "startTimestamp": "2026-10-13T12:05:00.000Z",
-        "endTimestamp": "2026-10-14T12:00:00Z",
+        "startTimestamp": "2026-10-13T19:35:00.000Z",
+        "endTimestamp": "2026-10-14T19:30:00Z",
         "historyMinutes": 1440,
         "availableHistoryMinutes": 1440
       },
-      "latestUsedTimestamp": "2026-10-14T12:00:00Z",
-      "createdAt": "2026-10-19T14:41:00.998Z",
-      "expiresAt": "2026-10-19T15:41:00.998Z",
+      "latestUsedTimestamp": "2026-10-14T19:30:00Z",
+      "createdAt": "2026-10-19T16:15:39.839Z",
+      "expiresAt": "2026-10-19T17:15:39.839Z",
       "limitations": [
         "Selected-window synthetic stress demonstration, not a clinical validation study or aggregate benchmark.",
         "SHA-256 hashes identify the input and model using the declared hash encodings; they are not digital signatures or proof of independent timestamping.",
@@ -267,65 +265,65 @@
     "comparisons": [
       {
         "minutes": 30,
-        "timestamp": "2026-10-14T12:30:00.000Z",
-        "observed": 147.2,
-        "predicted": 162.357,
-        "lower": 150.824,
-        "upper": 173.89,
-        "absoluteError": 15.157,
-        "covered": false,
-        "persistence": 157.6,
-        "persistenceAbsoluteError": 10.4
+        "timestamp": "2026-10-14T20:00:00.000Z",
+        "observed": 145.8,
+        "predicted": 138.281,
+        "lower": 129.968,
+        "upper": 146.593,
+        "absoluteError": 7.519,
+        "covered": true,
+        "persistence": 114.1,
+        "persistenceAbsoluteError": 31.7
       },
       {
         "minutes": 60,
-        "timestamp": "2026-10-14T13:00:00.000Z",
-        "observed": 192.5,
-        "predicted": 173.348,
-        "lower": 153.193,
-        "upper": 193.502,
-        "absoluteError": 19.152,
+        "timestamp": "2026-10-14T20:30:00.000Z",
+        "observed": 154.6,
+        "predicted": 145.171,
+        "lower": 126.697,
+        "upper": 163.646,
+        "absoluteError": 9.429,
         "covered": true,
-        "persistence": 157.6,
-        "persistenceAbsoluteError": 34.9
+        "persistence": 114.1,
+        "persistenceAbsoluteError": 40.5
       },
       {
         "minutes": 90,
-        "timestamp": "2026-10-14T13:30:00.000Z",
-        "observed": 214.9,
-        "predicted": 185.915,
-        "lower": 162.218,
-        "upper": 209.612,
-        "absoluteError": 28.985,
-        "covered": false,
-        "persistence": 157.6,
-        "persistenceAbsoluteError": 57.3
+        "timestamp": "2026-10-14T21:00:00.000Z",
+        "observed": 150.8,
+        "predicted": 140.752,
+        "lower": 113.189,
+        "upper": 168.314,
+        "absoluteError": 10.048,
+        "covered": true,
+        "persistence": 114.1,
+        "persistenceAbsoluteError": 36.7
       },
       {
         "minutes": 120,
-        "timestamp": "2026-10-14T14:00:00.000Z",
-        "observed": 211.3,
-        "predicted": 195.997,
-        "lower": 171.77,
-        "upper": 220.225,
-        "absoluteError": 15.303,
+        "timestamp": "2026-10-14T21:30:00.000Z",
+        "observed": 142.3,
+        "predicted": 141.764,
+        "lower": 110.934,
+        "upper": 172.594,
+        "absoluteError": 0.536,
         "covered": true,
-        "persistence": 157.6,
-        "persistenceAbsoluteError": 53.7
+        "persistence": 114.1,
+        "persistenceAbsoluteError": 28.2
       }
     ],
     "summary": {
       "availableHorizons": 4,
-      "mae": 19.649,
-      "persistenceMae": 39.075,
-      "intervalCoverage": 0.5
+      "mae": 6.883,
+      "persistenceMae": 34.275,
+      "intervalCoverage": 1
     },
     "event": {
       "minutes": 120,
       "thresholdMgDl": 180,
-      "risk": 0.889775958418218,
-      "outcome": true,
-      "observed": 211.3
+      "risk": 0.00820507782863777,
+      "outcome": false,
+      "observed": 142.3
     },
     "unavailableHorizons": [],
     "comparisonNote": "Scores describe available horizons for this selected synthetic window only. Persistence uses the same (possibly perturbed or carried-forward) current CGM.",

@@ -109,7 +109,7 @@ test('HTTP Challenge Lab freezes and reveals through the existing JSON boundary'
     assert.equal(frozen.receipt.modelSHA256,rawHash);
     assert.deepEqual(frozen.receipt.hashEncoding,{model:'raw-file-bytes',input:'canonical-json-sorted-keys-v1'});
     const stressResponse=await fetch(base+'/api/stress');assert.equal(stressResponse.status,200);
-    const stress=await stressResponse.json();assert.equal(stress.modelSHA256,rawHash);assert.equal(stress.cases.length,4);
+    const stress=await stressResponse.json();assert.equal(stress.modelSHA256,rawHash);assert(stress.cases.length>=4);
     const reveal=await post('/api/challenge/reveal',{challengeId:frozen.challengeId});assert.equal(reveal.status,200);
     assert.equal((await reveal.json()).summary.availableHorizons,4);
     assert.equal((await post('/api/challenge',{patientId:patient.id,mode:'unknown'})).status,400);

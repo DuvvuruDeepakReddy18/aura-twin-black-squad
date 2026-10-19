@@ -1,5 +1,7 @@
 import test, { before, after } from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
 import { createAppServer } from '../server.mjs';
 
 let server, origin, patient;
@@ -60,6 +62,17 @@ test('model metrics are accessible while server source is not', async () => {
   for (const path of ['/server.mjs', '/.env', '/data/model.json', '/docs/..%2fserver.mjs', '/..%5cserver.mjs']) {
     assert.equal((await fetch(`${origin}${path}`)).status, 404, path);
   }
+});
+test('routine evaluation belongs to the model actually served by the API', async () => {
+  const response=await fetch(`${origin}/api/robustness`);
+  assert.equal(response.status,200);
+  const report=await response.json();
+  const health=await(await fetch(`${origin}/api/health`)).json();
+  const bytes=readFileSync(new URL('../data/model.json',import.meta.url));
+  assert.equal(report.modelVersion,health.modelVersion);
+  assert.equal(report.modelSHA256,createHash('sha256').update(bytes).digest('hex'));
+  assert.equal(report.syntheticOnly,true);
+  assert(report.cases.length>=6);
 });
 test('static dashboard is served with correct type and browser safeguards', async () => {
   const response = await fetch(origin);
