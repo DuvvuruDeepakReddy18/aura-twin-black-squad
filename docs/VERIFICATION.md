@@ -17,9 +17,10 @@ The frozen V3 artifact passed **36 JavaScript tests and 5 Python data-contract t
 - Anonymous production requests to [aura-twin-black-squad.vercel.app](https://aura-twin-black-squad.vercel.app) returned HTTP 200 for the homepage, current-model health endpoint, presentation, architecture and 24,418,262-byte main MP4. The health endpoint reported `aura-synthetic-3.0.0`.
 - Anonymous hosted freeze/reveal completed successfully. Its exported token-free receipt, supplied as `docs/SAMPLE_CHALLENGE_RECEIPT.json`, passed offline reproduction against the frozen model hash above.
 
-## Final publication checks still in progress
+## Publication verified
 
-- Browser playback of the public MP4 and publication of the final repository revision.
+- Public GitHub release `faa13f4` is readable without authentication; both GitHub Actions jobs passed. Vercel automatically deployed that same Git revision to production in the READY state.
+- The public MP4 loaded in Chrome with the expected 1,584.109961-second duration, advanced beyond five seconds, and reported no media error. Anonymous byte-range delivery returned HTTP206 with the expected 24,418,262-byte total. Full local decoding also passed.
 
 Fresh V3 mobile-browser verification is not claimed: the attempted viewport override did not change the browser's actual viewport. Earlier mobile checks belong to the prior revision.
 

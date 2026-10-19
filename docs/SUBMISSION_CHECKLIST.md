@@ -11,7 +11,7 @@
 - [x] The current video has a public link in README, and an anonymous request returns the complete MP4.
 - [x] The public hosted application serves the current V3 model; anonymous freeze/reveal and offline receipt reproduction passed.
 - [x] Presentation and architecture PDF requests succeed without authentication.
-- [ ] Confirm browser playback of the public MP4 and the final GitHub revision while signed out.
+- [x] Public MP4 browser playback verified; release `faa13f4` is anonymously readable on GitHub and passed both CI jobs. Public video byte-range requests also pass without authentication.
 - [ ] If the submission platform specifically requires YouTube, upload this recording as unlisted and replace/add its link; no YouTube upload is claimed.
 - [ ] Team leader submits their name, phone, email and public repository link on the official platform.
 
