@@ -1,6 +1,8 @@
 # Local and hosted demonstration
 
-AURA Twin is a synthetic demonstration. The hosted application accepts only the bundled synthetic patient identifiers. It is not a service for uploading or treating real patients. The public GitHub and deployed application addresses will be recorded in the main README after publication is verified.
+AURA Twin is a synthetic demonstration. The hosted application accepts only the bundled synthetic patient identifiers. It is not a service for uploading or treating real patients.
+
+The current public application is [aura-twin-black-squad.vercel.app](https://aura-twin-black-squad.vercel.app); source is in [aura-twin-black-squad on GitHub](https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad). Anonymous requests confirmed model `aura-synthetic-3.0.0`, public PDFs/MP4 and successful hosted freeze/reveal. The token-free receipt from that hosted run also passed the offline verifier. See [VERIFICATION.md](VERIFICATION.md) for completed checks and remaining limits.
 
 ## Local use
 
@@ -14,7 +16,7 @@ The repository includes `vercel.json`. Its build command, `node scripts/build_si
 
 The hosted adapter requires the deployment environment variable `AURA_CHALLENGE_KEY`. It must encode 32 cryptographically random bytes as exactly 64 hexadecimal characters. All instances in the same deployment must receive the same value. Missing or malformed keys fail closed; the adapter does not silently fall back to process memory.
 
-Generate the secret locally and add it as a sensitive Vercel environment variable for each intended environment. One way to generate an ignored local import file without displaying the key in terminal output is:
+Generate the secret locally and add it as a Vercel Secret environment variable for each intended environment. Environment changes apply to a new deployment; redeploy after setting or rotating the key. One way to generate an ignored local import file without displaying the key in terminal output is:
 
 ```sh
 node -e "require('node:fs').writeFileSync('.env.local','AURA_CHALLENGE_KEY='+require('node:crypto').randomBytes(32).toString('hex')+'\n',{flag:'wx'})"

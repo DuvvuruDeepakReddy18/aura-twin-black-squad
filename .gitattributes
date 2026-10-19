@@ -1,6 +1,12 @@
 * text=auto eol=lf
 data/model.json -text
 data/baseline-v1/model.json -text whitespace=cr-at-eol
+data/baseline-v2/model.json -text
+data/candidate-v3/model.json -text
+data/candidate-v3/protocol.json -text
+data/candidate-v3/freeze.json -text
+data/robustness-protocol.json -text
+data/model-freeze.json -text
 *.cmd text eol=crlf
 *.pdf binary
 *.mp4 binary

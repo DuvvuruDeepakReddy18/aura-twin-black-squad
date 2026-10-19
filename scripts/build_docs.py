@@ -1,145 +1,176 @@
-"""Build the current architecture, full presentation, narration and model/data card."""
+"""Build current submission documents from frozen V3 artifacts."""
 from pathlib import Path
-import json,re
+import hashlib,json
 from doc_layout import build
-from doc_text import clean_markdown
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'docs'
 
 def load(name): return json.loads((ROOT/'data'/name).read_text(encoding='utf-8'))
 def pct(value): return f'{value*100:.2f}%'
+def counts(result):
+    (tn,fp),(fn,tp)=result['confusionMatrix']
+    return tn,fp,fn,tp
+def table(headings,rows):
+    return '\n'.join(['| '+' | '.join(headings)+' |','|'+'|'.join('---' for _ in headings)+'|']+['| '+' | '.join(map(str,row))+' |' for row in rows])
 
 def main():
-    model=load('model.json'); metrics=load('metrics.json'); robustness=load('robustness.json')
-    if model['modelVersion']!='aura-synthetic-2.0.0' or model['modelKind']!='hist_gradient_boosting':
-        raise RuntimeError('This document source requires the frozen2.0.0 histogram-boosting artifact. Review content before changing versions.')
-    fused=metrics['models']['fused']; policy=fused['alertPolicy']; cohort=metrics['cohort']
-    names=[('Current fused','fused'),('Sensors only','sensorOnly'),('EHR only','staticOnly'),('Persistence','persistence'),('Frozen v1','legacyV1')]
+    model=load('model.json'); m=load('metrics.json'); r=load('robustness.json')
+    actual_hash=hashlib.sha256((ROOT/'data/model.json').read_bytes()).hexdigest()
+    if model['modelVersion']!='aura-synthetic-3.0.0' or actual_hash!=m['modelSHA256'] or m['modelSHA256']!=r['modelSHA256']:
+        raise RuntimeError('Review the document source against the frozen V3 artifact before building.')
+    f=m['models']['fused']; old=m['models']['legacyV2']; p=f['alertPolicy']; u=next(x for x in r['cases'] if x['id']=='unseen_combination')
+    _,fp,fn,_=counts(f); _,oldfp,oldfn,_=counts(old)
+    uf=u['models']['fused']; ul=u['models']['legacyV2']; _,ufp,ufn,_=counts(uf); _,ulfp,ulfn,_=counts(ul)
+    primary=[x for x in r['cases'] if x.get('trainingFamily',True)]
     short={'reference':'Regular','late_meals_2h':'Meals +2h','late_meals_4h':'Meals +4h','irregular_meals':'Jittered meals','day_varying_skips':'Daily changes + skips','variable_routine':'Variable sleep/activity'}
+    fn_ci=m['pairedDecisionDifferences']['falseNegativeWindows']['patientBootstrap95CI']
+    delta=('Primary counts improve; missed-window CI crosses zero' if fn<oldfn and fp<oldfp and fn_ci[0]<=0<=fn_ci[1] else 'Primary missed and false-positive counts are lower' if fn<oldfn and fp<oldfp else 'A mixed result: inspect both error counts')
     ctx={
         'model_version':model['modelVersion'],'feature_count':len(model['featureNames']),
-        'algorithm_spoken':'histogram gradient boosting with separate probability calibration',
-        'algorithm_short':'Histogram gradient boosting',
-        'candidates_spoken':'a clock-free linear regression and logistic pipeline with a clock-free histogram gradient boosting pipeline',
-        'mae_spoken':f"{fused['mae']:.2f}", 'auroc_spoken':f"{fused['auroc']:.3f}",
-        'threshold_spoken':f"{policy['threshold']:.2f}", 'recall_spoken':f"{policy['testRecall']*100:.2f}", 'precision_spoken':f"{policy['testPrecision']*100:.2f}",
-        'sensor_mae_spoken':f"{metrics['models']['sensorOnly']['mae']:.2f}", 'persistence_mae_spoken':f"{metrics['models']['persistence']['mae']:.2f}",
-        'coverage_spoken':f"{fused['intervalCoverage']*100:.2f}", 'width_spoken':f"{fused['intervalMeanWidth']:.2f}",
-        'explanation_spoken':'For the current tree model, grouped sensitivity replaces one feature group with its training-median reference and reports the change in calibrated probability in percentage points. These changes are nonadditive, are not SHAP values, and may involve unrealistic reference combinations.',
-        'model_table':[[label,f"{metrics['models'][key]['mae']:.2f}",f"{metrics['models'][key]['auroc']:.3f}",f"{metrics['models'][key]['brier']:.4f}"] for label,key in names],
-        'routine_table':[[short[case['id']],f"{case['models']['fused']['mae']:.2f}",f"{case['models']['legacyV1']['mae']:.2f}",f"{case['models']['persistence']['mae']:.2f}",pct(case['models']['fused']['intervalCoverage'])] for case in robustness['cases']],
-        'policy_summary':f"Policy {policy['threshold']:.2f}: recall {policy['testRecall']*100:.1f}% · precision {policy['testPrecision']*100:.1f}%",
-        'coverage_display':pct(fused['intervalCoverage']),'width_display':f"{fused['intervalMeanWidth']:.1f} mg/dL",'threshold_display':f"{policy['threshold']:.2f}",
+        'algorithm_spoken':'histogram gradient boosting with separate probability calibration','algorithm_short':'Histogram gradient boosting',
+        'mae_spoken':f"{f['mae']:.2f}",'auroc_spoken':f"{f['auroc']:.3f}",
+        'threshold_spoken':f"{p['threshold']:.4f}",'recall_spoken':f"{f['recall']*100:.2f}",'precision_spoken':f"{f['precision']*100:.2f}",
+        'false_negative_spoken':f'{fn:,}','false_positive_spoken':f'{fp:,}',
+        'legacy_false_negative_spoken':f'{oldfn:,}','legacy_false_positive_spoken':f'{oldfp:,}',
+        'sensor_mae_spoken':f"{m['models']['sensorOnly']['mae']:.2f}",'persistence_mae_spoken':f"{m['models']['persistence']['mae']:.2f}",
+        'fusion_gain_spoken':f"{m['models']['sensorOnly']['mae']-f['mae']:.3f}",
+        'coverage_spoken':f"{f['intervalCoverage']*100:.2f}",'width_spoken':f"{f['intervalMeanWidth']:.2f}",
+        'unseen_result_spoken':f"On this separate case, current model error is {uf['mae']:.2f}, recall is {uf['recall']*100:.2f} percent, and precision is {uf['precision']*100:.2f} percent. Missed positive windows change from {ulfn:,} to {ufn:,}; false-positive windows change from {ulfp:,} to {ufp:,}.",
+        'explanation_spoken':'Grouped sensitivity replaces one feature group with its training-median reference and reports the change in calibrated probability in percentage points. These changes are nonadditive, are not SHAP values, and may involve unrealistic reference combinations.',
+        'decision_table':[[label,f"{v['threshold']:.4f}",pct(v['recall']),pct(v['precision']),f'{counts(v)[2]:,}',f'{counts(v)[1]:,}'] for label,v in [('Frozen v2',old),('Current v3',f)]],
+        'decision_change':delta,
+        'error_summary':f"V3 +120 MAE {f['mae']:.2f} mg/dL · AUROC {f['auroc']:.3f} · Brier {f['brier']:.4f}",
+        'routine_table':[[short[x['id']],f"{counts(x['models']['legacyV2'])[2]:,} → {counts(x['models']['fused'])[2]:,}",f"{counts(x['models']['legacyV2'])[1]:,} → {counts(x['models']['fused'])[1]:,}",pct(x['models']['fused']['recall']),pct(x['models']['fused']['precision'])] for x in primary],
+        'unseen_caption':f"Withheld combination: missed positives {ulfn:,} → {ufn:,} · false positives {ulfp:,} → {ufp:,}",
+        'coverage_display':pct(f['intervalCoverage']),'width_display':f"{f['intervalMeanWidth']:.1f} mg/dL",'threshold_display':f"{p['threshold']:.4f}",
     }
     slides=json.loads((ROOT/'scripts/presentation_content.json').read_text(encoding='utf-8'))
-    for slide in slides: slide['text']=slide['text'].format_map(ctx)
+    for slide in slides:slide['text']=slide['text'].format_map(ctx)
     build(slides,ctx,OUT)
     narration=[{k:s[k] for k in ('slide','title','text')} for s in slides]
     (OUT/'narration.json').write_text(json.dumps(narration,indent=2,ensure_ascii=False),encoding='utf-8')
-    write_card(model,metrics,robustness)
-    print(f"Built {len(slides)} presentation pages,3 architecture pages, narration with {sum(len(s['text'].split()) for s in slides)} words.")
+    write_card(model,m,r)
+    print(f"Built {len(slides)} presentation pages, 3 architecture pages and {sum(len(x['text'].split()) for x in slides)} narration words.")
 
 def write_card(model,m,r):
-    f=m['models']['fused']; p=f['alertPolicy']; c=m['cohort']; protocol=r['protocol']
-    names=[('Current fused','fused'),('Sensors only','sensorOnly'),('EHR only','staticOnly'),('Persistence','persistence'),('Frozen v1 on same new cases','legacyV1')]
-    table='\n'.join(f"| {label} | {m['models'][key]['mae']:.4f} | {m['models'][key]['auroc']:.4f} | {m['models'][key]['averagePrecision']:.4f} | {m['models'][key]['brier']:.4f} |" for label,key in names)
-    routines='\n'.join(f"| {case['title']} | {case['models']['fused']['mae']:.2f} | {case['models']['legacyV1']['mae']:.2f} | {case['models']['persistence']['mae']:.2f} | {pct(case['models']['fused']['intervalCoverage'])} | {pct(case['models']['fused']['recall'])} |" for case in r['cases'])
-    horizon='\n'.join(f"| +{h['minutes']} | {h['mae']:.3f} | {h['rmse']:.3f} | {pct(h['intervalCoverage'])} | {h['intervalMeanWidth']:.2f} |" for h in f['byHorizon'])
-    splits='\n'.join(f"| {label} | {count} | {c['windows'][key]:,} | {role} |" for label,count,key,role in [('Fit',256,'train','Fit candidates and ablations;60min stride'),('Select',48,'selection','Choose regression/classifier family;60min stride'),('Calibrate',48,'calibration','Platt mapping, residual bands, policy;30min stride'),('Final test',80,'test','Reporting only after freeze;30min stride')])
-    paired='\n'.join(f"| {name} | {d['meanDifference']:.3f} | {d['patientBootstrap95CI'][0]:.3f} to {d['patientBootstrap95CI'][1]:.3f} |" for name,d in r['aggregate']['pairedDifferences'].items())
-    tn,fp=p['testConfusionMatrix'][0];fn,tp=p['testConfusionMatrix'][1]
+    f=m['models']['fused']; p=f['alertPolicy']; c=m['cohort']; old=m['models']['legacyV2']; u=next(x for x in r['cases'] if x['id']=='unseen_combination')
+    model_rows=[]
+    for label,key in [('Current fused','fused'),('Frozen v2','legacyV2'),('Sensors only','sensorOnly'),('EHR only','staticOnly'),('Persistence','persistence')]:
+        v=m['models'][key]; _,fp,fn,_=counts(v)
+        model_rows.append([label,f"{v['mae']:.3f}",f"{v['auroc']:.4f}",f"{v['averagePrecision']:.4f}",f"{v['brier']:.4f}",f"{v['threshold']:.4f}",pct(v['recall']),pct(v['precision']),f'{fn:,}',f'{fp:,}'])
+    model_table=table(['Model','+120 MAE','AUROC','AP','Brier','Policy','Recall','Precision','FN windows','FP windows'],model_rows)
+    routine_rows=[]
+    for x in r['cases']:
+        v=x['models']['fused']; b=x['models']['legacyV2']; _,fp,fn,_=counts(v); _,bfp,bfn,_=counts(b)
+        routine_rows.append([x['title'],f"{b['mae']:.2f} → {v['mae']:.2f}",f'{bfn:,} → {fn:,}',f'{bfp:,} → {fp:,}',pct(v['recall']),pct(v['precision']),pct(v['intervalCoverage'])])
+    routine_table=table(['Routine','V2 → V3 MAE','V2 → V3 FN','V2 → V3 FP','V3 recall','V3 precision','V3 band coverage'],routine_rows)
+    split_table=table(['Role','Identities','Windows','Use'],[
+        ['Fit',c['trainPatients'],f"{c['windows']['train']:,}",'Candidate fitting; 60-minute stride'],
+        ['Select',c['selectionPatients'],f"{c['windows']['selection']:,}",'Candidate choice; 30-minute stride'],
+        ['Calibrate',c['calibrationPatients'],f"{c['windows']['calibration']:,}",'Probability mapping, residual bands and global policy'],
+        ['Primary final',c['testPatients'],f"{c['windows']['test']:,}",'Six familiar families; reporting only'],
+        ['Withheld combination',c['testPatients'],f"{c['windows']['heldOutCombination']:,}",'Same final identities; separate stress result']])
+    decision_table=table(['V3 minus frozen V2','Observed difference','Patient-bootstrap 95% interval'],[[key,f"{v['difference']:.5f}",f"{v['patientBootstrap95CI'][0]:.5f} to {v['patientBootstrap95CI'][1]:.5f}"] for key,v in m['pairedDecisionDifferences'].items()])
+    error_table=table(['Comparator','V3 minus comparator MAE','Patient-bootstrap 95% interval'],[[key,f"{v['meanDifference']:.4f}",f"{v['patientBootstrap95CI'][0]:.4f} to {v['patientBootstrap95CI'][1]:.4f}"] for key,v in r['aggregate']['pairedDifferences'].items()])
+    horizon_table=table(['Horizon min','MAE mg/dL','RMSE mg/dL','Band coverage','Mean width mg/dL'],[[f"+{v['minutes']}",f"{v['mae']:.3f}",f"{v['rmse']:.3f}",pct(v['intervalCoverage']),f"{v['intervalMeanWidth']:.2f}"] for v in f['byHorizon']])
+    slice_rows=[]
+    for x in m['slices']:
+        v=x['models']['fused']; b=x['models']['legacyV2']; _,fp,fn,_=counts(v); _,bfp,bfn,_=counts(b)
+        slice_rows.append([x['id'],f"{x['windows']:,}",f'{bfn:,} → {fn:,}',f'{bfp:,} → {fp:,}',pct(v['recall']),pct(v['precision'])])
+    slice_table=table(['Slice','Windows','V2 → V3 FN','V2 → V3 FP','V3 recall','V3 precision'],slice_rows)
+    rc=model['trainingProtocol']['regressionConfiguration']; cc=model['trainingProtocol']['classificationConfiguration']
+    hyper_table=table(['Setting','Four regressors','Event classifier'],[[key,rc[key],cc[key]] for key in ['id','max_iter','max_leaf_nodes','min_samples_leaf','learning_rate','l2_regularization','irregularWeight']])
+    tn,fp,fn,tp=counts(f)
     body=f'''# AURA Twin — current model and data card
 
-**Artifact:** `{model['modelVersion']}` · **Model SHA-256:** `{m['modelSHA256']}`.
+**Artifact:** `{model['modelVersion']}` · **Raw model-file SHA-256:** `{m['modelSHA256']}`.
 
-This card describes the current robustness upgrade. Historical v1 results belong to `data/baseline-v1/`; its old10.95mg/dL result is not the current benchmark. No real patients, PHI, hospital data, Synthea output, MIMIC data or device accounts were used.
+Black Squad, Amrita Vishwa Vidyapeetham, Chennai. This card describes the current model. Historical artifacts remain in `data/baseline-v1/` and `data/baseline-v2/`. Historical scores must not be presented as current results.
 
-## Purpose and boundaries
+## Purpose and data boundaries
 
-Black Squad, Amrita Vishwa Vidyapeetham, Chennai, built a synthetic proof of concept of historical EHR/wearable fusion and clinician-oriented review. Forecasts are at+30,+60,+90,+120minutes; the event is **glucose≥180mg/dL at exactly+120minutes**, not any excursion during the next two hours. Inclusive180 is the prototype convention; individualized clinical targets are outside scope.
+Forecast glucose at +30, +60, +90 and +120 minutes from synthetic EHR context plus wearable history. The binary target is **glucose ≥180 mg/dL at exactly +120 minutes**, not any excursion during the interval or necessarily a new onset. Inclusive 180 is an engineering convention; individualized clinical targets are outside scope.
 
-The model is not intended for diagnosis, dosing, treatment, emergency triage or autonomous clinical alerts. No clinical efficacy, safety or legal-compliance certification is claimed.
+The repository's own seeded simulator supplies all data. No real patient records, PHI, device accounts, Synthea exports or MIMIC data are used. No diagnosis, dosing, treatment, emergency triage, clinical efficacy or legal-compliance certification is claimed.
 
-## Generated data and experiment
+Static predictors are age, BMI, HbA1c, LDL and diabetes duration. Dynamic observations are CGM, HR, HRV, interval steps and asleep/awake flags at five-minute cadence. Names, sex, diagnosis/medication text and arbitrary genetic markers are display context, not predictors. Sleep is not validated sleep-stage classification. HR includes a contemporaneous simulated meal-response term. That is available-time sensing, but it may favor multimodal inference under this designed generator; it does not validate meal detection with real consumer HR.
 
-The repository's seeded simulator creates432 distinct identities, each with four days at five-minute cadence and six routine variants. There are2,592 patient/routine trajectories; variants are not independent people. The six families are regular timing, meals delayed2h, meals delayed4h, meal-time jitter1.5h SD, day-varying timing with skips, and variable daily sleep/activity/meals. All six families appear during development. The final result is **fresh-identity generalization within this declared mixture**, not validation on unseen routine families.
+## Population, split and freeze
 
-Static prediction inputs are age, BMI, HbA1c, LDL and diabetes duration. Dynamic observations are CGM, HR, HRV, interval steps and asleep/awake flags. Arbitrary genetic markers, diagnosis/medication text, names and sex are display context, not predictors. Sleep is not validated stage classification. HR contains a contemporaneous synthetic meal response; no future meal schedule or latent simulator state is provided to inference.
+There are {c['patients']:,} distinct development/final identities, each generated for four days. Six familiar routine families are regular timing, meals delayed two hours, meals delayed four hours, 1.5-hour timing jitter, day-varying shifts/skips, and variable daily sleep/activity/meals. The separate withheld combination uses a three-hour meal shift, one-hour jitter, daily-shift SD 1.4 hours, skip probability 0.25 and variable sleep/activity. Its factors are familiar; that exact combination was absent from development. It is not unseen physiology.
 
-The generator and features were designed after inspecting v1 failures. Training identity indices0–255 can overlap earlier development identities. **Final indices1000–1079 (SYN-1001…SYN-1080) are new** and absent from the old cohort. Eight demo records and their default cutoffs are selected by a fixed rule, not by favorable final predictions.
+{split_table}
 
-## Partition and freeze protocol
+Fit indices are 0–767; selection 1200–1279; calibration 1400–1495; final 2000–2119 (`SYN-2001` through `SYN-2120`). Every window and routine variant for one identity stays in that partition. The primary and withheld-combination results reuse the same 120 final identities; they are not 240 independent people. These final identities were not used in the earlier inspected v2 evaluation.
 
-| Role | Identities | Windows | Use |
-|---|---:|---:|---|
-{splits}
+Model selection, calibration, policy and interval bytes are frozen and hashed before final identities and their withheld combination are generated. The audit checks the generator/protocol/model consistency. This is a locally auditable sequence, not third-party preregistration, secure blinding or an independent timestamp. No final result is used to choose a new model. See the [protocol](../data/robustness-protocol.json), [selection record](../data/selection-results.json), [freeze record](../data/model-freeze.json) and [training audit](../data/training-audit.json).
 
-Every variant and window for one identity remains in its partition. Selection minimizes pooled+120min MAE for regression and uncalibrated Brier for classification on selection identities only. Separate calibration identities fit the probability mapping, residual widths and review policy. The exported model bytes and SHA-256 are recorded **before final identities are generated**; code asserts the model bytes remain unchanged after final evaluation. This is a locally auditable sequence, not independent preregistration or a trusted external timestamp.
+## Model selection and feature construction
 
-See `data/robustness-protocol.json`, `data/selection-results.json`, and `data/training-audit.json`. There are{c['windows']['test']:,} final windows across80 identities and6 variants, equally weighted. Final event prevalence is{pct(c['positiveRate']['test'])}. Repeated windows and variants are correlated. Bootstrap intervals resample identities and preserve paired variants.
+The current model uses {len(model['featureNames'])} clock-free, strictly past-derived features. They include the earlier 53 features plus detailed lagged trajectories, fitted slopes, change direction/frequency, ranges, time since recent extrema, threshold occupancy, normalized HR/HRV and recent activity/wake history. Previous-day horizon-aligned observations are at t+h−24 hours: the +120-minute reference was measured 22 hours before the cutoff. No future meal, absolute clock value, hidden simulator state or routine label enters inference. Full feature order and definitions are in `data/SCHEMA.md` and `data/model.json`.
 
-## Model and input construction
+Three HGB candidate configurations are compared on selection identities. Regression minimizes +120-minute MAE. Classification minimizes the worst FP/FN count ratio to frozen v2 across overall, pooled irregular, and variable-routine windows, with one global threshold; ties use the average ratio then Brier score. This decision-aligned objective is a prototype design choice, not a clinically elicited cost function.
 
-The selected model is histogram gradient boosting: four separate absolute-error regressors and one event classifier,160iterations,31leaves,0.07learning rate,60minimum samples per leaf, regularization strength10 and63 bins. Its comparator during selection was a clock-free StandardScaler+Ridge(alpha50)/logistic(C0.3) pipeline. The tree model consumes raw features; the exported `mean` and `scale` compatibility fields do not standardize tree inference.
+{hyper_table}
 
-There are{len(model['featureNames'])}clock-free features. They include glucose lags, short- and long-window summaries, slopes, acceleration, quantiles, EHR context, HR/HRV, steps/sleep, and previous-day observations aligned to each forecast horizon. `priorDay120` is observed at t−22h; it is not future knowledge. The recurrence assumption can fail after a routine change. Full order is `data/model.json.featureNames` and `data/SCHEMA.md`.
+Regressors use absolute-error loss. Both chosen configurations use 127 histogram bins, disabled early stopping and the fixed experiment seed. Irregular sample weights apply to development routine families 3–5; they are fitting weights, not a routine label at inference. Candidate selection is followed by separate calibration identities. A Platt logistic map with C=100 calibrates raw classifier scores. The final single threshold minimizes the same worst FP/FN ratio on calibration identities over a 0.0025 grid. It is **{p['threshold']:.4f}**. Calibration and policy estimation share that calibration partition; final evaluation remains separate. A lower Brier score alone would not establish better calibration or fewer missed and false-positive windows.
 
-The event classifier uses Platt calibration (logistic C100) on separate calibration identities. Exact tree nodes, baseline predictions, calibrated probability parameters, reference medians and feature groups are exported for JavaScript inference. Future observations are labels only. Missingness handling is a runtime guardrail, not a trained sensor-fault model.
+Tree inference uses raw features and exported nodes; compatibility `mean`/`scale` fields do not standardize the trees. Training medians define explanation references. Python/JavaScript parity checks the exported calculation.
 
-## Measured fresh final results
+## Primary fresh final result
 
-| Model | +120MAE mg/dL | AUROC | Average precision | Brier |
-|---|---:|---:|---:|---:|
-{table}
+The primary comparison equally weights six familiar routine families and {c['testPatients']} fresh identities: **{c['windows']['test']:,} correlated windows**, with event prevalence **{pct(c['positiveRate']['test'])}**. Frozen v2 and all current ablations are evaluated on identical windows at their own frozen policies. Counts are windows, not deduplicated clinical events or alarms per day.
 
-Persistence copies the current glucose and has a hard0/1 event output; its probability scores are not a calibration-equivalent comparator. The frozen v1 row above is evaluated on exactly the same new cases. Do not substitute its old regular-cohort result for this fair comparison.
+{model_table}
 
-Current fused MAE patient-bootstrap95% interval: **{f['maePatientBootstrap95CI'][0]:.3f}–{f['maePatientBootstrap95CI'][1]:.3f}mg/dL**. Paired mean-error differences use current fused minus comparator, so negative values favor current fused:
+Current confusion matrix: TN {tn:,}; FP {fp:,}; FN {fn:,}; TP {tp:,}. The primary point estimates improve modestly, but the paired 95% interval for the FN difference includes zero. In the withheld combination, FN increases from {counts(u['models']['legacyV2'])[2]:,} to {counts(u['models']['fused'])[2]:,}. Therefore this is a mixed synthetic result, not uniform or statistically established missed-event improvement. Persistence copies current glucose and uses a hard 0/1 event prediction; its probability scores are not a calibration-equivalent comparator. Do not compare these results with an older model's original-cohort score as though the cohorts were identical.
 
-| Comparator | MAE difference | Patient-bootstrap95% interval |
-|---|---:|---|
-{paired}
+Paired decision differences are current v3 minus frozen v2. Negative differences favor v3 for FP/FN counts; positive differences favor v3 for recall/precision. Recall/precision differences below are fractions, not percentage points. Patient bootstrap resamples identities and keeps all their routine variants and windows paired.
 
-## Routine-specific results
+{decision_table}
 
-| Routine | Current MAE | Frozen v1 MAE | Persistence MAE | Nominal90% coverage | Recall at fixed policy |
-|---|---:|---:|---:|---:|---:|
-{routines}
+{error_table}
 
-These families were represented in training. No case is hidden or removed for underperformance. Per-case paired intervals and all ablations are in `data/robustness.json`.
+The EHR fusion increment must be read from the sensor-only comparison; the requirements do not imply a large EHR gain. Synthetic confidence intervals do not quantify uncertainty about transfer to clinical data.
 
-## Review threshold and residual uncertainty
+## Every routine, including the separate withheld combination
 
-The fixed review threshold is **{p['threshold']:.2f}**, chosen as the highest0.01grid threshold meeting at least80% recall on calibration identities. Final recall is**{pct(p['testRecall'])}**, precision**{pct(p['testPrecision'])}**. Confusion counts are TN{tn:,}, FP{fp:,}, FN{fn:,}, TP{tp:,}. These are correlated windows, not deduplicated clinical events or alarms. Metrics at the conventional0.50threshold are also retained in `metrics.json`.
+Each row has 16,800 windows from the same 120 final identities. The last row is excluded from the primary aggregate. Inspect both error types; aggregate gains do not establish improvement for every case or window.
 
-Per-horizon90th-percentile absolute calibration residuals define symmetric descriptive bands. They are marginal estimates, not individual coverage guarantees or formal clinical safety bounds. Width and coverage must be read together, particularly for irregular routines.
+{routine_table}
 
-| Horizon min | MAE mg/dL | RMSE mg/dL | Final band coverage | Mean band width mg/dL |
-|---|---:|---:|---:|---:|
-{horizon}
+The withheld combination's per-model metrics and paired uncertainty are preserved in `data/robustness.json`. It is a held-out combination of familiar factors, not a real-world external validation dataset.
 
-## Explanation and scenario semantics
+## Target-specific slices
 
-For the current tree model, drivers are **group-reference sensitivity**, not SHAP or additive log-odds attribution. Replace all raw features in a group with training medians, recompute calibrated probability, and report original minus reference risk in percentage points. Group effects do not sum to the output; reference combinations can be unrealistic. They are not causal treatment effects.
+{slice_table}
 
-The meal/activity sandbox remains illustrative arithmetic. It does not provide actual future meals to the predictor; trained baseline probability is unchanged. Scenario-shifted bands have no measured scenario coverage. No medication guidance or learned intervention efficacy is produced.
+“Currently below 180” still means an exact +120-minute threshold outcome, not the time of first crossing. “Already high” can include persistence or resolution of an existing elevation. Rising/falling slices use past slope only. These slices overlap and are descriptive, not independent experiments.
 
-## Quality gates and remaining failure modes
+## Residual bands and quality
 
-The runtime uses short-gap forward filling for CGM/HR/HRV and zero imputation for interval steps/sleep. It abstains for<24h history,>20% missing channel values in recent2h or trailing24h, CGM stale>15min, or HR/HRV stale>60min. Null risk must not become0% risk. Plausible CGM bias can pass these checks; future unannounced meals, real devices and clinical complexity remain unresolved.
+The 90th percentile of absolute calibration errors defines a symmetric descriptive band at each horizon. Nominal 90% is a marginal target, not a guarantee for an individual, subgroup, routine or shifted population. Read width alongside coverage. No scenario-specific coverage is claimed for arithmetic what-if offsets.
 
-The simulator is a designed model and may favor EHR fusion. Removing absolute clock features does not remove every recurrence cue. The final cohort is synthetic and from the same generator family. No independent clinical, medication, outcome, device, subgroup-efficacy or usability validation exists. Local notes/receipts are not a governed clinical record, and hashes are not signatures.
+{horizon_table}
 
-## Reproduce and review
+Runtime forward-fills short continuous-sensor gaps and imputes missing interval steps/sleep as zero. It abstains for fewer than 24 hours of history, more than 20% missing channel values in recent two hours or trailing 24 hours, CGM older than 15 minutes, or HR/HRV older than 60 minutes. Null risk is not 0% risk. Plausible sensor bias can pass freshness checks. Missingness handling is a guardrail, not a trained fault detector.
 
-Run `npm run train` or `python ml/train_robust.py` only when intentionally reproducing the current experiment. `npm run train:legacy` writes a separate baseline-retrained directory and cannot silently replace active artifacts. Run `npm test` and `npm run test:data`; consult `docs/VERIFICATION.md` for the completed checks. Recorded environment: Python{m['environment']['python']}, NumPy{m['environment']['numpy']}, scikit-learn{m['environment']['scikitLearn']}.
+## Explanation, scenarios and reproducibility
 
-Primary context: [NIDDK CGM targets](https://www.niddk.nih.gov/health-information/professionals/diabetes-discoveries-practice/clinical-targets-for-continuous-glucose-monitoring-data). [Synthea](https://synthetichealth.github.io/synthea/) is a possible future integration, not a data source used here. Neither source validates this model.
+Group-reference sensitivity replaces every raw feature in one group with its training median and reports original minus reference calibrated probability in percentage points. It is nonadditive, is not SHAP, may form unrealistic reference combinations, and is not causal attribution. The meal/activity sandbox applies hand-authored arithmetic offsets while preserving trained baseline risk. It does not infer intervention efficacy or use actual future meals.
+
+Challenge Lab freezes a truncated input and prediction before revealing original recorded futures. Clean, short-gap, dropout and biased-sensor cases expose different failure modes. Local sessions use bounded memory; hosted sessions use temporary authenticated encryption and allow only bundled synthetic patient IDs. The downloaded JSON omits the transport token. Raw model and canonical input hashes support offline consistency checking; they are not signatures or independent timestamps. See [deployment boundaries](DEPLOYMENT.md).
+
+## Limits and reproduction
+
+Unknown future meals remain difficult to anticipate. The simulator's physiology, EHR associations and sensor responses are authored assumptions. Medication effects, complex comorbidity, illness, pregnancy, real device behavior, clinical outcomes and usability benefits remain unvalidated. A better benchmark does not establish clinical robustness or safe treatment. No notification-cooldown policy is evaluated as a substitute for classifier improvement.
+
+The current training/reproduction commands, artifact hashes and completed checks are in the README and [verification record](VERIFICATION.md). The recorded environment is Python {m['environment']['python']}, NumPy {m['environment']['numpy']}, scikit-learn {m['environment']['scikitLearn']}. Preserve archived baselines when reproducing the comparison.
+
+Primary context: [NIDDK CGM target discussion](https://www.niddk.nih.gov/health-information/professionals/diabetes-discoveries-practice/clinical-targets-for-continuous-glucose-monitoring-data), [scikit-learn decision-threshold guidance](https://scikit-learn.org/stable/modules/classification_threshold.html), [probability calibration](https://scikit-learn.org/stable/modules/calibration.html), and [Ramkissoon et al. on unannounced-meal detection and tradeoffs](https://pmc.ncbi.nlm.nih.gov/articles/PMC5876595/). The meal-detection paper concerns observing a meal response, not predicting an unobserved future meal. [Synthea](https://synthetichealth.github.io/synthea/) is a possible future integration, not a source used here. None of these sources validates this prototype.
 '''
-    body=clean_markdown(body)
-    # Keep model/data documentation sourced from the same measured artifacts as the slides.
     (OUT/'MODEL_DATA_CARD.md').write_text(body,encoding='utf-8')
-    (ROOT/'ml/MODEL_CARD.md').write_text('# Current model card\n\nThe authoritative current model and data card is [docs/MODEL_DATA_CARD.md](../docs/MODEL_DATA_CARD.md). It is generated from the frozen2.0.0 model, fresh final metrics and robustness report. Historical v1 artifacts are in `data/baseline-v1/`.\n',encoding='utf-8')
+    (ROOT/'ml/MODEL_CARD.md').write_text('# Current model card\n\nThe authoritative card is [docs/MODEL_DATA_CARD.md](../docs/MODEL_DATA_CARD.md), generated from the frozen V3 artifact and fresh final evaluation. Historical artifacts remain in `data/baseline-v1/` and `data/baseline-v2/`.\n',encoding='utf-8')
 
-if __name__=='__main__': main()
+if __name__=='__main__':main()

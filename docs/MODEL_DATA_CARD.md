@@ -1,104 +1,134 @@
 # AURA Twin — current model and data card
 
-**Artifact:** `aura-synthetic-2.0.0` · **Model SHA-256:** `a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4`.
+**Artifact:** `aura-synthetic-3.0.0` · **Raw model-file SHA-256:** `87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4`.
 
-This card describes the current robustness upgrade. Historical v1 results belong to `data/baseline-v1/`; its old 10.95 mg/dL result is not the current benchmark. No real patients, PHI, hospital data, Synthea output, MIMIC data or device accounts were used.
+Black Squad, Amrita Vishwa Vidyapeetham, Chennai. This card describes the current model. Historical artifacts remain in `data/baseline-v1/` and `data/baseline-v2/`. Historical scores must not be presented as current results.
 
-## Purpose and boundaries
+## Purpose and data boundaries
 
-Black Squad, Amrita Vishwa Vidyapeetham, Chennai, built a synthetic proof of concept of historical EHR/wearable fusion and clinician-oriented review. Forecasts are at +30,+60,+90,+120 minutes; the event is **glucose ≥180 mg/dL at exactly +120 minutes**, not any excursion during the next two hours. Inclusive 180 is the prototype convention; individualized clinical targets are outside scope.
+Forecast glucose at +30, +60, +90 and +120 minutes from synthetic EHR context plus wearable history. The binary target is **glucose ≥180 mg/dL at exactly +120 minutes**, not any excursion during the interval or necessarily a new onset. Inclusive 180 is an engineering convention; individualized clinical targets are outside scope.
 
-The model is not intended for diagnosis, dosing, treatment, emergency triage or autonomous clinical alerts. No clinical efficacy, safety or legal-compliance certification is claimed.
+The repository's own seeded simulator supplies all data. No real patient records, PHI, device accounts, Synthea exports or MIMIC data are used. No diagnosis, dosing, treatment, emergency triage, clinical efficacy or legal-compliance certification is claimed.
 
-## Generated data and experiment
+Static predictors are age, BMI, HbA1c, LDL and diabetes duration. Dynamic observations are CGM, HR, HRV, interval steps and asleep/awake flags at five-minute cadence. Names, sex, diagnosis/medication text and arbitrary genetic markers are display context, not predictors. Sleep is not validated sleep-stage classification. HR includes a contemporaneous simulated meal-response term. That is available-time sensing, but it may favor multimodal inference under this designed generator; it does not validate meal detection with real consumer HR.
 
-The repository's seeded simulator creates 432 distinct identities, each with four days at five-minute cadence and six routine variants. There are 2,592 patient/routine trajectories; variants are not independent people. The six families are regular timing, meals delayed 2 h, meals delayed 4 h, meal-time jitter 1.5 h SD, day-varying timing with skips, and variable daily sleep/activity/meals. All six families appear during development. The final result is **fresh-identity generalization within this declared mixture**, not validation on unseen routine families.
+## Population, split and freeze
 
-Static prediction inputs are age, BMI, HbA1c, LDL and diabetes duration. Dynamic observations are CGM, HR, HRV, interval steps and asleep/awake flags. Arbitrary genetic markers, diagnosis/medication text, names and sex are display context, not predictors. Sleep is not validated stage classification. HR contains a contemporaneous synthetic meal response; no future meal schedule or latent simulator state is provided to inference.
-
-The generator and features were designed after inspecting v1 failures. Training identity indices 0–255 can overlap earlier development identities. **Final indices 1000–1079 (SYN-1001…SYN-1080) are new** and absent from the old cohort. Eight demo records and their default cutoffs are selected by a fixed rule, not by favorable final predictions.
-
-## Partition and freeze protocol
+There are 1,064 distinct development/final identities, each generated for four days. Six familiar routine families are regular timing, meals delayed two hours, meals delayed four hours, 1.5-hour timing jitter, day-varying shifts/skips, and variable daily sleep/activity/meals. The separate withheld combination uses a three-hour meal shift, one-hour jitter, daily-shift SD 1.4 hours, skip probability 0.25 and variable sleep/activity. Its factors are familiar; that exact combination was absent from development. It is not unseen physiology.
 
 | Role | Identities | Windows | Use |
-| --- | ---: | ---: | --- |
-| Fit | 256 | 107,520 | Fit candidates and ablations; 60 min stride |
-| Select | 48 | 20,160 | Choose regression/classifier family; 60 min stride |
-| Calibrate | 48 | 40,320 | Platt mapping, residual bands, policy; 30 min stride |
-| Final test | 80 | 67,200 | Reporting only after freeze; 30 min stride |
+|---|---|---|---|
+| Fit | 768 | 322,560 | Candidate fitting; 60-minute stride |
+| Select | 80 | 67,200 | Candidate choice; 30-minute stride |
+| Calibrate | 96 | 80,640 | Probability mapping, residual bands and global policy |
+| Primary final | 120 | 100,800 | Six familiar families; reporting only |
+| Withheld combination | 120 | 16,800 | Same final identities; separate stress result |
 
-Every variant and window for one identity remains in its partition. Selection minimizes pooled +120 min MAE for regression and uncalibrated Brier for classification on selection identities only. Separate calibration identities fit the probability mapping, residual widths and review policy. The exported model bytes and SHA-256 are recorded **before final identities are generated**; code asserts the model bytes remain unchanged after final evaluation. This is a locally auditable sequence, not independent preregistration or a trusted external timestamp.
+Fit indices are 0–767; selection 1200–1279; calibration 1400–1495; final 2000–2119 (`SYN-2001` through `SYN-2120`). Every window and routine variant for one identity stays in that partition. The primary and withheld-combination results reuse the same 120 final identities; they are not 240 independent people. These final identities were not used in the earlier inspected v2 evaluation.
 
-See `data/robustness-protocol.json`, `data/selection-results.json`, and `data/training-audit.json`. There are 67,200 final windows across 80 identities and 6 variants, equally weighted. Final event prevalence is 7.41%. Repeated windows and variants are correlated. Bootstrap intervals resample identities and preserve paired variants.
+Model selection, calibration, policy and interval bytes are frozen and hashed before final identities and their withheld combination are generated. The audit checks the generator/protocol/model consistency. This is a locally auditable sequence, not third-party preregistration, secure blinding or an independent timestamp. No final result is used to choose a new model. See the [protocol](../data/robustness-protocol.json), [selection record](../data/selection-results.json), [freeze record](../data/model-freeze.json) and [training audit](../data/training-audit.json).
 
-## Model and input construction
+## Model selection and feature construction
 
-The selected model is histogram gradient boosting: four separate absolute-error regressors and one event classifier, 160 iterations, 31 leaves, 0.07 learning rate, 60 minimum samples per leaf, regularization strength 10 and 63 bins. Its comparator during selection was a clock-free StandardScaler + Ridge (alpha 50) / logistic (C 0.3) pipeline. The tree model consumes raw features; the exported `mean` and `scale` compatibility fields do not standardize tree inference.
+The current model uses 108 clock-free, strictly past-derived features. They include the earlier 53 features plus detailed lagged trajectories, fitted slopes, change direction/frequency, ranges, time since recent extrema, threshold occupancy, normalized HR/HRV and recent activity/wake history. Previous-day horizon-aligned observations are at t+h−24 hours: the +120-minute reference was measured 22 hours before the cutoff. No future meal, absolute clock value, hidden simulator state or routine label enters inference. Full feature order and definitions are in `data/SCHEMA.md` and `data/model.json`.
 
-There are 53 clock-free features. They include glucose lags, short- and long-window summaries, slopes, acceleration, quantiles, EHR context, HR/HRV, steps/sleep, and previous-day observations aligned to each forecast horizon. `priorDay120` is observed at t−22 h; it is not future knowledge. The recurrence assumption can fail after a routine change. Full order is `data/model.json.featureNames` and `data/SCHEMA.md`.
+Three HGB candidate configurations are compared on selection identities. Regression minimizes +120-minute MAE. Classification minimizes the worst FP/FN count ratio to frozen v2 across overall, pooled irregular, and variable-routine windows, with one global threshold; ties use the average ratio then Brier score. This decision-aligned objective is a prototype design choice, not a clinically elicited cost function.
 
-The event classifier uses Platt calibration (logistic C 100) on separate calibration identities. Exact tree nodes, baseline predictions, calibrated probability parameters, reference medians and feature groups are exported for JavaScript inference. Future observations are labels only. Missingness handling is a runtime guardrail, not a trained sensor-fault model.
+| Setting | Four regressors | Event classifier |
+|---|---|---|
+| id | rich_deep | rich_balanced |
+| max_iter | 360 | 300 |
+| max_leaf_nodes | 63 | 31 |
+| min_samples_leaf | 100 | 80 |
+| learning_rate | 0.05 | 0.05 |
+| l2_regularization | 20.0 | 15.0 |
+| irregularWeight | 2.0 | 2.0 |
 
-## Measured fresh final results
+Regressors use absolute-error loss. Both chosen configurations use 127 histogram bins, disabled early stopping and the fixed experiment seed. Irregular sample weights apply to development routine families 3–5; they are fitting weights, not a routine label at inference. Candidate selection is followed by separate calibration identities. A Platt logistic map with C=100 calibrates raw classifier scores. The final single threshold minimizes the same worst FP/FN ratio on calibration identities over a 0.0025 grid. It is **0.1550**. Calibration and policy estimation share that calibration partition; final evaluation remains separate. A lower Brier score alone would not establish better calibration or fewer missed and false-positive windows.
 
-| Model | +120 MAE mg/dL | AUROC | Average precision | Brier |
-| --- | ---: | ---: | ---: | ---: |
-| Current fused | 11.6224 | 0.9363 | 0.5974 | 0.0436 |
-| Sensors only | 11.7295 | 0.9292 | 0.5776 | 0.0448 |
-| EHR only | 18.4828 | 0.8337 | 0.2138 | 0.0615 |
-| Persistence | 20.3226 | 0.5833 | 0.1095 | 0.1138 |
-| Frozen v1 on same new cases | 18.2976 | 0.8482 | 0.3246 | 0.0737 |
+Tree inference uses raw features and exported nodes; compatibility `mean`/`scale` fields do not standardize the trees. Training medians define explanation references. Python/JavaScript parity checks the exported calculation.
 
-Persistence copies the current glucose and has a hard 0/1 event output; its probability scores are not a calibration-equivalent comparator. The frozen v1 row above is evaluated on exactly the same new cases. Do not substitute its old regular-cohort result for this fair comparison.
+## Primary fresh final result
 
-Current fused MAE patient-bootstrap 95% interval: **11.008–12.212 mg/dL**. Paired mean-error differences use current fused minus comparator, so negative values favor current fused:
+The primary comparison equally weights six familiar routine families and 120 fresh identities: **100,800 correlated windows**, with event prevalence **6.49%**. Frozen v2 and all current ablations are evaluated on identical windows at their own frozen policies. Counts are windows, not deduplicated clinical events or alarms per day.
 
-| Comparator | MAE difference | Patient-bootstrap 95% interval |
-| --- | ---: | --- |
-| legacyV 1 | -6.675 | -7.153 to -6.177 |
-| sensorOnly | -0.107 | -0.150 to -0.059 |
-| persistence | -8.700 | -9.289 to -8.106 |
+| Model | +120 MAE | AUROC | AP | Brier | Policy | Recall | Precision | FN windows | FP windows |
+|---|---|---|---|---|---|---|---|---|---|
+| Current fused | 10.850 | 0.9340 | 0.5648 | 0.0400 | 0.1550 | 74.47% | 37.34% | 1,669 | 8,170 |
+| Frozen v2 | 11.392 | 0.9243 | 0.5211 | 0.0422 | 0.1600 | 73.36% | 35.46% | 1,742 | 8,730 |
+| Sensors only | 10.925 | 0.9316 | 0.5546 | 0.0406 | 0.1475 | 75.41% | 35.99% | 1,608 | 8,770 |
+| EHR only | 17.904 | 0.8199 | 0.1841 | 0.0555 | 0.1600 | 35.09% | 19.51% | 4,244 | 9,466 |
+| Persistence | 20.081 | 0.5506 | 0.0800 | 0.1090 | 0.5000 | 15.94% | 15.96% | 5,496 | 5,487 |
 
-## Routine-specific results
+Current confusion matrix: TN 86,092; FP 8,170; FN 1,669; TP 4,869. The primary point estimates improve modestly, but the paired 95% interval for the FN difference includes zero. In the withheld combination, FN increases from 324 to 330. Therefore this is a mixed synthetic result, not uniform or statistically established missed-event improvement. Persistence copies current glucose and uses a hard 0/1 event prediction; its probability scores are not a calibration-equivalent comparator. Do not compare these results with an older model's original-cohort score as though the cohorts were identical.
 
-| Routine | Current MAE | Frozen v1 MAE | Persistence MAE | Nominal 90% coverage | Recall at fixed policy |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Regular routine | 10.06 | 10.88 | 21.68 | 92.28% | 85.84% |
-| Meals delayed by 2 hours | 9.72 | 21.92 | 21.47 | 92.84% | 88.91% |
-| Meals delayed by 4 hours | 9.29 | 22.92 | 19.57 | 93.34% | 89.60% |
-| Irregular meal timing | 13.97 | 17.05 | 21.11 | 85.31% | 67.99% |
-| Daily timing changes and skipped meals | 13.12 | 17.64 | 19.45 | 86.75% | 76.44% |
-| Variable sleep, activity and meals | 13.57 | 19.39 | 18.65 | 86.01% | 63.93% |
+Paired decision differences are current v3 minus frozen v2. Negative differences favor v3 for FP/FN counts; positive differences favor v3 for recall/precision. Recall/precision differences below are fractions, not percentage points. Patient bootstrap resamples identities and keeps all their routine variants and windows paired.
 
-These families were represented in training. No case is hidden or removed for underperformance. Per-case paired intervals and all ablations are in `data/robustness.json`.
+| V3 minus frozen V2 | Observed difference | Patient-bootstrap 95% interval |
+|---|---|---|
+| falsePositiveWindows | -560.00000 | -980.02500 to -157.97500 |
+| falseNegativeWindows | -73.00000 | -192.02500 to 27.02500 |
+| recall | 0.01117 | -0.00495 to 0.02794 |
+| precision | 0.01884 | 0.00966 to 0.02931 |
 
-## Review threshold and residual uncertainty
+| Comparator | V3 minus comparator MAE | Patient-bootstrap 95% interval |
+|---|---|---|
+| legacyV2 | -0.5428 | -0.6039 to -0.4865 |
+| sensorOnly | -0.0749 | -0.0971 to -0.0537 |
+| persistence | -9.2310 | -9.7314 to -8.7552 |
 
-The fixed review threshold is **0.16**, chosen as the highest 0.01 grid threshold meeting at least 80% recall on calibration identities. Final recall is **78.73%**, precision **40.50%**. Confusion counts are TN 56,464, FP 5,758, FN 1,059, TP 3,919. These are correlated windows, not deduplicated clinical events or alarms. Metrics at the conventional 0.50 threshold are also retained in `metrics.json`.
+The EHR fusion increment must be read from the sensor-only comparison; the requirements do not imply a large EHR gain. Synthetic confidence intervals do not quantify uncertainty about transfer to clinical data.
 
-Per-horizon 90th-percentile absolute calibration residuals define symmetric descriptive bands. They are marginal estimates, not individual coverage guarantees or formal clinical safety bounds. Width and coverage must be read together, particularly for irregular routines.
+## Every routine, including the separate withheld combination
 
-| Horizon min | MAE mg/dL | RMSE mg/dL | Final band coverage | Mean band width mg/dL |
-| --- | ---: | ---: | ---: | ---: |
-| +30 | 4.595 | 8.304 | 89.54% | 16.62 |
-| +60 | 7.840 | 14.311 | 89.74% | 36.95 |
-| +90 | 10.180 | 17.101 | 89.44% | 55.13 |
-| +120 | 11.622 | 18.577 | 89.42% | 61.66 |
+Each row has 16,800 windows from the same 120 final identities. The last row is excluded from the primary aggregate. Inspect both error types; aggregate gains do not establish improvement for every case or window.
 
-## Explanation and scenario semantics
+| Routine | V2 → V3 MAE | V2 → V3 FN | V2 → V3 FP | V3 recall | V3 precision | V3 band coverage |
+|---|---|---|---|---|---|---|
+| Regular routine | 9.86 → 9.38 | 211 → 212 | 1,207 → 1,134 | 82.57% | 46.96% | 93.26% |
+| Meals delayed by 2 hours | 9.52 → 9.10 | 164 → 159 | 1,366 → 1,370 | 85.64% | 40.90% | 93.80% |
+| Meals delayed by 4 hours | 9.03 → 9.01 | 132 → 142 | 1,332 → 1,195 | 84.58% | 39.46% | 93.64% |
+| Irregular meal timing | 13.77 → 13.05 | 491 → 452 | 1,541 → 1,384 | 65.26% | 38.02% | 86.76% |
+| Daily timing changes and skipped meals | 12.80 → 11.97 | 324 → 313 | 1,627 → 1,490 | 69.13% | 31.99% | 88.52% |
+| Variable sleep, activity and meals | 13.37 → 12.59 | 420 → 391 | 1,657 → 1,597 | 60.06% | 26.91% | 87.62% |
+| Held-out combination of shifted and variable routines | 12.64 → 12.07 | 324 → 330 | 1,657 → 1,624 | 60.99% | 24.11% | 88.89% |
 
-For the current tree model, drivers are **group-reference sensitivity**, not SHAP or additive log-odds attribution. Replace all raw features in a group with training medians, recompute calibrated probability, and report original minus reference risk in percentage points. Group effects do not sum to the output; reference combinations can be unrealistic. They are not causal treatment effects.
+The withheld combination's per-model metrics and paired uncertainty are preserved in `data/robustness.json`. It is a held-out combination of familiar factors, not a real-world external validation dataset.
 
-The meal/activity sandbox remains illustrative arithmetic. It does not provide actual future meals to the predictor; trained baseline probability is unchanged. Scenario-shifted bands have no measured scenario coverage. No medication guidance or learned intervention efficacy is produced.
+## Target-specific slices
 
-## Quality gates and remaining failure modes
+| Slice | Windows | V2 → V3 FN | V2 → V3 FP | V3 recall | V3 precision |
+|---|---|---|---|---|---|
+| currently_below_180 | 94,271 | 1,500 → 1,460 | 7,969 → 7,469 | 73.44% | 35.08% |
+| currently_at_least_180 | 6,529 | 242 → 209 | 761 → 701 | 79.94% | 54.30% |
+| rising | 38,926 | 687 → 646 | 3,022 → 2,750 | 76.88% | 43.85% |
+| falling_or_flat | 61,874 | 1,055 → 1,023 | 5,708 → 5,420 | 72.68% | 33.42% |
 
-The runtime uses short-gap forward filling for CGM/HR/HRV and zero imputation for interval steps/sleep. It abstains for<24 h history,>20% missing channel values in recent 2 h or trailing 24 h, CGM stale>15 min, or HR/HRV stale>60 min. Null risk must not become 0% risk. Plausible CGM bias can pass these checks; future unannounced meals, real devices and clinical complexity remain unresolved.
+“Currently below 180” still means an exact +120-minute threshold outcome, not the time of first crossing. “Already high” can include persistence or resolution of an existing elevation. Rising/falling slices use past slope only. These slices overlap and are descriptive, not independent experiments.
 
-The simulator is a designed model and may favor EHR fusion. Removing absolute clock features does not remove every recurrence cue. The final cohort is synthetic and from the same generator family. No independent clinical, medication, outcome, device, subgroup-efficacy or usability validation exists. Local notes/receipts are not a governed clinical record, and hashes are not signatures.
+## Residual bands and quality
 
-## Reproduce and review
+The 90th percentile of absolute calibration errors defines a symmetric descriptive band at each horizon. Nominal 90% is a marginal target, not a guarantee for an individual, subgroup, routine or shifted population. Read width alongside coverage. No scenario-specific coverage is claimed for arithmetic what-if offsets.
 
-Run `npm run train` or `python ml/train_robust.py` only when intentionally reproducing the current experiment. `npm run train:legacy` writes a separate baseline-retrained directory and cannot silently replace active artifacts. Run `npm test` and `npm run test:data`; consult `docs/VERIFICATION.md` for the completed checks. Recorded environment: Python 3.12.2, NumPy 2.4.4, scikit-learn 1.9.0.
+| Horizon min | MAE mg/dL | RMSE mg/dL | Band coverage | Mean width mg/dL |
+|---|---|---|---|---|
+| +30 | 4.307 | 7.926 | 90.09% | 15.37 |
+| +60 | 7.436 | 13.999 | 90.19% | 35.00 |
+| +90 | 9.517 | 16.464 | 90.48% | 54.59 |
+| +120 | 10.850 | 17.684 | 90.60% | 61.76 |
 
-Primary context: [NIDDK CGM targets](https://www.niddk.nih.gov/health-information/professionals/diabetes-discoveries-practice/clinical-targets-for-continuous-glucose-monitoring-data). [Synthea](https://synthetichealth.github.io/synthea/) is a possible future integration, not a data source used here. Neither source validates this model.
+Runtime forward-fills short continuous-sensor gaps and imputes missing interval steps/sleep as zero. It abstains for fewer than 24 hours of history, more than 20% missing channel values in recent two hours or trailing 24 hours, CGM older than 15 minutes, or HR/HRV older than 60 minutes. Null risk is not 0% risk. Plausible sensor bias can pass freshness checks. Missingness handling is a guardrail, not a trained fault detector.
+
+## Explanation, scenarios and reproducibility
+
+Group-reference sensitivity replaces every raw feature in one group with its training median and reports original minus reference calibrated probability in percentage points. It is nonadditive, is not SHAP, may form unrealistic reference combinations, and is not causal attribution. The meal/activity sandbox applies hand-authored arithmetic offsets while preserving trained baseline risk. It does not infer intervention efficacy or use actual future meals.
+
+Challenge Lab freezes a truncated input and prediction before revealing original recorded futures. Clean, short-gap, dropout and biased-sensor cases expose different failure modes. Local sessions use bounded memory; hosted sessions use temporary authenticated encryption and allow only bundled synthetic patient IDs. The downloaded JSON omits the transport token. Raw model and canonical input hashes support offline consistency checking; they are not signatures or independent timestamps. See [deployment boundaries](DEPLOYMENT.md).
+
+## Limits and reproduction
+
+Unknown future meals remain difficult to anticipate. The simulator's physiology, EHR associations and sensor responses are authored assumptions. Medication effects, complex comorbidity, illness, pregnancy, real device behavior, clinical outcomes and usability benefits remain unvalidated. A better benchmark does not establish clinical robustness or safe treatment. No notification-cooldown policy is evaluated as a substitute for classifier improvement.
+
+The current training/reproduction commands, artifact hashes and completed checks are in the README and [verification record](VERIFICATION.md). The recorded environment is Python 3.12.2, NumPy 2.4.4, scikit-learn 1.9.0. Preserve archived baselines when reproducing the comparison.
+
+Primary context: [NIDDK CGM target discussion](https://www.niddk.nih.gov/health-information/professionals/diabetes-discoveries-practice/clinical-targets-for-continuous-glucose-monitoring-data), [scikit-learn decision-threshold guidance](https://scikit-learn.org/stable/modules/classification_threshold.html), [probability calibration](https://scikit-learn.org/stable/modules/calibration.html), and [Ramkissoon et al. on unannounced-meal detection and tradeoffs](https://pmc.ncbi.nlm.nih.gov/articles/PMC5876595/). The meal-detection paper concerns observing a meal response, not predicting an unobserved future meal. [Synthea](https://synthetichealth.github.io/synthea/) is a possible future integration, not a source used here. None of these sources validates this prototype.

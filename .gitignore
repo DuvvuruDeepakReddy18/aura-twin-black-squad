@@ -12,3 +12,7 @@ Thumbs.db
 *.log
 dist/
 .vercel/
+data/candidate-v3/
+
+.vercel
+.env*

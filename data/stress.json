@@ -1,493 +1,1627 @@
 {
-  "schemaVersion": 2,
-  "modelVersion": "aura-synthetic-2.0.0",
-  "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+  "schemaVersion": 3,
   "syntheticOnly": true,
-  "protocol": "Frozen v2 model, calibration, widths and threshold; 80 fresh final identities across six declared routines also represented in training. Equal routine weighting. This is fresh-identity evaluation, not unseen-routine validation.",
+  "modelVersion": "aura-synthetic-3.0.0",
+  "modelSHA256": "87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4",
+  "protocol": "Frozen v3 and frozen v2 on120 fresh identities; six training families plus a separately reported held-out parameter combination.",
   "target": "CGM glucose >=180 mg/dL at exactly +120 minutes; not any excursion within two hours",
-  "alertThreshold": 0.16,
+  "alertThreshold": 0.155,
   "testPatientIds": [
-    "SYN-1001",
-    "SYN-1002",
-    "SYN-1003",
-    "SYN-1004",
-    "SYN-1005",
-    "SYN-1006",
-    "SYN-1007",
-    "SYN-1008",
-    "SYN-1009",
-    "SYN-1010",
-    "SYN-1011",
-    "SYN-1012",
-    "SYN-1013",
-    "SYN-1014",
-    "SYN-1015",
-    "SYN-1016",
-    "SYN-1017",
-    "SYN-1018",
-    "SYN-1019",
-    "SYN-1020",
-    "SYN-1021",
-    "SYN-1022",
-    "SYN-1023",
-    "SYN-1024",
-    "SYN-1025",
-    "SYN-1026",
-    "SYN-1027",
-    "SYN-1028",
-    "SYN-1029",
-    "SYN-1030",
-    "SYN-1031",
-    "SYN-1032",
-    "SYN-1033",
-    "SYN-1034",
-    "SYN-1035",
-    "SYN-1036",
-    "SYN-1037",
-    "SYN-1038",
-    "SYN-1039",
-    "SYN-1040",
-    "SYN-1041",
-    "SYN-1042",
-    "SYN-1043",
-    "SYN-1044",
-    "SYN-1045",
-    "SYN-1046",
-    "SYN-1047",
-    "SYN-1048",
-    "SYN-1049",
-    "SYN-1050",
-    "SYN-1051",
-    "SYN-1052",
-    "SYN-1053",
-    "SYN-1054",
-    "SYN-1055",
-    "SYN-1056",
-    "SYN-1057",
-    "SYN-1058",
-    "SYN-1059",
-    "SYN-1060",
-    "SYN-1061",
-    "SYN-1062",
-    "SYN-1063",
-    "SYN-1064",
-    "SYN-1065",
-    "SYN-1066",
-    "SYN-1067",
-    "SYN-1068",
-    "SYN-1069",
-    "SYN-1070",
-    "SYN-1071",
-    "SYN-1072",
-    "SYN-1073",
-    "SYN-1074",
-    "SYN-1075",
-    "SYN-1076",
-    "SYN-1077",
-    "SYN-1078",
-    "SYN-1079",
-    "SYN-1080"
+    "SYN-2001",
+    "SYN-2002",
+    "SYN-2003",
+    "SYN-2004",
+    "SYN-2005",
+    "SYN-2006",
+    "SYN-2007",
+    "SYN-2008",
+    "SYN-2009",
+    "SYN-2010",
+    "SYN-2011",
+    "SYN-2012",
+    "SYN-2013",
+    "SYN-2014",
+    "SYN-2015",
+    "SYN-2016",
+    "SYN-2017",
+    "SYN-2018",
+    "SYN-2019",
+    "SYN-2020",
+    "SYN-2021",
+    "SYN-2022",
+    "SYN-2023",
+    "SYN-2024",
+    "SYN-2025",
+    "SYN-2026",
+    "SYN-2027",
+    "SYN-2028",
+    "SYN-2029",
+    "SYN-2030",
+    "SYN-2031",
+    "SYN-2032",
+    "SYN-2033",
+    "SYN-2034",
+    "SYN-2035",
+    "SYN-2036",
+    "SYN-2037",
+    "SYN-2038",
+    "SYN-2039",
+    "SYN-2040",
+    "SYN-2041",
+    "SYN-2042",
+    "SYN-2043",
+    "SYN-2044",
+    "SYN-2045",
+    "SYN-2046",
+    "SYN-2047",
+    "SYN-2048",
+    "SYN-2049",
+    "SYN-2050",
+    "SYN-2051",
+    "SYN-2052",
+    "SYN-2053",
+    "SYN-2054",
+    "SYN-2055",
+    "SYN-2056",
+    "SYN-2057",
+    "SYN-2058",
+    "SYN-2059",
+    "SYN-2060",
+    "SYN-2061",
+    "SYN-2062",
+    "SYN-2063",
+    "SYN-2064",
+    "SYN-2065",
+    "SYN-2066",
+    "SYN-2067",
+    "SYN-2068",
+    "SYN-2069",
+    "SYN-2070",
+    "SYN-2071",
+    "SYN-2072",
+    "SYN-2073",
+    "SYN-2074",
+    "SYN-2075",
+    "SYN-2076",
+    "SYN-2077",
+    "SYN-2078",
+    "SYN-2079",
+    "SYN-2080",
+    "SYN-2081",
+    "SYN-2082",
+    "SYN-2083",
+    "SYN-2084",
+    "SYN-2085",
+    "SYN-2086",
+    "SYN-2087",
+    "SYN-2088",
+    "SYN-2089",
+    "SYN-2090",
+    "SYN-2091",
+    "SYN-2092",
+    "SYN-2093",
+    "SYN-2094",
+    "SYN-2095",
+    "SYN-2096",
+    "SYN-2097",
+    "SYN-2098",
+    "SYN-2099",
+    "SYN-2100",
+    "SYN-2101",
+    "SYN-2102",
+    "SYN-2103",
+    "SYN-2104",
+    "SYN-2105",
+    "SYN-2106",
+    "SYN-2107",
+    "SYN-2108",
+    "SYN-2109",
+    "SYN-2110",
+    "SYN-2111",
+    "SYN-2112",
+    "SYN-2113",
+    "SYN-2114",
+    "SYN-2115",
+    "SYN-2116",
+    "SYN-2117",
+    "SYN-2118",
+    "SYN-2119",
+    "SYN-2120"
   ],
   "cases": [
     {
       "id": "reference",
       "title": "Regular routine",
-      "patients": 80,
-      "windows": 11200,
-      "mae": 10.062255416069414,
-      "rmse": 15.811336684510483,
-      "auroc": 0.9596537619214611,
-      "averagePrecision": 0.7076127607998992,
-      "brier": 0.03868066242392987,
-      "precision": 0.5025906735751295,
-      "recall": 0.8584070796460177,
-      "f1": 0.6339869281045751,
+      "patients": 120,
+      "windows": 16800,
+      "mae": 9.377381734583489,
+      "rmse": 15.007413095932625,
+      "auroc": 0.959234768875635,
+      "averagePrecision": 0.6911402296049431,
+      "brier": 0.03658750070818529,
+      "precision": 0.4695977549111319,
+      "recall": 0.8256578947368421,
+      "f1": 0.5986881335718545,
       "confusionMatrix": [
         [
-          9528,
-          768
+          14450,
+          1134
         ],
         [
-          128,
-          776
+          212,
+          1004
         ]
       ],
-      "positiveRate": 0.08071428571428571,
+      "positiveRate": 0.07238095238095238,
       "byHorizon": [
         {
           "minutes": 30,
-          "mae": 4.6652340050562335,
-          "rmse": 8.399002513701008,
-          "intervalCoverage": 0.8923214285714286,
-          "intervalMeanWidth": 16.624557157892355
+          "mae": 4.3841682418227785,
+          "rmse": 8.109059609027826,
+          "intervalCoverage": 0.8982738095238095,
+          "intervalMeanWidth": 15.367465014871215
         },
         {
           "minutes": 60,
-          "mae": 7.859673597597816,
-          "rmse": 14.21861305065347,
-          "intervalCoverage": 0.8922321428571428,
-          "intervalMeanWidth": 36.94980896410476
+          "mae": 7.573300300889555,
+          "rmse": 14.150633129934416,
+          "intervalCoverage": 0.8971428571428571,
+          "intervalMeanWidth": 34.996542232152706
         },
         {
           "minutes": 90,
-          "mae": 9.34113694778358,
-          "rmse": 15.327697098994824,
-          "intervalCoverage": 0.9100892857142857,
-          "intervalMeanWidth": 55.125390355484285
+          "mae": 8.789708582616619,
+          "rmse": 14.788687394116431,
+          "intervalCoverage": 0.9185714285714286,
+          "intervalMeanWidth": 54.5895398874336
         },
         {
           "minutes": 120,
-          "mae": 10.062255416069414,
-          "rmse": 15.811336684510483,
-          "intervalCoverage": 0.9227678571428571,
-          "intervalMeanWidth": 61.659650458173246
+          "mae": 9.377381734583489,
+          "rmse": 15.007413095932625,
+          "intervalCoverage": 0.9325595238095238,
+          "intervalMeanWidth": 61.75523271983761
         }
       ],
-      "intervalCoverage": 0.9227678571428571,
-      "intervalMeanWidth": 61.659650458173246,
-      "threshold": 0.16,
-      "maePatientBootstrap95CI": [
-        9.482980222684033,
-        10.651276248154259
+      "intervalCoverage": 0.9325595238095238,
+      "intervalMeanWidth": 61.75523271983761,
+      "threshold": 0.155,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 14164,
+          "predicted": 0.010838956734043916,
+          "observed": 0.010307822648969218
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 821,
+          "predicted": 0.14565051508709317,
+          "observed": 0.15712545676004872
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 496,
+          "predicted": 0.24587329563893226,
+          "observed": 0.25201612903225806
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 341,
+          "predicted": 0.34716227284590345,
+          "observed": 0.375366568914956
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 292,
+          "predicted": 0.45374985042954485,
+          "observed": 0.5513698630136986
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 240,
+          "predicted": 0.5492561875722525,
+          "observed": 0.6583333333333333
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 207,
+          "predicted": 0.646458075127055,
+          "observed": 0.782608695652174
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 89,
+          "predicted": 0.742059467730454,
+          "observed": 0.7303370786516854
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 47,
+          "predicted": 0.8578297149453851,
+          "observed": 0.8936170212765957
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 103,
+          "predicted": 0.9502048177103681,
+          "observed": 0.970873786407767
+        }
       ],
-      "persistenceMae": 21.676607142857144,
-      "legacyMae": 10.876024256588748
+      "maePatientBootstrap95CI": [
+        9.000278050736087,
+        9.754986956992417
+      ],
+      "alertPolicy": {
+        "threshold": 0.155,
+        "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+        "worstCountRatioToV2": 0.9502617801047121,
+        "meanCountRatioToV2": 0.936456878724021,
+        "simultaneouslyLower": true,
+        "counts": {
+          "all": {
+            "tn": 66231,
+            "fp": 7868,
+            "fn": 1337,
+            "tp": 5204,
+            "recall": 0.7955970035162819,
+            "precision": 0.3981028151774786
+          },
+          "irregular": {
+            "tn": 32694,
+            "fp": 4312,
+            "fn": 988,
+            "tp": 2326,
+            "recall": 0.7018708509354254,
+            "precision": 0.3504067490207894
+          },
+          "variableRoutine": {
+            "tn": 10898,
+            "fp": 1507,
+            "fn": 363,
+            "tp": 672,
+            "recall": 0.6492753623188405,
+            "precision": 0.30839834786599357
+          }
+        },
+        "v2Counts": {
+          "all": {
+            "tn": 65776,
+            "fp": 8323,
+            "fn": 1428,
+            "tp": 5113,
+            "recall": 0.7816847576823116,
+            "precision": 0.3805448050014885
+          },
+          "irregular": {
+            "tn": 32287,
+            "fp": 4719,
+            "fn": 1065,
+            "tp": 2249,
+            "recall": 0.6786360893180446,
+            "precision": 0.32276119402985076
+          },
+          "variableRoutine": {
+            "tn": 10811,
+            "fp": 1594,
+            "fn": 382,
+            "tp": 653,
+            "recall": 0.6309178743961352,
+            "precision": 0.2906097018246551
+          }
+        },
+        "v2Threshold": 0.16,
+        "calibrationRecall": 0.7955970035162819,
+        "calibrationPrecision": 0.3981028151774786,
+        "testRecall": 0.8256578947368421,
+        "testPrecision": 0.4695977549111319,
+        "testF1": 0.5986881335718545,
+        "testConfusionMatrix": [
+          [
+            14450,
+            1134
+          ],
+          [
+            212,
+            1004
+          ]
+        ]
+      },
+      "persistenceMae": 21.635678571428574,
+      "legacyMae": 9.863801543447618
     },
     {
       "id": "late_meals_2h",
       "title": "Meals delayed by 2 hours",
-      "patients": 80,
-      "windows": 11200,
-      "mae": 9.724605542081152,
-      "rmse": 15.558792920924834,
-      "auroc": 0.9644167708467889,
-      "averagePrecision": 0.7084915279354134,
-      "brier": 0.03648674123392335,
-      "precision": 0.47766749379652607,
-      "recall": 0.8891454965357968,
-      "f1": 0.6214689265536724,
+      "patients": 120,
+      "windows": 16800,
+      "mae": 9.101239982694056,
+      "rmse": 14.74810562663522,
+      "auroc": 0.9577317742633024,
+      "averagePrecision": 0.6348453100750421,
+      "brier": 0.03564311422356002,
+      "precision": 0.4089732528041415,
+      "recall": 0.8563685636856369,
+      "f1": 0.5535766423357664,
       "confusionMatrix": [
         [
-          9492,
-          842
+          14323,
+          1370
         ],
         [
-          96,
-          770
+          159,
+          948
         ]
       ],
-      "positiveRate": 0.07732142857142857,
+      "positiveRate": 0.06589285714285714,
       "byHorizon": [
         {
           "minutes": 30,
-          "mae": 4.645617027143202,
-          "rmse": 8.41540419444285,
-          "intervalCoverage": 0.8915178571428571,
-          "intervalMeanWidth": 16.624557157892355
+          "mae": 4.387113911819719,
+          "rmse": 8.113666591546497,
+          "intervalCoverage": 0.898452380952381,
+          "intervalMeanWidth": 15.367465014871215
         },
         {
           "minutes": 60,
-          "mae": 7.827319262032267,
-          "rmse": 14.217829276651905,
-          "intervalCoverage": 0.8976785714285714,
-          "intervalMeanWidth": 36.94980896410476
+          "mae": 7.500022012697276,
+          "rmse": 13.981300286874099,
+          "intervalCoverage": 0.8973214285714286,
+          "intervalMeanWidth": 34.996542232152706
         },
         {
           "minutes": 90,
-          "mae": 9.143996754807903,
-          "rmse": 15.192188597511022,
-          "intervalCoverage": 0.9151785714285714,
-          "intervalMeanWidth": 55.125390355484285
+          "mae": 8.597945948800684,
+          "rmse": 14.517756835594263,
+          "intervalCoverage": 0.9226785714285715,
+          "intervalMeanWidth": 54.5895398874336
         },
         {
           "minutes": 120,
-          "mae": 9.724605542081152,
-          "rmse": 15.558792920924834,
-          "intervalCoverage": 0.9283928571428571,
-          "intervalMeanWidth": 61.659650458173246
+          "mae": 9.101239982694056,
+          "rmse": 14.74810562663522,
+          "intervalCoverage": 0.9379761904761905,
+          "intervalMeanWidth": 61.75523271983761
         }
       ],
-      "intervalCoverage": 0.9283928571428571,
-      "intervalMeanWidth": 61.659650458173246,
-      "threshold": 0.16,
-      "maePatientBootstrap95CI": [
-        9.166486365255551,
-        10.26210903334054
+      "intervalCoverage": 0.9379761904761905,
+      "intervalMeanWidth": 61.75523271983761,
+      "threshold": 0.155,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 13933,
+          "predicted": 0.011238451036829755,
+          "observed": 0.007105433144333597
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 908,
+          "predicted": 0.14512384419086577,
+          "observed": 0.11674008810572688
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 513,
+          "predicted": 0.24542080156057547,
+          "observed": 0.2222222222222222
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 397,
+          "predicted": 0.3478376468652544,
+          "observed": 0.327455919395466
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 290,
+          "predicted": 0.4491592150003085,
+          "observed": 0.4689655172413793
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 275,
+          "predicted": 0.5492703305432517,
+          "observed": 0.64
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 222,
+          "predicted": 0.64580212412159,
+          "observed": 0.6396396396396397
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 108,
+          "predicted": 0.7402675182657631,
+          "observed": 0.6574074074074074
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 60,
+          "predicted": 0.8509062954494262,
+          "observed": 0.7833333333333333
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 94,
+          "predicted": 0.9528887618094677,
+          "observed": 0.9148936170212766
+        }
       ],
-      "persistenceMae": 21.471107142857143,
-      "legacyMae": 21.920436420123917
+      "maePatientBootstrap95CI": [
+        8.729039405965686,
+        9.504922864067114
+      ],
+      "alertPolicy": {
+        "threshold": 0.155,
+        "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+        "worstCountRatioToV2": 0.9502617801047121,
+        "meanCountRatioToV2": 0.936456878724021,
+        "simultaneouslyLower": true,
+        "counts": {
+          "all": {
+            "tn": 66231,
+            "fp": 7868,
+            "fn": 1337,
+            "tp": 5204,
+            "recall": 0.7955970035162819,
+            "precision": 0.3981028151774786
+          },
+          "irregular": {
+            "tn": 32694,
+            "fp": 4312,
+            "fn": 988,
+            "tp": 2326,
+            "recall": 0.7018708509354254,
+            "precision": 0.3504067490207894
+          },
+          "variableRoutine": {
+            "tn": 10898,
+            "fp": 1507,
+            "fn": 363,
+            "tp": 672,
+            "recall": 0.6492753623188405,
+            "precision": 0.30839834786599357
+          }
+        },
+        "v2Counts": {
+          "all": {
+            "tn": 65776,
+            "fp": 8323,
+            "fn": 1428,
+            "tp": 5113,
+            "recall": 0.7816847576823116,
+            "precision": 0.3805448050014885
+          },
+          "irregular": {
+            "tn": 32287,
+            "fp": 4719,
+            "fn": 1065,
+            "tp": 2249,
+            "recall": 0.6786360893180446,
+            "precision": 0.32276119402985076
+          },
+          "variableRoutine": {
+            "tn": 10811,
+            "fp": 1594,
+            "fn": 382,
+            "tp": 653,
+            "recall": 0.6309178743961352,
+            "precision": 0.2906097018246551
+          }
+        },
+        "v2Threshold": 0.16,
+        "calibrationRecall": 0.7955970035162819,
+        "calibrationPrecision": 0.3981028151774786,
+        "testRecall": 0.8563685636856369,
+        "testPrecision": 0.4089732528041415,
+        "testF1": 0.5535766423357664,
+        "testConfusionMatrix": [
+          [
+            14323,
+            1370
+          ],
+          [
+            159,
+            948
+          ]
+        ]
+      },
+      "persistenceMae": 21.15001785714286,
+      "legacyMae": 9.524192959578029
     },
     {
       "id": "late_meals_4h",
       "title": "Meals delayed by 4 hours",
-      "patients": 80,
-      "windows": 11200,
-      "mae": 9.291921458485165,
-      "rmse": 15.11315636204014,
-      "auroc": 0.9633576506705551,
-      "averagePrecision": 0.6766034431139754,
-      "brier": 0.03357442204094952,
-      "precision": 0.4309210526315789,
-      "recall": 0.896032831737346,
-      "f1": 0.5819635717458908,
+      "patients": 120,
+      "windows": 16800,
+      "mae": 9.013058174845964,
+      "rmse": 14.76737109385674,
+      "auroc": 0.957100723515834,
+      "averagePrecision": 0.5990301501742937,
+      "brier": 0.03187555773289303,
+      "precision": 0.39463019250253295,
+      "recall": 0.8458197611292074,
+      "f1": 0.5381692573402418,
       "confusionMatrix": [
         [
-          9604,
-          865
+          14684,
+          1195
         ],
         [
-          76,
-          655
+          142,
+          779
         ]
       ],
-      "positiveRate": 0.06526785714285714,
+      "positiveRate": 0.05482142857142857,
       "byHorizon": [
         {
           "minutes": 30,
-          "mae": 4.395342150375482,
-          "rmse": 7.9169166679493355,
-          "intervalCoverage": 0.90375,
-          "intervalMeanWidth": 16.624557157892355
+          "mae": 4.177007328207351,
+          "rmse": 7.6655167950961385,
+          "intervalCoverage": 0.9073809523809524,
+          "intervalMeanWidth": 15.367465014871215
         },
         {
           "minutes": 60,
-          "mae": 7.239560152634079,
-          "rmse": 13.18786901071083,
-          "intervalCoverage": 0.9059821428571428,
-          "intervalMeanWidth": 36.94980896410476
+          "mae": 7.000347334696406,
+          "rmse": 13.228398553992015,
+          "intervalCoverage": 0.9103571428571429,
+          "intervalMeanWidth": 34.996542232152706
         },
         {
           "minutes": 90,
-          "mae": 8.577479302201167,
-          "rmse": 14.494805647563666,
-          "intervalCoverage": 0.9241071428571429,
-          "intervalMeanWidth": 55.125390355484285
+          "mae": 8.283923910733106,
+          "rmse": 14.299220793211186,
+          "intervalCoverage": 0.9278571428571428,
+          "intervalMeanWidth": 54.5895398874336
         },
         {
           "minutes": 120,
-          "mae": 9.291921458485165,
-          "rmse": 15.11315636204014,
-          "intervalCoverage": 0.9333928571428571,
-          "intervalMeanWidth": 61.659650458173246
+          "mae": 9.013058174845964,
+          "rmse": 14.76737109385674,
+          "intervalCoverage": 0.9364285714285714,
+          "intervalMeanWidth": 61.75523271983761
         }
       ],
-      "intervalCoverage": 0.9333928571428571,
-      "intervalMeanWidth": 61.659650458173246,
-      "threshold": 0.16,
-      "maePatientBootstrap95CI": [
-        8.72877257873129,
-        9.7986969908379
+      "intervalCoverage": 0.9364285714285714,
+      "intervalMeanWidth": 61.75523271983761,
+      "threshold": 0.155,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 14276,
+          "predicted": 0.012479748201716497,
+          "observed": 0.006094144017932194
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 835,
+          "predicted": 0.14230369267973716,
+          "observed": 0.13293413173652693
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 515,
+          "predicted": 0.24649699174714249,
+          "observed": 0.258252427184466
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 399,
+          "predicted": 0.34853195760737365,
+          "observed": 0.3233082706766917
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 268,
+          "predicted": 0.4497147760347342,
+          "observed": 0.4664179104477612
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 231,
+          "predicted": 0.5461653213410059,
+          "observed": 0.5281385281385281
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 118,
+          "predicted": 0.6413193376495695,
+          "observed": 0.6864406779661016
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 50,
+          "predicted": 0.7402090031631126,
+          "observed": 0.74
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 47,
+          "predicted": 0.8577486192494443,
+          "observed": 0.8085106382978723
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 61,
+          "predicted": 0.9540199053819421,
+          "observed": 0.9508196721311475
+        }
       ],
-      "persistenceMae": 19.573294642857142,
-      "legacyMae": 22.915895079067216
+      "maePatientBootstrap95CI": [
+        8.646585722427595,
+        9.38833197604066
+      ],
+      "alertPolicy": {
+        "threshold": 0.155,
+        "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+        "worstCountRatioToV2": 0.9502617801047121,
+        "meanCountRatioToV2": 0.936456878724021,
+        "simultaneouslyLower": true,
+        "counts": {
+          "all": {
+            "tn": 66231,
+            "fp": 7868,
+            "fn": 1337,
+            "tp": 5204,
+            "recall": 0.7955970035162819,
+            "precision": 0.3981028151774786
+          },
+          "irregular": {
+            "tn": 32694,
+            "fp": 4312,
+            "fn": 988,
+            "tp": 2326,
+            "recall": 0.7018708509354254,
+            "precision": 0.3504067490207894
+          },
+          "variableRoutine": {
+            "tn": 10898,
+            "fp": 1507,
+            "fn": 363,
+            "tp": 672,
+            "recall": 0.6492753623188405,
+            "precision": 0.30839834786599357
+          }
+        },
+        "v2Counts": {
+          "all": {
+            "tn": 65776,
+            "fp": 8323,
+            "fn": 1428,
+            "tp": 5113,
+            "recall": 0.7816847576823116,
+            "precision": 0.3805448050014885
+          },
+          "irregular": {
+            "tn": 32287,
+            "fp": 4719,
+            "fn": 1065,
+            "tp": 2249,
+            "recall": 0.6786360893180446,
+            "precision": 0.32276119402985076
+          },
+          "variableRoutine": {
+            "tn": 10811,
+            "fp": 1594,
+            "fn": 382,
+            "tp": 653,
+            "recall": 0.6309178743961352,
+            "precision": 0.2906097018246551
+          }
+        },
+        "v2Threshold": 0.16,
+        "calibrationRecall": 0.7955970035162819,
+        "calibrationPrecision": 0.3981028151774786,
+        "testRecall": 0.8458197611292074,
+        "testPrecision": 0.39463019250253295,
+        "testF1": 0.5381692573402418,
+        "testConfusionMatrix": [
+          [
+            14684,
+            1195
+          ],
+          [
+            142,
+            779
+          ]
+        ]
+      },
+      "persistenceMae": 19.415119047619047,
+      "legacyMae": 9.03175598334311
     },
     {
       "id": "irregular_meals",
       "title": "Irregular meal timing",
-      "patients": 80,
-      "windows": 11200,
-      "mae": 13.967104362109286,
-      "rmse": 21.787503937948372,
-      "auroc": 0.9055241057561769,
-      "averagePrecision": 0.5310495750767554,
-      "brier": 0.05592744609423025,
-      "precision": 0.3946731234866828,
-      "recall": 0.6798748696558915,
-      "f1": 0.4994255074684029,
+      "patients": 120,
+      "windows": 16800,
+      "mae": 13.050277767908463,
+      "rmse": 21.01574281754147,
+      "auroc": 0.9118170277926734,
+      "averagePrecision": 0.5155493063380207,
+      "brier": 0.051384976897019256,
+      "precision": 0.3802060008956561,
+      "recall": 0.652574942352037,
+      "f1": 0.48047538200339557,
       "confusionMatrix": [
         [
-          9241,
-          1000
+          14115,
+          1384
         ],
         [
-          307,
-          652
+          452,
+          849
         ]
       ],
-      "positiveRate": 0.085625,
+      "positiveRate": 0.07744047619047618,
       "byHorizon": [
         {
           "minutes": 30,
-          "mae": 4.819567212356419,
-          "rmse": 8.750535661937896,
-          "intervalCoverage": 0.885,
-          "intervalMeanWidth": 16.624557157892355
+          "mae": 4.472081481819201,
+          "rmse": 8.206843837088229,
+          "intervalCoverage": 0.8927380952380952,
+          "intervalMeanWidth": 15.367465014871215
         },
         {
           "minutes": 60,
-          "mae": 8.482188027541431,
-          "rmse": 15.407342523760983,
-          "intervalCoverage": 0.8852678571428572,
-          "intervalMeanWidth": 36.94980896410476
+          "mae": 7.945298482790264,
+          "rmse": 14.921041724789058,
+          "intervalCoverage": 0.8922619047619048,
+          "intervalMeanWidth": 34.996542232152706
         },
         {
           "minutes": 90,
-          "mae": 11.803976738891043,
-          "rmse": 19.58136085581779,
-          "intervalCoverage": 0.8625,
-          "intervalMeanWidth": 55.125390355484285
+          "mae": 11.041565591064648,
+          "rmse": 19.050263020855322,
+          "intervalCoverage": 0.8744047619047619,
+          "intervalMeanWidth": 54.5895398874336
         },
         {
           "minutes": 120,
-          "mae": 13.967104362109286,
-          "rmse": 21.787503937948372,
-          "intervalCoverage": 0.853125,
-          "intervalMeanWidth": 61.659650458173246
+          "mae": 13.050277767908463,
+          "rmse": 21.01574281754147,
+          "intervalCoverage": 0.8675595238095238,
+          "intervalMeanWidth": 61.75523271983761
         }
       ],
-      "intervalCoverage": 0.853125,
-      "intervalMeanWidth": 61.659650458173246,
-      "threshold": 0.16,
-      "maePatientBootstrap95CI": [
-        13.261179029071384,
-        14.662561217700825
+      "intervalCoverage": 0.8675595238095238,
+      "intervalMeanWidth": 61.75523271983761,
+      "threshold": 0.155,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 13903,
+          "predicted": 0.011868822846714975,
+          "observed": 0.024383226641732002
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 1066,
+          "predicted": 0.1454153759967458,
+          "observed": 0.18855534709193245
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 626,
+          "predicted": 0.2467444187314407,
+          "observed": 0.2571884984025559
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 449,
+          "predicted": 0.34716423592481865,
+          "observed": 0.35634743875278396
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 275,
+          "predicted": 0.4455997881562711,
+          "observed": 0.44363636363636366
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 190,
+          "predicted": 0.5443523283053296,
+          "observed": 0.5
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 86,
+          "predicted": 0.6477233999145396,
+          "observed": 0.45348837209302323
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 56,
+          "predicted": 0.7479908293978311,
+          "observed": 0.75
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 51,
+          "predicted": 0.8490940948880225,
+          "observed": 0.9215686274509803
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 98,
+          "predicted": 0.953447240838488,
+          "observed": 0.9693877551020408
+        }
       ],
-      "persistenceMae": 21.11374107142857,
-      "legacyMae": 17.04869237517465
+      "maePatientBootstrap95CI": [
+        12.52607695428735,
+        13.62553836376176
+      ],
+      "alertPolicy": {
+        "threshold": 0.155,
+        "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+        "worstCountRatioToV2": 0.9502617801047121,
+        "meanCountRatioToV2": 0.936456878724021,
+        "simultaneouslyLower": true,
+        "counts": {
+          "all": {
+            "tn": 66231,
+            "fp": 7868,
+            "fn": 1337,
+            "tp": 5204,
+            "recall": 0.7955970035162819,
+            "precision": 0.3981028151774786
+          },
+          "irregular": {
+            "tn": 32694,
+            "fp": 4312,
+            "fn": 988,
+            "tp": 2326,
+            "recall": 0.7018708509354254,
+            "precision": 0.3504067490207894
+          },
+          "variableRoutine": {
+            "tn": 10898,
+            "fp": 1507,
+            "fn": 363,
+            "tp": 672,
+            "recall": 0.6492753623188405,
+            "precision": 0.30839834786599357
+          }
+        },
+        "v2Counts": {
+          "all": {
+            "tn": 65776,
+            "fp": 8323,
+            "fn": 1428,
+            "tp": 5113,
+            "recall": 0.7816847576823116,
+            "precision": 0.3805448050014885
+          },
+          "irregular": {
+            "tn": 32287,
+            "fp": 4719,
+            "fn": 1065,
+            "tp": 2249,
+            "recall": 0.6786360893180446,
+            "precision": 0.32276119402985076
+          },
+          "variableRoutine": {
+            "tn": 10811,
+            "fp": 1594,
+            "fn": 382,
+            "tp": 653,
+            "recall": 0.6309178743961352,
+            "precision": 0.2906097018246551
+          }
+        },
+        "v2Threshold": 0.16,
+        "calibrationRecall": 0.7955970035162819,
+        "calibrationPrecision": 0.3981028151774786,
+        "testRecall": 0.652574942352037,
+        "testPrecision": 0.3802060008956561,
+        "testF1": 0.48047538200339557,
+        "testConfusionMatrix": [
+          [
+            14115,
+            1384
+          ],
+          [
+            452,
+            849
+          ]
+        ]
+      },
+      "persistenceMae": 21.06710119047619,
+      "legacyMae": 13.768123716291704
     },
     {
       "id": "day_varying_skips",
       "title": "Daily timing changes and skipped meals",
-      "patients": 80,
-      "windows": 11200,
-      "mae": 13.117029985318544,
-      "rmse": 20.466347776305447,
-      "auroc": 0.9261776843748684,
-      "averagePrecision": 0.513847444111289,
-      "brier": 0.04540982560628569,
-      "precision": 0.34192037470725994,
-      "recall": 0.7643979057591623,
-      "f1": 0.47249190938511326,
+      "patients": 120,
+      "windows": 16800,
+      "mae": 11.969488595464007,
+      "rmse": 19.102290422155605,
+      "auroc": 0.9221623234429129,
+      "averagePrecision": 0.5021458952990234,
+      "brier": 0.04061114828897574,
+      "precision": 0.3199452304883615,
+      "recall": 0.6913214990138067,
+      "f1": 0.4374414976599064,
       "confusionMatrix": [
         [
-          9312,
-          1124
+          14296,
+          1490
         ],
         [
-          180,
-          584
+          313,
+          701
         ]
       ],
-      "positiveRate": 0.06821428571428571,
+      "positiveRate": 0.06035714285714286,
       "byHorizon": [
         {
           "minutes": 30,
-          "mae": 4.526178841325886,
-          "rmse": 8.187423932641137,
-          "intervalCoverage": 0.8990178571428571,
-          "intervalMeanWidth": 16.624557157892355
+          "mae": 4.233062092605866,
+          "rmse": 7.77848910809888,
+          "intervalCoverage": 0.9039880952380952,
+          "intervalMeanWidth": 15.367465014871215
         },
         {
           "minutes": 60,
-          "mae": 7.849735144674222,
-          "rmse": 14.379166662704737,
-          "intervalCoverage": 0.8994642857142857,
-          "intervalMeanWidth": 36.94980896410476
+          "mae": 7.307105632851087,
+          "rmse": 13.853636776424835,
+          "intervalCoverage": 0.9061309523809524,
+          "intervalMeanWidth": 34.996542232152706
         },
         {
           "minutes": 90,
-          "mae": 11.045622589944186,
-          "rmse": 18.428102572335273,
-          "intervalCoverage": 0.878125,
-          "intervalMeanWidth": 55.125390355484285
+          "mae": 10.08795167078395,
+          "rmse": 17.463071750343417,
+          "intervalCoverage": 0.8928571428571429,
+          "intervalMeanWidth": 54.5895398874336
         },
         {
           "minutes": 120,
-          "mae": 13.117029985318544,
-          "rmse": 20.466347776305447,
-          "intervalCoverage": 0.8675,
-          "intervalMeanWidth": 61.659650458173246
+          "mae": 11.969488595464007,
+          "rmse": 19.102290422155605,
+          "intervalCoverage": 0.8851785714285715,
+          "intervalMeanWidth": 61.75523271983761
         }
       ],
-      "intervalCoverage": 0.8675,
-      "intervalMeanWidth": 61.659650458173246,
-      "threshold": 0.16,
-      "maePatientBootstrap95CI": [
-        12.37454892423054,
-        13.865676956464728
+      "intervalCoverage": 0.8851785714285715,
+      "intervalMeanWidth": 61.75523271983761,
+      "threshold": 0.155,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 13924,
+          "predicted": 0.01200527693415796,
+          "observed": 0.01465096236713588
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 1129,
+          "predicted": 0.14620453915947684,
+          "observed": 0.15589016829052257
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 652,
+          "predicted": 0.24423549328788074,
+          "observed": 0.19478527607361965
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 395,
+          "predicted": 0.3439724816897714,
+          "observed": 0.3189873417721519
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 293,
+          "predicted": 0.4449537222582675,
+          "observed": 0.40955631399317405
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 176,
+          "predicted": 0.5489811466064805,
+          "observed": 0.45454545454545453
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 87,
+          "predicted": 0.6430522763823122,
+          "observed": 0.6436781609195402
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 39,
+          "predicted": 0.7508376210579673,
+          "observed": 0.6666666666666666
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 37,
+          "predicted": 0.8515475969902571,
+          "observed": 0.8918918918918919
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 68,
+          "predicted": 0.951167132998358,
+          "observed": 0.9705882352941176
+        }
       ],
-      "persistenceMae": 19.454794642857145,
-      "legacyMae": 17.636296411574275
+      "maePatientBootstrap95CI": [
+        11.538273152379633,
+        12.388908968073975
+      ],
+      "alertPolicy": {
+        "threshold": 0.155,
+        "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+        "worstCountRatioToV2": 0.9502617801047121,
+        "meanCountRatioToV2": 0.936456878724021,
+        "simultaneouslyLower": true,
+        "counts": {
+          "all": {
+            "tn": 66231,
+            "fp": 7868,
+            "fn": 1337,
+            "tp": 5204,
+            "recall": 0.7955970035162819,
+            "precision": 0.3981028151774786
+          },
+          "irregular": {
+            "tn": 32694,
+            "fp": 4312,
+            "fn": 988,
+            "tp": 2326,
+            "recall": 0.7018708509354254,
+            "precision": 0.3504067490207894
+          },
+          "variableRoutine": {
+            "tn": 10898,
+            "fp": 1507,
+            "fn": 363,
+            "tp": 672,
+            "recall": 0.6492753623188405,
+            "precision": 0.30839834786599357
+          }
+        },
+        "v2Counts": {
+          "all": {
+            "tn": 65776,
+            "fp": 8323,
+            "fn": 1428,
+            "tp": 5113,
+            "recall": 0.7816847576823116,
+            "precision": 0.3805448050014885
+          },
+          "irregular": {
+            "tn": 32287,
+            "fp": 4719,
+            "fn": 1065,
+            "tp": 2249,
+            "recall": 0.6786360893180446,
+            "precision": 0.32276119402985076
+          },
+          "variableRoutine": {
+            "tn": 10811,
+            "fp": 1594,
+            "fn": 382,
+            "tp": 653,
+            "recall": 0.6309178743961352,
+            "precision": 0.2906097018246551
+          }
+        },
+        "v2Threshold": 0.16,
+        "calibrationRecall": 0.7955970035162819,
+        "calibrationPrecision": 0.3981028151774786,
+        "testRecall": 0.6913214990138067,
+        "testPrecision": 0.3199452304883615,
+        "testF1": 0.4374414976599064,
+        "testConfusionMatrix": [
+          [
+            14296,
+            1490
+          ],
+          [
+            313,
+            701
+          ]
+        ]
+      },
+      "persistenceMae": 19.041261904761907,
+      "legacyMae": 12.800730408129766
     },
     {
       "id": "variable_routine",
       "title": "Variable sleep, activity and meals",
-      "patients": 80,
-      "windows": 11200,
-      "mae": 13.571502723982672,
-      "rmse": 21.37001826282647,
-      "auroc": 0.8894426610315219,
-      "averagePrecision": 0.40798363744640526,
-      "brier": 0.05152282954095995,
-      "precision": 0.29372333942717854,
-      "recall": 0.6392572944297082,
-      "f1": 0.4025052192066806,
+      "patients": 120,
+      "windows": 16800,
+      "mae": 12.585987159284574,
+      "rmse": 20.222888511205525,
+      "auroc": 0.8882718751063269,
+      "averagePrecision": 0.40461845888941006,
+      "brier": 0.044169894835454894,
+      "precision": 0.26910755148741416,
+      "recall": 0.6006128702757916,
+      "f1": 0.37168141592920356,
       "confusionMatrix": [
         [
-          9287,
-          1159
+          14224,
+          1597
         ],
         [
-          272,
-          482
+          391,
+          588
         ]
       ],
-      "positiveRate": 0.06732142857142857,
+      "positiveRate": 0.058273809523809526,
       "byHorizon": [
         {
           "minutes": 30,
-          "mae": 4.52016325326757,
-          "rmse": 8.12963408193576,
-          "intervalCoverage": 0.900625,
-          "intervalMeanWidth": 16.624557157892355
+          "mae": 4.191173568404081,
+          "rmse": 7.660671108737591,
+          "intervalCoverage": 0.904702380952381,
+          "intervalMeanWidth": 15.367465014871215
         },
         {
           "minutes": 60,
-          "mae": 7.779504179470698,
-          "rmse": 14.365904863081706,
-          "intervalCoverage": 0.9035714285714286,
-          "intervalMeanWidth": 36.94980896410476
+          "mae": 7.292646822309338,
+          "rmse": 13.806540089734465,
+          "intervalCoverage": 0.9083928571428571,
+          "intervalMeanWidth": 34.996542232152706
         },
         {
           "minutes": 90,
-          "mae": 11.16902090925356,
-          "rmse": 18.86105342279622,
-          "intervalCoverage": 0.8765178571428571,
-          "intervalMeanWidth": 55.125390355484285
+          "mae": 10.301931896516072,
+          "rmse": 18.015484502967354,
+          "intervalCoverage": 0.8925595238095239,
+          "intervalMeanWidth": 54.5895398874336
         },
         {
           "minutes": 120,
-          "mae": 13.571502723982672,
-          "rmse": 21.37001826282647,
-          "intervalCoverage": 0.8600892857142857,
-          "intervalMeanWidth": 61.659650458173246
+          "mae": 12.585987159284574,
+          "rmse": 20.222888511205525,
+          "intervalCoverage": 0.8761904761904762,
+          "intervalMeanWidth": 61.75523271983761
         }
       ],
-      "intervalCoverage": 0.8600892857142857,
-      "intervalMeanWidth": 61.659650458173246,
-      "threshold": 0.16,
-      "maePatientBootstrap95CI": [
-        12.774184737156363,
-        14.391216984438664
+      "intervalCoverage": 0.8761904761904762,
+      "intervalMeanWidth": 61.75523271983761,
+      "threshold": 0.155,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 13883,
+          "predicted": 0.01263608551765039,
+          "observed": 0.02074479579341641
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 1234,
+          "predicted": 0.14649095405239737,
+          "observed": 0.14829821717990274
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 693,
+          "predicted": 0.2445492542315005,
+          "observed": 0.19336219336219337
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 424,
+          "predicted": 0.3434684048397497,
+          "observed": 0.25
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 243,
+          "predicted": 0.4466777724772991,
+          "observed": 0.3045267489711934
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 128,
+          "predicted": 0.5402066794536733,
+          "observed": 0.3515625
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 57,
+          "predicted": 0.6485339800445443,
+          "observed": 0.543859649122807
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 52,
+          "predicted": 0.7485619902879823,
+          "observed": 0.7307692307692307
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 28,
+          "predicted": 0.8576869945642723,
+          "observed": 0.8571428571428571
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 58,
+          "predicted": 0.9526275072540558,
+          "observed": 0.9655172413793104
+        }
       ],
-      "persistenceMae": 18.6461875,
-      "legacyMae": 19.388342612799228
+      "maePatientBootstrap95CI": [
+        12.100354444198345,
+        13.115937556808772
+      ],
+      "alertPolicy": {
+        "threshold": 0.155,
+        "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+        "worstCountRatioToV2": 0.9502617801047121,
+        "meanCountRatioToV2": 0.936456878724021,
+        "simultaneouslyLower": true,
+        "counts": {
+          "all": {
+            "tn": 66231,
+            "fp": 7868,
+            "fn": 1337,
+            "tp": 5204,
+            "recall": 0.7955970035162819,
+            "precision": 0.3981028151774786
+          },
+          "irregular": {
+            "tn": 32694,
+            "fp": 4312,
+            "fn": 988,
+            "tp": 2326,
+            "recall": 0.7018708509354254,
+            "precision": 0.3504067490207894
+          },
+          "variableRoutine": {
+            "tn": 10898,
+            "fp": 1507,
+            "fn": 363,
+            "tp": 672,
+            "recall": 0.6492753623188405,
+            "precision": 0.30839834786599357
+          }
+        },
+        "v2Counts": {
+          "all": {
+            "tn": 65776,
+            "fp": 8323,
+            "fn": 1428,
+            "tp": 5113,
+            "recall": 0.7816847576823116,
+            "precision": 0.3805448050014885
+          },
+          "irregular": {
+            "tn": 32287,
+            "fp": 4719,
+            "fn": 1065,
+            "tp": 2249,
+            "recall": 0.6786360893180446,
+            "precision": 0.32276119402985076
+          },
+          "variableRoutine": {
+            "tn": 10811,
+            "fp": 1594,
+            "fn": 382,
+            "tp": 653,
+            "recall": 0.6309178743961352,
+            "precision": 0.2906097018246551
+          }
+        },
+        "v2Threshold": 0.16,
+        "calibrationRecall": 0.7955970035162819,
+        "calibrationPrecision": 0.3981028151774786,
+        "testRecall": 0.6006128702757916,
+        "testPrecision": 0.26910755148741416,
+        "testF1": 0.37168141592920356,
+        "testConfusionMatrix": [
+          [
+            14224,
+            1597
+          ],
+          [
+            391,
+            588
+          ]
+        ]
+      },
+      "persistenceMae": 18.17451785714286,
+      "legacyMae": 13.365414725105502
+    },
+    {
+      "id": "unseen_combination",
+      "title": "Held-out combination of shifted and variable routines",
+      "patients": 120,
+      "windows": 16800,
+      "mae": 12.070118646632954,
+      "rmse": 19.421783225066346,
+      "auroc": 0.8932325678642882,
+      "averagePrecision": 0.3971240374878088,
+      "brier": 0.03880935583423367,
+      "precision": 0.2411214953271028,
+      "recall": 0.6099290780141844,
+      "f1": 0.34561286001339586,
+      "confusionMatrix": [
+        [
+          14330,
+          1624
+        ],
+        [
+          330,
+          516
+        ]
+      ],
+      "positiveRate": 0.05035714285714286,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 4.079078380711149,
+          "rmse": 7.364775695953104,
+          "intervalCoverage": 0.9076785714285714,
+          "intervalMeanWidth": 15.367465014871215
+        },
+        {
+          "minutes": 60,
+          "mae": 7.026545561340424,
+          "rmse": 13.282937782126359,
+          "intervalCoverage": 0.9152976190476191,
+          "intervalMeanWidth": 34.996542232152706
+        },
+        {
+          "minutes": 90,
+          "mae": 9.862375447739621,
+          "rmse": 17.231686042047233,
+          "intervalCoverage": 0.9030952380952381,
+          "intervalMeanWidth": 54.5895398874336
+        },
+        {
+          "minutes": 120,
+          "mae": 12.070118646632954,
+          "rmse": 19.421783225066346,
+          "intervalCoverage": 0.8888690476190476,
+          "intervalMeanWidth": 61.75523271983761
+        }
+      ],
+      "intervalCoverage": 0.8888690476190476,
+      "intervalMeanWidth": 61.75523271983761,
+      "threshold": 0.155,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 13836,
+          "predicted": 0.012968957220504928,
+          "observed": 0.016840127204394335
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 1316,
+          "predicted": 0.14431724830364295,
+          "observed": 0.12006079027355623
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 724,
+          "predicted": 0.24551669116125047,
+          "observed": 0.17955801104972377
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 415,
+          "predicted": 0.3444699424280275,
+          "observed": 0.20722891566265061
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 249,
+          "predicted": 0.44602863887921235,
+          "observed": 0.3092369477911647
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 108,
+          "predicted": 0.5383982335504469,
+          "observed": 0.42592592592592593
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 48,
+          "predicted": 0.6420569163295149,
+          "observed": 0.3958333333333333
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 20,
+          "predicted": 0.7498929753657996,
+          "observed": 0.75
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 33,
+          "predicted": 0.8508386447887688,
+          "observed": 0.9696969696969697
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 51,
+          "predicted": 0.9493350790267879,
+          "observed": 0.9803921568627451
+        }
+      ],
+      "maePatientBootstrap95CI": [
+        11.61669323646999,
+        12.553646577024438
+      ],
+      "alertPolicy": {
+        "threshold": 0.155,
+        "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+        "worstCountRatioToV2": 0.9502617801047121,
+        "meanCountRatioToV2": 0.936456878724021,
+        "simultaneouslyLower": true,
+        "counts": {
+          "all": {
+            "tn": 66231,
+            "fp": 7868,
+            "fn": 1337,
+            "tp": 5204,
+            "recall": 0.7955970035162819,
+            "precision": 0.3981028151774786
+          },
+          "irregular": {
+            "tn": 32694,
+            "fp": 4312,
+            "fn": 988,
+            "tp": 2326,
+            "recall": 0.7018708509354254,
+            "precision": 0.3504067490207894
+          },
+          "variableRoutine": {
+            "tn": 10898,
+            "fp": 1507,
+            "fn": 363,
+            "tp": 672,
+            "recall": 0.6492753623188405,
+            "precision": 0.30839834786599357
+          }
+        },
+        "v2Counts": {
+          "all": {
+            "tn": 65776,
+            "fp": 8323,
+            "fn": 1428,
+            "tp": 5113,
+            "recall": 0.7816847576823116,
+            "precision": 0.3805448050014885
+          },
+          "irregular": {
+            "tn": 32287,
+            "fp": 4719,
+            "fn": 1065,
+            "tp": 2249,
+            "recall": 0.6786360893180446,
+            "precision": 0.32276119402985076
+          },
+          "variableRoutine": {
+            "tn": 10811,
+            "fp": 1594,
+            "fn": 382,
+            "tp": 653,
+            "recall": 0.6309178743961352,
+            "precision": 0.2906097018246551
+          }
+        },
+        "v2Threshold": 0.16,
+        "calibrationRecall": 0.7955970035162819,
+        "calibrationPrecision": 0.3981028151774786,
+        "testRecall": 0.6099290780141844,
+        "testPrecision": 0.2411214953271028,
+        "testF1": 0.34561286001339586,
+        "testConfusionMatrix": [
+          [
+            14330,
+            1624
+          ],
+          [
+            330,
+            516
+          ]
+        ]
+      },
+      "persistenceMae": 17.694464285714286,
+      "legacyMae": 12.639286319436827
     }
   ],
   "limitations": [
-    "The simulator and candidate features were designed after examining v1 failures; final IDs are fresh but model development is not independent of simulator design.",
-    "Previous-day horizon-aligned readings assume some recurrence; future unannounced meals remain unpredictable.",
-    "HR includes a contemporaneous synthetic meal response. No future meal annotation or latent simulator state is a predictor.",
-    "All outcomes are synthetic; no external or clinical accuracy is demonstrated.",
-    "Routine families are present in augmented training. Fresh identities are held out; these are not unseen routine families.",
-    "Repeated windows and routine variants are correlated; uncertainty resamples identities, keeping variants paired.",
-    "The calibration residual band is marginal and can be wider than v1; report width and per-routine coverage together.",
-    "The event threshold trades recall for false positives. Future unpredictable meals set a ceiling on advance prediction.",
-    "Counterfactual controls remain illustrative arithmetic; no treatment effects are learned."
+    "All outcomes remain synthetic. Simultaneous FP/FN reductions are sought, not guaranteed on fresh patients.",
+    "The seven-regime aggregate includes six training families and one held-out parameter combination, not a new physiological simulator.",
+    "Unannounced future meals remain partly unpredictable from current observations.",
+    "No future meal annotations, latent simulator terms, routine labels or absolute clock values are predictors.",
+    "Synthetic HR includes contemporaneous meal response by simulator design; improved HR feature utility is not evidence of real-world meal detection.",
+    "FP and FN counts are overlapping exact-horizon windows, not deduplicated events or alarms per patient-day.",
+    "The alert threshold is an experimental error-tradeoff policy, not a clinically established action threshold.",
+    "The variable-routine and unseen-combination results must be read separately; pooled improvements do not establish uniform gains.",
+    "Confidence intervals resample identities and keep routine variants paired; they do not quantify simulator-to-clinic uncertainty.",
+    "Scenario controls remain illustrative arithmetic, not learned treatment effects."
   ],
   "reproduction": {
-    "at": "2026-10-19T16:10:50.434490+00:00",
-    "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+    "at": "2026-10-19T17:17:44.343658+00:00",
+    "modelSHA256": "87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4",
     "method": "Independent traversal of the exported JSON; no estimator objects, fitting, threshold changes or recalibration.",
     "matchedMetrics": [
       "mae",

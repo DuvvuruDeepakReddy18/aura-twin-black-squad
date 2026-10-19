@@ -1,62 +1,34 @@
-# Current demonstration runbook
+# Full demonstration runbook
 
-Use the current 22-slide presentation and `narration.json`, which contains roughly 4,286 words. At a normal speaking pace this supports about 24–27 minutes. Do not speed it below the required 20 minutes. A team-delivered recording can replace the disclosed synthesized narration.
+Current model: `aura-synthetic-3.0.0`. Target a clear 24–27-minute presentation. The minimum requested recording is 20 minutes; do not use silent padding. The current 22-slide narration is [narration.json](narration.json). A local synthesized-voice rendering is disclosed as such; team members can record their own narration using this guide.
 
-## Preparation
+| Segment | Slides | Target | Demonstration |
+|---|---|---|---|
+| Team, problem and label | 1–3 | 0:00–3:00 | Name team/college; define exact +120 target and synthetic scope |
+| Data, information boundary, architecture | 4–6 | 3:00–6:30 | Explain six families and withheld combination; no future meal inputs |
+| Split, selection and evidence | 7–11 | 6:30–12:30 | Separate fit/select/calibrate/final; compare frozen FN/FP and show uncertainty |
+| Doctor-facing interface | 12–15 | 12:30–17:00 | Patient search, chart/replay, record, group sensitivity, illustrative sandbox |
+| Live challenge and receipt | 16–18 | 17:00–21:00 | Freeze/reveal, persistence, gap/dropout/bias and offline verification |
+| Reproduction, limits and handoff | 19–22 | 21:00–25:30 | Code/tests, remaining unknown behavior, next validation, submission links |
 
-1. Run the current local app and confirm model`aura-synthetic-2.0.0` in evidence.
-2. Confirm current MAE 11.62 and fresh final 80 identities. Old 10.95/0.20 policy materials are historical.
-3. Keep the current PDF, README, model/data card and a terminal open. Use fictional notes only.
-4. Test patient selection, replay, scenario reset, Challenge Lab and receipt download before recording.
-5. Record screen and clear audio. Explain that this is synthetic replay, not a real patient/device feed.
+## Before recording
 
-## Full speaking sequence
+Run the current app and confirm `/api/health` identifies the intended model. Reset demo notes and scenarios. Verify the PDF, narration and active model agree. Confirm no real patient data, leader phone/email, secrets, account tokens or personal paths appear on screen. Keep the generated patient label visible.
 
-The schedule below is a minimum one-minute allocation per slide. Spend additional time operating the dashboard on slides 12–18; the full narration normally takes longer than 22 minutes.
+## Evidence wording
 
-| Slide | Minimum time block | Topic |
-| --- | --- | --- |
-| 1 | 00:00–01:00 | A patient’s history. A more adaptable outlook. |
-| 2 | 01:00–02:00 | Give changing signals their historical context. |
-| 3 | 02:00–03:00 | Predict a defined event, at a defined time. |
-| 4 | 03:00–04:00 | Synthetic data with deliberately varied routines. |
-| 5 | 04:00–05:00 | Only the available past enters the prediction. |
-| 6 | 05:00–06:00 | Two streams. One inspectable inference path. |
-| 7 | 06:00–07:00 | Select and calibrate before opening the final cohort. |
-| 8 | 07:00–08:00 | A clock-free candidate earns the final evaluation. |
-| 9 | 08:00–09:00 | Measure error and the review-policy tradeoff. |
-| 10 | 09:00–10:00 | Compare models on the same fresh routine cases. |
-| 11 | 10:00–11:00 | Show uncertainty without promising coverage. |
-| 12 | 11:00–12:00 | An overview designed for a clinical review. |
-| 13 | 12:00–13:00 | Replay makes the information boundary tangible. |
-| 14 | 13:00–14:00 | Inspect context without turning it into a cause. |
-| 15 | 14:00–15:00 | Explore an assumption. Do not infer a treatment. |
-| 16 | 15:00–16:00 | Freeze the prediction. Then reveal the outcome. |
-| 17 | 16:00–17:00 | Four sensor cases expose different failure modes. |
-| 18 | 17:00–18:00 | Make the experiment reproducible offline. |
-| 19 | 18:00–19:00 | The evidence travels with the implementation. |
-| 20 | 19:00–20:00 | Improved synthetic robustness still has limits. |
-| 21 | 20:00–21:00 | Use the remaining failures to guide validation. |
-| 22 | 21:00–22:00 | A complete local prototype, with evidence attached. |
+On the same 100,800 fresh final windows, missed positives changed from **1,742 to 1,669**, and false-positive flags from **8,730 to 8,170**. The frozen v3 policy at 0.1550 has 74.47% recall and 37.34% precision, with 1,669 false-negative and 8,170 false-positive windows. Frozen v2 on the same cases has 1,742 FN and 8,730 FP. The gains are modest and mixed: the patient-bootstrap 95% interval for the FN difference includes zero, and the withheld combination has **324 → 330 missed positive windows**. This does not establish a reliable reduction in misses or improvement across every routine.
 
-## Live operations to show during the relevant chapters
+The primary test has 100,800 windows across 120 new identities and six familiar families. The withheld combination uses those same identities and is separate. The separate withheld factor combination has 12.07 mg/dL MAE, 60.99% recall and 24.11% precision. FN changes 324 → 330; FP changes 1,657 → 1,624. Show all families, including weak cases. Do not replace the current results with an older model's original-cohort score.
 
-- Slide 12: search/switch patient; point to synthetic label, routine, current value and two-hour forecast.
-- Slide 13: pause and scrub replay; distinguish measured history from projected future and band.
-- Slide 14: inspect patient record and grouped risk sensitivity; explain nonadditive/noncausal reference changes.
-- Slide 15: apply then reset a hypothetical meal/activity assumption; show trained event probability stays at baseline.
-- Slides 16–18: freeze/reveal a clean case, compare persistence, demonstrate short gap, abstaining dropout and plausible bias; export and verify a receipt.
-- Slide 19: inspect current metrics/protocol and run tests or show the recorded verification results.
+Distinguish exact-horizon threshold prediction from new-event detection; window counts from episodes; descriptive bands from guarantees; grouped sensitivity from causality; arithmetic what-if controls from treatment simulation; receipt hashes from signatures; transport encryption from clinical certification.
 
-At the end, show actual repository contents and accessible artifact links. Acknowledge that public publication/upload/portal steps remain pending until completed. Do not fabricate a public video URL or imply the recording is a clinical study.
+## Live interaction sequence
 
-## Content checks before upload
+Select any demo patient, inspect the timestamp and units, pause and scrub replay, then open the record and evidence tabs. Apply and reset a hypothetical scenario while showing that trained risk remains unchanged. Add a clearly fictional note and export the patient summary if useful.
 
-- Exact target is glucose ≥180 at exactly +120 minutes, not any crossing.
-- Fresh final identities are held out; all six routine families occur in training.
-- EHR's added MAE benefit is modest (~0.107 mg/dL), not the whole model improvement.
-- Policy 0.16 final recall 78.73%, precision 40.50%; correlated windows, not clinical episodes.
-- Bands have 89.42% marginal coverage and 61.66 mg/dL width; no individual guarantee.
-- Future meals are not input. Previous-day signals are past observations.
-- Tree sensitivities are nonadditive risk-percentage-point reference changes, not SHAP or treatment effects.
-- Show failures honestly, verify the actual exported receipt, and confirm the final MP4 lasts≥20 minutes.
+Follow [JURY_CHALLENGE_SCRIPT.md](JURY_CHALLENGE_SCRIPT.md) for the challenge. Freeze first, reveal second. Allow the model to lose to persistence. Demonstrate the dropout abstention and bias blind spot. Download a receipt without its hosted transport token and run the verifier locally.
+
+## Recording and accessibility
+
+Use legible screen magnification, a 16:9 recording, clear speech and captions/transcript. A slide narration with actual interface screenshots is a presentation walkthrough; do not describe it as a live clinical trial or live device stream. After rendering, probe the actual duration, decode the full video, check every chapter boundary and test the public file in a signed-out browser. Record the verified result in [VERIFICATION.md](VERIFICATION.md) and the README.

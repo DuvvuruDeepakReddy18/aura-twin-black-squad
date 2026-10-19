@@ -1,20 +1,22 @@
-# Three-minute live jury challenge — current model
+# Three-minute jury challenge
 
-**Model:** `aura-synthetic-2.0.0`. Open `http://localhost:4173`, confirm model evidence shows current 11.62 aggregate MAE, and choose a supported patient/cutoff. Do not use an old screenshot or old receipt as current evidence.
+Use the current model `aura-synthetic-3.0.0`. Let the reviewer choose a synthetic patient and cutoff; do not search for a favorable outcome. The public dataset is not securely blinded.
 
-| Time | Action | Talk track |
-| --- | --- | --- |
-| 0:00–0:20 | Show current model evidence | “We improved same-case MAE from 18.30 to 11.62 after an earlier routine-shift failure. Final patients are new; routine families were in training.” |
-| 0:20–0:45 | Challenge lab → Clean replay → Freeze prediction | “The model receives only the available prefix. This result is frozen before outcome comparison.” |
-| 0:45–1:10 | Reveal recorded future | “Compare all four horizons with persistence and the interval. This selected window is not a cohort score.” |
-| 1:10–1:30 | 10-minute CGM gap → Freeze/reveal | “Short missingness is forward-filled and marked degraded. That does not guarantee accurate imputation.” |
-| 1:30–1:50 | 30-minute dropout → Freeze | “The system abstains because glucose is stale. Null risk is not zero risk.” |
-| 1:50–2:15 | Undetected sensor bias → Freeze/reveal | “Plausible fresh values can still be biased. The quality gate does not detect every wrong input.” |
-| 2:15–2:40 | Download receipt; optionally run verifier | “The receipt can be recomputed offline. Hashes prove local consistency, not trusted authorship.” |
-| 2:40–3:00 | Return to routine evidence | “All six MAE rows improve, but variable-routine recall/precision and band coverage remain weaker. No future meal schedule is supplied.” |
+| Time | Action | Say |
+|---|---|---|
+| 0:00–0:25 | Show patient, cutoff and synthetic banner | “This joins the fictional EHR with only the wearable history available now.” |
+| 0:25–0:50 | Open Challenge lab; choose Clean replay; Freeze prediction | “This prediction is frozen before we reveal its recorded future.” |
+| 0:50–1:15 | Reveal recorded future | “Compare four horizon errors, persistence and interval hits. A local loss stays visible.” |
+| 1:15–1:40 | Reset; select 10-minute CGM gap; freeze | “Short gaps can be forward-filled and marked degraded; imputation is not proof of accuracy.” |
+| 1:40–2:00 | Select 30-minute dropout; freeze | “The glucose is too stale. The system withholds risk and forecast.” |
+| 2:00–2:20 | Select Undetected sensor bias; freeze/reveal | “Freshness checks can miss plausible bias. This is a deliberate blind spot.” |
+| 2:20–2:45 | Download receipt; show verification command | “The receipt can reproduce this model and input. Hashes do not prove authorship or time.” |
+| 2:45–3:00 | Show current evidence table | “The frozen policies are compared on the same fresh windows. Inspect both missed and false-positive counts.” |
 
-If the model loses to persistence or misses a positive window, explain that failure before choosing another example. Do not turn a favorable case into a clinical performance claim. The underlying synthetic dataset is public; freeze/reveal is not secure study blinding.
+Primary summary if asked: The frozen v3 policy at 0.1550 has 74.47% recall and 37.34% precision, with 1,669 false-negative and 8,170 false-positive windows. Frozen v2 on the same cases has 1,742 FN and 8,730 FP. The gains are modest and mixed: the patient-bootstrap 95% interval for the FN difference includes zero, and the withheld combination has **324 → 330 missed positive windows**. This does not establish a reliable reduction in misses or improvement across every routine. The separate withheld factor combination has 12.07 mg/dL MAE, 60.99% recall and 24.11% precision. FN changes 324 → 330; FP changes 1,657 → 1,624.
 
-Offline command: `node scripts/verify_receipt.mjs path/to/receipt.json`.
+```sh
+node scripts/verify_receipt.mjs path/to/receipt.json
+```
 
-This short live challenge supplements the full current≥20-minute video. It does not replace the organizer's minimum video duration. Use `DEMO_RUNBOOK.md` for the complete presentation.
+Hosted sessions work across instances through a temporary authenticated encrypted snapshot. Local sessions use bounded memory. Neither path reruns the prediction on reveal. If the session expired or model changed, start a new challenge and state that clearly.

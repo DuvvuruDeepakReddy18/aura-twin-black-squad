@@ -50,7 +50,12 @@ def predict_export(model, x):
 
 def evaluate(model, ids, params, days):
     rows, targets, current, groups = [], [], [], []
-    extractor = robust_features if 'priorDayMean120' in model['featureNames'] else legacy_features
+    if model.get('featureSet') == 'trajectory_v3':
+        # Lazy import: the trainer also imports this independent JSON traversal.
+        from train_v3 import trajectory_features
+        extractor = trajectory_features
+    else:
+        extractor = robust_features if 'priorDayMean120' in model['featureNames'] else legacy_features
     for patient_id in ids:
         patient = generate_patient(int(patient_id.split('-')[1])-1, days, **params)
         for cursor in range(288, len(patient['series'])-24, 6):
@@ -92,13 +97,15 @@ def main():
                   'target':metrics['target'], 'alertThreshold':model['alertPolicy']['threshold']}
         output = folder/'stress-reproduced.json'
     else:
-        if model['modelVersion'] != 'aura-synthetic-2.0.0':
-            raise RuntimeError('Train and freeze v2 before running the current audit; use --legacy for archived v1.')
+        if model['modelVersion'] not in ['aura-synthetic-2.0.0', 'aura-synthetic-3.0.0']:
+            raise RuntimeError('A frozen v2 or v3 model is required; use --legacy for archived v1.')
         protocol = json.loads((folder/'robustness-protocol.json').read_text(encoding='utf8'))
         robustness = json.loads((folder/'robustness.json').read_text(encoding='utf8'))
         if robustness['modelSHA256'] != model_hash:
             raise RuntimeError('Current model does not match the recorded final evaluation fingerprint.')
-        ids, days, routines = protocol['splits']['test'], protocol['days'], protocol['routines']
+        ids, days, routines = protocol['splits']['test'], protocol['days'], list(protocol['routines'])
+        if protocol.get('heldOutCombination'):
+            routines.append(protocol['heldOutCombination'])
         expected = {case['id']:case['models']['fused'] for case in robustness['cases']}
         report = json.loads((folder/'stress.json').read_text(encoding='utf8'))
         output = folder/'stress.json'

@@ -1,23 +1,21 @@
-# Requirement-to-evidence map — current model
+# Submission requirement traceability
 
-| Phase 1 requirement | Current artifact | Evidence boundary |
-| --- | --- | --- |
-| Digital twin proof of concept | Patient-specific EHR + wearable state; past-only forecasts update with replay | Narrow predictive twin, not a whole-body model |
-| Historical/EHR stream | Generated age, BMI, HbA1c, LDL and diabetes duration | Synthetic only; arbitrary genetic markers excluded |
-| Dynamic sensor stream | Five-minute CGM, HR, HRV, steps and asleep/awake replay | Simulated, no device account or live clinical feed |
-| Working adverse-event algorithm | Current boosting model forecasts four horizons and exact +120 min glucose ≥180 probability | Exact endpoint, not any excursion; no clinical validation |
-| Demonstrate fusion | Fused/sensor/static/persistence/legacy comparisons on same new cases | EHR increment is modest 0.107 mg/dL; generator assumptions apply |
-| Clinician UI | Overview, record, evidence, replay, scenarios, notes, exports, Challenge Lab | Conceptual workflow; no measured clinical usability benefit |
-| Data constraints | Own seeded synthetic generator; no PHI | Not a compliance certification |
-| Team/college/title/problem/use case/stack/model | README and current presentation/model card | Black Squad; Amrita Vishwa Vidyapeetham, Chennai |
-| Architecture PDF/PPT | `AURA_Twin_Architecture.pdf`, three current pages | Runtime, partition/freeze protocol, Challenge Lab |
-| Presentation PDF/PPT | `AURA_Twin_Presentation.pdf`,22 current pages; six-page lab supplement | Current model 2.0.0 evidence |
-| Minimum 20-minute video | Current narration and regenerated full walkthrough | Verify actual current MP4 duration/playback; old recordings are historical |
-| Open-source license | Root `LICENSE` | MIT; dependency licenses separate |
-| Robustness improvement | `data/robustness.json`, protocol/selection/audit files and `STRESS_AUDIT.md` | Fresh identities within six seen routine families; not unseen-routine validation |
-| Reproducible experiments | Freeze/reveal, JSON receipt, `scripts/verify_receipt.mjs` | Hash consistency, not trusted signatures or clinical audit certification |
-| Public repository link | Publish local repository and insert actual URL | Pending signed-out accessibility check |
-| Public video/files | Upload current video and test every README link | Pending upload and verification |
-| Submission platform fields | Leader name, phone, email, public GitHub URL | Contact details are outside public repo |
+| Requirement | Implemented evidence | Boundary/status |
+|---|---|---|
+| Team and college | README team table | Black Squad; Amrita Vishwa Vidyapeetham, Chennai |
+| Project title/problem/use case | README; presentation slides 1–3 | Exact +120-minute synthetic glucose outcome |
+| Static EHR plus dynamic wearable data | Generator, 108 features, model export and runtime | Five static predictors plus past sensor history; no PHI |
+| Working adverse-event prediction | `/api/predict`, replay, current metrics | Defined threshold at exact horizon, not clinical validation |
+| Conceptual doctor dashboard | Overview, records, evidence, Challenge Lab | Runnable conceptual workflow; usability benefit unmeasured |
+| Technical stack and AI framework | README; model/data card; requirements | Python/scikit-learn offline; native Node/JavaScript runtime |
+| Evaluation and outcome | Frozen v2/v3 paired comparison; all routine rows | 120 fresh final identities; withheld combination separate |
+| Minimum 20-minute video | Current 22-chapter narration and [public MP4](https://aura-twin-black-squad.vercel.app/docs/AURA_Twin_Walkthrough.mp4) | 26:24.11, fully decoded; anonymous download verified |
+| Architecture PDF/PPT | `AURA_Twin_Architecture.pdf` | PDF supplied |
+| Presentation PDF/PPT | `AURA_Twin_Presentation.pdf` | 22-slide PDF supplied |
+| Open-source license | Root MIT LICENSE | Dependency licenses remain applicable |
+| Public GitHub | [aura-twin-black-squad](https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad) | Public repo created; final revision/access to be verified |
+| Hosted prototype | [Public Vercel application](https://aura-twin-black-squad.vercel.app); deployment guide | V3 health and hosted freeze/reveal verified; only packaged synthetic IDs |
+| Folder naming | `Black Squad_Amrita Vishwa Vidyapeetham Chennai` | Matches team/college convention |
+| Submission contacts | Private leader handoff/platform | Phone/email deliberately absent from public repo |
 
-Required folder: `Black Squad_Amrita Vishwa Vidyapeetham Chennai`. A listed artifact is not proof that an external publication step has been completed.
+See [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md) for the remaining publication checks and [VERIFICATION.md](VERIFICATION.md) for the exact current verification status.

@@ -33,8 +33,8 @@ def base(c,n,kicker,title,sub=None,dark=False):
     c.setFillColor(HexColor(INK if dark else BG)); c.rect(0,0,W,H,fill=1,stroke=0)
     txt(c,'AURA / TWIN',42,22,180,12,MINT if dark else TEAL,True)
     txt(c,kicker.upper(),650,23,268,10,MINT if dark else MUTED)
-    if title: txt(c,title,42,72,876,34,WHITE if dark else INK,True,39)
-    if sub: txt(c,sub,44,126,865,14,'B9D2CE' if dark else MUTED)
+    title_height=txt(c,title,42,72,876,34,WHITE if dark else INK,True,39) if title else 0
+    if sub: txt(c,sub,44,max(126,80+title_height),865,14,'B9D2CE' if dark else MUTED)
     txt(c,'BLACK SQUAD   /   SYNTHETIC PROOF OF CONCEPT',42,511,740,9,'B9D2CE' if dark else MUTED)
     txt(c,f'{n:02}',884,508,35,12,MINT if dark else TEAL,True)
 
@@ -102,9 +102,9 @@ def three(c,items,y=188,h=246):
 def draw_slide(c,slide,ctx):
     n=slide['slide']; kind=slide['kind']; title=slide['title']
     if kind in ('cover','closing'):
-        base(c,n,'Current robustness edition',None,dark=True)
+        base(c,n,'Current decision-policy edition',None,dark=True)
         txt(c,'AURA Twin' if kind=='cover' else 'A forecast you can inspect.',44,103,850,48,WHITE,True,55)
-        txt(c,'History + wearable state.<br/>Fresh-patient evidence.<br/>A challengeable prediction.' if kind=='cover' else 'A working fusion pipeline.<br/>A measured synthetic improvement.<br/>A reproducible challenge.',47,191,815,31,'B9D2CE',False,43)
+        txt(c,'History + wearable state.<br/>Fresh-patient evidence.<br/>A challengeable prediction.' if kind=='cover' else 'A working fusion pipeline.<br/>A measured synthetic comparison.<br/>A reproducible challenge.',47,191,815,31,'B9D2CE',False,43)
         pill(c,ctx['model_version'].upper(),47,372,230)
         txt(c,'Black Squad · Amrita Vishwa Vidyapeetham, Chennai',47,427,850,17,WHITE,True)
         txt(c,'Banu Sreya V. · Duvvuru Deepak Reddy',47,458,850,14,MINT)
@@ -123,28 +123,34 @@ def draw_slide(c,slide,ctx):
         card(c,42,187,214,104,'Historical EHR','Age · BMI · HbA1c · LDL<br/>Diabetes duration',fill=MINT)
         card(c,42,325,214,113,'Wearable history','CGM · HR · HRV<br/>Steps · sleep; cutoff-bounded',fill=MINT)
         card(c,309,240,277,163,'Past-only feature fusion',str(ctx['feature_count'])+' clock-free features<br/>'+ctx['algorithm_short']+'<br/>Calibration + residual bands')
-        card(c,641,187,277,104,'Local inference','Exported JSON model<br/>Node.js + JavaScript evaluator')
+        card(c,641,187,277,104,'Local + hosted inference','Exported JSON model<br/>Shared JavaScript evaluator')
         card(c,641,325,277,113,'Clinician review','Replay · uncertainty · records<br/>Challenge Lab · receipt export')
         arrow(c,256,239,309,277); arrow(c,256,380,309,350); arrow(c,586,294,641,239); arrow(c,780,291,780,325)
         txt(c,'No future meals, future readings or hidden simulator state enter inference.',44,470,868,14,TEAL,True)
     elif kind=='split':
-        parts=[('256','Fit','Training identities<br/>Candidate fitting only'),('48','Select','Separate identities<br/>Choose candidate only'),('48','Calibrate','Separate identities<br/>Probability, bands, policy'),('80','Final test','New indices 1000–1079<br/>Generate after model freeze')]
+        parts=[('768','Fit','Training identities<br/>Candidate fitting only'),('80','Select','Separate identities<br/>Choose candidate + policy shape'),('96','Calibrate','Separate identities<br/>Probability, bands, threshold'),('120','Final test','New indices 2000–2119<br/>Generate after model freeze')]
         for i,(num,title,body) in enumerate(parts): card(c,42+i*224,187,203,242,title,body,num,MINT if i==3 else WHITE)
         txt(c,'Every routine variant and window for an identity stays in one partition.',44,454,866,15,TEAL,True)
-        txt(c,'Fresh identities within a declared six-routine mixture; not a test of every unseen behavior.',44,483,870,11,MUTED)
+        txt(c,'Six familiar families + one withheld factor combination; the same 120 final identities.',44,483,870,11,MUTED)
+    elif kind=='decisions':
+        table(c,['Frozen policy','Threshold','Recall','Precision','Missed +','False +'],ctx['decision_table'],[255,105,123,123,135,135],y=188,row_height=54)
+        txt(c,ctx['decision_change'],44,384,868,21,TEAL,True)
+        txt(c,ctx['error_summary'],44,427,868,15,INK,True)
+        txt(c,'Primary familiar-family test · overlapping windows, not unique clinical episodes.',44,476,870,12,MUTED)
     elif kind=='results':
         table(c,['Model','+120 MAE ↓','AUROC ↑','Brier ↓'],ctx['model_table'],[345,177,177,177],row_height=40)
         txt(c,ctx['policy_summary'],44,443,868,15,TEAL,True)
         txt(c,'Units: mg/dL. Repeated windows are correlated. Scores do not establish clinical validity.',44,481,870,11,MUTED)
     elif kind=='routines':
-        table(c,['Routine','Current MAE','Legacy MAE','Persistence','Band cover'],ctx['routine_table'],[280,149,149,149,149],y=174,row_height=39)
-        txt(c,'All rows use the same fresh patient identities. Routine families were declared during development.',44,470,870,12,TEAL,True)
+        table(c,['Routine','FN: v2 → v3','FP: v2 → v3','V3 recall','V3 precision'],ctx['routine_table'],[280,149,149,149,149],y=174,row_height=39)
+        txt(c,ctx['unseen_caption'],44,467,870,13,TEAL,True)
+        txt(c,'Withheld combination is separate from this six-family primary table.',44,491,870,10,MUTED)
     elif kind=='uncertainty':
         three(c,[('Observed coverage','Nominal 90% descriptive residual bands.<br/>Measured on the fresh final cohort.',ctx['coverage_display']),('Mean band width','At the two-hour horizon.<br/>Broader uncertainty can accompany irregular behavior.',ctx['width_display']),('Review policy','Threshold fixed on calibration patients.<br/>Not a validated clinical trigger.',ctx['threshold_display'])],h=241)
         txt(c,'Coverage is marginal. No guarantee per patient, subgroup or shifted population.',44,462,870,16,TEAL,True)
     elif kind in ('dashboard','replay','record'):
         filename={'dashboard':'dashboard-current.png','replay':'dashboard-current.png','record':'record-current.png'}[kind]
-        crop={'dashboard':None,'replay':(.235,.33,.92,.77),'record':(.145,.30,.59,.67)}[kind]
+        crop={'dashboard':None,'replay':(.234,.312,.916,.73),'record':(.234,.312,.916,.67)}[kind]
         if not screenshot(c,filename,42,174,876,290,crop=crop):
             three(c,slide['cards'],h=241)
         txt(c,slide.get('caption','Actual local interface · all observations are generated for this demonstration'),44,480,870,12,TEAL,True)
@@ -173,7 +179,7 @@ def draw_slide(c,slide,ctx):
 
 def build(slides,ctx,out):
     deck=canvas.Canvas(str(out/'AURA_Twin_Presentation.pdf'),pagesize=(W,H))
-    deck.setTitle('AURA Twin — Current robustness edition'); deck.setAuthor('Black Squad')
+    deck.setTitle('AURA Twin — Current decision-policy edition'); deck.setAuthor('Black Squad')
     for slide in slides: draw_slide(deck,slide,ctx); deck.showPage()
     deck.save()
     arch=canvas.Canvas(str(out/'AURA_Twin_Architecture.pdf'),pagesize=(W,H)); arch.setTitle('AURA Twin — Current architecture'); arch.setAuthor('Black Squad')

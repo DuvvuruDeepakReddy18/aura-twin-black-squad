@@ -1,63 +1,27 @@
-# AURA Twin — current technical jury Q&A
+# Jury questions and defensible answers
 
-**Version:** `aura-synthetic-2.0.0`. Numerical claims below refer to the fresh final mixture, not the historical v1 regular cohort.
+**What exactly is predicted?** Numerical glucose at +30/+60/+90/+120 minutes and probability of glucose ≥180 mg/dL at exactly +120 minutes. Not any crossing in the interval, and not necessarily a new onset.
 
-## What is the digital twin?
+**Where is the digital twin?** The current patient state joins a static fictional EHR with a time-indexed wearable prefix. It updates under replay and drives the forecast, quality state and review interface. It is a narrow computational twin, not a complete physiological replica.
 
-A patient-specific computational state combines a synthetic historical EHR and changing wearable history. Replay updates past-only features and forecasts. It is a narrow predictive twin, not a whole-body mechanistic simulator.
+**Did you improve both misses and false alerts?** The frozen v3 policy at 0.1550 has 74.47% recall and 37.34% precision, with 1,669 false-negative and 8,170 false-positive windows. Frozen v2 on the same cases has 1,742 FN and 8,730 FP. The gains are modest and mixed: the patient-bootstrap 95% interval for the FN difference includes zero, and the withheld combination has **324 → 330 missed positive windows**. This does not establish a reliable reduction in misses or improvement across every routine. Compare the two policies on the same fresh windows. The full paired uncertainty is in the model card; per-routine and withheld-combination results must also be read. Counts are correlated windows, not deduplicated alerts.
 
-## What exactly is predicted?
+**Did you just lower the threshold?** Candidate choice is based on the worst FP/FN ratio to frozen v2 over specified development groups. Calibration fixes one global threshold of 0.1550 before final generation. Ranking/probability metrics and paired final counts are also reported; a threshold change alone leaves the underlying precision–recall curve unchanged.
 
-Glucose at +30,+60,+90,+120 minutes and probability of glucose ≥180 mg/dL at exactly +120 minutes. This is not any excursion in the interval. The threshold is an explicit prototype convention, not an individualized care target.
+**Is the test genuinely new?** Final identities SYN-2001–SYN-2120 are generated after model/policy freeze and were not used in earlier inspected final results. The familiar families are seen during development. The exact withheld factor combination is not. Local hashes and code order are auditable but not independently timestamped preregistration.
 
-## What did you actually improve?
+**Can you foresee an unannounced meal?** Not before any predictive evidence exists. Inputs contain only observed history. Previous-day values are already in the past, and future simulator meal schedules are excluded. The simulated HR meal-response term may favor the model; it does not prove meal inference from real wearables.
 
-The old clock-based model failed under routine shifts. The current model removes absolute clock inputs, uses 53 richer past-only features, adds six routine families during training, and selects histogram boosting on separate selection identities. Frozen-model evaluation on 80 new identities reduces same-case MAE from 18.30 to 11.62 mg/dL. All six rows improve versus frozen v1. See `data/robustness.json` for exact comparisons and paired intervals.
+**Does EHR fusion add value?** Sensor-only minus fused MAE is 0.075 mg/dL on the primary final comparison. Read the paired interval. We do not attribute all improvement to EHR or promise a large fusion effect.
 
-## Did you tune on the final test?
+**What does the uncertainty band mean?** A symmetric per-horizon band from the 90th percentile of absolute calibration errors. Primary +120 coverage is 90.60%, with width 61.76 mg/dL. It is a marginal descriptive result, not a per-patient or shifted-population guarantee.
 
-No. Fitting uses 256 identities, model choice 48 other identities, and calibration 48 others. The exported model/calibration/widths/threshold are saved and hashed before final indices 1000–1079 are generated. Bytes are checked unchanged after scoring. This is an auditable local sequence, not independently timestamped preregistration. The earlier simulator failures did inform the new design.
+**Are explanations causal?** No. A group is replaced with its training-median reference and risk is recomputed. The percentage-point changes are nonadditive, not SHAP, and may involve unrealistic feature combinations. Scenario controls are hand-authored arithmetic; trained baseline risk stays unchanged.
 
-## Are these unseen routines?
+**What happens when a sensor fails?** A short gap can be carried forward with a degraded state. Excessive missingness or stale CGM/HR/HRV causes abstention. A plausible bias can pass those gates, which the challenge intentionally exposes.
 
-No. They are fresh patient identities within six routine families represented in training. Evaluation on entirely held-out routine families, another simulator, real devices or clinical data remains future work.
+**Can reveal change the earlier answer?** Reveal uses the frozen prediction; it does not rerun inference. Hosted sessions carry an authenticated encrypted snapshot across instances. Offline receipts exclude that transport token and can be reproduced against the packaged data/model. Hashes are not signatures or trusted timestamps.
 
-## Does the model know future meals?
+**What is public and private?** The public app accepts bundled synthetic IDs, and the repository contains generated records only. Care notes remain browser-local demo state. Team leader contact details belong in the submission platform, not the public repo. No real patient upload, clinical authentication or production health-record system is provided.
 
-No. It gets EHR and observations at or before the cutoff. Previous-day aligned glucose is known 22–23.5 hours earlier. Current HR contains a contemporaneous meal response in the synthetic generator; no meal annotation, future schedule or latent state is supplied. Unexpected future meals can still be missed.
-
-## Does the EHR stream add much?
-
-It adds a measured but modest 0.107 mg/dL improvement over sensor-only MAE, approximately 0.9%. The paired patient-bootstrap interval favors fusion in this mixture. Do not attribute the much larger improvement over v1 solely to EHR fusion; temporal representation, augmentation and nonlinear capacity changed too.
-
-## How are intervals and alerts selected?
-
-Separate calibration patients define per-horizon 90th absolute-residual widths and the highest 0.01 grid probability threshold reaching at least 80% calibration recall. The frozen threshold is 0.16. Final recall is 78.73%; precision 40.50%. Final +120 coverage is 89.42% with width 61.66 mg/dL. Per-routine coverage differs. These are descriptive marginal bands, not guaranteed individual coverage or validated clinical thresholds.
-
-## Why show a high AUROC beside weak precision?
-
-AUROC ranks probabilities across thresholds. It does not specify the operating burden at a chosen threshold. Final prevalence is 7.41%, and at 0.16 there are 5,758 false-positive and 1,059 false-negative windows. Correlated windows are not deduplicated clinical episodes. Precision/recall and the full confusion matrix remain visible.
-
-## Are the explanations SHAP or causal?
-
-Neither. For the tree model, replace a feature group with its training-median reference and recompute calibrated risk. Original minus reference risk is displayed in percentage points. Group sensitivities are nonadditive, and replacement can create unrealistic combinations. Scenario sliders remain hand-authored arithmetic; trained risk stays at baseline.
-
-## How does Challenge Lab protect the boundary?
-
-The server copies and physically truncates history before inference. Freeze returns no future values. Original future values are snapshotted after inference; reveal compares the frozen output without recomputation. Since the dataset is public, this is not secure clinical blinding. The score is for one selected window.
-
-## How does the system respond to missing or biased sensors?
-
-A 10-minute CGM gap is forward-filled and marked degraded; a 30-minute dropout exceeds freshness limits and abstains. A plausible +30 mg/dL bias can pass freshness checks while making predictions wrong. Quality status is not sensor-truth certification. No event probability is fabricated for an abstention.
-
-## What does receipt verification prove?
-
-Consistency with packaged artifacts: raw-model and canonical-input hashes plus recomputed inference/revealed values. It does not authenticate author/time, establish clinical validity, or protect against replacing all local artifacts. Run `node scripts/verify_receipt.mjs path/to/receipt.json`.
-
-## What data, licensing and deployment are involved?
-
-All data are generated by our own simulator; no PHI, real devices, MIMIC or Synthea export. MIT covers project content; dependencies retain their own licenses. The Node app runs locally without runtime packages or model accounts. There is no production clinical authentication, governed EHR integration or compliance certification.
-
-## Is this novel relative to published work?
-
-We do not claim the first glucose twin or counterfactual interface. Prior work such as [GlyTwin](https://arxiv.org/abs/2504.09846) exists. Our defensible submission contribution is the functioning fusion pipeline, measured improvement cycle, interactive failure inspection and reproducible receipts. Clinical and external validation remain future work.
+**What remains unproven?** External/clinical validity, medication response, unfamiliar physiology/devices, clinical benefit, usability, treatment safety and compliance certification. A prospective silent evaluation and episode-level notification analysis would be separate work.

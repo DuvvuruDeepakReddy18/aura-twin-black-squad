@@ -5,6 +5,7 @@ import unittest
 
 from generate import generate_patient
 from train_robust import robust_features
+from train_v3 import trajectory_features
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -40,14 +41,18 @@ class DataContractTests(unittest.TestCase):
     def test_python_features_do_not_read_after_the_cutoff(self):
         patient = generate_patient(8, meal_jitter_hours=1.5, day_shift_hours_sd=2)
         cursor = 610
-        features = robust_features(patient, cursor)
         prefix = {**patient, 'series': patient['series'][:cursor+1]}
-        self.assertEqual(features, robust_features(prefix, cursor))
-        self.assertEqual(features['priorDay120'], patient['series'][cursor-264]['glucose'])
+        extractors = [robust_features, trajectory_features]
+        snapshots = [extractor(patient, cursor) for extractor in extractors]
+        for extractor, features in zip(extractors, snapshots):
+            self.assertEqual(features, extractor(prefix, cursor))
+            self.assertEqual(features['priorDay120'], patient['series'][cursor-264]['glucose'])
         for row in patient['series'][cursor+1:]:
-            row['glucose'] = None
+            for field in ['glucose', 'hr', 'hrv', 'steps', 'sleep']:
+                row[field] = None
             row['timestamp'] = 'invalid future'
-        self.assertEqual(features, robust_features(patient, cursor))
+        for extractor, features in zip(extractors, snapshots):
+            self.assertEqual(features, extractor(patient, cursor))
 
 
 if __name__ == '__main__':

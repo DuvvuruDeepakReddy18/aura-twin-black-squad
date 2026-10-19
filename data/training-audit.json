@@ -1,34 +1,29 @@
 {
   "events": [
     {
-      "event": "protocol_locked",
-      "at": "2026-10-19T16:05:59.343288+00:00",
-      "finalPatientsGenerated": false
-    },
-    {
-      "event": "models_selected",
-      "at": "2026-10-19T16:06:54.323512+00:00",
-      "regressionChoice": "hist_gradient_boosting",
-      "classificationChoice": "hist_gradient_boosting",
-      "finalPatientsGenerated": false
-    },
-    {
       "event": "model_calibration_threshold_and_intervals_frozen",
-      "at": "2026-10-19T16:07:25.805427+00:00",
-      "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+      "at": "2026-10-19T17:09:40.708307+00:00",
+      "modelSHA256": "87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4",
       "finalPatientsGenerated": false
     },
     {
       "event": "final_generation_started",
-      "at": "2026-10-19T16:07:25.807390+00:00",
-      "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+      "at": "2026-10-19T17:11:05.370851+00:00",
+      "modelSHA256": "87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4",
       "finalPatientsGenerated": false
     },
     {
       "event": "final_evaluation_completed",
-      "at": "2026-10-19T16:08:03.649348+00:00",
-      "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+      "at": "2026-10-19T17:13:13.355024+00:00",
+      "modelSHA256": "87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4",
       "finalPatientsGenerated": true
+    }
+  ],
+  "reportingCorrections": [
+    {
+      "at": "2026-10-19T17:14:33.484811+00:00",
+      "kind": "reporting_only",
+      "detail": "Removed MAE confidence intervals from observed-CGM/trajectory slices because the equal-window bootstrap helper does not match their unequal per-patient window counts. Point metrics, paired aggregate/case intervals, fitted model and policy are unchanged."
     }
   ]
 }

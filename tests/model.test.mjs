@@ -23,6 +23,20 @@ test('JS features, regression, and calibrated probabilities match trained Python
   }
 });
 
+test('archived v2 remains reproducible after trajectory-model integration',()=>{
+  const archived=read('baseline-v2/model'),cohort=read('baseline-v2/patients'),fixtures=read('baseline-v2/parity');
+  try{
+    initializeModel(archived);
+    for(const expected of fixtures){
+      const result=infer(cohort.find(subject=>subject.id===expected.id),expected.cursor);
+      assert.equal(result.featureSet,'clock_free_v2');
+      for(const name of archived.featureNames)assert(Math.abs(result.features[name]-expected.features[name])<1e-8,`Archived v2 ${name} disagrees`);
+      assert(Math.abs(result.risk-expected.risk)<1e-10);
+      for(let index=0;index<4;index++)assert(Math.abs(result.forecast[index].glucose-expected.forecast[index])<.00051);
+    }
+  }finally{initializeModel(model);}
+});
+
 test('future observations cannot change current output or validation',()=>{
   const original=infer(patient,cursor);
   const changed=structuredClone(patient);

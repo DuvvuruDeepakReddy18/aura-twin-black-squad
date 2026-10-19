@@ -1,0 +1,79 @@
+{
+  "at": "2026-10-19T17:09:40.708307+00:00",
+  "modelSHA256": "87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4",
+  "modelVersion": "aura-synthetic-3.0.0",
+  "finalGenerated": false,
+  "selectedConfigurations": {
+    "regressionChoice": "rich_deep",
+    "classificationChoice": "rich_balanced",
+    "developmentSeconds": 22.088061809539795,
+    "finalGenerated": false
+  },
+  "policy": {
+    "threshold": 0.155,
+    "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+    "worstCountRatioToV2": 0.9502617801047121,
+    "meanCountRatioToV2": 0.936456878724021,
+    "simultaneouslyLower": true,
+    "counts": {
+      "all": {
+        "tn": 66231,
+        "fp": 7868,
+        "fn": 1337,
+        "tp": 5204,
+        "recall": 0.7955970035162819,
+        "precision": 0.3981028151774786
+      },
+      "irregular": {
+        "tn": 32694,
+        "fp": 4312,
+        "fn": 988,
+        "tp": 2326,
+        "recall": 0.7018708509354254,
+        "precision": 0.3504067490207894
+      },
+      "variableRoutine": {
+        "tn": 10898,
+        "fp": 1507,
+        "fn": 363,
+        "tp": 672,
+        "recall": 0.6492753623188405,
+        "precision": 0.30839834786599357
+      }
+    },
+    "v2Counts": {
+      "all": {
+        "tn": 65776,
+        "fp": 8323,
+        "fn": 1428,
+        "tp": 5113,
+        "recall": 0.7816847576823116,
+        "precision": 0.3805448050014885
+      },
+      "irregular": {
+        "tn": 32287,
+        "fp": 4719,
+        "fn": 1065,
+        "tp": 2249,
+        "recall": 0.6786360893180446,
+        "precision": 0.32276119402985076
+      },
+      "variableRoutine": {
+        "tn": 10811,
+        "fp": 1594,
+        "fn": 382,
+        "tp": 653,
+        "recall": 0.6309178743961352,
+        "precision": 0.2906097018246551
+      }
+    },
+    "v2Threshold": 0.16,
+    "calibrationRecall": 0.7955970035162819,
+    "calibrationPrecision": 0.3981028151774786
+  },
+  "protocolSHA256": "c9b6136d9fcd65ecc29b3644904fcc2f81b923331ff5536b880b27669a5f9241",
+  "protocolMetadataClarification": {
+    "at": "2026-10-19T17:10:08.775497+00:00",
+    "detail": "Added explicit trainingStrideMinutes60. Selection stride was already explicitly30; no data, fitted parameters, thresholds or model bytes changed."
+  }
+}

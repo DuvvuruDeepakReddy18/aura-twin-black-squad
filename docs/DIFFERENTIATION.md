@@ -1,36 +1,30 @@
-# AURA Twin — a prediction the jury can challenge
+# A digital twin the jury can challenge
 
-**Current model:** `aura-synthetic-2.0.0`. **Positioning:** a working synthetic glucose twin that responds to a measured failure with a reproducible model improvement, then makes the new predictions and remaining limits inspectable.
+AURA Twin's differentiation is an inspectable experiment attached to a working clinician dashboard. It combines historical EHR and changing sensor state, reports a precisely defined future outcome, and lets the jury reproduce a selected prediction. This is a positioning choice against common prototype patterns, not a claim about unseen competing teams or a first-in-field invention.
 
-Lead with: **“We found where the first model broke, improved it on a broader training design, and tested the frozen replacement on new patients. Now you can challenge the prediction yourself.”**
-
-## What is distinct in this submission
-
-| Typical prototype pattern, not a claim about actual competitors | What AURA implements | Limit |
-| --- | --- | --- |
-| Attractive forecast screen | Runtime EHR/wearable fusion, current model artifacts and replay | Synthetic local prototype |
-| One headline metric | Five same-case model comparisons, six routine rows, paired patient intervals | Same generator family; not clinical |
-| Failure described as future work | Clock-free, routine-augmented boosting evaluated after model freeze | Routine families occur in training |
-| Prepared success screenshot | Jury-selected cutoff, freeze, reveal, persistence and interval comparison | Selected window is not cohort evidence |
-| “Safe” quality badge | Degraded gap, abstaining dropout and explicitly undetected bias | Not a validated clinical safety gate |
-| Screenshot evidence only | Downloaded receipt and offline recomputation | Hash consistency, not signatures |
-
-The same-case aggregate two-hour MAE improves from 18.30 to 11.62 mg/dL (36.5%). All six MAE rows improve against the frozen earlier model. The EHR increment is modest: 0.107 mg/dL (~0.9%) beyond sensors, so the larger claim belongs to the changed temporal features, augmentation and nonlinear model. Final recall 78.73% and precision 40.50% at 0.16 remain imperfect.
+| Common prototype pattern | What AURA implements |
+|---|---|
+| Attractive fixed dashboard | Runnable search, replay, context, risk, uncertainty and exports |
+| One aggregate accuracy figure | Same-window frozen baseline comparison, FP/FN, calibration, per-routine results and patient bootstrap |
+| A convenient regular schedule | Varied routines, fresh final identities and a separate withheld factor combination |
+| A perfect example | Jury-selected cutoff, freeze/reveal, local error and persistence comparison |
+| Missing input hidden by a score | Explicit degraded data or abstention; plausible bias exposed as a blind spot |
+| Screenshot as proof | Portable JSON receipt and offline reproduction |
 
 ## Two-minute pitch
 
-“AURA Twin combines a patient's historical health context and changing wearable state into an inspectable two-hour glucose forecast. The records and sensors are wholly synthetic. We predict a precise endpoint, not an ambiguous claim that any spike will be detected.
+“We are Black Squad from Amrita Vishwa Vidyapeetham, Chennai. AURA Twin joins a fictional patient's EHR context with a changing wearable stream to predict glucose and a precisely defined high-glucose outcome two hours ahead.
 
-Our first model had a weakness: it learned regular meal timing and degraded when routines changed. We did not stop at documenting that weakness. We removed explicit clock features, added richer past-only history, trained on varied routines, and compared a linear model with boosting on separate selection patients. We calibrated the winner separately, froze it, and only then generated eighty new final patient identities.
+We built a clinician-style review screen, but the stronger part is what happens when you question it. Choose a patient and time. Freeze the prediction before revealing the recorded future. Compare it with persistence, inspect the band, and take a receipt you can verify offline.
 
-On those same fresh cases, mean absolute error fell from 18.30 to 11.62 milligrams per deciliter. All six routine-family errors improved against the frozen old model. Those families were present in training, and future meals are never supplied. This is a measured synthetic improvement, not a claim that unknown human behavior is solved.
+Our earlier model exposed routine dependence and a difficult alert tradeoff. This edition selects for missed-positive and false-positive windows together, then freezes calibration and one global policy before generating new final identities. The frozen v3 policy at 0.1550 has 74.47% recall and 37.34% precision, with 1,669 false-negative and 8,170 false-positive windows. Frozen v2 on the same cases has 1,742 FN and 8,730 FP. The primary missed-window reduction is uncertain, and misses increase slightly on the withheld combination. We show the entire routine table, uncertainty and remaining errors. These are synthetic windows, not proven clinical events or treatment benefits.
 
-Now choose a patient and cutoff. Freeze the prediction, reveal the recorded future, and compare the model with persistence. Remove readings to see degraded quality or abstention. Add a plausible bias to see a blind spot. Download the receipt and verify it offline.
+The system also knows when its inputs are too stale to issue a forecast, while demonstrating that a plausible bias can still fool freshness checks. The what-if controls are clearly illustrative, not causal treatment guidance.
 
-The contribution is a working model, an honest improvement cycle, and evidence a reviewer can inspect. Real-world clinical validation remains the next challenge.”
+Our claim is a complete, reproducible proof of concept with evidence you can challenge. We invite the jury to choose a window, reveal the result and verify the receipt.”
 
-## Prior work and claim boundaries
+## Claims to avoid
 
-[GlyTwin](https://arxiv.org/abs/2504.09846) already explores glucose digital twins and behavioral counterfactual scenarios. We claim no first-in-field invention, no direct accuracy superiority across unlike datasets, and no learned causal treatment effects. The [npj Digital Medicine VVUQ perspective](https://www.nature.com/articles/s41746-025-01447-y) motivates explicit verification/validation/uncertainty concerns; it does not validate this prototype.
+Do not say first digital twin, clinically accurate, guaranteed early warning, proven prevention, HIPAA/DPDP certified, or zero false alerts. Do not describe a threshold change as improved discrimination. Do not call overlapping windows unique events. Do not compare v3 with a different older cohort as a paired improvement. Do not describe the withheld combination as wholly unseen physiology.
 
-Use “fresh-patient synthetic evaluation,” “same-case improvement,” and “offline-verifiable experiment.” Avoid “clinically accurate,” “knows future meals,” “tamper-proof,” “guaranteed 90% coverage,” or “robust to every routine.”
+Prior work includes [GlyTwin](https://arxiv.org/abs/2504.09846). The [VVUQ perspective](https://www.nature.com/articles/s41746-025-01447-y) supports careful verification/validation as a research principle; it does not certify AURA. See the [model/data card](MODEL_DATA_CARD.md) for the measured claim and its limits.

@@ -1,0 +1,157 @@
+{
+  "models": {
+    "linear": {
+      "mae": 13.47203215748848,
+      "rmse": 18.600534257445776,
+      "auroc": 0.9159595860065173,
+      "averagePrecision": 0.46810749410163777,
+      "brier": 0.044203766328246845,
+      "precision": 0.5946843853820598,
+      "recall": 0.2739097169089518,
+      "f1": 0.3750654793085385,
+      "confusionMatrix": [
+        [
+          18609,
+          244
+        ],
+        [
+          949,
+          358
+        ]
+      ],
+      "positiveRate": 0.06483134920634921,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 5.223178502381175,
+          "rmse": 8.220873993767531
+        },
+        {
+          "minutes": 60,
+          "mae": 9.113905583830286,
+          "rmse": 13.887630868290703
+        },
+        {
+          "minutes": 90,
+          "mae": 11.85289904660452,
+          "rmse": 17.05887583971484
+        },
+        {
+          "minutes": 120,
+          "mae": 13.47203215748848,
+          "rmse": 18.600534257445776
+        }
+      ]
+    },
+    "hist_gradient_boosting": {
+      "mae": 11.607902696724537,
+      "rmse": 18.544964095470046,
+      "auroc": 0.9385133342080318,
+      "averagePrecision": 0.6013720453408639,
+      "brier": 0.038119373010180604,
+      "precision": 0.7169517884914464,
+      "recall": 0.3527161438408569,
+      "f1": 0.4728205128205128,
+      "confusionMatrix": [
+        [
+          18671,
+          182
+        ],
+        [
+          846,
+          461
+        ]
+      ],
+      "positiveRate": 0.06483134920634921,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 4.585497859515385,
+          "rmse": 8.230171967503034
+        },
+        {
+          "minutes": 60,
+          "mae": 7.918581465721864,
+          "rmse": 14.413654071152747
+        },
+        {
+          "minutes": 90,
+          "mae": 10.225047998358614,
+          "rmse": 17.18947888434102
+        },
+        {
+          "minutes": 120,
+          "mae": 11.607902696724537,
+          "rmse": 18.544964095470046
+        }
+      ]
+    }
+  },
+  "regressionChoice": "hist_gradient_boosting",
+  "classificationChoice": "hist_gradient_boosting",
+  "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+  "calibration": {
+    "fused": {
+      "policy": {
+        "threshold": 0.16,
+        "selection": "Highest 0.01-grid threshold achieving >=80% recall on separate calibration identities",
+        "calibrationRecall": 0.8092150170648464,
+        "calibrationPrecision": 0.42106197833422127
+      },
+      "halfWidths": [
+        8.312278578946177,
+        18.47490448205238,
+        27.562695177742143,
+        30.829825229086623
+      ]
+    },
+    "sensorOnly": {
+      "policy": {
+        "threshold": 0.15,
+        "selection": "Highest 0.01-grid threshold achieving >=80% recall on separate calibration identities",
+        "calibrationRecall": 0.8006825938566553,
+        "calibrationPrecision": 0.40963855421686746
+      },
+      "halfWidths": [
+        8.395701227783434,
+        18.793277838757646,
+        27.659035767630115,
+        30.84560354713767
+      ]
+    },
+    "staticOnly": {
+      "policy": {
+        "threshold": 0.11,
+        "selection": "Highest 0.01-grid threshold achieving >=80% recall on separate calibration identities",
+        "calibrationRecall": 0.8607508532423208,
+        "calibrationPrecision": 0.20015873015873015
+      },
+      "halfWidths": [
+        40.79781251376306,
+        41.21887766416252,
+        40.85005835135544,
+        41.13559215717643
+      ]
+    }
+  },
+  "events": [
+    {
+      "event": "protocol_locked",
+      "at": "2026-10-19T16:05:59.343288+00:00",
+      "finalPatientsGenerated": false
+    },
+    {
+      "event": "models_selected",
+      "at": "2026-10-19T16:06:54.323512+00:00",
+      "regressionChoice": "hist_gradient_boosting",
+      "classificationChoice": "hist_gradient_boosting",
+      "finalPatientsGenerated": false
+    },
+    {
+      "event": "model_calibration_threshold_and_intervals_frozen",
+      "at": "2026-10-19T16:07:25.805427+00:00",
+      "modelSHA256": "a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4",
+      "finalPatientsGenerated": false
+    }
+  ]
+}

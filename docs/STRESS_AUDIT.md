@@ -1,32 +1,37 @@
-# Current robustness evaluation — `aura-synthetic-2.0.0`
+# Frozen-policy comparison and routine stress audit
 
-This report supersedes the earlier post-hoc v1 shift audit for the active model. Historical artifacts remain in `data/baseline-v1/`. The original regular-cohort 10.95 mg/dL error must not be quoted as current performance.
+Current model: `aura-synthetic-3.0.0`. Raw model-file SHA-256: `87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4`.
 
-## What changed and how it was evaluated
+The gains are modest and mixed: the patient-bootstrap 95% interval for the FN difference includes zero, and the withheld combination has **324 → 330 missed positive windows**. This does not establish a reliable reduction in misses or improvement across every routine.
 
-The current pipeline removes explicit clock features, uses 53 past-only history/EHR predictors, trains on six routine families, and selects histogram gradient boosting using separate selection identities. Probability calibration, residual widths and the 0.16 policy use separate calibration identities. The model bytes are saved and hashed before 80 fresh identities are generated. No final result changes the selected artifact.
+The current model and frozen v2 are evaluated on the same fresh identities, after model/calibration/policy/interval freeze. The simulator is unchanged. The primary aggregate contains six familiar routine families and 100,800 windows across 120 identities. The withheld parameter combination is separate: 16,800 windows for those same identities.
 
-The six families were represented during training. This tests fresh identities within a declared mixture, **not unseen routine families**. The model has no future meal schedule or latent simulator input. Previous-day observations are past data and can fail as recurrence cues.
+| Frozen policy | Threshold | Recall | Precision | FN windows | FP windows | +120 MAE mg/dL |
+|---|---|---|---|---|---|---|
+| Previous v2 | 0.1600 | 73.36% | 35.46% | 1,742 | 8,730 | 11.39 |
+| Current v3 | 0.1550 | 74.47% | 37.34% | 1,669 | 8,170 | 10.85 |
 
-## Same-case comparison
+| V3 minus V2 | Difference | Patient-bootstrap 95% interval |
+|---|---|---|
+| falsePositiveWindows | -560.0000 | -980.0250 to -157.9750 |
+| falseNegativeWindows | -73.0000 | -192.0250 to 27.0250 |
+| recall | 0.0112 | -0.0049 to 0.0279 |
+| precision | 0.0188 | 0.0097 to 0.0293 |
 
-Each row has 80 identities and 11,200 overlapping windows. Variants remain paired by identity. All models receive the same final cases. Errors are mg/dL at exactly +120 minutes.
+| Routine | V2 → V3 FN | V2 → V3 FP | V3 recall | V3 precision | V3 MAE |
+|---|---|---|---|---|---|
+| Regular routine | 211 → 212 | 1,207 → 1,134 | 82.57% | 46.96% | 9.38 |
+| Meals delayed by 2 hours | 164 → 159 | 1,366 → 1,370 | 85.64% | 40.90% | 9.10 |
+| Meals delayed by 4 hours | 132 → 142 | 1,332 → 1,195 | 84.58% | 39.46% | 9.01 |
+| Irregular meal timing | 491 → 452 | 1,541 → 1,384 | 65.26% | 38.02% | 13.05 |
+| Daily timing changes and skipped meals | 324 → 313 | 1,627 → 1,490 | 69.13% | 31.99% | 11.97 |
+| Variable sleep, activity and meals | 420 → 391 | 1,657 → 1,597 | 60.06% | 26.91% | 12.59 |
+| Held-out combination of shifted and variable routines | 324 → 330 | 1,657 → 1,624 | 60.99% | 24.11% | 12.07 |
 
-| Routine | Current MAE | Frozen v1 MAE | Persistence MAE | Band coverage | Recall | Precision |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Regular routine | 10.06 | 10.88 | 21.68 | 92.28% | 85.84% | 50.26% |
-| Meals delayed by 2 hours | 9.72 | 21.92 | 21.47 | 92.84% | 88.91% | 47.77% |
-| Meals delayed by 4 hours | 9.29 | 22.92 | 19.57 | 93.34% | 89.60% | 43.09% |
-| Irregular meal timing | 13.97 | 17.05 | 21.11 | 85.31% | 67.99% | 39.47% |
-| Daily timing changes and skipped meals | 13.12 | 17.64 | 19.45 | 86.75% | 76.44% | 34.19% |
-| Variable sleep, activity and meals | 13.57 | 19.39 | 18.65 | 86.01% | 63.93% | 29.37% |
+Differences are current minus frozen v2. Patient-level resampling retains all paired variants/windows. These are overlapping exact-horizon windows, not independent episodes, notifications or people. The last row is excluded from the primary aggregate. The separate withheld factor combination has 12.07 mg/dL MAE, 60.99% recall and 24.11% precision. FN changes 324 → 330; FP changes 1,657 → 1,624.
 
-Aggregate current MAE: **11.622**; frozen v1 on the same cases: **18.298**; persistence: **20.323**. The current model improves all six MAE rows versus v1. This does not mean every individual prediction improves. Added EHR MAE gain over sensors is only **0.107 mg/dL**.
+The withheld combination uses a three-hour meal delay, one-hour timing jitter, daily shift SD 1.4 hours, skip probability 0.25 and variable sleep/activity. Familiar ingredients were seen in development; the exact combination was not. This is not evidence of unseen physiology or clinical external validity.
 
-Nominal 90% bands have aggregate coverage 89.42% and mean width 61.66 mg/dL. Coverage and recall remain weaker for highly variable routines. Read width, precision and recall alongside error; no interval guarantees individual coverage.
+The primary MAE is 10.850 mg/dL. Nominal 90% band coverage is 90.60%, with mean width 61.76 mg/dL. Width, coverage, recall and precision must be inspected together. Current-below-threshold and already-high slices remain distinct in `data/metrics.json`; neither changes the exact +120-minute label into a first-onset task.
 
-## Reproducibility and evidential limits
-
-`data/robustness.json` contains all ablations, paired patient-bootstrap intervals and routine-specific policy metrics. `data/robustness-protocol.json`, `data/selection-results.json`, and `data/training-audit.json` document the development sequence. `data/stress.json` is the compact runtime view. The unchanged model fingerprint is `a67d3a6abd84df76f3cbbbb30e35a10f0845417b7b12bbb09df83c398ef317a4`.
-
-Run `npm run train` for the full current experiment; use the independent exported-artifact audit command documented by `ml/stress_test.py` for a frozen-model check. Neither a local timestamp nor a hash constitutes independent preregistration or an external signature. The test identities are fresh relative to earlier development, but the simulator and features were designed after inspecting v1 failures. No clinical or external-data validation is demonstrated.
+Independent exported-JSON replay and final verification status are recorded in [VERIFICATION.md](VERIFICATION.md). Full per-model metrics, calibration bins and paired intervals are in [robustness.json](../data/robustness.json). The [model/data card](MODEL_DATA_CARD.md) gives protocol and limitations. Historical v1 and v2 reports stay in their archive folders and must not be substituted for this comparison.

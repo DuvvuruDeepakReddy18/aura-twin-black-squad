@@ -1,138 +1,138 @@
 {
-  "durationSeconds": 1510.1970521541946,
+  "durationSeconds": 1583.7401360544218,
   "narration": "Microsoft Zira, local synthesized voice",
   "chapters": [
     {
       "slide": 1,
-      "title": "A patient\u2019s history. A more adaptable outlook.",
+      "title": "A forecast measured by its missed and false flags.",
       "startSeconds": 0,
-      "durationSeconds": 58.58
+      "durationSeconds": 73.21
     },
     {
       "slide": 2,
       "title": "Give changing signals their historical context.",
-      "startSeconds": 58.58,
+      "startSeconds": 73.21,
       "durationSeconds": 61.32
     },
     {
       "slide": 3,
       "title": "Predict a defined event, at a defined time.",
-      "startSeconds": 119.9,
+      "startSeconds": 134.54,
       "durationSeconds": 58.98
     },
     {
       "slide": 4,
       "title": "Synthetic data with deliberately varied routines.",
-      "startSeconds": 178.88,
-      "durationSeconds": 72.21
+      "startSeconds": 193.51,
+      "durationSeconds": 79.56
     },
     {
       "slide": 5,
       "title": "Only the available past enters the prediction.",
-      "startSeconds": 251.1,
-      "durationSeconds": 66.83
+      "startSeconds": 273.08,
+      "durationSeconds": 67.04
     },
     {
       "slide": 6,
       "title": "Two streams. One inspectable inference path.",
-      "startSeconds": 317.92,
-      "durationSeconds": 77.88
+      "startSeconds": 340.12,
+      "durationSeconds": 81.45
     },
     {
       "slide": 7,
-      "title": "Select and calibrate before opening the final cohort.",
-      "startSeconds": 395.8,
-      "durationSeconds": 70.7
+      "title": "Freeze the policy before generating fresh final patients.",
+      "startSeconds": 421.57,
+      "durationSeconds": 71.86
     },
     {
       "slide": 8,
-      "title": "A clock-free candidate earns the final evaluation.",
-      "startSeconds": 466.5,
-      "durationSeconds": 70.0
+      "title": "Select for the actual missed-versus-false tradeoff.",
+      "startSeconds": 493.43,
+      "durationSeconds": 68.17
     },
     {
       "slide": 9,
       "title": "Measure error and the review-policy tradeoff.",
-      "startSeconds": 536.5,
-      "durationSeconds": 72.56
+      "startSeconds": 561.6,
+      "durationSeconds": 85.89
     },
     {
       "slide": 10,
-      "title": "Compare models on the same fresh routine cases.",
-      "startSeconds": 609.06,
-      "durationSeconds": 78.76
+      "title": "Compare fixed policies on identical new windows.",
+      "startSeconds": 647.49,
+      "durationSeconds": 97.79
     },
     {
       "slide": 11,
       "title": "Show uncertainty without promising coverage.",
-      "startSeconds": 687.82,
-      "durationSeconds": 67.12
+      "startSeconds": 745.29,
+      "durationSeconds": 67.21
     },
     {
       "slide": 12,
       "title": "An overview designed for a clinical review.",
-      "startSeconds": 754.95,
+      "startSeconds": 812.5,
       "durationSeconds": 62.39
     },
     {
       "slide": 13,
       "title": "Replay makes the information boundary tangible.",
-      "startSeconds": 817.34,
+      "startSeconds": 874.88,
       "durationSeconds": 63.08
     },
     {
       "slide": 14,
       "title": "Inspect context without turning it into a cause.",
-      "startSeconds": 880.42,
-      "durationSeconds": 80.46
+      "startSeconds": 937.96,
+      "durationSeconds": 79.12
     },
     {
       "slide": 15,
       "title": "Explore an assumption. Do not infer a treatment.",
-      "startSeconds": 960.88,
+      "startSeconds": 1017.09,
       "durationSeconds": 67.55
     },
     {
       "slide": 16,
       "title": "Freeze the prediction. Then reveal the outcome.",
-      "startSeconds": 1028.43,
+      "startSeconds": 1084.64,
       "durationSeconds": 66.3
     },
     {
       "slide": 17,
       "title": "Four sensor cases expose different failure modes.",
-      "startSeconds": 1094.73,
+      "startSeconds": 1150.94,
       "durationSeconds": 62.92
     },
     {
       "slide": 18,
       "title": "Make the experiment reproducible offline.",
-      "startSeconds": 1157.65,
-      "durationSeconds": 65.13
+      "startSeconds": 1213.86,
+      "durationSeconds": 71.68
     },
     {
       "slide": 19,
       "title": "The evidence travels with the implementation.",
-      "startSeconds": 1222.78,
+      "startSeconds": 1285.55,
       "durationSeconds": 76.5
     },
     {
       "slide": 20,
-      "title": "Improved synthetic robustness still has limits.",
-      "startSeconds": 1299.27,
-      "durationSeconds": 70.77
+      "title": "A better benchmark is still a bounded claim.",
+      "startSeconds": 1362.05,
+      "durationSeconds": 72.73
     },
     {
       "slide": 21,
       "title": "Use the remaining failures to guide validation.",
-      "startSeconds": 1370.04,
-      "durationSeconds": 69.76
+      "startSeconds": 1434.77,
+      "durationSeconds": 75.7
     },
     {
       "slide": 22,
-      "title": "A complete local prototype, with evidence attached.",
-      "startSeconds": 1439.8,
-      "durationSeconds": 70.39
+      "title": "A working application, with its evidence attached.",
+      "startSeconds": 1510.48,
+      "durationSeconds": 73.26
     }
   ]
 }

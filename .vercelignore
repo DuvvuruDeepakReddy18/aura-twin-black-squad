@@ -1,0 +1,15 @@
+.git
+.venv
+__pycache__
+node_modules
+dist
+work
+ml
+tests
+data/baseline-v1
+data/baseline-v2
+data/candidate-v3
+data/parity.json
+data/selection-results.json
+data/training-audit.json
+.env*
