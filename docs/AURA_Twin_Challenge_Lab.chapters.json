@@ -1,0 +1,42 @@
+{
+  "durationSeconds": 230.29913832199549,
+  "narration": "Microsoft Zira, local synthesized voice",
+  "chapters": [
+    {
+      "slide": 1,
+      "title": "A digital twin the jury can challenge.",
+      "startSeconds": 0,
+      "durationSeconds": 38.52
+    },
+    {
+      "slide": 2,
+      "title": "Freeze the available past. Reveal the recorded future.",
+      "startSeconds": 38.52,
+      "durationSeconds": 39.16
+    },
+    {
+      "slide": 3,
+      "title": "Four cases. Four different lessons.",
+      "startSeconds": 77.67,
+      "durationSeconds": 40.7
+    },
+    {
+      "slide": 4,
+      "title": "Changed routines expose clock dependence.",
+      "startSeconds": 118.37,
+      "durationSeconds": 40.63
+    },
+    {
+      "slide": 5,
+      "title": "A receipt for the experiment, not a trust certificate.",
+      "startSeconds": 159.0,
+      "durationSeconds": 34.81
+    },
+    {
+      "slide": 6,
+      "title": "Let the jury inspect both the result and the limits.",
+      "startSeconds": 193.81,
+      "durationSeconds": 36.49
+    }
+  ]
+}

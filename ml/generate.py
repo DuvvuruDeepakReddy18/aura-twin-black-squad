@@ -8,7 +8,17 @@ NAMES = ["Maya Rao", "Arjun Mehta", "Leela Shah", "Kabir Nair", "Anika Sen", "Ro
 COLORS = ["#6366f1", "#14b8a6", "#f59e0b", "#ec4899", "#3b82f6", "#8b5cf6", "#10b981", "#f97316"]
 
 
-def generate_patient(index, days=4):
+def generate_patient(index, days=4, *, meal_shift_hours=0.0, meal_jitter_hours=.38):
+    """Generate a patient; optional meal timing changes are for out-of-distribution audits.
+
+    Defaults preserve the original training generator exactly. Timing controls change
+    only the timing expression and consume the same random draws, allowing paired
+    synthetic stress comparisons without fitting a new model.
+    """
+    if not np.isfinite(meal_shift_hours) or not -6 <= meal_shift_hours <= 6:
+        raise ValueError("meal_shift_hours must be finite and between -6 and 6")
+    if not np.isfinite(meal_jitter_hours) or not 0 <= meal_jitter_hours <= 3:
+        raise ValueError("meal_jitter_hours must be finite and between 0 and 3")
     rng = np.random.default_rng(SEED + index * 104729)
     age = int(rng.integers(28, 75))
     bmi = round(float(rng.uniform(21, 36)), 1)
@@ -35,7 +45,7 @@ def generate_patient(index, days=4):
         for meal_hour, carbs in [(7.7, 48), (12.7, 68), (19.0, 62)]:
             if rng.random() < .06:
                 continue
-            meal_minute = (day * 24 + meal_hour + rng.normal(0, .38)) * 60
+            meal_minute = (day * 24 + meal_hour + meal_shift_hours + rng.normal(0, meal_jitter_hours)) * 60
             amount = max(15, rng.normal(carbs, 12))
             elapsed = np.maximum(0, minute - meal_minute)
             pulse = (elapsed / tau) * np.exp(1 - elapsed / tau)

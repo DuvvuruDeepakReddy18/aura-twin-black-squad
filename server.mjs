@@ -3,12 +3,14 @@ import { readFile } from 'node:fs/promises';
 import { dirname, extname, resolve, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { initializeModel, infer, validatePatient } from './lib/model.mjs';
+import { createChallengeLab } from './lib/challenge.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const [model, patients, metrics] = await Promise.all(
   ['model', 'patients', 'metrics'].map(name => readFile(resolve(ROOT, `data/${name}.json`), 'utf8').then(JSON.parse)),
 );
 initializeModel(model);
+const modelFileBytes = await readFile(resolve(ROOT, 'data/model.json'));
 const patientById = new Map(patients.map(patient => [patient.id, patient]));
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.ico': 'image/x-icon', '.pdf': 'application/pdf', '.mp4': 'video/mp4', '.md': 'text/plain; charset=utf-8', '.json': 'application/json; charset=utf-8' };
 const headers = {
@@ -59,18 +61,26 @@ function makePrediction(body) {
   catch (err) { throw new RequestError(err.message); }
 }
 export function createAppServer() {
+  const challengeLab = createChallengeLab({patients, model, modelFileBytes});
   return createServer(async (req, res) => {
     try {
       const url = new URL(req.url, 'http://localhost');
       const pathname = decodeURIComponent(url.pathname);
-      if (req.method === 'GET' && pathname === '/api/health') return json(res, 200, { status: 'ok', name: 'AURA Twin', synthetic: true, version: '1.0.0' });
+      if (req.method === 'GET' && pathname === '/api/health') return json(res, 200, { status: 'ok', name: 'AURA Twin', synthetic: true, version: '1.1.0' });
       if (req.method === 'GET' && pathname === '/api/patients') return json(res, 200, { patients });
       if (req.method === 'GET' && pathname.startsWith('/api/patients/')) {
         const patient = patientById.get(pathname.slice('/api/patients/'.length));
         return json(res, patient ? 200 : 404, patient ?? { error: 'Patient not found.' });
       }
       if (req.method === 'GET' && pathname === '/api/metrics') return json(res, 200, metrics);
+      if (req.method === 'GET' && pathname === '/api/stress') {
+        try { return json(res, 200, JSON.parse(await readFile(resolve(ROOT, 'data/stress.json'), 'utf8'))); }
+        catch (err) { if (err.code === 'ENOENT') throw new RequestError('Stress audit has not been generated.', 404); throw err; }
+      }
       if (req.method === 'POST' && pathname === '/api/predict') return json(res, 200, makePrediction(await readJson(req)));
+      if (req.method === 'GET' && pathname === '/api/challenge/modes') return json(res, 200, challengeLab.modes());
+      if (req.method === 'POST' && pathname === '/api/challenge') return json(res, 200, challengeLab.create(await readJson(req)));
+      if (req.method === 'POST' && pathname === '/api/challenge/reveal') return json(res, 200, challengeLab.reveal(await readJson(req)));
       if (pathname.startsWith('/api/')) return json(res, 404, { error: 'API endpoint not found.' });
       if (!['GET', 'HEAD'].includes(req.method)) return json(res, 405, { error: 'Method not allowed.' });
       const isDocument = pathname.startsWith('/docs/');

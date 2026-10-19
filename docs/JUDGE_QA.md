@@ -50,7 +50,35 @@ We do not claim legal compliance or certification. The prototype uses generated 
 
 ## What has actually been implemented?
 
-Reproducible synthetic data generation and model training, exported model artifacts, held-out evaluation with ablations, a local inference path, and an interactive clinician dashboard with patient context, forecasts, replay, model evidence, hypothetical scenarios, and local review/export interactions. Inspect the README and source for the precise final feature set.
+Reproducible synthetic data generation and model training, exported model artifacts, held-out evaluation with ablations, a local inference path, and an interactive clinician dashboard with patient context, forecasts, replay, model evidence, hypothetical scenarios, and local review/export interactions. The v2 Challenge Lab adds frozen predictions, later outcome reveal, four sensor conditions, downloadable experiment receipts and an offline verifier. A separate frozen-model stress audit exposes performance under changed synthetic meal timing. Inspect the README and verification record for the precise final feature set and checks.
+
+## What distinguishes this from another digital-twin dashboard?
+
+The evaluator can choose the patient, cutoff and sensor condition, freeze the available-history prediction, reveal its recorded future, compare the result with persistence and verify the exported receipt offline. Failure behavior is part of the interface: a dropout abstains, plausible bias can pass the checks, and changed routines degrade the cohort results. This is a concrete implementation/evaluation distinction. We do not claim that digital twins, glucose forecasting, what-if tools or verification methods are novel inventions.
+
+## How is freeze/reveal implemented?
+
+The prediction receives a copy of the patient's history physically truncated at the cutoff, with the chosen perturbation applied. The server completes inference before snapshotting the original exact-horizon future readings. The freeze response has no future values. Reveal compares the stored prediction without recomputing it. The underlying dataset is public, so this is a demonstrable separation of prediction and outcome evaluation, not secure blinding or a prospective clinical trial.
+
+## Does the Challenge Lab score measure general model accuracy?
+
+No. Its errors describe the available +30/+60/+90/+120-minute horizons of one selected synthetic window. Those points are correlated. Per-horizon interval hits are not a population coverage estimate. The full held-out metrics and separate stress audit remain the cohort evidence. If the model abstains or future observations are unavailable, the interface must not fabricate a score.
+
+## What does the plausible-bias case demonstrate?
+
+It adds 30 mg/dL to the last 25 CGM samples through the cutoff, capped at 500 mg/dL. Fresh, complete and plausible values can still be incorrect; the quality gate does not certify sensor accuracy. The recorded future stays unmodified, and persistence uses the same perturbed/carried-forward current input. This is an exposed blind spot, not a validated fault detector or proof that every biased-window prediction must worsen.
+
+## Do the receipts prove that nobody altered the experiment?
+
+No. They provide content fingerprints and reproducibility checks. HTTP receipts hash raw `data/model.json` bytes and the sorted-key canonical JSON of the actual input prefix. `node scripts/verify_receipt.mjs path/to/receipt.json` checks those fingerprints and recomputes the prediction and any reveal using the packaged artifacts. A matching result establishes consistency with that local package, not authorship, independent time or clinical correctness. Someone who replaces every artifact can produce a matching new receipt. These are not digital signatures or tamper-proof audit records.
+
+## What did the changed-routine stress audit reveal?
+
+Clock dependence. With the model and threshold frozen, delaying synthetic main meals by four hours changes +120-minute MAE from 10.95 to 22.78 mg/dL; persistence is better at 19.99. Nominal 90% interval coverage falls to 61.3%, and recall falls to 21.7%. Each case includes the same 48 held-out identities and 6,720 correlated windows. These post-hoc tests were chosen after examining clock features. The result exposes a limitation; it does not establish robustness or independent clinical validity.
+
+## Why show a failure so prominently?
+
+It makes the limits inspectable and directs the next experiment. The original benchmark and a successful example remain part of the evidence, but they cannot justify a claim of robustness. Showing a baseline win, an abstention or a failed interval helps the jury judge the implementation and the team's reasoning without concealing weaknesses.
 
 ## What is future work?
 
@@ -61,6 +89,9 @@ Real device/EHR integration, independent clinical data validation, broader stres
 It makes the full chain inspectable: provenance → time alignment → feature fusion → model → held-out evidence → user workflow. It is a working proof of concept with explicit failure boundaries and reproducible artifacts, rather than an untestable concept slide.
 
 ## Sources
+
+- [GlyTwin — prior glucose-twin and counterfactual research](https://arxiv.org/abs/2504.09846): related work; no priority claim or direct score comparison is made.
+- [npj Digital Medicine — verification, validation and uncertainty quantification of digital twins](https://www.nature.com/articles/s41746-025-01447-y): research context for examining evidence and uncertainty; not validation of AURA.
 
 - [NIDDK — Clinical Targets for Continuous Glucose Monitoring Data](https://www.niddk.nih.gov/health-information/professionals/diabetes-discoveries-practice/clinical-targets-for-continuous-glucose-monitoring-data): context for the 70–180 mg/dL range. The project's ≥180 event boundary is its own explicit convention.
 - [Synthea — Synthetic Patient Generation](https://synthetichealth.github.io/synthea/): possible future synthetic-EHR integration; not used to produce the submitted model results.

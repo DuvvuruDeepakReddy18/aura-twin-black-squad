@@ -1,0 +1,32 @@
+[
+  {
+    "slide": 1,
+    "title": "A digital twin the jury can challenge.",
+    "text": "AURA Twin version two turns model evidence into an interactive experiment. The original prototype combines synthetic historical health context and wearable signals to forecast glucose. The upgrade lets a reviewer choose a patient, a cutoff and a signal condition, freeze a prediction, then reveal the recorded future.\n\nOur distinction is the complete inspection loop. We do not claim to have invented glucose digital twins or counterfactual interfaces. We make a prediction, its baseline comparison, its failure behavior and its artifact fingerprints reviewable together. This supplement covers the upgrade; the original walkthrough remains available. All data remain generated, the trained model is unchanged, and clinical validity is not established."
+  },
+  {
+    "slide": 2,
+    "title": "Freeze the available past. Reveal the recorded future.",
+    "text": "The experiment begins with a patient, timestamp and sensor case. The server makes a copy of the history and physically truncates it at the prediction cutoff before inference. The freeze response contains the prediction and quality information but no future values. After inference, the server stores the original synthetic future for later comparison.\n\nReveal evaluates the frozen result without recomputing it. The reviewer sees each available forecast horizon, its recorded value, its error, the interval hit, and a persistence comparison using the same available input. One selected window is an example, not a cohort metric. The dataset is public, so this separation is a reproducible demonstration protocol, not a secure blinded clinical trial."
+  },
+  {
+    "slide": 3,
+    "title": "Four cases. Four different lessons.",
+    "text": "Clean replay establishes the selected window's baseline. The ten-minute glucose gap removes the final two glucose readings and demonstrates degraded data and forward filling. The thirty-minute dropout removes six readings and crosses the stale-glucose boundary, so prediction is withheld.\n\nThe fourth case adds thirty milligrams per deciliter to the recent observed glucose window, with the documented upper bound. These values can remain plausible, complete and fresh. The quality gate can pass even though the input is biased. This is an intentionally exposed blind spot, not a bias detector. Each perturbation affects a copy of the input history; the reference future remains unchanged. The jury can inspect the actual selected-window result, including cases where persistence performs better."
+  },
+  {
+    "slide": 4,
+    "title": "Changed routines expose clock dependence.",
+    "text": "The separate stress audit holds the model, scaling, calibration, intervals and twenty-percent alert threshold fixed. It changes main-meal timing for the same forty-eight held-out synthetic patients and evaluates six thousand seven hundred and twenty windows per case.\n\nOn the original schedule, two-hour mean absolute error is ten point nine five. With meals delayed two hours, it rises to twenty-one point six two. With a four-hour delay, it is twenty-two point seven eight, worse than persistence at nineteen point nine nine. Interval coverage falls from ninety percent to about sixty-one percent, and event recall falls sharply. Irregular timing also degrades performance. These post-hoc synthetic tests expose clock dependence; they are not evidence that robustness has been solved."
+  },
+  {
+    "slide": 5,
+    "title": "A receipt for the experiment, not a trust certificate.",
+    "text": "A downloaded receipt records the frozen experiment and its revealed result. It includes SHA-two-fifty-six fingerprints of the exact model file and the canonical perturbed input prefix. An offline command verifies these fingerprints and recomputes the prediction and outcome from the packaged artifacts.\n\nA hash is not a digital signature or independent timestamp. The verifier checks consistency with local artifacts; it does not establish trusted authorship. Server sessions are temporary and memory-only, so download the receipt while it is available. The receipt is a portable demonstration artifact, not a governed clinical audit record. These limits are part of the design explanation."
+  },
+  {
+    "slide": 6,
+    "title": "Let the jury inspect both the result and the limits.",
+    "text": "The live challenge takes three minutes. Select a patient and a cutoff. Freeze the clean prediction and reveal the future. Compare the model with persistence. Try the short gap, the longer dropout, and the plausible bias. Export the receipt and point to the separate routine-shift results.\n\nIf the model misses, explain the failure before changing the patient. A summary score can hide local errors; this workflow makes them visible. AURA's contribution is a working combination of data fusion, explicit predictions, observable failure handling and traceable experiments. The next steps are broader testing and independent validation, guided by the limitations this challenge has exposed."
+  }
+]

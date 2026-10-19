@@ -20,6 +20,7 @@
         <button data-tab="overview" class="nav-button active" aria-current="page"><span data-icon="grid"></span>Overview<span class="nav-arrow">↗</span></button>
         <button data-tab="record" class="nav-button"><span data-icon="record"></span>Patient record</button>
         <button data-tab="evidence" class="nav-button"><span data-icon="layers"></span>Model evidence</button>
+        <button data-tab="challenge" class="nav-button nav-challenge"><span data-icon="flask"></span>Challenge lab<span class="lab-nav-tag">LAB</span></button>
       </nav>
       <div class="patient-list-heading"><span class="sidebar-caption">PATIENT TWINS</span><span id="patient-count" class="count-badge">—</span></div>
       <label class="patient-search"><span data-icon="search"></span><input id="patient-search" type="search" placeholder="Find a patient" aria-label="Search synthetic patients" autocomplete="off" /><kbd>/</kbd></label>
@@ -32,7 +33,7 @@
         <div class="page-heading"><div><div class="eyebrow">THE PATIENT, IN PERSPECTIVE</div><h1>A clearer view of what’s next.</h1><p>Historical context. Live physiology. One patient view.</p></div><button id="export-button" class="button button-secondary" disabled><span data-icon="download"></span>Export patient summary</button></div>
         <div id="error-banner" class="error-banner" role="alert" hidden></div>
         <section id="patient-header" class="patient-header" aria-label="Selected patient"><div class="loading-pulse">Preparing your patient twin…</div></section>
-        <div class="view-tabs" role="tablist" aria-label="Patient workspace tabs"><button id="tab-overview" data-tab="overview" role="tab" aria-selected="true" aria-controls="overview-view" class="active">Twin overview</button><button id="tab-record" data-tab="record" role="tab" aria-selected="false" aria-controls="record-view">Patient record</button><button id="tab-evidence" data-tab="evidence" role="tab" aria-selected="false" aria-controls="evidence-view">Model evidence</button><div class="view-tabs-end"><span class="live-dot"></span><span id="simulation-time">Preparing simulation</span></div></div>
+        <div class="view-tabs" role="tablist" aria-label="Patient workspace tabs"><button id="tab-overview" data-tab="overview" role="tab" aria-selected="true" aria-controls="overview-view" class="active">Twin overview</button><button id="tab-record" data-tab="record" role="tab" aria-selected="false" aria-controls="record-view">Patient record</button><button id="tab-evidence" data-tab="evidence" role="tab" aria-selected="false" aria-controls="evidence-view">Model evidence</button><button id="tab-challenge" data-tab="challenge" role="tab" aria-selected="false" aria-controls="challenge-view">Challenge lab <span class="tab-lab-dot"></span></button><div class="view-tabs-end"><span class="live-dot"></span><span id="simulation-time">Preparing simulation</span></div></div>
         <section id="overview-view" role="tabpanel" aria-labelledby="tab-overview">
           <div class="overview-grid">
             <div class="primary-column">
@@ -56,6 +57,7 @@
         </section>
         <section id="record-view" role="tabpanel" aria-labelledby="tab-record" hidden></section>
         <section id="evidence-view" role="tabpanel" aria-labelledby="tab-evidence" hidden></section>
+        <section id="challenge-view" role="tabpanel" aria-labelledby="tab-challenge" hidden></section>
         <footer class="workspace-footer"><span><strong>AURA TWIN</strong> · A little foresight goes a long way.</span><span>Synthetic demonstration · Not for clinical use</span></footer>
       </main>
     </div>

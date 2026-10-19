@@ -11,6 +11,8 @@ parser.add_argument('--pdf', required=True)
 parser.add_argument('--narration', required=True)
 parser.add_argument('--audio', required=True)
 parser.add_argument('--output', required=True)
+parser.add_argument('--minimum-seconds', type=float, default=1200, help='Required duration; default 20 minutes for the main submission. Use 0 only for an explicitly supplementary video.')
+parser.add_argument('--title', default='AURA Twin | Black Squad | Phase 1 prototype walkthrough')
 args = parser.parse_args()
 audio = pathlib.Path(args.audio).resolve()
 output = pathlib.Path(args.output).resolve()
@@ -34,12 +36,12 @@ for chapter in chapters:
     timeline.append({'slide': index, 'title': chapter['title'], 'startSeconds': round(elapsed, 2), 'durationSeconds': round(duration, 2)})
     elapsed += duration
     print(f'Encoded {index}: {duration:.1f}s', flush=True)
-if elapsed < 1200:
-    raise RuntimeError(f'Video narration is only {elapsed / 60:.1f} minutes; regenerate narration at a slower speaking rate or add substantive content.')
+if elapsed < args.minimum_seconds:
+    raise RuntimeError(f'Video narration is only {elapsed / 60:.1f} minutes; required minimum is {args.minimum_seconds / 60:.1f} minutes.')
 concat = audio / 'segments.txt'
 concat.write_text('\n'.join("file '" + str(p).replace('\\', '/') + "'" for p in segments), encoding='utf-8')
 metadata = audio / 'chapters.txt'
-lines = [';FFMETADATA1', 'title=AURA Twin | Black Squad | Phase 1 prototype walkthrough', 'artist=Black Squad', 'comment=Presentation walkthrough with synthesized narration. Synthetic data only. Research prototype.']
+lines = [';FFMETADATA1', 'title='+args.title.replace('=', '-').replace(';', ',').replace('#', ''), 'artist=Black Squad', 'comment=Presentation walkthrough with synthesized narration. Synthetic data only. Research prototype.']
 for chapter in timeline:
     title = chapter['title'].replace('=', '-').replace(';', ',').replace('#', '')
     lines += ['[CHAPTER]', 'TIMEBASE=1/1000', f"START={round(chapter['startSeconds'] * 1000)}", f"END={round((chapter['startSeconds'] + chapter['durationSeconds']) * 1000)}", f'title={title}']

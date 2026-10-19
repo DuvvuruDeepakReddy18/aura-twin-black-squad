@@ -9,6 +9,16 @@
 
 This runbook is a speaking and demonstration guide, not itself a video. For a human-led replacement, aim for **23–25 minutes of meaningful content**. The supplied written brief says a minimum of 20 minutes, while the screenshot says 15–20 minutes; this plan follows the stricter written requirement. Verify the final rules on the organizer's portal before submitting. The supplied narrated presentation uses actual prototype screenshots and conceptual diagrams; it is not a live screen recording of every interaction.
 
+## v2 Challenge Lab extension
+
+The existing 21:54 narrated video and the 20-page main presentation describe **v1**. The prediction model is unchanged in v2, but the new Challenge Lab interactions are not retroactively present in that recording. Use `JURY_CHALLENGE_SCRIPT.md` for a three-minute live sequence and `AURA_Twin_Challenge_Lab.pdf` for the separate upgrade presentation.
+
+For a new team-led recording, insert the three-minute sequence after the evaluation segment (16:30 in the base plan), then continue the remaining content. This produces a roughly **26-minute** demonstration. Alternatively, present the original video and a clearly labeled short v2 supplement. Do not substitute the short supplement alone for the required minimum-length video.
+
+The extension should show **Freeze prediction → Reveal recorded future → sensor-condition comparison → Download receipt**, followed by `node scripts/verify_receipt.mjs path/to/receipt.json` if time permits. Show one failure honestly: a dropout abstention, a bias blind spot, an individual loss to persistence, or the delayed-meal stress result.
+
+**Stress cue:** at a four-hour main-meal delay, frozen-model +120-minute MAE is **22.78 mg/dL**, worse than persistence at **19.99**; interval coverage is **61.3%** and recall **21.7%**. These are post-hoc synthetic stress results, separate from the original benchmark. The model has not been repaired or clinically validated by this upgrade.
+
 ## Presenter fact sheet
 
 Use these values only for the included `aura-synthetic-1.0.0` artifacts; regenerate this cue sheet if the model changes.
@@ -21,6 +31,7 @@ Use these values only for the included `aura-synthetic-1.0.0` artifacts; regener
 - **Ablation MAE:** fused 10.95; sensor-only 12.17; static-only 19.31; persistence 22.10 mg/dL. Fusion improves MAE by 10.1% versus sensors under this simulator.
 - **What-if:** an arithmetic forecast sensitivity; the trained risk probability stays at baseline.
 - **Evidence boundary:** generated data only; no independent clinical validation, causal treatment estimate, or medical recommendation.
+- **v2 receipt:** raw model-file SHA-256 plus canonical input-prefix SHA-256; the offline verifier checks consistency and recomputes results, not trusted identity or time.
 
 ## Before recording
 
@@ -169,6 +180,8 @@ Show team and college details, project title, problem/use case, stack/model deta
 - [ ] The screen and voice are legible; captions reviewed if used.
 - [ ] No secrets, private tabs, or unrelated personal information appear.
 - [ ] The model/data version shown matches the submitted repository.
+- [ ] Challenge Lab is demonstrated in a new segment or explicitly identified as a v2 supplement; the original video remains labeled v1.
+- [ ] The stress audit is described as post-hoc synthetic evidence, with failures and persistence comparisons visible.
 - [ ] The actual video is uploaded as an unlisted YouTube video or another permitted accessible format.
 - [ ] `README.md` contains the working video URL and duration, replacing the pending marker.
 - [ ] The link works in a signed-out/private browser, with no access request.

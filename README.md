@@ -6,6 +6,8 @@
 
 Built by **Black Squad**, Amrita Vishwa Vidyapeetham, Chennai, for Happiest Health Phase 1 — Prototype & Code Submission.
 
+**v2: A digital twin the jury can challenge.** Choose a patient and sensor condition, freeze a past-only prediction, reveal the recorded future, compare it with persistence, and export a receipt that can be checked offline. The upgrade also exposes substantial clock dependence in a separate frozen-model stress audit. [Differentiation](docs/DIFFERENTIATION.md) · [Three-minute jury challenge](docs/JURY_CHALLENGE_SCRIPT.md).
+
 ![AURA Twin clinician workspace](docs/assets/dashboard.jpg)
 
 > Working research prototype. Every patient, record and sensor observation is synthetic. Benchmark results below describe this simulator only; they are not evidence of clinical performance. The app does not diagnose, prescribe or recommend medication changes.
@@ -64,6 +66,9 @@ The intended demonstration is a clinician reviewing a fictional adult with eleva
 - An explicitly illustrative meal/activity sensitivity explorer. It is not a learned causal treatment model; the trained baseline risk is kept separate.
 - Review notes and acknowledgements stored in the browser, plus a downloadable patient report.
 - An actual reproducible training pipeline, held-out evaluation, ablation comparison, model export and JavaScript/Python parity tests.
+- A **Challenge lab** with clean replay, a 10-minute CGM gap, a 30-minute dropout, and a plausible +30 mg/dL CGM bias. Freeze/reveal keeps prediction and outcome inspection separate; severe stale data abstains, while plausible bias deliberately exposes a quality-check blind spot.
+- Downloadable experiment receipts with model/input SHA-256 fingerprints and an offline verifier that recomputes prediction and revealed outcomes from the packaged artifacts.
+- A separate, post-hoc synthetic stress audit of changed meal timing with the model, calibration, intervals and alert threshold held fixed.
 
 This is a continuously updated software representation of a simulated patient. It is a narrow predictive digital twin proof of concept, not a validated physiological simulator, a general-purpose virtual human or a live device integration.
 
@@ -116,6 +121,33 @@ The app uses a **0.20 review threshold**, selected as the highest threshold on a
 
 The displayed examples are curated from held-out patients to make the walkthrough clear. This selection does not alter the complete test evaluation. Future observations may be used for retrospective comparison but never enter the forecast features at the chosen cursor.
 
+### Stress audit: where the model breaks
+
+The v2 upgrade keeps the original model unchanged and challenges its regular timing assumptions. These results are **post-hoc synthetic stress tests**, not evidence of clinical robustness. The same 48 held-out patient identities and 6,720 correlated windows recur in each case.
+
+| Main-meal timing | +120 min MAE, mg/dL | Persistence MAE | Nominal 90% interval coverage | Recall at fixed 0.20 |
+|---|---:|---:|---:|---:|
+| Original schedule | 10.95 | 22.10 | 90.0% | 83.9% |
+| Delayed +2 hours | 21.62 | 21.66 | 61.7% | 28.7% |
+| Delayed +4 hours | 22.78 | 19.99 | 61.3% | 21.7% |
+| Irregular timing (1.5h SD) | 16.60 | 21.64 | 76.5% | 57.3% |
+
+**With a four-hour delay, the model loses to persistence.** The audit exposes clock dependence and degraded interval coverage; it does not fix either issue. See the [protocol and limits](docs/STRESS_AUDIT.md) and [complete stress results](data/stress.json). Reproduce it with `python ml/stress_test.py`; no retraining occurs.
+
+### Challenge lab and receipt verification
+
+Open **Challenge lab**, choose a supported patient/cutoff and case, then select **Freeze prediction** → **Reveal recorded future** → **Download receipt**. The model receives a physically truncated, optionally perturbed history. The server completes inference before snapshotting the original future, and reveal compares the frozen output without recomputing it. The freeze response omits future values, but the dataset is public: this is a reproducible demonstration protocol, not a secure blinded study.
+
+The four-horizon score describes the selected window, not the test cohort. Persistence uses the same perturbed or carried-forward current CGM. Abstained predictions and unavailable futures receive no fabricated score. A plausible +30 mg/dL bias can pass freshness checks, so quality status must not be interpreted as proof of correct sensors.
+
+Verify a downloaded JSON receipt offline:
+
+```bash
+node scripts/verify_receipt.mjs path/to/receipt.json
+```
+
+The verifier checks artifact fingerprints and recomputes inference/revealed outcomes against the packaged dataset. HTTP model hashes cover raw `data/model.json` bytes; input hashes cover sorted-key canonical JSON of the actual perturbed prefix. Hashes are **not signatures or trusted timestamps**. A passing result establishes local artifact consistency, not authorship, clinical validity or protection against replacement of every artifact. Server challenge sessions are memory-only, expire after one hour, and are capped at 128; downloaded receipts remain inspectable after expiry.
+
 ## Retrain and reproduce
 
 The pretrained export is already included, so Python is optional for the demo.
@@ -139,7 +171,11 @@ The seed is `20261019`. Training regenerates the model, metrics, demo patients a
 | GET | `/api/patients` | Packaged synthetic EHR and time-series records |
 | GET | `/api/patients/:id` | One complete synthetic patient |
 | GET | `/api/metrics` | Actual training/evaluation results |
+| GET | `/api/stress` | Separate frozen-model synthetic stress results |
 | POST | `/api/predict` | Features, quality, calibrated risk, forecast and explanations |
+| GET | `/api/challenge/modes` | Available sensor challenge conditions |
+| POST | `/api/challenge` | Freeze `{patientId, cursor, mode}` using available history |
+| POST | `/api/challenge/reveal` | Reveal `{challengeId}` against the frozen prediction |
 
 Send `{ "patientId": "<id returned by the API>", "cursor": 600 }` to predict at a stored observation. Alternatively send `{ "patient": <patient object>, "cursor": 600 }` to ingest an EHR plus time-series object directly. Input validation rejects malformed records. New input is evaluated in memory and not saved. See [`data/SCHEMA.md`](data/SCHEMA.md) for the precise contract.
 
@@ -149,8 +185,14 @@ Optional scenario keys are `mealCarbs` (0–150) and `activityMinutes` (0–90).
 
 - [Architecture diagram (PDF)](docs/AURA_Twin_Architecture.pdf)
 - [Project presentation (PDF)](docs/AURA_Twin_Presentation.pdf)
+- [v2 Challenge Lab supplement and architecture (PDF)](docs/AURA_Twin_Challenge_Lab.pdf)
+- [Differentiation and related work](docs/DIFFERENTIATION.md)
+- [Three-minute jury challenge](docs/JURY_CHALLENGE_SCRIPT.md)
+- [Frozen-model stress audit](docs/STRESS_AUDIT.md)
 - [Narrated prototype walkthrough (MP4, 21 minutes 54 seconds)](docs/AURA_Twin_Walkthrough.mp4)
 - [Video transcript and chapter timestamps](docs/VIDEO_TRANSCRIPT.md)
+- [v2 Challenge Lab walkthrough (MP4, 3 minutes 50 seconds)](docs/AURA_Twin_Challenge_Lab.mp4)
+- [v2 narration transcript and timestamps](docs/VIDEO_TRANSCRIPT_UPGRADE.md)
 - [Demo recording runbook](docs/DEMO_RUNBOOK.md)
 - [Model and data card](docs/MODEL_DATA_CARD.md)
 - [Judge questions and answers](docs/JUDGE_QA.md)
@@ -160,13 +202,15 @@ Optional scenario keys are `mealCarbs` (0–150) and `activityMinutes` (0–90).
 - [Example exported patient summary](docs/SAMPLE_PATIENT_REPORT.html)
 - [Document and video source](scripts/README.md)
 
-**Video status:** a complete 21-minute 54-second narrated presentation walkthrough is included above. It uses actual prototype screenshots and a disclosed locally synthesized voice. Review it before upload. The final **unlisted YouTube video URL is pending** and must be added here before submission. The supplied video exceeds the written brief's **20-minute minimum**. The recording guide also supports replacing it with a team-delivered interactive demo.
+**Video status:** a complete 21-minute 54-second narrated **v1** presentation walkthrough and a separate **3-minute 50-second v2 Challenge Lab supplement** are included above. Both use actual prototype screenshots and a disclosed locally synthesized voice. The v1 recording predates Challenge Lab; the v2 supplement demonstrates the upgrade. Review both before upload. The final **unlisted YouTube video URL is pending** and must be added here before submission. The v1 video exceeds the written brief's **20-minute minimum**; the short supplement does not replace it. The recording guide also supports a team-delivered interactive demo.
+
+For a single upload covering both versions, run `python scripts/combine_walkthrough.py --output "AURA-Twin-Walkthrough.mp4"` with FFmpeg available. It joins the two videos into a **25-minute 44-second** walkthrough with 26 chapters, preserves the originals, and verifies the combined file by decoding it. The local delivery folder already includes this combined version outside the repository.
 
 **Public repository URL: PENDING — this deliverable is a new local repository.** Publish it as Public, then replace this status with the actual link. Verify both repository and video links in a signed-out/private browser before checking the submission form's public-access boxes.
 
 ## Limitations and next validation steps
 
-The model has not been evaluated on real-world patients or devices. It does not model medication dosing, unusual meal schedules, pregnancy, device drift or the full range of metabolic disorders. Marginal prediction intervals can fail for individual patients or shifted populations. Correlated windows are not independent samples; the reported MAE interval bootstraps patients. Missing-data policies are conservative but are not a validated clinical safety system.
+The model has not been evaluated on real-world patients or devices. It does not model medication dosing, pregnancy, device drift or the full range of metabolic disorders. Changed synthetic meal schedules sharply degrade performance in the post-hoc audit above. Marginal prediction intervals can fail for individual patients or shifted populations. Correlated windows are not independent samples; the reported MAE interval bootstraps patients. Missing-data policies are conservative but are not a validated clinical safety system, and plausible bias can pass them.
 
 Next work would involve consented or appropriately licensed external data, prospective temporal evaluation, clinical expert review, subgroup and distribution-shift studies, sensor integration, causal validation of any intervention simulator, and production access controls. These are future work, not delivered capabilities.
 
@@ -179,3 +223,5 @@ Project code, documentation, synthetic fixtures and trained coefficients are pro
 - [NIDDK — Clinical Targets for Continuous Glucose Monitoring Data](https://www.niddk.nih.gov/health-information/professionals/diabetes-discoveries-practice/clinical-targets-for-continuous-glucose-monitoring-data)
 - [scikit-learn — Common pitfalls and recommended practices](https://scikit-learn.org/stable/common_pitfalls.html)
 - [Synthea — Synthetic patient generator (potential future integration)](https://synthetichealth.github.io/synthea/)
+- [GlyTwin — prior work on glucose digital twins and counterfactual behavioral scenarios](https://arxiv.org/abs/2504.09846)
+- [npj Digital Medicine — verification, validation and uncertainty quantification of digital twins](https://www.nature.com/articles/s41746-025-01447-y)
