@@ -9,7 +9,9 @@ def stamp(seconds):
     return f'{int(seconds)//60:02d}:{seconds%60:04.1f}'
 
 def main():
-    model=json.loads((ROOT/'data/model.json').read_text(encoding='utf-8'))
+    model_path=ROOT/'data/research-model.json'
+    if not model_path.exists():model_path=ROOT/'data/model.json'
+    model=json.loads(model_path.read_text(encoding='utf-8'))
     source=json.loads((DOCS/'narration.json').read_text(encoding='utf-8'))
     if model['modelVersion'] not in '\n'.join(x['text'] for x in source):
         raise RuntimeError('Current narration does not identify the active model.')

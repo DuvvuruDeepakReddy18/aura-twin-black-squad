@@ -1,32 +1,35 @@
-# Document and video source — current model
+# Research document and video sources
 
-The finished PDFs are generated from the frozen current model/evidence artifacts. Authoring tools are optional; the dashboard has no dependency on them.
+Documents are generated from frozen `research-model.json`, `research-metrics.json`, `research-freeze.json` and the separate synthetic V4 result. The primary model hash must agree before generation succeeds. Authoring tools are optional for running the application.
 
 ```bash
-python -m pip install reportlab pypdf pillow
-python scripts/build_docs.py
-python scripts/build_upgrade_docs.py
+python -m pip install reportlab pypdf pillow pymupdf
+python scripts/build_research_docs.py --auth-status configured-unverified
+python scripts/build_v4_report.py
 python scripts/build_transcripts.py
 ```
 
-`build_docs.py` reads current model, metrics and robustness JSON plus `presentation_content.json`, then writes the 22-page presentation, three-page architecture, matching full narration and model/data card. `doc_layout.py` supplies visual layout. It deliberately requires model 3.0.0: changing the model version requires reviewing the claims. Actual screenshots are read from `docs/assets/*-current.png`.
+The current auth status is `configured-unverified`: Supabase is connected with email confirmation enabled, public signup/recovery are disabled until email delivery is configured, and Google OAuth is disabled. Do not change the status to verified without real flow evidence.
 
-`build_upgrade_docs.py` extracts six checked pages and their matching narration from the current full presentation. It does not regenerate or preserve an old-model result. Source slide numbers are intentionally retained in the PDF. The main narration includes Challenge Lab; a separate short recording is optional. A newly generated deck must be paired with a current video before submission.
+`research_presentation_content.json` contains the 22-slide narration source. `research_doc_layout.py` draws the navy/cyan PDFs. `build_research_docs.py` substitutes measured values and creates the 22-page presentation, four-page architecture, six-page challenge supplement, narration, README, model/data card and runbook. Screenshots are `docs/assets/dashboard-research.png`, `record-research.png`, `evidence-research.png` and `robustness-research.png`.
 
-For locally synthesized narration on Windows, use Microsoft Zira Desktop:
+The older `build_docs.py` dispatches to the research builder when research metrics exist. `build_upgrade_docs.py` can re-extract the current six-page supplement without preserving old-model claims. Historical synthetic layout/content files remain source history; do not run them to replace current evidence.
+
+## Narration and video
+
+The current script is approximately 4,100 words. Measure actual audio duration instead of assuming a speaking rate. The narration is disclosed as synthesized, not a recording of a team member.
 
 ```powershell
 ./scripts/narrate.ps1 -Narration ./docs/narration.json -AudioDirectory ./work/audio -Rate 2
 ```
 
-The source contains about 4,442 words. Check actual audio duration rather than assuming a speaking rate. To encode the full current walkthrough, with FFmpeg on PATH:
-
 ```bash
-python -m pip install pymupdf
 python scripts/build_video.py --pdf docs/AURA_Twin_Presentation.pdf --narration docs/narration.json --audio work/audio --output docs/AURA_Twin_Walkthrough.mp4
+python scripts/build_transcripts.py
 ```
 
-The main builder enforces a 1,200-second minimum by default. Use `--minimum-seconds 0` only for an explicitly supplementary recording, never to bypass the required main-video duration. It writes chapter metadata and a `.chapters.json` sidecar. Run `python scripts/build_transcripts.py` again afterward to add the matching chapter times and probed video duration to the transcript. Render/inspect all pages, verify narration, probe duration, decode the complete MP4 and inspect playback before uploading.
+The main video builder enforces a 1,200-second minimum. `--minimum-seconds 0` is only for an explicitly supplementary recording, never for the required main demonstration. The builder writes chapter metadata and a `.chapters.json` sidecar. The transcript includes timing only when chapter titles match the current narration.
 
+Render and inspect every page, confirm the spoken metrics, probe the finished duration, decode the complete MP4 and inspect playback before release. Any material model, target or account-status change requires matching narration and PDF updates. Screenshot-only replacements do not change narration.
 
-These tools do not upload, publish or submit anything. The narration is disclosed as synthesized, not a recording of a team member. ReportLab/pypdf/Pillow/PyMuPDF/FFmpeg retain their own licenses; consult their official terms before distributing those authoring dependencies. They are not bundled in the application.
+These tools do not upload, publish or submit. Dataset terms and authoring-library licenses remain separate from the application MIT license.

@@ -1,0 +1,33 @@
+{
+  "version": "research-protocol-1.0.0",
+  "createdAt": "2026-10-20",
+  "status": "Declared before research target audit and model fitting",
+  "dataset": "PhysioNet BIG IDEAs Lab Glycemic Variability and Wearable Device Data",
+  "datasetVersion": "1.1.3",
+  "seed": 20261020,
+  "splits": {
+    "train": ["001","002","003","004","005","006","007","008","009"],
+    "selection": ["010","011"],
+    "calibration": ["012","013"],
+    "test": ["014","015","016"]
+  },
+  "splitMethod": "Fixed source-participant-disjoint split. All windows of a participant remain in one partition. Small convenience cohort; not a representative external clinical validation.",
+  "horizonsMinutes": [30,60,90,120],
+  "targetTimestampToleranceSeconds": 150,
+  "inputHistoryMinutes": 360,
+  "strideMinutes": 15,
+  "targetAuditRule": "Use glucose >=180 mg/dL at +120 minutes only if train has >=200 positive windows, >=5% prevalence and positives in >=5 train participants; otherwise use observed glucose rise >=20 mg/dL by +120 minutes if >=100 positive windows across >=5 train participants; otherwise disable classification pending adequate data.",
+  "targetAuditScope": "Train participants only before selection/calibration/test labels are inspected.",
+  "modelCandidates": [
+    {"id":"shallow","maxIter":120,"maxLeafNodes":7,"minSamplesLeaf":60,"learningRate":0.05,"l2Regularization":10},
+    {"id":"medium","maxIter":180,"maxLeafNodes":15,"minSamplesLeaf":80,"learningRate":0.05,"l2Regularization":20}
+  ],
+  "modelSelection": "Regression family selected by mean participant +120-minute MAE; classifier by mean participant Brier on selection participants only. Run the same fixed families for CGM-only, wearable-only, matched research context+wearable, synthetic EHR-only, and unmatched composite EHR+wearable ablations.",
+  "primaryModelSelection": "Choose among CGM-only, wearable-only and matched research context+wearable by selection +120-minute MAE. Unmatched synthetic EHR never selects the deployed research predictor.",
+  "calibration": "Separate calibration participants; Platt probability mapping and 90th percentile absolute residual bands per horizon. One scalar threshold maximizing F1 on calibration only, with precision/recall and prevalence reported; no promise of clinical utility or >=80% recall.",
+  "missingness": "No backward fill or future interpolation. CGM last observation available within15min (three cadence intervals); HR aggregate uses only completed source-minute timestamps. Invalid IBI removed with counts and adjacent differences only within10s; derived RMSSD requires >=20 accepted differences.",
+  "preFitClarification": "Before fitting or label audit, maximum CGM carryforward clarified from10 to15minutes because grid timestamps can already lag the latest source observation by up to5minutes. This supports two-missing-reading tests without using future data.",
+  "testRule": "Test labels are evaluated once after chosen artifact, calibration and threshold are frozen. No retuning on test results.",
+  "uncertaintyLimit": "Only two calibration and three final participants. Residual bands are empirical, not a guarantee under participant dependence or distribution shift.",
+  "syntheticContext": "Genuine Synthea sample profiles are deterministically and arbitrarily paired without wearable/target-based matching; they are not the same people and cannot validate physiological EHR fusion."
+}

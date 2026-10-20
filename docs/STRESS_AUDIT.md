@@ -1,6 +1,8 @@
-# Frozen-policy comparison and routine stress audit
+# Historical V3 synthetic comparison and routine stress audit
 
-Current model: `aura-synthetic-3.0.0`. Raw model-file SHA-256: `87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4`.
+This document preserves the earlier synthetic benchmark. It does not describe the current open-research model. See [MODEL_DATA_CARD.md](MODEL_DATA_CARD.md) for current evidence and [SYNTHETIC_V4_EXPERIMENT.md](SYNTHETIC_V4_EXPERIMENT.md) for the separate non-promoted candidate.
+
+Historical model: `aura-synthetic-3.0.0`. Raw model-file SHA-256: `87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4`.
 
 The gains are modest and mixed: the patient-bootstrap 95% interval for the FN difference includes zero, and the withheld combination has **324 → 330 missed positive windows**. This does not establish a reliable reduction in misses or improvement across every routine.
 

@@ -1,0 +1,36 @@
+{
+  "modelVersion": "aura-research-1.0.0",
+  "modelSHA256": "a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432",
+  "frozenAt": "2026-10-20T07:17:53.542821+00:00",
+  "protocolSHA256": "52610713f5a786e19fe22c7c0ad843b3ef1a7de531060518e0f29f76879caf48",
+  "testOpened": false,
+  "primaryFamily": "cgmOnly",
+  "target": {
+    "kind": "rise",
+    "threshold": 20,
+    "horizonMinutes": 120,
+    "toleranceSeconds": 150,
+    "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within \u00b1150 seconds).",
+    "unit": "mg/dL"
+  },
+  "threshold": 0.18000000000000002,
+  "ablationsSHA256": "e4e439f5d5ced137e3431a17ee3a28cd191dbfbbef486827235f19382a6af993",
+  "persistenceResidualQuantiles": [
+    31.0,
+    38.0,
+    40.0,
+    43.0
+  ],
+  "sealedAt": "2026-10-20T07:17:54.348539+00:00",
+  "cacheSHA256": "657ec30caade746bbade9369eebd750a13bae2a15e2bb77ead5676b14453f25f",
+  "sourceSHA256": {
+    "ml/research_data.py": "c156a326c6b89286be1bf4dfb170e947aff045011c6a17164466f2f5f1494e25",
+    "ml/train_research.py": "56bea9f25ced2618d2504a38e9d4f6cbbb63684c7a80ab85c599696f36b13dd9",
+    "lib/research-model.mjs": "6e835c38a27f0d6b0d748c927cac6a302ca901a4040ba2087384ff84ef86ec4b",
+    "scripts/ingest_wearable.py": "69c9c839b50e89384e4ff28fa5e4cc2fecd73f718f6e7f82bcc573b1bb5285b6",
+    "scripts/ingest_synthea.py": "b9e11822a204e4fa877eae5a12b012d5ebbfbe9084fbafb4d274ee866fb751ab",
+    "data/research/synthea.json": "0bae2fce481a4e3d93521ec92cd63051d31d8ceea10d2c89031fde5a64510f31",
+    "data/research/PHYSIONET_SHA256SUMS.txt": "d2cd60ae6dd68e2848b06e9e50dc1f17699881121de5a7d6bd35f69210cfc3eb"
+  },
+  "sealNote": "Cache and source fingerprints recorded before final evaluation; local audit trail, not external preregistration."
+}

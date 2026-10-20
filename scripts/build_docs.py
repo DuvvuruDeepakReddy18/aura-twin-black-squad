@@ -173,4 +173,9 @@ Primary context: [NIDDK CGM target discussion](https://www.niddk.nih.gov/health-
     (OUT/'MODEL_DATA_CARD.md').write_text(body,encoding='utf-8')
     (ROOT/'ml/MODEL_CARD.md').write_text('# Current model card\n\nThe authoritative card is [docs/MODEL_DATA_CARD.md](../docs/MODEL_DATA_CARD.md), generated from the frozen V3 artifact and fresh final evaluation. Historical artifacts remain in `data/baseline-v1/` and `data/baseline-v2/`.\n',encoding='utf-8')
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    if (ROOT/'data/research-metrics.json').exists():
+        from build_research_docs import main as research_main
+        research_main()
+    else:
+        main()

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "unmatched_composite_context",
+  "method": "Ascending declared research participant order paired with source-UUID-sorted adult profiles.",
+  "targetDriven": false,
+  "clinicalIdentityLinkage": false,
+  "warning": "Composite Research Twin: synthetic context and wearable participant are different identities.",
+  "assignments": [
+    {
+      "researchParticipantId": "001",
+      "syntheticProfileId": "SYN-EHR-001",
+      "sourcePatientSHA256": "6463a44a3937ecaf01b5a3210ec2c4d94bdc99a13c6957b5645166ca2756360f"
+    },
+    {
+      "researchParticipantId": "002",
+      "syntheticProfileId": "SYN-EHR-002",
+      "sourcePatientSHA256": "f561178c1971feec2485560413bb6e4bca2ba34ed601e5d4e53376b3cc95978b"
+    },
+    {
+      "researchParticipantId": "003",
+      "syntheticProfileId": "SYN-EHR-003",
+      "sourcePatientSHA256": "7a93cd32cfec50f3253607b35d64b0a3bf239e6a5a3e94968dc7c6abb1cbcd9b"
+    },
+    {
+      "researchParticipantId": "004",
+      "syntheticProfileId": "SYN-EHR-004",
+      "sourcePatientSHA256": "bced731caf3f6c64603ad3f84334976355c9dd3dbb3fd6ffb09af868c0678c5e"
+    },
+    {
+      "researchParticipantId": "005",
+      "syntheticProfileId": "SYN-EHR-005",
+      "sourcePatientSHA256": "9806c0b8eac4a72808e93826ad5c92b67033d9d03b73bdff502ac3bff6c55645"
+    },
+    {
+      "researchParticipantId": "006",
+      "syntheticProfileId": "SYN-EHR-006",
+      "sourcePatientSHA256": "336c0fbfe80d23f4fb3fe95f379d9fe5c9aff7d7436f5f1d16923dfbc9bf370c"
+    },
+    {
+      "researchParticipantId": "007",
+      "syntheticProfileId": "SYN-EHR-007",
+      "sourcePatientSHA256": "f297b005913f366818370d1693063e07134485a31fb88ae5511c224a06dabc2f"
+    },
+    {
+      "researchParticipantId": "008",
+      "syntheticProfileId": "SYN-EHR-008",
+      "sourcePatientSHA256": "a83a80d5334240d990cc93cd5f28e50099641fc4b42a71f00e9d4ffb66d164fa"
+    },
+    {
+      "researchParticipantId": "009",
+      "syntheticProfileId": "SYN-EHR-009",
+      "sourcePatientSHA256": "90c305d365e03a773c06b3d6371e01c407476500df6f7fd1906520be6fa81523"
+    },
+    {
+      "researchParticipantId": "010",
+      "syntheticProfileId": "SYN-EHR-010",
+      "sourcePatientSHA256": "a5677b87926cb856f492eac6a150dee833ce50eec454f5be0d1fec5291b7ff82"
+    },
+    {
+      "researchParticipantId": "011",
+      "syntheticProfileId": "SYN-EHR-011",
+      "sourcePatientSHA256": "9b8ab3e7b94f7d10b3d627446f876d07190672a4bbd2f22940185f17f04e49a3"
+    },
+    {
+      "researchParticipantId": "012",
+      "syntheticProfileId": "SYN-EHR-012",
+      "sourcePatientSHA256": "aee638392a9d8b5d8e28cf6773c8889a37cfbcdc2b66686bca2ddaf3fe61840c"
+    },
+    {
+      "researchParticipantId": "013",
+      "syntheticProfileId": "SYN-EHR-013",
+      "sourcePatientSHA256": "27476d773de14fff349d1ec3a30ae814aa81720ab84ac0cd39b870b84c71658c"
+    },
+    {
+      "researchParticipantId": "014",
+      "syntheticProfileId": "SYN-EHR-014",
+      "sourcePatientSHA256": "8e74465d6b015b0d162ba0428a79f90ea32d21538dd7af2a925b47e9973623ee"
+    },
+    {
+      "researchParticipantId": "015",
+      "syntheticProfileId": "SYN-EHR-015",
+      "sourcePatientSHA256": "021531ef4a54ad3c05f98049f9633a75cbec4bd304a0bab5e2cb2f7a4564fce8"
+    },
+    {
+      "researchParticipantId": "016",
+      "syntheticProfileId": "SYN-EHR-016",
+      "sourcePatientSHA256": "8a6bccfde58e857004bcab482b399d6acc46b83255f3b349dfbded3ad58f677a"
+    }
+  ]
+}

@@ -1,0 +1,522 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "aura-research-1.0.0",
+  "modelSHA256": "a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432",
+  "datasetVersion": "1.1.3",
+  "preprocessingVersion": "research-causal-1.0.0",
+  "featureVersion": "big_ideas_history_v1",
+  "seed": 20261020,
+  "target": {
+    "kind": "rise",
+    "threshold": 20,
+    "horizonMinutes": 120,
+    "toleranceSeconds": 150,
+    "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within \u00b1150 seconds).",
+    "unit": "mg/dL"
+  },
+  "split": {
+    "train": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006",
+      "007",
+      "008",
+      "009"
+    ],
+    "selection": [
+      "010",
+      "011"
+    ],
+    "calibration": [
+      "012",
+      "013"
+    ],
+    "test": [
+      "014",
+      "015",
+      "016"
+    ]
+  },
+  "evaluationAt": "2026-10-20T07:20:17.463572+00:00",
+  "freeze": {
+    "modelVersion": "aura-research-1.0.0",
+    "modelSHA256": "a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432",
+    "frozenAt": "2026-10-20T07:17:53.542821+00:00",
+    "protocolSHA256": "52610713f5a786e19fe22c7c0ad843b3ef1a7de531060518e0f29f76879caf48",
+    "testOpened": false,
+    "primaryFamily": "cgmOnly",
+    "target": {
+      "kind": "rise",
+      "threshold": 20,
+      "horizonMinutes": 120,
+      "toleranceSeconds": 150,
+      "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within \u00b1150 seconds).",
+      "unit": "mg/dL"
+    },
+    "threshold": 0.18000000000000002,
+    "ablationsSHA256": "e4e439f5d5ced137e3431a17ee3a28cd191dbfbbef486827235f19382a6af993",
+    "persistenceResidualQuantiles": [
+      31.0,
+      38.0,
+      40.0,
+      43.0
+    ],
+    "sealedAt": "2026-10-20T07:17:54.348539+00:00",
+    "cacheSHA256": "657ec30caade746bbade9369eebd750a13bae2a15e2bb77ead5676b14453f25f",
+    "sourceSHA256": {
+      "ml/research_data.py": "c156a326c6b89286be1bf4dfb170e947aff045011c6a17164466f2f5f1494e25",
+      "ml/train_research.py": "56bea9f25ced2618d2504a38e9d4f6cbbb63684c7a80ab85c599696f36b13dd9",
+      "lib/research-model.mjs": "6e835c38a27f0d6b0d748c927cac6a302ca901a4040ba2087384ff84ef86ec4b",
+      "scripts/ingest_wearable.py": "69c9c839b50e89384e4ff28fa5e4cc2fecd73f718f6e7f82bcc573b1bb5285b6",
+      "scripts/ingest_synthea.py": "b9e11822a204e4fa877eae5a12b012d5ebbfbe9084fbafb4d274ee866fb751ab",
+      "data/research/synthea.json": "0bae2fce481a4e3d93521ec92cd63051d31d8ceea10d2c89031fde5a64510f31",
+      "data/research/PHYSIONET_SHA256SUMS.txt": "d2cd60ae6dd68e2848b06e9e50dc1f17699881121de5a7d6bd35f69210cfc3eb"
+    },
+    "sealNote": "Cache and source fingerprints recorded before final evaluation; local audit trail, not external preregistration."
+  },
+  "sourceFiles": [
+    {
+      "file": "001/Dexcom_001.csv",
+      "sha256": "6333b21185f23834ab929e5d8bf9045bbed6268cdfd5030adab3c7d5ef689ef5",
+      "bytes": 154574,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/001/Dexcom_001.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/001/Dexcom_001.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "001/HR_001.csv",
+      "sha256": "c825593c19c5c02e8f7349ca05f730a44c60cb9b15c67fe38bb6436de3f82c97",
+      "bytes": 12993301,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/001/HR_001.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/001/HR_001.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "001/IBI_001.csv",
+      "sha256": "3776d4319d412548eb5686d5abf0ebfbbcccd5884122f5abcbec1c82450802ba",
+      "bytes": 10357009,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/001/IBI_001.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/001/IBI_001.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "002/Dexcom_002.csv",
+      "sha256": "16a0112fa293a1be19b6cd45743faad5ec978eb36fd277781b1cbd6b8d0bf358",
+      "bytes": 130596,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/002/Dexcom_002.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/002/Dexcom_002.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "002/HR_002.csv",
+      "sha256": "464241c0a82c860a07c0d511da4a48247966580c54a3287d7ebe7998f173ab8b",
+      "bytes": 16993663,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/002/HR_002.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/002/HR_002.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "002/IBI_002.csv",
+      "sha256": "28b541dfd0d0ae1d087ddbfef6269d431b9363c6ec5ad0fec873ffe4c94ee11d",
+      "bytes": 18697394,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/002/IBI_002.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/002/IBI_002.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "003/Dexcom_003.csv",
+      "sha256": "d0cb046839157b4a1823505b99823c2f2535d1c1a080b8aad3a05883800bcf37",
+      "bytes": 138945,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/003/Dexcom_003.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/003/Dexcom_003.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "003/HR_003.csv",
+      "sha256": "3c73cc6234f990988dd26cedd77df4580fb4c11b93b865e0b0697b1def65d47f",
+      "bytes": 11254456,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/003/HR_003.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/003/HR_003.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "003/IBI_003.csv",
+      "sha256": "f64be14ddb3ea157602ca2214af3cf696f197f99c701b6f0d2b3b3c7801dca0b",
+      "bytes": 6618259,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/003/IBI_003.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/003/IBI_003.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "004/Dexcom_004.csv",
+      "sha256": "c0dc4ee5f8b3501a18d91ee6b117a518cf9bd1332f49a4281bd69e5ac841e927",
+      "bytes": 132982,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/004/Dexcom_004.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/004/Dexcom_004.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "004/HR_004.csv",
+      "sha256": "9a4fc3413d29e1b562d0a4d8daefe88240c3cef8bce99ab2172887423b5046e4",
+      "bytes": 12103195,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/004/HR_004.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/004/HR_004.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "004/IBI_004.csv",
+      "sha256": "faa1bff921f67f638654d659047888b06c40015f63398a00d0c411f11f0af15e",
+      "bytes": 8184533,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/004/IBI_004.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/004/IBI_004.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "005/Dexcom_005.csv",
+      "sha256": "ae6762720b52b3a179d1a8d308e8568fea4a832b199111ca3a2b57bad4da109a",
+      "bytes": 156847,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/005/Dexcom_005.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/005/Dexcom_005.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "005/HR_005.csv",
+      "sha256": "b89cdc7ac373ca5cd883d51e4ed6420995201e67a82d2bfa05b4c49641e19fdc",
+      "bytes": 19604347,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/005/HR_005.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/005/HR_005.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "005/IBI_005.csv",
+      "sha256": "acb3ac39bdef491e44dc2a5c651033c361bc9be85a9d36fb92d7f2a816bc33cd",
+      "bytes": 11012362,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/005/IBI_005.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/005/IBI_005.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "006/Dexcom_006.csv",
+      "sha256": "be7742cfa6755e6a200056497bae930c8a0b52f467184d1ce14ecbc4b66dd806",
+      "bytes": 172562,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/006/Dexcom_006.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/006/Dexcom_006.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "006/HR_006.csv",
+      "sha256": "69deab72b16dfe7340aa0b01fab8970fb66cfa5d7a2d1715a4ba6426889935e5",
+      "bytes": 13477715,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/006/HR_006.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/006/HR_006.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "006/IBI_006.csv",
+      "sha256": "7c98cc41436ed13284ba559e0a226b6f95af00e63f70b0d16d3488f5f1291781",
+      "bytes": 6775549,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/006/IBI_006.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/006/IBI_006.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "007/Dexcom_007.csv",
+      "sha256": "c8488406134a6eefcb944058e8fb256e0d4db669920f129708e039250f7caf6b",
+      "bytes": 134440,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/007/Dexcom_007.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/007/Dexcom_007.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "007/HR_007.csv",
+      "sha256": "be65b34151980bb6d8f83b9477cda7dcef29a422f5b8e0aa3525e7e062c6ee15",
+      "bytes": 17437468,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/007/HR_007.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/007/HR_007.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "007/IBI_007.csv",
+      "sha256": "2fb4ae6ae5a8d73896785e06e0bfa2865266410293229de191d8cfc8a3b981b3",
+      "bytes": 15053616,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/007/IBI_007.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/007/IBI_007.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "008/Dexcom_008.csv",
+      "sha256": "d188eec4a740f5f5cfdccfeceeaadb78da983f83cede2872dc3de5a6b1e05104",
+      "bytes": 154141,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/008/Dexcom_008.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/008/Dexcom_008.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "008/HR_008.csv",
+      "sha256": "33af2e5e66159f8fc4b6b4da359fd6886667ad06a40822003212e3ffadb2cbce",
+      "bytes": 17931222,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/008/HR_008.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/008/HR_008.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "008/IBI_008.csv",
+      "sha256": "949175cdfddef0c456756b797147c87c7bbfe17aca691ad98eea8cb630c89a19",
+      "bytes": 12590095,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/008/IBI_008.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/008/IBI_008.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "009/Dexcom_009.csv",
+      "sha256": "2609121bf35dce40477fe710ef9bc5a656276ed4624b44e821dca51d08e0487e",
+      "bytes": 139795,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/009/Dexcom_009.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/009/Dexcom_009.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "009/HR_009.csv",
+      "sha256": "cc0c0db86aef2f507b675ca17fe930effe32686d179bc11fd7c3c3fe0bc0137b",
+      "bytes": 17076674,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/009/HR_009.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/009/HR_009.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "009/IBI_009.csv",
+      "sha256": "228b9ece41e571f01229af1a1ec8320d72793d3793f4f3c324eb5bfa1c0e37d0",
+      "bytes": 8795639,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/009/IBI_009.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/009/IBI_009.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "010/Dexcom_010.csv",
+      "sha256": "7b0d819632b9d8def7b22a10fb03829d7bb2648eaed464b6884697e7b1cdfc87",
+      "bytes": 129618,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/010/Dexcom_010.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/010/Dexcom_010.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "010/HR_010.csv",
+      "sha256": "3f181515ca666a2fa2e5a1780349a35b229f51e28c461d5ec2297dcbc08dd3fc",
+      "bytes": 17557653,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/010/HR_010.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/010/HR_010.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "010/IBI_010.csv",
+      "sha256": "1cf048cac3937966ea0df77b7d6e292969e2f2b7260cb54443ece6dec416b5a5",
+      "bytes": 8882636,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/010/IBI_010.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/010/IBI_010.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "011/Dexcom_011.csv",
+      "sha256": "6cb15f7def679c0a526f32939fd07bef9458059938c2c169b0a5587e450f71c5",
+      "bytes": 172103,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/011/Dexcom_011.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/011/Dexcom_011.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "011/HR_011.csv",
+      "sha256": "f2247fe4b84270323c6bcf6c26f4eb1a370c9bec5dff3ae6ad908c9a9b577216",
+      "bytes": 17791094,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/011/HR_011.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/011/HR_011.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "011/IBI_011.csv",
+      "sha256": "3ec1e5e60a27fcd6da11a50ad85d5c20db33c8b828434d2117637480dba97e9c",
+      "bytes": 10145038,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/011/IBI_011.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/011/IBI_011.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "012/Dexcom_012.csv",
+      "sha256": "00b9a16f43eaf62118c15b23e751b34c844e8a9da0416480dde4af1c65fafa8b",
+      "bytes": 133644,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/012/Dexcom_012.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/012/Dexcom_012.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "012/HR_012.csv",
+      "sha256": "9418d6f330248fe8ec78adcb7a07eae08073b6c104551d04a40a4917a83bcfa8",
+      "bytes": 16113321,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/012/HR_012.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/012/HR_012.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "012/IBI_012.csv",
+      "sha256": "856a3be0ef52dd10be617b3f6139302da1f436d3fa3616a7f57629186b592074",
+      "bytes": 7301891,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/012/IBI_012.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/012/IBI_012.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "013/Dexcom_013.csv",
+      "sha256": "bed694aee354620e5d6c8e598dd81e37d5eca49b598d0d35e44dc45cff066ee9",
+      "bytes": 119879,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/013/Dexcom_013.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/013/Dexcom_013.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "013/HR_013.csv",
+      "sha256": "e8020a791aa86d5bc3c0bcc353eba74241622517fd572e601a94416fd96f0dd2",
+      "bytes": 18915588,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/013/HR_013.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/013/HR_013.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "013/IBI_013.csv",
+      "sha256": "26416953775e5545e397431521d7d35a36867f711798b72eb2470b4ef8359a15",
+      "bytes": 9332748,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/013/IBI_013.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/013/IBI_013.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "014/Dexcom_014.csv",
+      "sha256": "92cc01a2322b6a9b98846e30ee1eb9493a7567be938696bc705293ac9fc90f90",
+      "bytes": 137821,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/014/Dexcom_014.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/014/Dexcom_014.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "014/HR_014.csv",
+      "sha256": "79a92897b64c03cd3390a2c9a59aed1b580a90ceab10ef9924838aff60388a7e",
+      "bytes": 12704713,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/014/HR_014.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/014/HR_014.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "014/IBI_014.csv",
+      "sha256": "102e7e0736354346196754c12a6a920d8eabdd89999b96af599c79f8365a4c66",
+      "bytes": 8958127,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/014/IBI_014.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/014/IBI_014.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "015/Dexcom_015.csv",
+      "sha256": "a7023af9bae77133292c4a6123ec35cb8a97f58fc8b8a44c89b0850095960456",
+      "bytes": 102853,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/015/Dexcom_015.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/015/Dexcom_015.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "015/HR_015.csv",
+      "sha256": "2423baf3558e993dd5a0283aeea3386f73950f2578056f91c6e93ec435dee61d",
+      "bytes": 11846022,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/015/HR_015.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/015/HR_015.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "015/IBI_015.csv",
+      "sha256": "6af05fa5a57ac09fbe9448bafb5f16158b26d0fb9cfdc77d26c5e4a2204e3a64",
+      "bytes": 8954290,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/015/IBI_015.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/015/IBI_015.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "016/Dexcom_016.csv",
+      "sha256": "79e5861107b3fd010694268bcd564ea9af5f434d0eda3c890495ff2e504851dc",
+      "bytes": 137315,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/016/Dexcom_016.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/016/Dexcom_016.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "016/HR_016.csv",
+      "sha256": "9ce87045239a700badc95223f52ced93ac3c3d4e62c652c23b1f12077ebc9aa2",
+      "bytes": 15021200,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/016/HR_016.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/016/HR_016.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "016/IBI_016.csv",
+      "sha256": "607efca3fb72613f8ee95461bda09f851af7700cff24ffe0d55bab6530039a59",
+      "bytes": 12992921,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/016/IBI_016.csv",
+      "downloadUrl": "https://physionet-open.s3.amazonaws.com/big-ideas-glycemic-wearable/1.1.2/016/IBI_016.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "Demographics.csv",
+      "sha256": "995ece21fd29be689c67aee8fd22659dea6755a28c4f84e07c28605fef80b9ac",
+      "bytes": 237,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/Demographics.csv",
+      "downloadUrl": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/Demographics.csv",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "LICENSE.txt",
+      "sha256": "86c0ad300f6d380591298bc03652e30b81f65954bbf22435812bcfd46812ab06",
+      "bytes": 20402,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/LICENSE.txt",
+      "downloadUrl": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/LICENSE.txt",
+      "publisherHashVerified": true
+    },
+    {
+      "file": "SHA256SUMS.txt",
+      "sha256": "d2cd60ae6dd68e2848b06e9e50dc1f17699881121de5a7d6bd35f69210cfc3eb",
+      "bytes": 10655,
+      "url": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/SHA256SUMS.txt",
+      "downloadUrl": "https://physionet.org/files/big-ideas-glycemic-wearable/1.1.3/SHA256SUMS.txt",
+      "publisherHashVerified": false
+    }
+  ],
+  "leakageAudit": {
+    "passed": true,
+    "executedChecks": {
+      "passed": true,
+      "checkedWindows": 1859,
+      "prefixTruncationCases": 12,
+      "splitDisjointness": true,
+      "inputSourceTimesNotFuture": true,
+      "targetsStrictlyFutureWithinTolerance": true
+    },
+    "featureHistory": "Only prefix observations, maximum6h",
+    "target": "Actual observation strictly aftercutoff and within150s of each nominalhorizon",
+    "participantPartitionsDisjoint": true,
+    "testOpenedAfterModelFreeze": true
+  },
+  "artifacts": {
+    "research-model.json": {
+      "sha256": "a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432"
+    },
+    "research-metrics.json": {
+      "sha256": "bf4cbd0f9b249161ad65e1e15be6785aac51cf59c9287ecc34e129b277a67812"
+    },
+    "research-patients.json": {
+      "sha256": "49e3b404aa21a7e4b7b84d636078d4bf3336c40ed079fd96acb0471c3535f8fd"
+    },
+    "research-truth.json": {
+      "sha256": "962a53c645a542e3a19935ade842fc63e44a5015ce7ffad49fb86f5ecfc8f5ed"
+    },
+    "research-protocol.json": {
+      "sha256": "52610713f5a786e19fe22c7c0ad843b3ef1a7de531060518e0f29f76879caf48"
+    }
+  }
+}

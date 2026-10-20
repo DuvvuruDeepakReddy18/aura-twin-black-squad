@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "preprocessingVersion": "aura-synthea-import-1.0.0",
+  "source": {
+    "name": "Synthea official sample CSV",
+    "kind": "synthetic_ehr",
+    "version": "official-sample-2c7d489eb4c8",
+    "sourceCommit": "2c7d489eb4c8bc967dbfab3499a0f573818880dc",
+    "sourcePage": "https://synthetichealth.github.io/downloads.html",
+    "downloadUrl": "https://raw.githubusercontent.com/synthetichealth/synthea-sample-data/2c7d489eb4c8bc967dbfab3499a0f573818880dc/downloads/latest/synthea_sample_data_csv_latest.zip",
+    "archiveSHA256": "a7f6f24d3ebd96bbf0b5ef29a16ca6bd6d7ca68db65537ca6ccab6adc20ec609",
+    "archiveBytes": 7271754,
+    "generatorVersion": null,
+    "generatorSeed": null,
+    "versionNote": "Generator version/seed were not supplied in this CSV archive; not inferred.",
+    "license": "Official sample-data terms permit unrestricted use; separate from application MIT license.",
+    "licenseUrl": "https://synthetichealth.github.io/downloads.html",
+    "citationDOI": "10.1093/jamia/ocx079",
+    "dataDictionary": "https://github.com/synthetichealth/synthea/wiki/CSV-File-Data-Dictionary",
+    "archiveEntryLocalDateComponents": {
+      "patients.csv": [
+        2026,
+        10,
+        19,
+        18,
+        14,
+        42
+      ],
+      "observations.csv": [
+        2026,
+        10,
+        19,
+        18,
+        14,
+        42
+      ],
+      "conditions.csv": [
+        2026,
+        10,
+        19,
+        18,
+        14,
+        42
+      ],
+      "medications.csv": [
+        2026,
+        10,
+        19,
+        18,
+        14,
+        42
+      ]
+    },
+    "snapshotAt": "2019-01-01",
+    "snapshotNote": "Chosen historical cutoff, not an asserted source generation date.",
+    "preprocessingVersion": "aura-synthea-import-1.0.0"
+  },
+  "retrievedOn": "2026-10-20",
+  "files": [
+    {
+      "file": "patients.csv",
+      "sha256": "246d2eb6f988a99d65e31a57a30208aa19a74eb41e6a72a3796e97a1f46bb837",
+      "bytes": 30710,
+      "rows": 102
+    },
+    {
+      "file": "observations.csv",
+      "sha256": "182da899e6229c4ee54fe6f6afb791ec5eb0c6103f388606b5396ff2681079ad",
+      "bytes": 13906266,
+      "rows": 78620
+    },
+    {
+      "file": "conditions.csv",
+      "sha256": "857a14a7fde87a350c45b5ef718a4e5ddf0cee68abfcbf5c88748a4c0bb53101",
+      "bytes": 508986,
+      "rows": 3528
+    },
+    {
+      "file": "medications.csv",
+      "sha256": "152df247634af74a90deb3800f07ee6716d3aad541f8f5c0e689793c02142dfd",
+      "bytes": 1518997,
+      "rows": 5828
+    }
+  ],
+  "selection": {
+    "sourcePatients": 102,
+    "eligibleAdults": 69,
+    "selectedProfiles": 16,
+    "exclusions": {
+      "invalidBirthDate": 0,
+      "under18AtSnapshot": 21,
+      "notAliveAtSnapshot": 1,
+      "bornAfterSnapshot": 11
+    },
+    "rule": "Alive adults at the declared snapshot; ascending source UUID, first N.",
+    "targetOrWearableDrivenSelection": false
+  },
+  "validation": {
+    "observations.csv": {
+      "sourceRows": 78620,
+      "selectedProfileRows": 17445,
+      "invalidDateRows": 0,
+      "afterSnapshotRows": 15138,
+      "usableRows": 2307
+    },
+    "conditions.csv": {
+      "sourceRows": 3528,
+      "selectedProfileRows": 703,
+      "invalidDateRows": 0,
+      "afterSnapshotRows": 442,
+      "usableRows": 261
+    },
+    "medications.csv": {
+      "sourceRows": 5828,
+      "selectedProfileRows": 1505,
+      "invalidDateRows": 0,
+      "afterSnapshotRows": 1333,
+      "usableRows": 172
+    }
+  },
+  "retention": "Last 40 observations, 30 diagnoses and 30 medication rows per profile; selected latest labs also retained with source row.",
+  "removedFields": [
+    "raw source UUID",
+    "name",
+    "birth date",
+    "address",
+    "contact",
+    "SSN",
+    "drivers license",
+    "passport",
+    "coordinates",
+    "income"
+  ],
+  "limitations": [
+    "Synthetic EHR is not the wearable participant record.",
+    "Assignment is arbitrary and does not establish physiological linkage.",
+    "A later end date is withheld at the historical snapshot.",
+    "Missing labs and genetic context are not generated or imputed."
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "createdAt": "2026-10-20T07:14:56.762810+00:00",
+  "scope": "Train participants only",
+  "audit": [
+    {
+      "kind": "absolute",
+      "threshold": 180,
+      "windows": 6704,
+      "positiveWindows": 122,
+      "positiveRate": 0.018198090692124105,
+      "positiveParticipants": 6,
+      "byParticipant": [
+        {
+          "id": "001",
+          "windows": 792,
+          "positives": 0
+        },
+        {
+          "id": "002",
+          "windows": 648,
+          "positives": 9
+        },
+        {
+          "id": "003",
+          "windows": 724,
+          "positives": 3
+        },
+        {
+          "id": "004",
+          "windows": 662,
+          "positives": 2
+        },
+        {
+          "id": "005",
+          "windows": 809,
+          "positives": 0
+        },
+        {
+          "id": "006",
+          "windows": 917,
+          "positives": 71
+        },
+        {
+          "id": "007",
+          "windows": 676,
+          "positives": 3
+        },
+        {
+          "id": "008",
+          "windows": 739,
+          "positives": 0
+        },
+        {
+          "id": "009",
+          "windows": 737,
+          "positives": 34
+        }
+      ]
+    },
+    {
+      "kind": "rise",
+      "threshold": 20,
+      "windows": 6704,
+      "positiveWindows": 1074,
+      "positiveRate": 0.16020286396181385,
+      "positiveParticipants": 9,
+      "byParticipant": [
+        {
+          "id": "001",
+          "windows": 792,
+          "positives": 114
+        },
+        {
+          "id": "002",
+          "windows": 648,
+          "positives": 126
+        },
+        {
+          "id": "003",
+          "windows": 724,
+          "positives": 105
+        },
+        {
+          "id": "004",
+          "windows": 662,
+          "positives": 95
+        },
+        {
+          "id": "005",
+          "windows": 809,
+          "positives": 83
+        },
+        {
+          "id": "006",
+          "windows": 917,
+          "positives": 180
+        },
+        {
+          "id": "007",
+          "windows": 676,
+          "positives": 114
+        },
+        {
+          "id": "008",
+          "windows": 739,
+          "positives": 115
+        },
+        {
+          "id": "009",
+          "windows": 737,
+          "positives": 142
+        }
+      ]
+    }
+  ],
+  "selectedTarget": {
+    "kind": "rise",
+    "threshold": 20,
+    "horizonMinutes": 120,
+    "toleranceSeconds": 150,
+    "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within \u00b1150 seconds).",
+    "unit": "mg/dL"
+  },
+  "rule": "Use glucose >=180 mg/dL at +120 minutes only if train has >=200 positive windows, >=5% prevalence and positives in >=5 train participants; otherwise use observed glucose rise >=20 mg/dL by +120 minutes if >=100 positive windows across >=5 train participants; otherwise disable classification pending adequate data."
+}

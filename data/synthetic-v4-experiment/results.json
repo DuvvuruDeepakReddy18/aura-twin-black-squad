@@ -1,0 +1,3371 @@
+{
+  "schemaVersion": 1,
+  "experimentVersion": "aura-synthetic-v4-experiment-1.0.0",
+  "syntheticOnly": true,
+  "activeModelReplaced": false,
+  "baseModelSHA256": "87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4",
+  "frozenEstimatorSHA256": "5da1b677be2a8ef4ce10b681d6030f201ce09d81529ac3475e0e1b48765eed9b",
+  "protocol": {
+    "experimentVersion": "aura-synthetic-v4-experiment-1.0.0",
+    "seed": 20261023,
+    "createdAt": "2026-10-20T07:05:20.298956+00:00",
+    "syntheticOnly": true,
+    "activeModelReplaced": false,
+    "target": "Glucose >=180 mg/dL at exactly +120 minutes; overlapping windows, not unique episodes.",
+    "baseModelVersion": "aura-synthetic-3.0.0",
+    "baseModelSHA256": "87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4",
+    "generatorSHA256": "73146e28b49b003227f561c4babdb0e7fd00dbc4a0536a95c16d95c2fbd3c108",
+    "generatorUnchanged": true,
+    "experimentSourceSHA256": "efde9c62ebcc661af61ff883a97d4bb8ded82308c881005d972c7e28c7974df7",
+    "days": 4,
+    "splits": {
+      "train": [
+        2500,
+        2501,
+        2502,
+        2503,
+        2504,
+        2505,
+        2506,
+        2507,
+        2508,
+        2509,
+        2510,
+        2511,
+        2512,
+        2513,
+        2514,
+        2515,
+        2516,
+        2517,
+        2518,
+        2519,
+        2520,
+        2521,
+        2522,
+        2523,
+        2524,
+        2525,
+        2526,
+        2527,
+        2528,
+        2529,
+        2530,
+        2531,
+        2532,
+        2533,
+        2534,
+        2535,
+        2536,
+        2537,
+        2538,
+        2539,
+        2540,
+        2541,
+        2542,
+        2543,
+        2544,
+        2545,
+        2546,
+        2547,
+        2548,
+        2549,
+        2550,
+        2551,
+        2552,
+        2553,
+        2554,
+        2555,
+        2556,
+        2557,
+        2558,
+        2559,
+        2560,
+        2561,
+        2562,
+        2563,
+        2564,
+        2565,
+        2566,
+        2567,
+        2568,
+        2569,
+        2570,
+        2571,
+        2572,
+        2573,
+        2574,
+        2575,
+        2576,
+        2577,
+        2578,
+        2579,
+        2580,
+        2581,
+        2582,
+        2583,
+        2584,
+        2585,
+        2586,
+        2587,
+        2588,
+        2589,
+        2590,
+        2591,
+        2592,
+        2593,
+        2594,
+        2595,
+        2596,
+        2597,
+        2598,
+        2599,
+        2600,
+        2601,
+        2602,
+        2603,
+        2604,
+        2605,
+        2606,
+        2607,
+        2608,
+        2609,
+        2610,
+        2611,
+        2612,
+        2613,
+        2614,
+        2615,
+        2616,
+        2617,
+        2618,
+        2619,
+        2620,
+        2621,
+        2622,
+        2623,
+        2624,
+        2625,
+        2626,
+        2627,
+        2628,
+        2629,
+        2630,
+        2631,
+        2632,
+        2633,
+        2634,
+        2635,
+        2636,
+        2637,
+        2638,
+        2639,
+        2640,
+        2641,
+        2642,
+        2643,
+        2644,
+        2645,
+        2646,
+        2647,
+        2648,
+        2649,
+        2650,
+        2651,
+        2652,
+        2653,
+        2654,
+        2655,
+        2656,
+        2657,
+        2658,
+        2659,
+        2660,
+        2661,
+        2662,
+        2663,
+        2664,
+        2665,
+        2666,
+        2667,
+        2668,
+        2669,
+        2670,
+        2671,
+        2672,
+        2673,
+        2674,
+        2675,
+        2676,
+        2677,
+        2678,
+        2679,
+        2680,
+        2681,
+        2682,
+        2683,
+        2684,
+        2685,
+        2686,
+        2687,
+        2688,
+        2689,
+        2690,
+        2691,
+        2692,
+        2693,
+        2694,
+        2695,
+        2696,
+        2697,
+        2698,
+        2699,
+        2700,
+        2701,
+        2702,
+        2703,
+        2704,
+        2705,
+        2706,
+        2707,
+        2708,
+        2709,
+        2710,
+        2711,
+        2712,
+        2713,
+        2714,
+        2715,
+        2716,
+        2717,
+        2718,
+        2719,
+        2720,
+        2721,
+        2722,
+        2723,
+        2724,
+        2725,
+        2726,
+        2727,
+        2728,
+        2729,
+        2730,
+        2731,
+        2732,
+        2733,
+        2734,
+        2735,
+        2736,
+        2737,
+        2738,
+        2739,
+        2740,
+        2741,
+        2742,
+        2743,
+        2744,
+        2745,
+        2746,
+        2747,
+        2748,
+        2749,
+        2750,
+        2751,
+        2752,
+        2753,
+        2754,
+        2755,
+        2756,
+        2757,
+        2758,
+        2759,
+        2760,
+        2761,
+        2762,
+        2763,
+        2764,
+        2765,
+        2766,
+        2767,
+        2768,
+        2769,
+        2770,
+        2771,
+        2772,
+        2773,
+        2774,
+        2775,
+        2776,
+        2777,
+        2778,
+        2779,
+        2780,
+        2781,
+        2782,
+        2783,
+        2784,
+        2785,
+        2786,
+        2787,
+        2788,
+        2789,
+        2790,
+        2791,
+        2792,
+        2793,
+        2794,
+        2795,
+        2796,
+        2797,
+        2798,
+        2799,
+        2800,
+        2801,
+        2802,
+        2803,
+        2804,
+        2805,
+        2806,
+        2807,
+        2808,
+        2809,
+        2810,
+        2811,
+        2812,
+        2813,
+        2814,
+        2815,
+        2816,
+        2817,
+        2818,
+        2819,
+        2820,
+        2821,
+        2822,
+        2823,
+        2824,
+        2825,
+        2826,
+        2827,
+        2828,
+        2829,
+        2830,
+        2831,
+        2832,
+        2833,
+        2834,
+        2835,
+        2836,
+        2837,
+        2838,
+        2839,
+        2840,
+        2841,
+        2842,
+        2843,
+        2844,
+        2845,
+        2846,
+        2847,
+        2848,
+        2849,
+        2850,
+        2851,
+        2852,
+        2853,
+        2854,
+        2855,
+        2856,
+        2857,
+        2858,
+        2859,
+        2860,
+        2861,
+        2862,
+        2863,
+        2864,
+        2865,
+        2866,
+        2867,
+        2868,
+        2869,
+        2870,
+        2871,
+        2872,
+        2873,
+        2874,
+        2875,
+        2876,
+        2877,
+        2878,
+        2879,
+        2880,
+        2881,
+        2882,
+        2883,
+        2884,
+        2885,
+        2886,
+        2887,
+        2888,
+        2889,
+        2890,
+        2891,
+        2892,
+        2893,
+        2894,
+        2895,
+        2896,
+        2897,
+        2898,
+        2899,
+        2900,
+        2901,
+        2902,
+        2903,
+        2904,
+        2905,
+        2906,
+        2907,
+        2908,
+        2909,
+        2910,
+        2911,
+        2912,
+        2913,
+        2914,
+        2915,
+        2916,
+        2917,
+        2918,
+        2919,
+        2920,
+        2921,
+        2922,
+        2923,
+        2924,
+        2925,
+        2926,
+        2927,
+        2928,
+        2929,
+        2930,
+        2931,
+        2932,
+        2933,
+        2934,
+        2935,
+        2936,
+        2937,
+        2938,
+        2939,
+        2940,
+        2941,
+        2942,
+        2943,
+        2944,
+        2945,
+        2946,
+        2947,
+        2948,
+        2949,
+        2950,
+        2951,
+        2952,
+        2953,
+        2954,
+        2955,
+        2956,
+        2957,
+        2958,
+        2959,
+        2960,
+        2961,
+        2962,
+        2963,
+        2964,
+        2965,
+        2966,
+        2967,
+        2968,
+        2969,
+        2970,
+        2971,
+        2972,
+        2973,
+        2974,
+        2975,
+        2976,
+        2977,
+        2978,
+        2979,
+        2980,
+        2981,
+        2982,
+        2983,
+        2984,
+        2985,
+        2986,
+        2987,
+        2988,
+        2989,
+        2990,
+        2991,
+        2992,
+        2993,
+        2994,
+        2995,
+        2996,
+        2997,
+        2998,
+        2999,
+        3000,
+        3001,
+        3002,
+        3003,
+        3004,
+        3005,
+        3006,
+        3007,
+        3008,
+        3009,
+        3010,
+        3011
+      ],
+      "selection": [
+        3200,
+        3201,
+        3202,
+        3203,
+        3204,
+        3205,
+        3206,
+        3207,
+        3208,
+        3209,
+        3210,
+        3211,
+        3212,
+        3213,
+        3214,
+        3215,
+        3216,
+        3217,
+        3218,
+        3219,
+        3220,
+        3221,
+        3222,
+        3223,
+        3224,
+        3225,
+        3226,
+        3227,
+        3228,
+        3229,
+        3230,
+        3231,
+        3232,
+        3233,
+        3234,
+        3235,
+        3236,
+        3237,
+        3238,
+        3239,
+        3240,
+        3241,
+        3242,
+        3243,
+        3244,
+        3245,
+        3246,
+        3247,
+        3248,
+        3249,
+        3250,
+        3251,
+        3252,
+        3253,
+        3254,
+        3255,
+        3256,
+        3257,
+        3258,
+        3259,
+        3260,
+        3261,
+        3262,
+        3263,
+        3264,
+        3265,
+        3266,
+        3267,
+        3268,
+        3269,
+        3270,
+        3271,
+        3272,
+        3273,
+        3274,
+        3275,
+        3276,
+        3277,
+        3278,
+        3279
+      ],
+      "probabilityCalibration": [
+        3400,
+        3401,
+        3402,
+        3403,
+        3404,
+        3405,
+        3406,
+        3407,
+        3408,
+        3409,
+        3410,
+        3411,
+        3412,
+        3413,
+        3414,
+        3415,
+        3416,
+        3417,
+        3418,
+        3419,
+        3420,
+        3421,
+        3422,
+        3423,
+        3424,
+        3425,
+        3426,
+        3427,
+        3428,
+        3429,
+        3430,
+        3431,
+        3432,
+        3433,
+        3434,
+        3435,
+        3436,
+        3437,
+        3438,
+        3439,
+        3440,
+        3441,
+        3442,
+        3443,
+        3444,
+        3445,
+        3446,
+        3447
+      ],
+      "policyCalibration": [
+        3448,
+        3449,
+        3450,
+        3451,
+        3452,
+        3453,
+        3454,
+        3455,
+        3456,
+        3457,
+        3458,
+        3459,
+        3460,
+        3461,
+        3462,
+        3463,
+        3464,
+        3465,
+        3466,
+        3467,
+        3468,
+        3469,
+        3470,
+        3471,
+        3472,
+        3473,
+        3474,
+        3475,
+        3476,
+        3477,
+        3478,
+        3479,
+        3480,
+        3481,
+        3482,
+        3483,
+        3484,
+        3485,
+        3486,
+        3487,
+        3488,
+        3489,
+        3490,
+        3491,
+        3492,
+        3493,
+        3494,
+        3495
+      ],
+      "test": [
+        4000,
+        4001,
+        4002,
+        4003,
+        4004,
+        4005,
+        4006,
+        4007,
+        4008,
+        4009,
+        4010,
+        4011,
+        4012,
+        4013,
+        4014,
+        4015,
+        4016,
+        4017,
+        4018,
+        4019,
+        4020,
+        4021,
+        4022,
+        4023,
+        4024,
+        4025,
+        4026,
+        4027,
+        4028,
+        4029,
+        4030,
+        4031,
+        4032,
+        4033,
+        4034,
+        4035,
+        4036,
+        4037,
+        4038,
+        4039,
+        4040,
+        4041,
+        4042,
+        4043,
+        4044,
+        4045,
+        4046,
+        4047,
+        4048,
+        4049,
+        4050,
+        4051,
+        4052,
+        4053,
+        4054,
+        4055,
+        4056,
+        4057,
+        4058,
+        4059,
+        4060,
+        4061,
+        4062,
+        4063,
+        4064,
+        4065,
+        4066,
+        4067,
+        4068,
+        4069,
+        4070,
+        4071,
+        4072,
+        4073,
+        4074,
+        4075,
+        4076,
+        4077,
+        4078,
+        4079,
+        4080,
+        4081,
+        4082,
+        4083,
+        4084,
+        4085,
+        4086,
+        4087,
+        4088,
+        4089,
+        4090,
+        4091,
+        4092,
+        4093,
+        4094,
+        4095,
+        4096,
+        4097,
+        4098,
+        4099,
+        4100,
+        4101,
+        4102,
+        4103,
+        4104,
+        4105,
+        4106,
+        4107,
+        4108,
+        4109,
+        4110,
+        4111,
+        4112,
+        4113,
+        4114,
+        4115,
+        4116,
+        4117,
+        4118,
+        4119
+      ]
+    },
+    "routines": [
+      {
+        "id": "reference",
+        "title": "Regular routine",
+        "params": {}
+      },
+      {
+        "id": "late_meals_2h",
+        "title": "Meals delayed by 2 hours",
+        "params": {
+          "meal_shift_hours": 2.0
+        }
+      },
+      {
+        "id": "late_meals_4h",
+        "title": "Meals delayed by 4 hours",
+        "params": {
+          "meal_shift_hours": 4.0
+        }
+      },
+      {
+        "id": "irregular_meals",
+        "title": "Irregular meal timing",
+        "params": {
+          "meal_jitter_hours": 1.5
+        }
+      },
+      {
+        "id": "day_varying_skips",
+        "title": "Daily timing changes and skipped meals",
+        "params": {
+          "meal_jitter_hours": 0.7,
+          "day_shift_hours_sd": 1.8,
+          "meal_skip_probability": 0.18
+        }
+      },
+      {
+        "id": "variable_routine",
+        "title": "Variable sleep, activity and meals",
+        "params": {
+          "meal_jitter_hours": 1.2,
+          "day_shift_hours_sd": 2.2,
+          "meal_skip_probability": 0.22,
+          "variable_routine": true
+        }
+      }
+    ],
+    "heldOutCombination": {
+      "id": "new_shift_variable_combination",
+      "title": "New held-out shifted variable combination",
+      "params": {
+        "meal_shift_hours": 2.5,
+        "meal_jitter_hours": 1.8,
+        "day_shift_hours_sd": 1.0,
+        "meal_skip_probability": 0.3,
+        "variable_routine": true
+      }
+    },
+    "features": [
+      "age",
+      "bmi",
+      "hba1c",
+      "ldl",
+      "diabetesYears",
+      "glucose",
+      "lag30",
+      "lag60",
+      "lag120",
+      "mean120",
+      "std120",
+      "slope30",
+      "slope60",
+      "hrMean60",
+      "hrvMean60",
+      "steps60",
+      "steps24h",
+      "sleep24h",
+      "lag15",
+      "lag45",
+      "lag90",
+      "lag180",
+      "lag240",
+      "lag360",
+      "mean30",
+      "std30",
+      "mean60",
+      "std60",
+      "mean360",
+      "std360",
+      "mean24h",
+      "std24h",
+      "min120",
+      "max120",
+      "q25_120",
+      "q75_120",
+      "q10_24h",
+      "q50_24h",
+      "q90_24h",
+      "slope15",
+      "slope120",
+      "acceleration30",
+      "priorDay30",
+      "priorDay60",
+      "priorDay90",
+      "priorDay120",
+      "priorDayMean120",
+      "hrSlope30",
+      "hrvSlope30",
+      "hrMean120",
+      "hrvMean120",
+      "steps120",
+      "sleepLast6h",
+      "lag5",
+      "lag10",
+      "lag20",
+      "lag25",
+      "lag35",
+      "lag40",
+      "lag50",
+      "lag75",
+      "lag105",
+      "lag150",
+      "lag210",
+      "lag300",
+      "olsSlope30",
+      "olsSlope60",
+      "olsSlope120",
+      "olsSlope240",
+      "meanDelta30_60",
+      "meanDelta60_120",
+      "riseFraction30",
+      "riseFraction60",
+      "riseFraction120",
+      "fallFraction60",
+      "meanAbsChange30",
+      "meanAbsChange60",
+      "meanAbsChange120",
+      "maxRise30",
+      "maxFall30",
+      "range30",
+      "range60",
+      "minutesSinceMax120",
+      "minutesSinceMin120",
+      "glucoseAboveQ10",
+      "glucoseAboveMedian",
+      "excessMean120",
+      "timeAbove180_120",
+      "timeAbove140_120",
+      "hrMean15",
+      "hrMean30",
+      "hrvMean15",
+      "hrvMean30",
+      "hrMean24h",
+      "hrvMean24h",
+      "hrStd24h",
+      "hrvStd24h",
+      "hrZ30",
+      "hrvZ30",
+      "steps15",
+      "steps30",
+      "sleepLast60",
+      "minutesSinceWake",
+      "minutesSinceActivity",
+      "awakeRestingHr24h",
+      "awakeRestingHr30",
+      "hrAboveResting30",
+      "glucoseMinusPriorDay120",
+      "v3Forecast30",
+      "v3Forecast60",
+      "v3Forecast90",
+      "v3Forecast120",
+      "v3Logit",
+      "resolvedForecastCount",
+      "resolvedResidualLast",
+      "resolvedResidualMean3",
+      "resolvedResidualMean6",
+      "resolvedResidualMean12",
+      "resolvedResidualMean24",
+      "resolvedResidualStd12",
+      "resolvedAbsoluteErrorMean12",
+      "resolvedEventRate12",
+      "resolvedExpectedEventRate12",
+      "resolvedProbabilityBias12",
+      "resolvedResidualTrend6",
+      "resolvedResidualQ25_12",
+      "resolvedResidualQ75_12"
+    ],
+    "history": "V3 24h history plus available matured V3 forecast residuals; no future target values, clocks or routine labels as inputs.",
+    "trainingStrideMinutes": 60,
+    "memoryAndEvaluationStrideMinutes": 30,
+    "classifierCandidates": [
+      {
+        "hgbWeight": 0.0,
+        "baseWeight": 0.0
+      },
+      {
+        "hgbWeight": 0.25,
+        "baseWeight": 0.0
+      },
+      {
+        "hgbWeight": 0.5,
+        "baseWeight": 0.0
+      },
+      {
+        "hgbWeight": 0.75,
+        "baseWeight": 0.0
+      },
+      {
+        "hgbWeight": 1.0,
+        "baseWeight": 0.0
+      },
+      {
+        "hgbWeight": 0.0,
+        "baseWeight": 0.25
+      },
+      {
+        "hgbWeight": 0.25,
+        "baseWeight": 0.25
+      },
+      {
+        "hgbWeight": 0.5,
+        "baseWeight": 0.25
+      },
+      {
+        "hgbWeight": 0.75,
+        "baseWeight": 0.25
+      },
+      {
+        "hgbWeight": 1.0,
+        "baseWeight": 0.25
+      }
+    ],
+    "regressionCandidates": [
+      {
+        "hgbWeight": 0.0,
+        "correctionWeight": 0.0
+      },
+      {
+        "hgbWeight": 0.5,
+        "correctionWeight": 0.0
+      },
+      {
+        "hgbWeight": 1.0,
+        "correctionWeight": 0.0
+      },
+      {
+        "hgbWeight": 0.0,
+        "correctionWeight": 0.5
+      },
+      {
+        "hgbWeight": 0.5,
+        "correctionWeight": 0.5
+      },
+      {
+        "hgbWeight": 1.0,
+        "correctionWeight": 0.5
+      },
+      {
+        "hgbWeight": 0.0,
+        "correctionWeight": 1.0
+      },
+      {
+        "hgbWeight": 0.5,
+        "correctionWeight": 1.0
+      },
+      {
+        "hgbWeight": 1.0,
+        "correctionWeight": 1.0
+      }
+    ],
+    "classifierSelection": "Minimize worst FP/FN count ratio against frozen V3 across overall, irregular and variable-routine selection windows; one global threshold; mean ratio then AP tie break.",
+    "regressionSelection": "Lowest selection +120-minute MAE from predeclared HGB/ExtraTrees residual blends; earlier horizons remain the frozen V3 forecast.",
+    "calibration": "48 new identities fit Platt mapping; separate 48 identities choose global policy and residual bands.",
+    "finalGate": "No IDs >=4000 or held-out combination generated before frozen estimator, calibrator, threshold, bands and protocol are SHA-256 recorded.",
+    "promotionGate": "Both FP and FN lower than V3 in primary, variable and held-out groups, with primary paired FN/FP 95% intervals entirely below zero; no automatic promotion.",
+    "limitations": [
+      "Synthetic experiment only, separate from open-research model evaluation.",
+      "Unannounced future meals remain partly unpredictable.",
+      "Personalization only uses already resolved historical forecasts; it does not fit on future test outcomes.",
+      "Routine families appear in training; one new factor combination is held out."
+    ]
+  },
+  "primary": {
+    "windows": 100800,
+    "patients": 120,
+    "positiveWindows": 8133,
+    "v4": {
+      "mae": 10.982254067375345,
+      "rmse": 18.164565827178844,
+      "auroc": 0.9467064072549218,
+      "averagePrecision": 0.679933899668104,
+      "brier": 0.0424392538593758,
+      "precision": 0.4626044874615046,
+      "recall": 0.7757285134636666,
+      "f1": 0.5795783381562629,
+      "confusionMatrix": [
+        [
+          85338,
+          7329
+        ],
+        [
+          1824,
+          6309
+        ]
+      ],
+      "positiveRate": 0.0806845238095238,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 4.3945023911504295,
+          "rmse": 8.078672269063569,
+          "intervalCoverage": 0.898531746031746,
+          "intervalMeanWidth": 15.593358362207738
+        },
+        {
+          "minutes": 60,
+          "mae": 7.593297553318545,
+          "rmse": 14.332527671447963,
+          "intervalCoverage": 0.9015575396825397,
+          "intervalMeanWidth": 36.47213947998367
+        },
+        {
+          "minutes": 90,
+          "mae": 9.73330628095439,
+          "rmse": 16.985809428646096,
+          "intervalCoverage": 0.9072916666666667,
+          "intervalMeanWidth": 57.789711459214345
+        },
+        {
+          "minutes": 120,
+          "mae": 10.982254067375345,
+          "rmse": 18.164565827178844,
+          "intervalCoverage": 0.9049206349206349,
+          "intervalMeanWidth": 62.95250510439365
+        }
+      ],
+      "intervalCoverage": 0.9049206349206349,
+      "intervalMeanWidth": 62.95250510439365,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 83421,
+          "predicted": 0.011922103953688729,
+          "observed": 0.015020198750914038
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 5915,
+          "predicted": 0.144186571682982,
+          "observed": 0.1724429416737109
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 3598,
+          "predicted": 0.2459384004847479,
+          "observed": 0.27793218454697055
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 2274,
+          "predicted": 0.34537275682926716,
+          "observed": 0.39313984168865435
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 1507,
+          "predicted": 0.4471827905164035,
+          "observed": 0.504313205043132
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 1138,
+          "predicted": 0.5469496601069093,
+          "observed": 0.6028119507908611
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 800,
+          "predicted": 0.6465089679883407,
+          "observed": 0.725
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 534,
+          "predicted": 0.7462202799427248,
+          "observed": 0.7640449438202247
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 471,
+          "predicted": 0.8478811398789686,
+          "observed": 0.861995753715499
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 1142,
+          "predicted": 0.9658011675156342,
+          "observed": 0.9859894921190894
+        }
+      ],
+      "threshold": 0.15500000000000003
+    },
+    "v3": {
+      "mae": 11.113966406749434,
+      "rmse": 18.291953858845567,
+      "auroc": 0.9436717505896361,
+      "averagePrecision": 0.6656531050959366,
+      "brier": 0.043280784727902886,
+      "precision": 0.4479836146620524,
+      "recall": 0.7799090126644534,
+      "f1": 0.569083079131527,
+      "confusionMatrix": [
+        [
+          84851,
+          7816
+        ],
+        [
+          1790,
+          6343
+        ]
+      ],
+      "positiveRate": 0.0806845238095238,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 4.3945023911504295,
+          "rmse": 8.078672269063569,
+          "intervalCoverage": 0.8959821428571428,
+          "intervalMeanWidth": 15.367465014871215
+        },
+        {
+          "minutes": 60,
+          "mae": 7.593297553318545,
+          "rmse": 14.332527671447963,
+          "intervalCoverage": 0.8989980158730159,
+          "intervalMeanWidth": 34.996542232152706
+        },
+        {
+          "minutes": 90,
+          "mae": 9.73330628095439,
+          "rmse": 16.985809428646096,
+          "intervalCoverage": 0.900109126984127,
+          "intervalMeanWidth": 54.5895398874336
+        },
+        {
+          "minutes": 120,
+          "mae": 11.113966406749434,
+          "rmse": 18.291953858845567,
+          "intervalCoverage": 0.9013789682539682,
+          "intervalMeanWidth": 61.75523271983761
+        }
+      ],
+      "intervalCoverage": 0.9013789682539682,
+      "intervalMeanWidth": 61.75523271983761,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 82978,
+          "predicted": 0.012268113437499797,
+          "observed": 0.015281158861384946
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 5899,
+          "predicted": 0.1448623852407051,
+          "observed": 0.16816409560942533
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 3404,
+          "predicted": 0.24695477006438604,
+          "observed": 0.25146886016451236
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 2460,
+          "predicted": 0.3483086387249005,
+          "observed": 0.37886178861788616
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 1854,
+          "predicted": 0.447628261708569,
+          "observed": 0.46440129449838186
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 1310,
+          "predicted": 0.5479817090806821,
+          "observed": 0.6106870229007634
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 964,
+          "predicted": 0.6454166036102214,
+          "observed": 0.7012448132780082
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 516,
+          "predicted": 0.7455803116119759,
+          "observed": 0.7655038759689923
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 396,
+          "predicted": 0.8537077704620407,
+          "observed": 0.8762626262626263
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 1019,
+          "predicted": 0.9606997494314201,
+          "observed": 0.9872423945044161
+        }
+      ],
+      "threshold": 0.155
+    },
+    "pairedDecisionDifferences": {
+      "falsePositiveWindows": {
+        "difference": -487,
+        "patientBootstrap95CI": [
+          -947.05,
+          -48.92500000000041
+        ]
+      },
+      "falseNegativeWindows": {
+        "difference": 34,
+        "patientBootstrap95CI": [
+          -92.025,
+          168.02499999999986
+        ]
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "reference",
+      "title": "Regular routine",
+      "params": {},
+      "windows": 16800,
+      "patients": 120,
+      "positiveWindows": 1462,
+      "v4": {
+        "mae": 9.436243380045825,
+        "rmse": 15.356723330704272,
+        "auroc": 0.968477832565917,
+        "averagePrecision": 0.7760824819708356,
+        "brier": 0.03813689136844311,
+        "precision": 0.5585990121239336,
+        "recall": 0.8508891928864569,
+        "f1": 0.6744375169422607,
+        "confusionMatrix": [
+          [
+            14355,
+            983
+          ],
+          [
+            218,
+            1244
+          ]
+        ],
+        "positiveRate": 0.08702380952380952,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.457424717254722,
+            "rmse": 8.21013484102429,
+            "intervalCoverage": 0.8940476190476191,
+            "intervalMeanWidth": 15.593358362207738
+          },
+          {
+            "minutes": 60,
+            "mae": 7.6762957166771475,
+            "rmse": 14.387706487507009,
+            "intervalCoverage": 0.8972619047619048,
+            "intervalMeanWidth": 36.47213947998367
+          },
+          {
+            "minutes": 90,
+            "mae": 8.97420118705127,
+            "rmse": 15.354052475181485,
+            "intervalCoverage": 0.9182738095238095,
+            "intervalMeanWidth": 57.789711459214345
+          },
+          {
+            "minutes": 120,
+            "mae": 9.436243380045825,
+            "rmse": 15.356723330704272,
+            "intervalCoverage": 0.9316071428571429,
+            "intervalMeanWidth": 62.95250510439365
+          }
+        ],
+        "intervalCoverage": 0.9316071428571429,
+        "intervalMeanWidth": 62.95250510439365,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 14028,
+            "predicted": 0.010394969415583384,
+            "observed": 0.00926717992586256
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 838,
+            "predicted": 0.14260865860489272,
+            "observed": 0.2064439140811456
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 503,
+            "predicted": 0.2466656413055213,
+            "observed": 0.31610337972166996
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 330,
+            "predicted": 0.3461082487326788,
+            "observed": 0.43636363636363634
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 268,
+            "predicted": 0.44695569632578885,
+            "observed": 0.6268656716417911
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 218,
+            "predicted": 0.5496163252467466,
+            "observed": 0.6422018348623854
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 186,
+            "predicted": 0.6471885436206095,
+            "observed": 0.8118279569892473
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 112,
+            "predicted": 0.743641096953789,
+            "observed": 0.7946428571428571
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 115,
+            "predicted": 0.8492294400784517,
+            "observed": 0.9304347826086956
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 202,
+            "predicted": 0.9707602090238764,
+            "observed": 0.995049504950495
+          }
+        ],
+        "threshold": 0.15500000000000003
+      },
+      "v3": {
+        "mae": 9.581732426789294,
+        "rmse": 15.62017143730113,
+        "auroc": 0.9668473587144151,
+        "averagePrecision": 0.7620811262876308,
+        "brier": 0.03875156355678366,
+        "precision": 0.5376068376068376,
+        "recall": 0.8604651162790697,
+        "f1": 0.6617569700157812,
+        "confusionMatrix": [
+          [
+            14256,
+            1082
+          ],
+          [
+            204,
+            1258
+          ]
+        ],
+        "positiveRate": 0.08702380952380952,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.457424717254722,
+            "rmse": 8.21013484102429,
+            "intervalCoverage": 0.8913095238095238,
+            "intervalMeanWidth": 15.367465014871215
+          },
+          {
+            "minutes": 60,
+            "mae": 7.6762957166771475,
+            "rmse": 14.387706487507009,
+            "intervalCoverage": 0.8948809523809523,
+            "intervalMeanWidth": 34.996542232152706
+          },
+          {
+            "minutes": 90,
+            "mae": 8.97420118705127,
+            "rmse": 15.354052475181485,
+            "intervalCoverage": 0.9111309523809524,
+            "intervalMeanWidth": 54.5895398874336
+          },
+          {
+            "minutes": 120,
+            "mae": 9.581732426789294,
+            "rmse": 15.62017143730113,
+            "intervalCoverage": 0.9261309523809523,
+            "intervalMeanWidth": 61.75523271983761
+          }
+        ],
+        "intervalCoverage": 0.9261309523809523,
+        "intervalMeanWidth": 61.75523271983761,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13970,
+            "predicted": 0.01104575268487136,
+            "observed": 0.009234073013600573
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 810,
+            "predicted": 0.14576759925080934,
+            "observed": 0.18641975308641975
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 486,
+            "predicted": 0.24881809745004985,
+            "observed": 0.29218106995884774
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 363,
+            "predicted": 0.35029033997668246,
+            "observed": 0.4765840220385675
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 297,
+            "predicted": 0.4494473912952964,
+            "observed": 0.5420875420875421
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 273,
+            "predicted": 0.5488475310913767,
+            "observed": 0.6923076923076923
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 208,
+            "predicted": 0.6439691695063389,
+            "observed": 0.7596153846153846
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 132,
+            "predicted": 0.7412469333676167,
+            "observed": 0.8106060606060606
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 71,
+            "predicted": 0.8498395837255462,
+            "observed": 0.8873239436619719
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 190,
+            "predicted": 0.9621816687464553,
+            "observed": 0.9947368421052631
+          }
+        ],
+        "threshold": 0.155
+      },
+      "pairedDecisionDifferences": {
+        "falsePositiveWindows": {
+          "difference": -99,
+          "patientBootstrap95CI": [
+            -169.0,
+            -37.0
+          ]
+        },
+        "falseNegativeWindows": {
+          "difference": 14,
+          "patientBootstrap95CI": [
+            -14.0,
+            43.0
+          ]
+        }
+      }
+    },
+    {
+      "id": "late_meals_2h",
+      "title": "Meals delayed by 2 hours",
+      "params": {
+        "meal_shift_hours": 2.0
+      },
+      "windows": 16800,
+      "patients": 120,
+      "positiveWindows": 1412,
+      "v4": {
+        "mae": 9.074763374095259,
+        "rmse": 14.815336822560665,
+        "auroc": 0.9677154524588161,
+        "averagePrecision": 0.7682202564784981,
+        "brier": 0.03643465568360343,
+        "precision": 0.5178796802692469,
+        "recall": 0.8718130311614731,
+        "f1": 0.6497756664027448,
+        "confusionMatrix": [
+          [
+            14242,
+            1146
+          ],
+          [
+            181,
+            1231
+          ]
+        ],
+        "positiveRate": 0.08404761904761905,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.463053627116993,
+            "rmse": 8.246275310618335,
+            "intervalCoverage": 0.8964880952380953,
+            "intervalMeanWidth": 15.593358362207738
+          },
+          {
+            "minutes": 60,
+            "mae": 7.613789036665629,
+            "rmse": 14.27911060584799,
+            "intervalCoverage": 0.8991666666666667,
+            "intervalMeanWidth": 36.47213947998367
+          },
+          {
+            "minutes": 90,
+            "mae": 8.766420953037194,
+            "rmse": 15.021943463260968,
+            "intervalCoverage": 0.9247619047619048,
+            "intervalMeanWidth": 57.789711459214345
+          },
+          {
+            "minutes": 120,
+            "mae": 9.074763374095259,
+            "rmse": 14.815336822560665,
+            "intervalCoverage": 0.9388095238095238,
+            "intervalMeanWidth": 62.95250510439365
+          }
+        ],
+        "intervalCoverage": 0.9388095238095238,
+        "intervalMeanWidth": 62.95250510439365,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13864,
+            "predicted": 0.011306035772012377,
+            "observed": 0.007645701096364686
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 862,
+            "predicted": 0.1435695184387241,
+            "observed": 0.14965197215777262
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 509,
+            "predicted": 0.24742437494664588,
+            "observed": 0.27111984282907664
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 344,
+            "predicted": 0.3457185013895327,
+            "observed": 0.40406976744186046
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 285,
+            "predicted": 0.4463494314295089,
+            "observed": 0.543859649122807
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 257,
+            "predicted": 0.5494002627187556,
+            "observed": 0.642023346303502
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 218,
+            "predicted": 0.646893110950942,
+            "observed": 0.7614678899082569
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 152,
+            "predicted": 0.7493951747028749,
+            "observed": 0.8026315789473685
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 108,
+            "predicted": 0.8522276812145696,
+            "observed": 0.8888888888888888
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 201,
+            "predicted": 0.9580355952779129,
+            "observed": 0.9751243781094527
+          }
+        ],
+        "threshold": 0.15500000000000003
+      },
+      "v3": {
+        "mae": 9.275501215918398,
+        "rmse": 15.19350160056189,
+        "auroc": 0.9643915165858977,
+        "averagePrecision": 0.7499875901361888,
+        "brier": 0.0376373285353487,
+        "precision": 0.5032388663967612,
+        "recall": 0.8803116147308782,
+        "f1": 0.6403915507470376,
+        "confusionMatrix": [
+          [
+            14161,
+            1227
+          ],
+          [
+            169,
+            1243
+          ]
+        ],
+        "positiveRate": 0.08404761904761905,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.463053627116993,
+            "rmse": 8.246275310618335,
+            "intervalCoverage": 0.8940476190476191,
+            "intervalMeanWidth": 15.367465014871215
+          },
+          {
+            "minutes": 60,
+            "mae": 7.613789036665629,
+            "rmse": 14.27911060584799,
+            "intervalCoverage": 0.8966071428571428,
+            "intervalMeanWidth": 34.996542232152706
+          },
+          {
+            "minutes": 90,
+            "mae": 8.766420953037194,
+            "rmse": 15.021943463260968,
+            "intervalCoverage": 0.9176190476190477,
+            "intervalMeanWidth": 54.5895398874336
+          },
+          {
+            "minutes": 120,
+            "mae": 9.275501215918398,
+            "rmse": 15.19350160056189,
+            "intervalCoverage": 0.9336904761904762,
+            "intervalMeanWidth": 61.75523271983761
+          }
+        ],
+        "intervalCoverage": 0.9336904761904762,
+        "intervalMeanWidth": 61.75523271983761,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13794,
+            "predicted": 0.011769441144422408,
+            "observed": 0.008191967522111062
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 857,
+            "predicted": 0.1444397019681336,
+            "observed": 0.14002333722287047
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 460,
+            "predicted": 0.24847515363169487,
+            "observed": 0.2391304347826087
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 412,
+            "predicted": 0.34978685399078696,
+            "observed": 0.40048543689320387
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 338,
+            "predicted": 0.44788350577721936,
+            "observed": 0.4822485207100592
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 279,
+            "predicted": 0.5496843662423124,
+            "observed": 0.6810035842293907
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 252,
+            "predicted": 0.6451633765655421,
+            "observed": 0.75
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 144,
+            "predicted": 0.7445268235994659,
+            "observed": 0.7777777777777778
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 71,
+            "predicted": 0.8495750811535874,
+            "observed": 0.8591549295774648
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 193,
+            "predicted": 0.9570410224197528,
+            "observed": 0.9792746113989638
+          }
+        ],
+        "threshold": 0.155
+      },
+      "pairedDecisionDifferences": {
+        "falsePositiveWindows": {
+          "difference": -81,
+          "patientBootstrap95CI": [
+            -159.0,
+            -5.975000000000136
+          ]
+        },
+        "falseNegativeWindows": {
+          "difference": 12,
+          "patientBootstrap95CI": [
+            -12.024999999999999,
+            36.0
+          ]
+        }
+      }
+    },
+    {
+      "id": "late_meals_4h",
+      "title": "Meals delayed by 4 hours",
+      "params": {
+        "meal_shift_hours": 4.0
+      },
+      "windows": 16800,
+      "patients": 120,
+      "positiveWindows": 1196,
+      "v4": {
+        "mae": 9.099824246703252,
+        "rmse": 15.10179199966696,
+        "auroc": 0.9651573989689636,
+        "averagePrecision": 0.7160320713959649,
+        "brier": 0.03452598340666148,
+        "precision": 0.48453117563065207,
+        "recall": 0.8511705685618729,
+        "f1": 0.6175310888686685,
+        "confusionMatrix": [
+          [
+            14521,
+            1083
+          ],
+          [
+            178,
+            1018
+          ]
+        ],
+        "positiveRate": 0.07119047619047619,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.2563547694687305,
+            "rmse": 7.77288658545214,
+            "intervalCoverage": 0.9058333333333334,
+            "intervalMeanWidth": 15.593358362207738
+          },
+          {
+            "minutes": 60,
+            "mae": 7.16569125207255,
+            "rmse": 13.488974753185406,
+            "intervalCoverage": 0.9101785714285714,
+            "intervalMeanWidth": 36.47213947998367
+          },
+          {
+            "minutes": 90,
+            "mae": 8.46490362406116,
+            "rmse": 14.760474839533606,
+            "intervalCoverage": 0.9298214285714286,
+            "intervalMeanWidth": 57.789711459214345
+          },
+          {
+            "minutes": 120,
+            "mae": 9.099824246703252,
+            "rmse": 15.10179199966696,
+            "intervalCoverage": 0.9375595238095238,
+            "intervalMeanWidth": 62.95250510439365
+          }
+        ],
+        "intervalCoverage": 0.9375595238095238,
+        "intervalMeanWidth": 62.95250510439365,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 14185,
+            "predicted": 0.011864632039068455,
+            "observed": 0.00824814945364822
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 806,
+            "predicted": 0.14410339851737622,
+            "observed": 0.12903225806451613
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 478,
+            "predicted": 0.2470585270875658,
+            "observed": 0.301255230125523
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 382,
+            "predicted": 0.3471318468875917,
+            "observed": 0.45287958115183247
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 252,
+            "predicted": 0.44846241700357614,
+            "observed": 0.49603174603174605
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 221,
+            "predicted": 0.5447825376592118,
+            "observed": 0.6153846153846154
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 133,
+            "predicted": 0.6494548949573828,
+            "observed": 0.7518796992481203
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 94,
+            "predicted": 0.7429958910517496,
+            "observed": 0.7127659574468085
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 75,
+            "predicted": 0.8387697931859719,
+            "observed": 0.8133333333333334
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 174,
+            "predicted": 0.9629740731403666,
+            "observed": 0.9712643678160919
+          }
+        ],
+        "threshold": 0.15500000000000003
+      },
+      "v3": {
+        "mae": 9.262241780861743,
+        "rmse": 15.34740245544915,
+        "auroc": 0.9619683637417386,
+        "averagePrecision": 0.7053979784426421,
+        "brier": 0.03507783340038335,
+        "precision": 0.4690792487402657,
+        "recall": 0.8561872909698997,
+        "f1": 0.6060964782480024,
+        "confusionMatrix": [
+          [
+            14445,
+            1159
+          ],
+          [
+            172,
+            1024
+          ]
+        ],
+        "positiveRate": 0.07119047619047619,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.2563547694687305,
+            "rmse": 7.77288658545214,
+            "intervalCoverage": 0.9026190476190477,
+            "intervalMeanWidth": 15.367465014871215
+          },
+          {
+            "minutes": 60,
+            "mae": 7.16569125207255,
+            "rmse": 13.488974753185406,
+            "intervalCoverage": 0.9075595238095238,
+            "intervalMeanWidth": 34.996542232152706
+          },
+          {
+            "minutes": 90,
+            "mae": 8.46490362406116,
+            "rmse": 14.760474839533606,
+            "intervalCoverage": 0.9236904761904762,
+            "intervalMeanWidth": 54.5895398874336
+          },
+          {
+            "minutes": 120,
+            "mae": 9.262241780861743,
+            "rmse": 15.34740245544915,
+            "intervalCoverage": 0.9335119047619047,
+            "intervalMeanWidth": 61.75523271983761
+          }
+        ],
+        "intervalCoverage": 0.9335119047619047,
+        "intervalMeanWidth": 61.75523271983761,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 14083,
+            "predicted": 0.012934112800229786,
+            "observed": 0.008236881346304055
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 830,
+            "predicted": 0.14273571592524123,
+            "observed": 0.13132530120481928
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 425,
+            "predicted": 0.24779779451275732,
+            "observed": 0.2611764705882353
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 399,
+            "predicted": 0.34729310238447997,
+            "observed": 0.38596491228070173
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 359,
+            "predicted": 0.4475591157261479,
+            "observed": 0.4623955431754875
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 233,
+            "predicted": 0.5493213613554108,
+            "observed": 0.6523605150214592
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 183,
+            "predicted": 0.6459491499765041,
+            "observed": 0.73224043715847
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 67,
+            "predicted": 0.7420824375693106,
+            "observed": 0.7313432835820896
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 69,
+            "predicted": 0.8528609357855921,
+            "observed": 0.8260869565217391
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 152,
+            "predicted": 0.9571785384795869,
+            "observed": 0.9736842105263158
+          }
+        ],
+        "threshold": 0.155
+      },
+      "pairedDecisionDifferences": {
+        "falsePositiveWindows": {
+          "difference": -76,
+          "patientBootstrap95CI": [
+            -146.0,
+            -0.9750000000001364
+          ]
+        },
+        "falseNegativeWindows": {
+          "difference": 6,
+          "patientBootstrap95CI": [
+            -15.0,
+            26.0
+          ]
+        }
+      }
+    },
+    {
+      "id": "irregular_meals",
+      "title": "Irregular meal timing",
+      "params": {
+        "meal_jitter_hours": 1.5
+      },
+      "windows": 16800,
+      "patients": 120,
+      "positiveWindows": 1557,
+      "v4": {
+        "mae": 13.142139028081951,
+        "rmse": 21.446126442749797,
+        "auroc": 0.9297670185723036,
+        "averagePrecision": 0.629241225751007,
+        "brier": 0.053879697967355984,
+        "precision": 0.47225920994229914,
+        "recall": 0.6833654463712268,
+        "f1": 0.5585301837270341,
+        "confusionMatrix": [
+          [
+            14054,
+            1189
+          ],
+          [
+            493,
+            1064
+          ]
+        ],
+        "positiveRate": 0.09267857142857143,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.582618648681621,
+            "rmse": 8.443504742481794,
+            "intervalCoverage": 0.8900595238095238,
+            "intervalMeanWidth": 15.593358362207738
+          },
+          {
+            "minutes": 60,
+            "mae": 8.118947058885137,
+            "rmse": 15.267645699774723,
+            "intervalCoverage": 0.8901190476190476,
+            "intervalMeanWidth": 36.47213947998367
+          },
+          {
+            "minutes": 90,
+            "mae": 11.231893845595192,
+            "rmse": 19.41921096516974,
+            "intervalCoverage": 0.8783333333333333,
+            "intervalMeanWidth": 57.789711459214345
+          },
+          {
+            "minutes": 120,
+            "mae": 13.142139028081951,
+            "rmse": 21.446126442749797,
+            "intervalCoverage": 0.8660714285714286,
+            "intervalMeanWidth": 62.95250510439365
+          }
+        ],
+        "intervalCoverage": 0.8660714285714286,
+        "intervalMeanWidth": 62.95250510439365,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13841,
+            "predicted": 0.011977031843282653,
+            "observed": 0.024853695542229607
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 1078,
+            "predicted": 0.1428479149004775,
+            "observed": 0.23376623376623376
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 628,
+            "predicted": 0.2434897532068835,
+            "observed": 0.31528662420382164
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 382,
+            "predicted": 0.3474499901635347,
+            "observed": 0.4397905759162304
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 260,
+            "predicted": 0.4496788593936447,
+            "observed": 0.45
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 148,
+            "predicted": 0.5449758946422775,
+            "observed": 0.5743243243243243
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 109,
+            "predicted": 0.6460841548695417,
+            "observed": 0.6330275229357798
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 73,
+            "predicted": 0.7482176859844051,
+            "observed": 0.7808219178082192
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 69,
+            "predicted": 0.8485457165383111,
+            "observed": 0.8115942028985508
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 212,
+            "predicted": 0.9687563812844054,
+            "observed": 0.9952830188679245
+          }
+        ],
+        "threshold": 0.15500000000000003
+      },
+      "v3": {
+        "mae": 13.18197397756341,
+        "rmse": 21.35870216673011,
+        "auroc": 0.9253778785810736,
+        "averagePrecision": 0.6122826467090211,
+        "brier": 0.054878312239985294,
+        "precision": 0.44755536982866695,
+        "recall": 0.6878612716763006,
+        "f1": 0.5422784810126582,
+        "confusionMatrix": [
+          [
+            13921,
+            1322
+          ],
+          [
+            486,
+            1071
+          ]
+        ],
+        "positiveRate": 0.09267857142857143,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.582618648681621,
+            "rmse": 8.443504742481794,
+            "intervalCoverage": 0.8873214285714286,
+            "intervalMeanWidth": 15.367465014871215
+          },
+          {
+            "minutes": 60,
+            "mae": 8.118947058885137,
+            "rmse": 15.267645699774723,
+            "intervalCoverage": 0.8871428571428571,
+            "intervalMeanWidth": 34.996542232152706
+          },
+          {
+            "minutes": 90,
+            "mae": 11.231893845595192,
+            "rmse": 19.41921096516974,
+            "intervalCoverage": 0.8701190476190476,
+            "intervalMeanWidth": 54.5895398874336
+          },
+          {
+            "minutes": 120,
+            "mae": 13.18197397756341,
+            "rmse": 21.35870216673011,
+            "intervalCoverage": 0.863452380952381,
+            "intervalMeanWidth": 61.75523271983761
+          }
+        ],
+        "intervalCoverage": 0.863452380952381,
+        "intervalMeanWidth": 61.75523271983761,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13743,
+            "predicted": 0.012093678812734768,
+            "observed": 0.025831332314632905
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 1062,
+            "predicted": 0.14482950022868854,
+            "observed": 0.2222222222222222
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 619,
+            "predicted": 0.24684900347809968,
+            "observed": 0.2859450726978998
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 433,
+            "predicted": 0.34851742982066614,
+            "observed": 0.3856812933025404
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 306,
+            "predicted": 0.44942265855177876,
+            "observed": 0.477124183006536
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 193,
+            "predicted": 0.5446986736099642,
+            "observed": 0.5440414507772021
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 125,
+            "predicted": 0.6473706837888622,
+            "observed": 0.584
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 65,
+            "predicted": 0.7544751770451392,
+            "observed": 0.7692307692307693
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 74,
+            "predicted": 0.8603479071283208,
+            "observed": 0.9459459459459459
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 180,
+            "predicted": 0.9640287788762333,
+            "observed": 0.9888888888888889
+          }
+        ],
+        "threshold": 0.155
+      },
+      "pairedDecisionDifferences": {
+        "falsePositiveWindows": {
+          "difference": -133,
+          "patientBootstrap95CI": [
+            -234.025,
+            -41.975000000000136
+          ]
+        },
+        "falseNegativeWindows": {
+          "difference": 7,
+          "patientBootstrap95CI": [
+            -25.025,
+            41.0
+          ]
+        }
+      }
+    },
+    {
+      "id": "day_varying_skips",
+      "title": "Daily timing changes and skipped meals",
+      "params": {
+        "meal_jitter_hours": 0.7,
+        "day_shift_hours_sd": 1.8,
+        "meal_skip_probability": 0.18
+      },
+      "windows": 16800,
+      "patients": 120,
+      "positiveWindows": 1246,
+      "v4": {
+        "mae": 12.27374427203511,
+        "rmse": 19.8776624365484,
+        "auroc": 0.9329250283432379,
+        "averagePrecision": 0.6098123083738887,
+        "brier": 0.04349403722208747,
+        "precision": 0.3937473595268272,
+        "recall": 0.7479935794542536,
+        "f1": 0.515914752283421,
+        "confusionMatrix": [
+          [
+            14119,
+            1435
+          ],
+          [
+            314,
+            932
+          ]
+        ],
+        "positiveRate": 0.07416666666666667,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.297254631681535,
+            "rmse": 7.827349764594428,
+            "intervalCoverage": 0.9001190476190476,
+            "intervalMeanWidth": 15.593358362207738
+          },
+          {
+            "minutes": 60,
+            "mae": 7.469463543332389,
+            "rmse": 14.177059459696421,
+            "intervalCoverage": 0.9055357142857143,
+            "intervalMeanWidth": 36.47213947998367
+          },
+          {
+            "minutes": 90,
+            "mae": 10.369057660935987,
+            "rmse": 18.05916946303514,
+            "intervalCoverage": 0.8974404761904762,
+            "intervalMeanWidth": 57.789711459214345
+          },
+          {
+            "minutes": 120,
+            "mae": 12.27374427203511,
+            "rmse": 19.8776624365484,
+            "intervalCoverage": 0.8828571428571429,
+            "intervalMeanWidth": 62.95250510439365
+          }
+        ],
+        "intervalCoverage": 0.8828571428571429,
+        "intervalMeanWidth": 62.95250510439365,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13764,
+            "predicted": 0.012337123859759633,
+            "observed": 0.016564952048823016
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 1077,
+            "predicted": 0.14451051214274024,
+            "observed": 0.14948932219127206
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 717,
+            "predicted": 0.2456850243617306,
+            "observed": 0.2649930264993027
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 434,
+            "predicted": 0.34176911499511975,
+            "observed": 0.29723502304147464
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 244,
+            "predicted": 0.447290412838894,
+            "observed": 0.47540983606557374
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 173,
+            "predicted": 0.546529130078097,
+            "observed": 0.5722543352601156
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 93,
+            "predicted": 0.6415592147874695,
+            "observed": 0.5483870967741935
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 59,
+            "predicted": 0.74878282212096,
+            "observed": 0.7796610169491526
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 48,
+            "predicted": 0.8474182537483292,
+            "observed": 0.7708333333333334
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 191,
+            "predicted": 0.9657493974068058,
+            "observed": 0.9895287958115183
+          }
+        ],
+        "threshold": 0.15500000000000003
+      },
+      "v3": {
+        "mae": 12.401940344454369,
+        "rmse": 19.999991233092274,
+        "auroc": 0.9315142647032416,
+        "averagePrecision": 0.6004881899911906,
+        "brier": 0.04409695488568697,
+        "precision": 0.38118609406952964,
+        "recall": 0.7479935794542536,
+        "f1": 0.5050121918179356,
+        "confusionMatrix": [
+          [
+            14041,
+            1513
+          ],
+          [
+            314,
+            932
+          ]
+        ],
+        "positiveRate": 0.07416666666666667,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.297254631681535,
+            "rmse": 7.827349764594428,
+            "intervalCoverage": 0.897797619047619,
+            "intervalMeanWidth": 15.367465014871215
+          },
+          {
+            "minutes": 60,
+            "mae": 7.469463543332389,
+            "rmse": 14.177059459696421,
+            "intervalCoverage": 0.9032738095238095,
+            "intervalMeanWidth": 34.996542232152706
+          },
+          {
+            "minutes": 90,
+            "mae": 10.369057660935987,
+            "rmse": 18.05916946303514,
+            "intervalCoverage": 0.8901785714285714,
+            "intervalMeanWidth": 54.5895398874336
+          },
+          {
+            "minutes": 120,
+            "mae": 12.401940344454369,
+            "rmse": 19.999991233092274,
+            "intervalCoverage": 0.8802380952380953,
+            "intervalMeanWidth": 61.75523271983761
+          }
+        ],
+        "intervalCoverage": 0.8802380952380953,
+        "intervalMeanWidth": 61.75523271983761,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13698,
+            "predicted": 0.012315351049832397,
+            "observed": 0.01627974886844795
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 1094,
+            "predicted": 0.14656885562895636,
+            "observed": 0.16179159049360145
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 695,
+            "predicted": 0.24579344175695966,
+            "observed": 0.2158273381294964
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 453,
+            "predicted": 0.3476326632055989,
+            "observed": 0.33774834437086093
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 282,
+            "predicted": 0.4465071317910928,
+            "observed": 0.4397163120567376
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 180,
+            "predicted": 0.5474681504107797,
+            "observed": 0.5388888888888889
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 116,
+            "predicted": 0.646430707490289,
+            "observed": 0.603448275862069
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 56,
+            "predicted": 0.7427170322678942,
+            "observed": 0.6964285714285714
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 54,
+            "predicted": 0.858000319948802,
+            "observed": 0.7962962962962963
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 172,
+            "predicted": 0.96098067751462,
+            "observed": 0.9883720930232558
+          }
+        ],
+        "threshold": 0.155
+      },
+      "pairedDecisionDifferences": {
+        "falsePositiveWindows": {
+          "difference": -78,
+          "patientBootstrap95CI": [
+            -186.0,
+            21.0
+          ]
+        },
+        "falseNegativeWindows": {
+          "difference": 0,
+          "patientBootstrap95CI": [
+            -35.0,
+            32.0
+          ]
+        }
+      }
+    },
+    {
+      "id": "variable_routine",
+      "title": "Variable sleep, activity and meals",
+      "params": {
+        "meal_jitter_hours": 1.2,
+        "day_shift_hours_sd": 2.2,
+        "meal_skip_probability": 0.22,
+        "variable_routine": true
+      },
+      "windows": 16800,
+      "patients": 120,
+      "positiveWindows": 1260,
+      "v4": {
+        "mae": 12.866810103290671,
+        "rmse": 21.006275933081945,
+        "auroc": 0.9067073195644624,
+        "averagePrecision": 0.5449120436882938,
+        "brier": 0.04816425750810339,
+        "precision": 0.3545179420665802,
+        "recall": 0.6507936507936508,
+        "f1": 0.45899804086202073,
+        "confusionMatrix": [
+          [
+            14047,
+            1493
+          ],
+          [
+            440,
+            820
+          ]
+        ],
+        "positiveRate": 0.075,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.310307952698975,
+            "rmse": 7.950117020232781,
+            "intervalCoverage": 0.9046428571428572,
+            "intervalMeanWidth": 15.593358362207738
+          },
+          {
+            "minutes": 60,
+            "mae": 7.515598712278422,
+            "rmse": 14.338289264153756,
+            "intervalCoverage": 0.9070833333333334,
+            "intervalMeanWidth": 36.47213947998367
+          },
+          {
+            "minutes": 90,
+            "mae": 10.59336041504553,
+            "rmse": 18.67055556647328,
+            "intervalCoverage": 0.8951190476190476,
+            "intervalMeanWidth": 57.789711459214345
+          },
+          {
+            "minutes": 120,
+            "mae": 12.866810103290671,
+            "rmse": 21.006275933081945,
+            "intervalCoverage": 0.8726190476190476,
+            "intervalMeanWidth": 62.95250510439365
+          }
+        ],
+        "intervalCoverage": 0.8726190476190476,
+        "intervalMeanWidth": 62.95250510439365,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13739,
+            "predicted": 0.013691261881715648,
+            "observed": 0.023873644370041486
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 1254,
+            "predicted": 0.1465912102506437,
+            "observed": 0.16028708133971292
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 763,
+            "predicted": 0.24601944572799844,
+            "observed": 0.22411533420707733
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 402,
+            "predicted": 0.3447181711655672,
+            "observed": 0.35074626865671643
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 198,
+            "predicted": 0.4436507953311096,
+            "observed": 0.398989898989899
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 121,
+            "predicted": 0.5439138350900672,
+            "observed": 0.5041322314049587
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 61,
+            "predicted": 0.6449463312227404,
+            "observed": 0.7049180327868853
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 44,
+            "predicted": 0.7419561076111596,
+            "observed": 0.6136363636363636
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 56,
+            "predicted": 0.8485102962997784,
+            "observed": 0.875
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 162,
+            "predicted": 0.9684829627515618,
+            "observed": 0.9876543209876543
+          }
+        ],
+        "threshold": 0.15500000000000003
+      },
+      "v3": {
+        "mae": 12.980408694909393,
+        "rmse": 21.000110464649474,
+        "auroc": 0.9033601969316255,
+        "averagePrecision": 0.529562951211409,
+        "brier": 0.049242715749229386,
+        "precision": 0.35008591065292094,
+        "recall": 0.6468253968253969,
+        "f1": 0.45429208472686733,
+        "confusionMatrix": [
+          [
+            14027,
+            1513
+          ],
+          [
+            445,
+            815
+          ]
+        ],
+        "positiveRate": 0.075,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.310307952698975,
+            "rmse": 7.950117020232781,
+            "intervalCoverage": 0.902797619047619,
+            "intervalMeanWidth": 15.367465014871215
+          },
+          {
+            "minutes": 60,
+            "mae": 7.515598712278422,
+            "rmse": 14.338289264153756,
+            "intervalCoverage": 0.9045238095238095,
+            "intervalMeanWidth": 34.996542232152706
+          },
+          {
+            "minutes": 90,
+            "mae": 10.59336041504553,
+            "rmse": 18.67055556647328,
+            "intervalCoverage": 0.8879166666666667,
+            "intervalMeanWidth": 54.5895398874336
+          },
+          {
+            "minutes": 120,
+            "mae": 12.980408694909393,
+            "rmse": 21.000110464649474,
+            "intervalCoverage": 0.87125,
+            "intervalMeanWidth": 61.75523271983761
+          }
+        ],
+        "intervalCoverage": 0.87125,
+        "intervalMeanWidth": 61.75523271983761,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13690,
+            "predicted": 0.01346066205211018,
+            "observed": 0.024251278305332358
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 1246,
+            "predicted": 0.14451101848810408,
+            "observed": 0.15971107544141253
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 719,
+            "predicted": 0.2454378768093375,
+            "observed": 0.23087621696801114
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 400,
+            "predicted": 0.3465402065290574,
+            "observed": 0.3
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 272,
+            "predicted": 0.44455966842891276,
+            "observed": 0.3713235294117647
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 152,
+            "predicted": 0.5460245819057135,
+            "observed": 0.4407894736842105
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 80,
+            "predicted": 0.6442356967529583,
+            "observed": 0.65
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 52,
+            "predicted": 0.7559696030163677,
+            "observed": 0.7307692307692307
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 57,
+            "predicted": 0.8520117354844335,
+            "observed": 0.9298245614035088
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 132,
+            "predicted": 0.9630652704745801,
+            "observed": 1.0
+          }
+        ],
+        "threshold": 0.155
+      },
+      "pairedDecisionDifferences": {
+        "falsePositiveWindows": {
+          "difference": -20,
+          "patientBootstrap95CI": [
+            -116.025,
+            75.0
+          ]
+        },
+        "falseNegativeWindows": {
+          "difference": -5,
+          "patientBootstrap95CI": [
+            -34.0,
+            24.0
+          ]
+        }
+      }
+    },
+    {
+      "id": "new_shift_variable_combination",
+      "title": "New held-out shifted variable combination",
+      "params": {
+        "meal_shift_hours": 2.5,
+        "meal_jitter_hours": 1.8,
+        "day_shift_hours_sd": 1.0,
+        "meal_skip_probability": 0.3,
+        "variable_routine": true
+      },
+      "windows": 16800,
+      "patients": 120,
+      "positiveWindows": 1122,
+      "v4": {
+        "mae": 12.681778703245568,
+        "rmse": 20.8802605139693,
+        "auroc": 0.8907243457287357,
+        "averagePrecision": 0.5080574090299663,
+        "brier": 0.04505532711081267,
+        "precision": 0.3038510368176047,
+        "recall": 0.6399286987522281,
+        "f1": 0.412051649928264,
+        "confusionMatrix": [
+          [
+            14033,
+            1645
+          ],
+          [
+            404,
+            718
+          ]
+        ],
+        "positiveRate": 0.06678571428571428,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.153385629571946,
+            "rmse": 7.5566475941943745,
+            "intervalCoverage": 0.9078571428571428,
+            "intervalMeanWidth": 15.593358362207738
+          },
+          {
+            "minutes": 60,
+            "mae": 7.164419906623861,
+            "rmse": 13.650098140041752,
+            "intervalCoverage": 0.9179166666666667,
+            "intervalMeanWidth": 36.47213947998367
+          },
+          {
+            "minutes": 90,
+            "mae": 10.239883896522816,
+            "rmse": 18.142781950260787,
+            "intervalCoverage": 0.90375,
+            "intervalMeanWidth": 57.789711459214345
+          },
+          {
+            "minutes": 120,
+            "mae": 12.681778703245568,
+            "rmse": 20.8802605139693,
+            "intervalCoverage": 0.8818452380952381,
+            "intervalMeanWidth": 62.95250510439365
+          }
+        ],
+        "intervalCoverage": 0.8818452380952381,
+        "intervalMeanWidth": 62.95250510439365,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13601,
+            "predicted": 0.013658994933657985,
+            "observed": 0.02161605764282038
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 1337,
+            "predicted": 0.1446678863598885,
+            "observed": 0.14210919970082272
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 839,
+            "predicted": 0.24378822861366756,
+            "observed": 0.1728247914183552
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 413,
+            "predicted": 0.3446431222559668,
+            "observed": 0.29539951573849876
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 207,
+            "predicted": 0.44402718916856415,
+            "observed": 0.34782608695652173
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 112,
+            "predicted": 0.5396208097362847,
+            "observed": 0.4107142857142857
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 59,
+            "predicted": 0.6466076082616623,
+            "observed": 0.559322033898305
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 42,
+            "predicted": 0.7525994781298964,
+            "observed": 0.7857142857142857
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 50,
+            "predicted": 0.8527211193270934,
+            "observed": 0.94
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 140,
+            "predicted": 0.9642549421831216,
+            "observed": 1.0
+          }
+        ],
+        "threshold": 0.15500000000000003
+      },
+      "v3": {
+        "mae": 12.816611737748445,
+        "rmse": 20.93082440605729,
+        "auroc": 0.8858455221492972,
+        "averagePrecision": 0.48187769313347306,
+        "brier": 0.04698704161236349,
+        "precision": 0.29347368421052633,
+        "recall": 0.6212121212121212,
+        "f1": 0.39862739490992277,
+        "confusionMatrix": [
+          [
+            14000,
+            1678
+          ],
+          [
+            425,
+            697
+          ]
+        ],
+        "positiveRate": 0.06678571428571428,
+        "byHorizon": [
+          {
+            "minutes": 30,
+            "mae": 4.153385629571946,
+            "rmse": 7.5566475941943745,
+            "intervalCoverage": 0.9056547619047619,
+            "intervalMeanWidth": 15.367465014871215
+          },
+          {
+            "minutes": 60,
+            "mae": 7.164419906623861,
+            "rmse": 13.650098140041752,
+            "intervalCoverage": 0.9148809523809524,
+            "intervalMeanWidth": 34.996542232152706
+          },
+          {
+            "minutes": 90,
+            "mae": 10.239883896522816,
+            "rmse": 18.142781950260787,
+            "intervalCoverage": 0.89875,
+            "intervalMeanWidth": 54.5895398874336
+          },
+          {
+            "minutes": 120,
+            "mae": 12.816611737748445,
+            "rmse": 20.93082440605729,
+            "intervalCoverage": 0.8772023809523809,
+            "intervalMeanWidth": 61.75523271983761
+          }
+        ],
+        "intervalCoverage": 0.8772023809523809,
+        "intervalMeanWidth": 61.75523271983761,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13658,
+            "predicted": 0.013692564613837846,
+            "observed": 0.023429491872895006
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 1274,
+            "predicted": 0.14571876989733168,
+            "observed": 0.14207221350078492
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "count": 675,
+            "predicted": 0.24585009069895036,
+            "observed": 0.18962962962962962
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "count": 471,
+            "predicted": 0.3487824829832674,
+            "observed": 0.23779193205944799
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 288,
+            "predicted": 0.44511185329763214,
+            "observed": 0.2881944444444444
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 163,
+            "predicted": 0.5448441650877575,
+            "observed": 0.4171779141104294
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "count": 68,
+            "predicted": 0.6484054143199414,
+            "observed": 0.5735294117647058
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "count": 34,
+            "predicted": 0.7568776960133238,
+            "observed": 0.7647058823529411
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 59,
+            "predicted": 0.8575413235930615,
+            "observed": 0.9322033898305084
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 110,
+            "predicted": 0.9562297758852695,
+            "observed": 1.0
+          }
+        ],
+        "threshold": 0.155
+      },
+      "pairedDecisionDifferences": {
+        "falsePositiveWindows": {
+          "difference": -33,
+          "patientBootstrap95CI": [
+            -140.0,
+            71.02499999999986
+          ]
+        },
+        "falseNegativeWindows": {
+          "difference": -21,
+          "patientBootstrap95CI": [
+            -47.0,
+            2.0
+          ]
+        }
+      }
+    }
+  ],
+  "promotionGate": {
+    "passed": false,
+    "bothCountsLowerInPrimaryVariableAndHeldOut": false,
+    "bothPrimaryCountIntervalsBelowZero": false,
+    "automaticPromotion": false
+  },
+  "environment": {
+    "python": "3.12.2",
+    "numpy": "2.4.4",
+    "sklearn": "1.9.0"
+  },
+  "limitations": [
+    "Synthetic experiment only, separate from open-research model evaluation.",
+    "Unannounced future meals remain partly unpredictable.",
+    "Personalization only uses already resolved historical forecasts; it does not fit on future test outcomes.",
+    "Routine families appear in training; one new factor combination is held out.",
+    "This experiment does not modify or validate the open-research model.",
+    "No clinical or real-device robustness claim follows from these synthetic results.",
+    "Changing an alert policy alone is not considered a successful new model."
+  ]
+}

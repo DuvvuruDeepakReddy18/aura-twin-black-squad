@@ -1,27 +1,53 @@
-# Jury questions and defensible answers
+# AURA Twin — research-edition judge questions
 
-**What exactly is predicted?** Numerical glucose at +30/+60/+90/+120 minutes and probability of glucose ≥180 mg/dL at exactly +120 minutes. Not any crossing in the interval, and not necessarily a new onset.
+**Are the EHR and wearable records from the same person?**
+No. They are explicitly a **Composite Research Twin**. Sixteen synthetic EHR profiles are independently assigned to sixteen research participant identifiers by rank. The assignment is target-blind. It demonstrates ingestion and UI integration, not physiological matching.
 
-**Where is the digital twin?** The current patient state joins a static fictional EHR with a time-indexed wearable prefix. It updates under replay and drives the forecast, quality state and review interface. It is a narrow computational twin, not a complete physiological replica.
+**Does fusion improve the model?**
+Not on the selected forecasting criterion in this cohort. The primary model is **CGM history only**, chosen by selection-participant macro MAE. Final +120-minute MAE is 13.31 mg/dL, compared with 13.70 for CGM/HR/RMSSD and 14.73 for matched-study HbA1c/sex fusion. The matched fusion classifier has different strengths and a different frozen policy, but it was not the selected primary forecasting family. Unmatched Synthea fusion is a negative control, not evidence of clinical fusion benefit.
 
-**Did you improve both misses and false alerts?** The frozen v3 policy at 0.1550 has 74.47% recall and 37.34% precision, with 1,669 false-negative and 8,170 false-positive windows. Frozen v2 on the same cases has 1,742 FN and 8,730 FP. The gains are modest and mixed: the patient-bootstrap 95% interval for the FN difference includes zero, and the withheld combination has **324 → 330 missed positive windows**. This does not establish a reliable reduction in misses or improvement across every routine. Compare the two policies on the same fresh windows. The full paired uncertainty is in the model card; per-routine and withheld-combination results must also be read. Counts are correlated windows, not deduplicated alerts.
+**What is the event behind the probability?**
+An observed CGM rise of at least 20 mg/dL from the latest available current reading at approximately +120 minutes. The future observation must be within ±150 seconds of the nominal time. The training-only support audit did not support the original absolute ≥180 event sufficiently, so the declared fallback was used. A rise of 20 is a research label; it is not necessarily an adverse clinical event.
 
-**Did you just lower the threshold?** Candidate choice is based on the worst FP/FN ratio to frozen v2 over specified development groups. Calibration fixes one global threshold of 0.1550 before final generation. Ranking/probability metrics and paired final counts are also reported; a threshold change alone leaves the underlying precision–recall curve unchanged.
+**How accurate is it?**
+The final set has 1,859 overlapping windows from only three participants, including 287 positive rise windows. Primary MAE is 13.31 mg/dL versus 16.35 for persistence. At the frozen 0.18 threshold, recall is 66.20%, precision 22.14%, with 97 false-negative and 668 false-positive windows. Low precision is a substantial limitation; this is not a deployable clinical alert policy.
 
-**Is the test genuinely new?** Final identities SYN-2001–SYN-2120 are generated after model/policy freeze and were not used in earlier inspected final results. The familiar families are seen during development. The exact withheld factor combination is not. Local hashes and code order are auditable but not independently timestamped preregistration.
+**Do thousands of windows make the evaluation large?**
+No. Windows overlap and are correlated. The partition is 9 training / 2 selection / 2 calibration / 3 final people. Participant-level results are reported. The sample does not support strong population claims or reliable population confidence intervals.
 
-**Can you foresee an unannounced meal?** Not before any predictive evidence exists. Inputs contain only observed history. Previous-day values are already in the past, and future simulator meal schedules are excluded. The simulated HR meal-response term may favor the model; it does not prove meal inference from real wearables.
+**How do you prevent future leakage?**
+Features use at most the historical six-hour prefix. CGM is aligned backward with at most 15 minutes of carry-forward. Minute-rounded HR is delayed 60 seconds and aggregated only in completed bins. IBI-derived RMSSD uses accepted adjacent pairs within completed bins. Tests compare complete-record and truncated-prefix features. Future samples enter only evaluation/reveal.
 
-**Does EHR fusion add value?** Sensor-only minus fused MAE is 0.075 mg/dL on the primary final comparison. Read the paired interval. We do not attribute all improvement to EHR or promise a large fusion effect.
+**Is matched HbA1c definitely available before replay?**
+The study links HbA1c and sex to the wearable participant but supplies no lab timestamp. Availability as baseline context is an explicit assumption, not a proven pre-replay EHR result.
 
-**What does the uncertainty band mean?** A symmetric per-horizon band from the 90th percentile of absolute calibration errors. Primary +120 coverage is 90.60%, with width 61.76 mg/dL. It is a marginal descriptive result, not a per-patient or shifted-population guarantee.
+**What do uncertainty bands mean?**
+They use nominal 90th-percentile absolute residuals from two calibration participants. Final +120-minute coverage is 93.54% and mean width is 71.68 mg/dL. The bands are broad and empirical. They do not guarantee coverage for each patient or a changed population.
 
-**Are explanations causal?** No. A group is replaced with its training-median reference and risk is recomputed. The percentage-point changes are nonadditive, not SHAP, and may involve unrealistic feature combinations. Scenario controls are hand-authored arithmetic; trained baseline risk stays unchanged.
+**Are explanations causal?**
+No. Grouped reference sensitivity replaces a feature group with training-reference values and recomputes probability. Changes are nonadditive, can involve unrealistic combinations, and are not SHAP values or treatment effects. Displayed context is not automatically a model input.
 
-**What happens when a sensor fails?** A short gap can be carried forward with a degraded state. Excessive missingness or stale CGM/HR/HRV causes abstention. A plausible bias can pass those gates, which the challenge intentionally exposes.
+**Can the model predict an unannounced future meal?**
+It receives no future meal or activity information. Such events are an important source of forecast uncertainty. Better performance on a designed simulator would not show that unknown real events can be anticipated.
 
-**Can reveal change the earlier answer?** Reveal uses the frozen prediction; it does not rerun inference. Hosted sessions carry an authenticated encrypted snapshot across instances. Offline receipts exclude that transport token and can be reproduced against the packaged data/model. Hashes are not signatures or trusted timestamps.
+**Why are sleep, steps and genetics missing?**
+They are not available in the imported sources. The app keeps them unavailable. HRV here is derived from source IBI pairs, not a clinical ECG measurement.
 
-**What is public and private?** The public app accepts bundled synthetic IDs, and the repository contains generated records only. Care notes remain browser-local demo state. Team leader contact details belong in the submission platform, not the public repo. No real patient upload, clinical authentication or production health-record system is provided.
+**Does Freeze/Reveal constitute secure blinding?**
+No. The dataset is public. It enforces a computation boundary: freeze the cutoff-bounded output, then compare it with original observed truth without recomputing. The receipt supports numerical verification, not clinical study blinding.
 
-**What remains unproven?** External/clinical validity, medication response, unfamiliar physiology/devices, clinical benefit, usability, treatment safety and compliance certification. A prospective silent evaluation and episode-level notification analysis would be separate work.
+**What do receipt hashes prove?**
+They bind an input representation and model artifact and help detect inconsistent changes. The offline verifier recomputes forecast and recorded-future scores. They are not signatures, independently trusted timestamps or evidence of authorship.
+
+```bash
+node scripts/verify_research_receipt.mjs path/to/receipt.json
+```
+
+**What happened to older synthetic scores?**
+They are legacy evidence under a different population and target. The separate V4 experiment uses the unchanged simulator, fresh identities and a predeclared promotion gate. Its result is reported independently and cannot improve the apparent research-model accuracy.
+
+**Is authentication complete?**
+Demo mode requires no account. Provider-backed authentication is a separate configuration and verification task. Consult [VERIFICATION.md](VERIFICATION.md); an unconfigured form is not presented as successful login.
+
+**What would justify clinical use?**
+A substantially larger, genuinely matched dataset, prospectively defined clinical use, externally evaluated calibration and operating costs, human-factors work and appropriate clinical oversight. None is claimed complete.

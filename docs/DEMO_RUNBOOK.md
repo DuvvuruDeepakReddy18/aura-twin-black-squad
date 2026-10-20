@@ -1,34 +1,63 @@
-# Full demonstration runbook
+# AURA Twin — current research demonstration runbook
 
-Current model: `aura-synthetic-3.0.0`. Target a clear 24–27-minute presentation. The minimum requested recording is 20 minutes; do not use silent padding. The current 22-slide narration is [narration.json](narration.json). A local synthesized-voice rendering is disclosed as such; team members can record their own narration using this guide.
-
-| Segment | Slides | Target | Demonstration |
-|---|---|---|---|
-| Team, problem and label | 1–3 | 0:00–3:00 | Name team/college; define exact +120 target and synthetic scope |
-| Data, information boundary, architecture | 4–6 | 3:00–6:30 | Explain six families and withheld combination; no future meal inputs |
-| Split, selection and evidence | 7–11 | 6:30–12:30 | Separate fit/select/calibrate/final; compare frozen FN/FP and show uncertainty |
-| Doctor-facing interface | 12–15 | 12:30–17:00 | Patient search, chart/replay, record, group sensitivity, illustrative sandbox |
-| Live challenge and receipt | 16–18 | 17:00–21:00 | Freeze/reveal, persistence, gap/dropout/bias and offline verification |
-| Reproduction, limits and handoff | 19–22 | 21:00–25:30 | Code/tests, remaining unknown behavior, next validation, submission links |
+This script matches the research edition and its frozen numerical artifacts. Estimated speaking times are planning estimates; the delivered MP4 must be measured and decoded before claiming its duration. Record at least 20 minutes for the competition brief.
 
 ## Before recording
 
-Run the current app and confirm `/api/health` identifies the intended model. Reset demo notes and scenarios. Verify the PDF, narration and active model agree. Confirm no real patient data, leader phone/email, secrets, account tokens or personal paths appear on screen. Keep the generated patient label visible.
+1. Build and run the current app. Confirm the model version and source mode.
+2. Verify that any displayed account flows match actual provider configuration.
+3. Open the presentation and current research UI, not historical synthetic screenshots.
+4. Confirm source identity, replay cutoff, threshold and model hash.
+5. Use only the bundled de-identified research and synthetic data. Keep private leader contact details and deployment secrets out of the recording.
 
-## Evidence wording
+## Speaking sequence
 
-On the same 100,800 fresh final windows, missed positives changed from **1,742 to 1,669**, and false-positive flags from **8,730 to 8,170**. The frozen v3 policy at 0.1550 has 74.47% recall and 37.34% precision, with 1,669 false-negative and 8,170 false-positive windows. Frozen v2 on the same cases has 1,742 FN and 8,730 FP. The gains are modest and mixed: the patient-bootstrap 95% interval for the FN difference includes zero, and the withheld combination has **324 → 330 missed positive windows**. This does not establish a reliable reduction in misses or improvement across every routine.
+| Estimated time | Slide | Topic |
+|---|---|---|
+| 00:00–01:12 | 1 | See the patient. Understand what comes next. |
+| 01:12–02:27 | 2 | A useful forecast must also be inspectable |
+| 02:27–03:40 | 3 | Two sources. Two identities. One honest boundary. |
+| 03:40–04:55 | 4 | Missing information stays missing |
+| 04:55–06:12 | 5 | A traceable path from source to prediction |
+| 06:12–07:39 | 6 | State the event before showing a probability |
+| 07:39–08:55 | 7 | Separate people before evaluating windows |
+| 08:55–10:14 | 8 | The model only receives the recorded past |
+| 10:14–11:30 | 9 | Compare fusion with honest alternatives |
+| 11:30–12:42 | 10 | Measured research results, with their denominator |
+| 12:42–13:57 | 11 | Confidence should be measured, not decorated |
+| 13:57–15:12 | 12 | A clinician-oriented workspace |
+| 15:12–16:27 | 13 | The record view keeps provenance close |
+| 16:27–17:45 | 14 | Explain the computation without claiming causality |
+| 17:45–19:01 | 15 | Freeze first. Reveal later. Compare honestly. |
+| 19:01–20:18 | 16 | Test the failure boundary |
+| 20:18–21:35 | 17 | Keep the evidence beside the experience |
+| 21:35–23:03 | 18 | A working demo does not require a fake login |
+| 23:03–24:33 | 19 | Separate research evidence from simulator progress |
+| 24:33–25:51 | 20 | Verification follows the claims |
+| 25:51–27:07 | 21 | A short, reproducible jury walkthrough |
+| 27:07–28:24 | 22 | A forecast you can question. |
 
-The primary test has 100,800 windows across 120 new identities and six familiar families. The withheld combination uses those same identities and is separate. The separate withheld factor combination has 12.07 mg/dL MAE, 60.99% recall and 24.11% precision. FN changes 324 → 330; FP changes 1,657 → 1,624. Show all families, including weak cases. Do not replace the current results with an older model's original-cohort score.
+The complete narration is in [narration.json](narration.json). Generated transcripts must come from that same file and the final chapter timings.
 
-Distinguish exact-horizon threshold prediction from new-event detection; window counts from episodes; descriptive bands from guarantees; grouped sensitivity from causality; arithmetic what-if controls from treatment simulation; receipt hashes from signatures; transport encryption from clinical certification.
+## 90-second jury path
 
-## Live interaction sequence
+- 00:00–00:30: Open demo, select a participant and identify composite provenance, research model version and cutoff.
+- 00:30–01:00: Inspect forecast, uncertainty and actual inputs; freeze a prediction.
+- 01:00–01:30: Reveal recorded outcomes, compare persistence, inspect a supported failure case and export evidence.
 
-Select any demo patient, inspect the timestamp and units, pause and scrub replay, then open the record and evidence tabs. Apply and reset a hypothetical scenario while showing that trained risk remains unchanged. Add a clearly fictional note and export the patient summary if useful.
+## Five-minute interactive path
 
-Follow [JURY_CHALLENGE_SCRIPT.md](JURY_CHALLENGE_SCRIPT.md) for the challenge. Freeze first, reveal second. Allow the model to lose to persistence. Demonstrate the dropout abstention and bias blind spot. Download a receipt without its hosted transport token and run the verifier locally.
+1. Explain why Synthea context and the wearable participant are different identities.
+2. Show one authentic EHR observation and one missing field.
+3. Explain the current prediction target and target-time tolerance.
+4. Change replay cutoff and inspect the model's available input boundary.
+5. Freeze/reveal one prediction; report the result even if persistence wins.
+6. Open model evidence and the participant-level limitations.
+7. Demonstrate a supported quality/abstention case.
+8. Explain which account/persistence flows are configured and verified.
 
-## Recording and accessibility
+## Recording guardrails
 
-Use legible screen magnification, a 16:9 recording, clear speech and captions/transcript. A slide narration with actual interface screenshots is a presentation walkthrough; do not describe it as a live clinical trial or live device stream. After rendering, probe the actual duration, decode the full video, check every chapter boundary and test the public file in a signed-out browser. Record the verified result in [VERIFICATION.md](VERIFICATION.md) and the README.
+Do not call simulated playback live device monitoring. Do not compare research scores with legacy V3 scores as an improvement. Do not describe source-label events as diagnosed harm. Reference sensitivity is not causal or treatment advice. Missing sleep/steps/genetics must remain unavailable. The public dataset is not securely blinded by hiding the outcome in the UI.
+
+An unlisted upload URL is pending until a real upload exists. The original guidelines require a minimum 20-minute video; satisfy that stricter requirement even though the form screenshot mentions 15–20 minutes.

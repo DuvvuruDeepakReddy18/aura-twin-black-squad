@@ -1,0 +1,405 @@
+{
+  "auditVersion": "research-runtime-1.0.0",
+  "evaluatedAt": "2026-10-20T07:22:00.247Z",
+  "modelVersion": "aura-research-1.0.0",
+  "modelSHA256": "a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432",
+  "participants": [
+    "014",
+    "015",
+    "016"
+  ],
+  "strideMinutes": 60,
+  "target": "Recorded glucose at +120 minutes, within ±150 seconds.",
+  "leakageAudit": {
+    "status": "passed",
+    "fullHistoryVsPhysicalPrefixChecks": 15,
+    "scope": "Outputs match for full recorded history versus physically truncated inputs on audited final windows. Additional automated tests cover changed future values."
+  },
+  "cases": [
+    {
+      "mode": "baseline",
+      "windows": 496,
+      "forecastAvailable": 468,
+      "withheld": 28,
+      "forecastAvailability": 0.9435483870967742,
+      "maeOnAvailable": 13.356547663397983,
+      "intervalCoverageOnAvailable": 0.9444444444444444,
+      "meanWidthOnAvailable": 71.67866612533811,
+      "byParticipant": [
+        {
+          "participant": "014",
+          "windows": 179,
+          "forecastAvailable": 179,
+          "withheld": 0,
+          "forecastAvailability": 1,
+          "maeOnAvailable": 14.707599930518866,
+          "intervalCoverageOnAvailable": 0.9329608938547486,
+          "meanWidthOnAvailable": 71.67866612533729
+        },
+        {
+          "participant": "015",
+          "windows": 135,
+          "forecastAvailable": 114,
+          "withheld": 21,
+          "forecastAvailability": 0.8444444444444444,
+          "maeOnAvailable": 11.447685800347239,
+          "intervalCoverageOnAvailable": 0.9736842105263158,
+          "meanWidthOnAvailable": 71.6786661253373
+        },
+        {
+          "participant": "016",
+          "windows": 182,
+          "forecastAvailable": 175,
+          "withheld": 7,
+          "forecastAvailability": 0.9615384615384616,
+          "maeOnAvailable": 13.218101358101642,
+          "intervalCoverageOnAvailable": 0.9371428571428572,
+          "meanWidthOnAvailable": 71.67866612533729
+        }
+      ]
+    },
+    {
+      "mode": "short_gap",
+      "windows": 496,
+      "forecastAvailable": 468,
+      "withheld": 28,
+      "forecastAvailability": 0.9435483870967742,
+      "maeOnAvailable": 13.380497902845176,
+      "intervalCoverageOnAvailable": 0.9358974358974359,
+      "meanWidthOnAvailable": 71.67866612533811,
+      "byParticipant": [
+        {
+          "participant": "014",
+          "windows": 179,
+          "forecastAvailable": 179,
+          "withheld": 0,
+          "forecastAvailability": 1,
+          "maeOnAvailable": 14.931146359091908,
+          "intervalCoverageOnAvailable": 0.9106145251396648,
+          "meanWidthOnAvailable": 71.67866612533729
+        },
+        {
+          "participant": "015",
+          "windows": 135,
+          "forecastAvailable": 114,
+          "withheld": 21,
+          "forecastAvailability": 0.8444444444444444,
+          "maeOnAvailable": 11.412150449736318,
+          "intervalCoverageOnAvailable": 0.9736842105263158,
+          "meanWidthOnAvailable": 71.6786661253373
+        },
+        {
+          "participant": "016",
+          "windows": 182,
+          "forecastAvailable": 175,
+          "withheld": 7,
+          "forecastAvailability": 0.9615384615384616,
+          "maeOnAvailable": 13.0766438227666,
+          "intervalCoverageOnAvailable": 0.9371428571428572,
+          "meanWidthOnAvailable": 71.67866612533729
+        }
+      ]
+    },
+    {
+      "mode": "cgm_dropout",
+      "windows": 496,
+      "forecastAvailable": 0,
+      "withheld": 496,
+      "forecastAvailability": 0,
+      "maeOnAvailable": null,
+      "intervalCoverageOnAvailable": null,
+      "meanWidthOnAvailable": null,
+      "byParticipant": [
+        {
+          "participant": "014",
+          "windows": 179,
+          "forecastAvailable": 0,
+          "withheld": 179,
+          "forecastAvailability": 0,
+          "maeOnAvailable": null,
+          "intervalCoverageOnAvailable": null,
+          "meanWidthOnAvailable": null
+        },
+        {
+          "participant": "015",
+          "windows": 135,
+          "forecastAvailable": 0,
+          "withheld": 135,
+          "forecastAvailability": 0,
+          "maeOnAvailable": null,
+          "intervalCoverageOnAvailable": null,
+          "meanWidthOnAvailable": null
+        },
+        {
+          "participant": "016",
+          "windows": 182,
+          "forecastAvailable": 0,
+          "withheld": 182,
+          "forecastAvailability": 0,
+          "maeOnAvailable": null,
+          "intervalCoverageOnAvailable": null,
+          "meanWidthOnAvailable": null
+        }
+      ]
+    },
+    {
+      "mode": "sensor_dropout",
+      "windows": 496,
+      "forecastAvailable": 0,
+      "withheld": 496,
+      "forecastAvailability": 0,
+      "maeOnAvailable": null,
+      "intervalCoverageOnAvailable": null,
+      "meanWidthOnAvailable": null,
+      "byParticipant": [
+        {
+          "participant": "014",
+          "windows": 179,
+          "forecastAvailable": 0,
+          "withheld": 179,
+          "forecastAvailability": 0,
+          "maeOnAvailable": null,
+          "intervalCoverageOnAvailable": null,
+          "meanWidthOnAvailable": null
+        },
+        {
+          "participant": "015",
+          "windows": 135,
+          "forecastAvailable": 0,
+          "withheld": 135,
+          "forecastAvailability": 0,
+          "maeOnAvailable": null,
+          "intervalCoverageOnAvailable": null,
+          "meanWidthOnAvailable": null
+        },
+        {
+          "participant": "016",
+          "windows": 182,
+          "forecastAvailable": 0,
+          "withheld": 182,
+          "forecastAvailability": 0,
+          "maeOnAvailable": null,
+          "intervalCoverageOnAvailable": null,
+          "meanWidthOnAvailable": null
+        }
+      ]
+    },
+    {
+      "mode": "missing_hrv",
+      "windows": 496,
+      "forecastAvailable": 468,
+      "withheld": 28,
+      "forecastAvailability": 0.9435483870967742,
+      "maeOnAvailable": 13.356547663397983,
+      "intervalCoverageOnAvailable": 0.9444444444444444,
+      "meanWidthOnAvailable": 71.67866612533811,
+      "byParticipant": [
+        {
+          "participant": "014",
+          "windows": 179,
+          "forecastAvailable": 179,
+          "withheld": 0,
+          "forecastAvailability": 1,
+          "maeOnAvailable": 14.707599930518866,
+          "intervalCoverageOnAvailable": 0.9329608938547486,
+          "meanWidthOnAvailable": 71.67866612533729
+        },
+        {
+          "participant": "015",
+          "windows": 135,
+          "forecastAvailable": 114,
+          "withheld": 21,
+          "forecastAvailability": 0.8444444444444444,
+          "maeOnAvailable": 11.447685800347239,
+          "intervalCoverageOnAvailable": 0.9736842105263158,
+          "meanWidthOnAvailable": 71.6786661253373
+        },
+        {
+          "participant": "016",
+          "windows": 182,
+          "forecastAvailable": 175,
+          "withheld": 7,
+          "forecastAvailability": 0.9615384615384616,
+          "maeOnAvailable": 13.218101358101642,
+          "intervalCoverageOnAvailable": 0.9371428571428572,
+          "meanWidthOnAvailable": 71.67866612533729
+        }
+      ]
+    },
+    {
+      "mode": "delayed_signal",
+      "windows": 496,
+      "forecastAvailable": 469,
+      "withheld": 27,
+      "forecastAvailability": 0.9455645161290323,
+      "maeOnAvailable": 13.714031431013886,
+      "intervalCoverageOnAvailable": 0.9381663113006397,
+      "meanWidthOnAvailable": 71.67866612533811,
+      "byParticipant": [
+        {
+          "participant": "014",
+          "windows": 179,
+          "forecastAvailable": 179,
+          "withheld": 0,
+          "forecastAvailability": 1,
+          "maeOnAvailable": 15.254825592106565,
+          "intervalCoverageOnAvailable": 0.9162011173184358,
+          "meanWidthOnAvailable": 71.67866612533729
+        },
+        {
+          "participant": "015",
+          "windows": 135,
+          "forecastAvailable": 114,
+          "withheld": 21,
+          "forecastAvailability": 0.8444444444444444,
+          "maeOnAvailable": 11.922050073262957,
+          "intervalCoverageOnAvailable": 0.9736842105263158,
+          "meanWidthOnAvailable": 71.6786661253373
+        },
+        {
+          "participant": "016",
+          "windows": 182,
+          "forecastAvailable": 176,
+          "withheld": 6,
+          "forecastAvailability": 0.967032967032967,
+          "maeOnAvailable": 13.307688930718529,
+          "intervalCoverageOnAvailable": 0.9375,
+          "meanWidthOnAvailable": 71.67866612533729
+        }
+      ]
+    },
+    {
+      "mode": "noise",
+      "windows": 496,
+      "forecastAvailable": 468,
+      "withheld": 28,
+      "forecastAvailability": 0.9435483870967742,
+      "maeOnAvailable": 13.50801337084189,
+      "intervalCoverageOnAvailable": 0.9401709401709402,
+      "meanWidthOnAvailable": 71.67866612533811,
+      "byParticipant": [
+        {
+          "participant": "014",
+          "windows": 179,
+          "forecastAvailable": 179,
+          "withheld": 0,
+          "forecastAvailability": 1,
+          "maeOnAvailable": 14.854434883329807,
+          "intervalCoverageOnAvailable": 0.9273743016759777,
+          "meanWidthOnAvailable": 71.67866612533729
+        },
+        {
+          "participant": "015",
+          "windows": 135,
+          "forecastAvailable": 114,
+          "withheld": 21,
+          "forecastAvailability": 0.8444444444444444,
+          "maeOnAvailable": 11.732629201483944,
+          "intervalCoverageOnAvailable": 0.9649122807017544,
+          "meanWidthOnAvailable": 71.6786661253373
+        },
+        {
+          "participant": "016",
+          "windows": 182,
+          "forecastAvailable": 175,
+          "withheld": 7,
+          "forecastAvailability": 0.9615384615384616,
+          "maeOnAvailable": 13.287352482678891,
+          "intervalCoverageOnAvailable": 0.9371428571428572,
+          "meanWidthOnAvailable": 71.67866612533729
+        }
+      ]
+    },
+    {
+      "mode": "cgm_bias",
+      "windows": 496,
+      "forecastAvailable": 468,
+      "withheld": 28,
+      "forecastAvailability": 0.9435483870967742,
+      "maeOnAvailable": 17.594031293075695,
+      "intervalCoverageOnAvailable": 0.9337606837606838,
+      "meanWidthOnAvailable": 71.67866612533811,
+      "byParticipant": [
+        {
+          "participant": "014",
+          "windows": 179,
+          "forecastAvailable": 179,
+          "withheld": 0,
+          "forecastAvailability": 1,
+          "maeOnAvailable": 17.540623204473164,
+          "intervalCoverageOnAvailable": 0.9329608938547486,
+          "meanWidthOnAvailable": 71.67866612533729
+        },
+        {
+          "participant": "015",
+          "windows": 135,
+          "forecastAvailable": 114,
+          "withheld": 21,
+          "forecastAvailability": 0.8444444444444444,
+          "maeOnAvailable": 17.34609172905369,
+          "intervalCoverageOnAvailable": 0.9210526315789473,
+          "meanWidthOnAvailable": 71.6786661253373
+        },
+        {
+          "participant": "016",
+          "windows": 182,
+          "forecastAvailable": 175,
+          "withheld": 7,
+          "forecastAvailability": 0.9615384615384616,
+          "maeOnAvailable": 17.8101750539806,
+          "intervalCoverageOnAvailable": 0.9428571428571428,
+          "meanWidthOnAvailable": 71.67866612533729
+        }
+      ]
+    },
+    {
+      "mode": "outlier",
+      "windows": 496,
+      "forecastAvailable": 0,
+      "withheld": 496,
+      "forecastAvailability": 0,
+      "maeOnAvailable": null,
+      "intervalCoverageOnAvailable": null,
+      "meanWidthOnAvailable": null,
+      "byParticipant": [
+        {
+          "participant": "014",
+          "windows": 179,
+          "forecastAvailable": 0,
+          "withheld": 179,
+          "forecastAvailability": 0,
+          "maeOnAvailable": null,
+          "intervalCoverageOnAvailable": null,
+          "meanWidthOnAvailable": null
+        },
+        {
+          "participant": "015",
+          "windows": 135,
+          "forecastAvailable": 0,
+          "withheld": 135,
+          "forecastAvailability": 0,
+          "maeOnAvailable": null,
+          "intervalCoverageOnAvailable": null,
+          "meanWidthOnAvailable": null
+        },
+        {
+          "participant": "016",
+          "windows": 182,
+          "forecastAvailable": 0,
+          "withheld": 182,
+          "forecastAvailability": 0,
+          "maeOnAvailable": null,
+          "intervalCoverageOnAvailable": null,
+          "meanWidthOnAvailable": null
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "This post-freeze perturbation audit never fits or changes the model. It uses a separate 60-minute grid and must not replace the primary test metrics.",
+    "All modes retain the same target windows. Withheld predictions count in availability, not as successful forecasts. Conditional errors among available forecasts have a different denominator when abstention changes.",
+    "Perturbations are artificial sensor faults applied to real recorded inputs; they are not new real-device cohorts.",
+    "Prediction intervals are unchanged calibration bands. Their empirical coverage under each perturbation is measured here, not guaranteed.",
+    "Only three test participants. No clinical validation or unseen population generalization is established."
+  ]
+}

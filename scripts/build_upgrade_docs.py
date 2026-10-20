@@ -10,12 +10,13 @@ ROOT=Path(__file__).resolve().parents[1]
 DOCS=ROOT/'docs'
 
 def main():
-    model=json.loads((ROOT/'data/model.json').read_text(encoding='utf-8'))
+    research=(ROOT/'data/research-model.json').exists()
+    model=json.loads((ROOT/('data/research-model.json' if research else 'data/model.json')).read_text(encoding='utf-8'))
     narration=json.loads((DOCS/'narration.json').read_text(encoding='utf-8'))
     if model['modelVersion'] not in '\n'.join(row['text'] for row in narration):
         raise RuntimeError('Regenerate the main deck/narration for the current model first.')
     source=PdfReader(DOCS/'AURA_Twin_Presentation.pdf')
-    selection=[1,16,17,10,18,22]
+    selection=[6,10,15,16,17,19] if research else [1,16,17,10,18,22]
     writer=PdfWriter()
     records=[]
     for new_number,old_number in enumerate(selection,1):

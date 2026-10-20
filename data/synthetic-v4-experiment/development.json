@@ -1,0 +1,801 @@
+{
+  "status": "development_only",
+  "classification": [
+    {
+      "candidate": {
+        "hgbWeight": 0.75,
+        "baseWeight": 0.0
+      },
+      "policy": {
+        "threshold": 0.17250000000000004,
+        "worstCountRatio": 0.9647283126787417,
+        "meanCountRatio": 0.9566045643559214,
+        "counts": {
+          "overall": {
+            "tn": 58030,
+            "fp": 4925,
+            "fn": 1012,
+            "tp": 3233,
+            "recall": 0.7616018845700825,
+            "precision": 0.3962981122824222
+          },
+          "irregular": {
+            "tn": 28768,
+            "fp": 2727,
+            "fn": 670,
+            "tp": 1435,
+            "recall": 0.6817102137767221,
+            "precision": 0.34478616049975974
+          },
+          "variable": {
+            "tn": 9623,
+            "fp": 955,
+            "fn": 211,
+            "tp": 411,
+            "recall": 0.6607717041800643,
+            "precision": 0.3008784773060029
+          }
+        },
+        "baselineCounts": {
+          "overall": {
+            "tn": 57840,
+            "fp": 5115,
+            "fn": 1049,
+            "tp": 3196,
+            "recall": 0.7528857479387515,
+            "precision": 0.3845505955961978
+          },
+          "irregular": {
+            "tn": 28645,
+            "fp": 2850,
+            "fn": 703,
+            "tp": 1402,
+            "recall": 0.6660332541567696,
+            "precision": 0.3297271872060207
+          },
+          "variable": {
+            "tn": 9579,
+            "fp": 999,
+            "fn": 223,
+            "tp": 399,
+            "recall": 0.6414790996784566,
+            "precision": 0.2854077253218884
+          }
+        },
+        "method": "Global calibration-only threshold; worst overall/irregular/variable FP/FN ratio to fixed V3 policy."
+      },
+      "averagePrecision": 0.6303542587973934,
+      "auroc": 0.9453467716157117,
+      "brier": 0.03596734680845381
+    },
+    {
+      "candidate": {
+        "hgbWeight": 1.0,
+        "baseWeight": 0.0
+      },
+      "policy": {
+        "threshold": 0.17000000000000004,
+        "worstCountRatio": 0.9652003910068426,
+        "meanCountRatio": 0.9535811090396162,
+        "counts": {
+          "overall": {
+            "tn": 58018,
+            "fp": 4937,
+            "fn": 1006,
+            "tp": 3239,
+            "recall": 0.7630153121319199,
+            "precision": 0.3961594911937378
+          },
+          "irregular": {
+            "tn": 28759,
+            "fp": 2736,
+            "fn": 663,
+            "tp": 1442,
+            "recall": 0.6850356294536817,
+            "precision": 0.34514121589277164
+          },
+          "variable": {
+            "tn": 9622,
+            "fp": 956,
+            "fn": 209,
+            "tp": 413,
+            "recall": 0.6639871382636656,
+            "precision": 0.30168005843681517
+          }
+        },
+        "baselineCounts": {
+          "overall": {
+            "tn": 57840,
+            "fp": 5115,
+            "fn": 1049,
+            "tp": 3196,
+            "recall": 0.7528857479387515,
+            "precision": 0.3845505955961978
+          },
+          "irregular": {
+            "tn": 28645,
+            "fp": 2850,
+            "fn": 703,
+            "tp": 1402,
+            "recall": 0.6660332541567696,
+            "precision": 0.3297271872060207
+          },
+          "variable": {
+            "tn": 9579,
+            "fp": 999,
+            "fn": 223,
+            "tp": 399,
+            "recall": 0.6414790996784566,
+            "precision": 0.2854077253218884
+          }
+        },
+        "method": "Global calibration-only threshold; worst overall/irregular/variable FP/FN ratio to fixed V3 policy."
+      },
+      "averagePrecision": 0.6276340184331968,
+      "auroc": 0.9444251343739368,
+      "brier": 0.03611006297397811
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.5,
+        "baseWeight": 0.0
+      },
+      "policy": {
+        "threshold": 0.17500000000000004,
+        "worstCountRatio": 0.9694947569113441,
+        "meanCountRatio": 0.9593932634779736,
+        "counts": {
+          "overall": {
+            "tn": 58047,
+            "fp": 4908,
+            "fn": 1017,
+            "tp": 3228,
+            "recall": 0.7604240282685513,
+            "precision": 0.3967551622418879
+          },
+          "irregular": {
+            "tn": 28779,
+            "fp": 2716,
+            "fn": 680,
+            "tp": 1425,
+            "recall": 0.6769596199524941,
+            "precision": 0.34411977783144165
+          },
+          "variable": {
+            "tn": 9636,
+            "fp": 942,
+            "fn": 215,
+            "tp": 407,
+            "recall": 0.6543408360128617,
+            "precision": 0.301704966641957
+          }
+        },
+        "baselineCounts": {
+          "overall": {
+            "tn": 57840,
+            "fp": 5115,
+            "fn": 1049,
+            "tp": 3196,
+            "recall": 0.7528857479387515,
+            "precision": 0.3845505955961978
+          },
+          "irregular": {
+            "tn": 28645,
+            "fp": 2850,
+            "fn": 703,
+            "tp": 1402,
+            "recall": 0.6660332541567696,
+            "precision": 0.3297271872060207
+          },
+          "variable": {
+            "tn": 9579,
+            "fp": 999,
+            "fn": 223,
+            "tp": 399,
+            "recall": 0.6414790996784566,
+            "precision": 0.2854077253218884
+          }
+        },
+        "method": "Global calibration-only threshold; worst overall/irregular/variable FP/FN ratio to fixed V3 policy."
+      },
+      "averagePrecision": 0.6315526647079935,
+      "auroc": 0.9457576283992931,
+      "brier": 0.03590864901283734
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.25,
+        "baseWeight": 0.0
+      },
+      "policy": {
+        "threshold": 0.17500000000000004,
+        "worstCountRatio": 0.9701280227596017,
+        "meanCountRatio": 0.9571304367820744,
+        "counts": {
+          "overall": {
+            "tn": 58038,
+            "fp": 4917,
+            "fn": 1015,
+            "tp": 3230,
+            "recall": 0.7608951707891637,
+            "precision": 0.39646495642567814
+          },
+          "irregular": {
+            "tn": 28777,
+            "fp": 2718,
+            "fn": 682,
+            "tp": 1423,
+            "recall": 0.6760095011876485,
+            "precision": 0.34363680270466074
+          },
+          "variable": {
+            "tn": 9644,
+            "fp": 934,
+            "fn": 213,
+            "tp": 409,
+            "recall": 0.657556270096463,
+            "precision": 0.304542069992554
+          }
+        },
+        "baselineCounts": {
+          "overall": {
+            "tn": 57840,
+            "fp": 5115,
+            "fn": 1049,
+            "tp": 3196,
+            "recall": 0.7528857479387515,
+            "precision": 0.3845505955961978
+          },
+          "irregular": {
+            "tn": 28645,
+            "fp": 2850,
+            "fn": 703,
+            "tp": 1402,
+            "recall": 0.6660332541567696,
+            "precision": 0.3297271872060207
+          },
+          "variable": {
+            "tn": 9579,
+            "fp": 999,
+            "fn": 223,
+            "tp": 399,
+            "recall": 0.6414790996784566,
+            "precision": 0.2854077253218884
+          }
+        },
+        "method": "Global calibration-only threshold; worst overall/irregular/variable FP/FN ratio to fixed V3 policy."
+      },
+      "averagePrecision": 0.6311541102324334,
+      "auroc": 0.9457360563507559,
+      "brier": 0.03593396958712873
+    },
+    {
+      "candidate": {
+        "hgbWeight": 1.0,
+        "baseWeight": 0.25
+      },
+      "policy": {
+        "threshold": 0.17000000000000004,
+        "worstCountRatio": 0.9714013346043852,
+        "meanCountRatio": 0.9630001646633559,
+        "counts": {
+          "overall": {
+            "tn": 58035,
+            "fp": 4920,
+            "fn": 1019,
+            "tp": 3226,
+            "recall": 0.7599528857479387,
+            "precision": 0.3960225877731402
+          },
+          "irregular": {
+            "tn": 28770,
+            "fp": 2725,
+            "fn": 677,
+            "tp": 1428,
+            "recall": 0.6783847980997625,
+            "precision": 0.34384782085239585
+          },
+          "variable": {
+            "tn": 9622,
+            "fp": 956,
+            "fn": 216,
+            "tp": 406,
+            "recall": 0.6527331189710611,
+            "precision": 0.29809104258443464
+          }
+        },
+        "baselineCounts": {
+          "overall": {
+            "tn": 57840,
+            "fp": 5115,
+            "fn": 1049,
+            "tp": 3196,
+            "recall": 0.7528857479387515,
+            "precision": 0.3845505955961978
+          },
+          "irregular": {
+            "tn": 28645,
+            "fp": 2850,
+            "fn": 703,
+            "tp": 1402,
+            "recall": 0.6660332541567696,
+            "precision": 0.3297271872060207
+          },
+          "variable": {
+            "tn": 9579,
+            "fp": 999,
+            "fn": 223,
+            "tp": 399,
+            "recall": 0.6414790996784566,
+            "precision": 0.2854077253218884
+          }
+        },
+        "method": "Global calibration-only threshold; worst overall/irregular/variable FP/FN ratio to fixed V3 policy."
+      },
+      "averagePrecision": 0.627482489710012,
+      "auroc": 0.9442265068838316,
+      "brier": 0.03612160282092846
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.75,
+        "baseWeight": 0.25
+      },
+      "policy": {
+        "threshold": 0.17000000000000004,
+        "worstCountRatio": 0.9714565004887585,
+        "meanCountRatio": 0.9649345718404408,
+        "counts": {
+          "overall": {
+            "tn": 57986,
+            "fp": 4969,
+            "fn": 1019,
+            "tp": 3226,
+            "recall": 0.7599528857479387,
+            "precision": 0.39365466748017086
+          },
+          "irregular": {
+            "tn": 28743,
+            "fp": 2752,
+            "fn": 677,
+            "tp": 1428,
+            "recall": 0.6783847980997625,
+            "precision": 0.3416267942583732
+          },
+          "variable": {
+            "tn": 9616,
+            "fp": 962,
+            "fn": 213,
+            "tp": 409,
+            "recall": 0.657556270096463,
+            "precision": 0.29832239241429614
+          }
+        },
+        "baselineCounts": {
+          "overall": {
+            "tn": 57840,
+            "fp": 5115,
+            "fn": 1049,
+            "tp": 3196,
+            "recall": 0.7528857479387515,
+            "precision": 0.3845505955961978
+          },
+          "irregular": {
+            "tn": 28645,
+            "fp": 2850,
+            "fn": 703,
+            "tp": 1402,
+            "recall": 0.6660332541567696,
+            "precision": 0.3297271872060207
+          },
+          "variable": {
+            "tn": 9579,
+            "fp": 999,
+            "fn": 223,
+            "tp": 399,
+            "recall": 0.6414790996784566,
+            "precision": 0.2854077253218884
+          }
+        },
+        "method": "Global calibration-only threshold; worst overall/irregular/variable FP/FN ratio to fixed V3 policy."
+      },
+      "averagePrecision": 0.6288503570323023,
+      "auroc": 0.944838052943944,
+      "brier": 0.03605897208161473
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.5,
+        "baseWeight": 0.25
+      },
+      "policy": {
+        "threshold": 0.17000000000000004,
+        "worstCountRatio": 0.9722385141739981,
+        "meanCountRatio": 0.9631204220776337,
+        "counts": {
+          "overall": {
+            "tn": 57982,
+            "fp": 4973,
+            "fn": 1013,
+            "tp": 3232,
+            "recall": 0.7613663133097762,
+            "precision": 0.39390615478366847
+          },
+          "irregular": {
+            "tn": 28743,
+            "fp": 2752,
+            "fn": 676,
+            "tp": 1429,
+            "recall": 0.6788598574821852,
+            "precision": 0.3417842621382444
+          },
+          "variable": {
+            "tn": 9625,
+            "fp": 953,
+            "fn": 214,
+            "tp": 408,
+            "recall": 0.6559485530546624,
+            "precision": 0.29977957384276266
+          }
+        },
+        "baselineCounts": {
+          "overall": {
+            "tn": 57840,
+            "fp": 5115,
+            "fn": 1049,
+            "tp": 3196,
+            "recall": 0.7528857479387515,
+            "precision": 0.3845505955961978
+          },
+          "irregular": {
+            "tn": 28645,
+            "fp": 2850,
+            "fn": 703,
+            "tp": 1402,
+            "recall": 0.6660332541567696,
+            "precision": 0.3297271872060207
+          },
+          "variable": {
+            "tn": 9579,
+            "fp": 999,
+            "fn": 223,
+            "tp": 399,
+            "recall": 0.6414790996784566,
+            "precision": 0.2854077253218884
+          }
+        },
+        "method": "Global calibration-only threshold; worst overall/irregular/variable FP/FN ratio to fixed V3 policy."
+      },
+      "averagePrecision": 0.6292950397200986,
+      "auroc": 0.9451125025363061,
+      "brier": 0.03604360167537417
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.25,
+        "baseWeight": 0.25
+      },
+      "policy": {
+        "threshold": 0.17000000000000004,
+        "worstCountRatio": 0.9733079122974261,
+        "meanCountRatio": 0.9630936402173856,
+        "counts": {
+          "overall": {
+            "tn": 58000,
+            "fp": 4955,
+            "fn": 1021,
+            "tp": 3224,
+            "recall": 0.7594817432273263,
+            "precision": 0.3941802176305172
+          },
+          "irregular": {
+            "tn": 28744,
+            "fp": 2751,
+            "fn": 682,
+            "tp": 1423,
+            "recall": 0.6760095011876485,
+            "precision": 0.34091998083373265
+          },
+          "variable": {
+            "tn": 9624,
+            "fp": 954,
+            "fn": 211,
+            "tp": 411,
+            "recall": 0.6607717041800643,
+            "precision": 0.3010989010989011
+          }
+        },
+        "baselineCounts": {
+          "overall": {
+            "tn": 57840,
+            "fp": 5115,
+            "fn": 1049,
+            "tp": 3196,
+            "recall": 0.7528857479387515,
+            "precision": 0.3845505955961978
+          },
+          "irregular": {
+            "tn": 28645,
+            "fp": 2850,
+            "fn": 703,
+            "tp": 1402,
+            "recall": 0.6660332541567696,
+            "precision": 0.3297271872060207
+          },
+          "variable": {
+            "tn": 9579,
+            "fp": 999,
+            "fn": 223,
+            "tp": 399,
+            "recall": 0.6414790996784566,
+            "precision": 0.2854077253218884
+          }
+        },
+        "method": "Global calibration-only threshold; worst overall/irregular/variable FP/FN ratio to fixed V3 policy."
+      },
+      "averagePrecision": 0.6288166277909378,
+      "auroc": 0.9451134118177968,
+      "brier": 0.03607549160220677
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.0,
+        "baseWeight": 0.0
+      },
+      "policy": {
+        "threshold": 0.17250000000000004,
+        "worstCountRatio": 0.9829302987197724,
+        "meanCountRatio": 0.9685979982821804,
+        "counts": {
+          "overall": {
+            "tn": 57941,
+            "fp": 5014,
+            "fn": 1014,
+            "tp": 3231,
+            "recall": 0.76113074204947,
+            "precision": 0.39187386294724075
+          },
+          "irregular": {
+            "tn": 28730,
+            "fp": 2765,
+            "fn": 691,
+            "tp": 1414,
+            "recall": 0.6717339667458432,
+            "precision": 0.33835845896147404
+          },
+          "variable": {
+            "tn": 9627,
+            "fp": 951,
+            "fn": 214,
+            "tp": 408,
+            "recall": 0.6559485530546624,
+            "precision": 0.30022075055187636
+          }
+        },
+        "baselineCounts": {
+          "overall": {
+            "tn": 57840,
+            "fp": 5115,
+            "fn": 1049,
+            "tp": 3196,
+            "recall": 0.7528857479387515,
+            "precision": 0.3845505955961978
+          },
+          "irregular": {
+            "tn": 28645,
+            "fp": 2850,
+            "fn": 703,
+            "tp": 1402,
+            "recall": 0.6660332541567696,
+            "precision": 0.3297271872060207
+          },
+          "variable": {
+            "tn": 9579,
+            "fp": 999,
+            "fn": 223,
+            "tp": 399,
+            "recall": 0.6414790996784566,
+            "precision": 0.2854077253218884
+          }
+        },
+        "method": "Global calibration-only threshold; worst overall/irregular/variable FP/FN ratio to fixed V3 policy."
+      },
+      "averagePrecision": 0.629075592693101,
+      "auroc": 0.9453072085161135,
+      "brier": 0.036043308531327964
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.0,
+        "baseWeight": 0.25
+      },
+      "policy": {
+        "threshold": 0.16750000000000004,
+        "worstCountRatio": 0.9863147605083089,
+        "meanCountRatio": 0.972156543870749,
+        "counts": {
+          "overall": {
+            "tn": 57910,
+            "fp": 5045,
+            "fn": 1016,
+            "tp": 3229,
+            "recall": 0.7606595995288575,
+            "precision": 0.3902586415276771
+          },
+          "irregular": {
+            "tn": 28704,
+            "fp": 2791,
+            "fn": 688,
+            "tp": 1417,
+            "recall": 0.6731591448931117,
+            "precision": 0.33673954372623577
+          },
+          "variable": {
+            "tn": 9614,
+            "fp": 964,
+            "fn": 213,
+            "tp": 409,
+            "recall": 0.657556270096463,
+            "precision": 0.29788783685360526
+          }
+        },
+        "baselineCounts": {
+          "overall": {
+            "tn": 57840,
+            "fp": 5115,
+            "fn": 1049,
+            "tp": 3196,
+            "recall": 0.7528857479387515,
+            "precision": 0.3845505955961978
+          },
+          "irregular": {
+            "tn": 28645,
+            "fp": 2850,
+            "fn": 703,
+            "tp": 1402,
+            "recall": 0.6660332541567696,
+            "precision": 0.3297271872060207
+          },
+          "variable": {
+            "tn": 9579,
+            "fp": 999,
+            "fn": 223,
+            "tp": 399,
+            "recall": 0.6414790996784566,
+            "precision": 0.2854077253218884
+          }
+        },
+        "method": "Global calibration-only threshold; worst overall/irregular/variable FP/FN ratio to fixed V3 policy."
+      },
+      "averagePrecision": 0.6273343877668327,
+      "auroc": 0.9448477407208152,
+      "brier": 0.036154641862112535
+    }
+  ],
+  "regression": [
+    {
+      "candidate": {
+        "hgbWeight": 1.0,
+        "correctionWeight": 1.0
+      },
+      "mae": 10.756472061606361
+    },
+    {
+      "candidate": {
+        "hgbWeight": 1.0,
+        "correctionWeight": 0.5
+      },
+      "mae": 10.80956135249107
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.5,
+        "correctionWeight": 0.5
+      },
+      "mae": 10.874920365739925
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.0,
+        "correctionWeight": 0.0
+      },
+      "mae": 10.900846317684245
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.5,
+        "correctionWeight": 0.0
+      },
+      "mae": 10.900846317684245
+    },
+    {
+      "candidate": {
+        "hgbWeight": 1.0,
+        "correctionWeight": 0.0
+      },
+      "mae": 10.900846317684245
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.5,
+        "correctionWeight": 1.0
+      },
+      "mae": 10.929115123455357
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.0,
+        "correctionWeight": 0.5
+      },
+      "mae": 11.019457501159115
+    },
+    {
+      "candidate": {
+        "hgbWeight": 0.0,
+        "correctionWeight": 1.0
+      },
+      "mae": 11.359485742377586
+    }
+  ],
+  "chosenClassifier": {
+    "hgbWeight": 0.75,
+    "baseWeight": 0.0
+  },
+  "chosenRegressor": {
+    "hgbWeight": 1.0,
+    "correctionWeight": 1.0
+  },
+  "baselineSelection": {
+    "mae": 10.900846317684245,
+    "rmse": 17.768457675565923,
+    "auroc": 0.940340952494813,
+    "averagePrecision": 0.6093115815851283,
+    "brier": 0.03709206766394763,
+    "precision": 0.3845505955961978,
+    "recall": 0.7528857479387515,
+    "f1": 0.509079324625677,
+    "confusionMatrix": [
+      [
+        57840,
+        5115
+      ],
+      [
+        1049,
+        3196
+      ]
+    ],
+    "positiveRate": 0.06316964285714285,
+    "byHorizon": [
+      {
+        "minutes": 30,
+        "mae": 4.267283427669439,
+        "rmse": 7.84583697597982,
+        "intervalCoverage": 0.9024851190476191,
+        "intervalMeanWidth": 15.367465014871215
+      },
+      {
+        "minutes": 60,
+        "mae": 7.356944002237276,
+        "rmse": 13.870495506053807,
+        "intervalCoverage": 0.9032291666666666,
+        "intervalMeanWidth": 34.996542232152706
+      },
+      {
+        "minutes": 90,
+        "mae": 9.519114451584896,
+        "rmse": 16.477075952890242,
+        "intervalCoverage": 0.9019196428571429,
+        "intervalMeanWidth": 54.5895398874336
+      },
+      {
+        "minutes": 120,
+        "mae": 10.900846317684245,
+        "rmse": 17.768457675565923,
+        "intervalCoverage": 0.9044047619047619,
+        "intervalMeanWidth": 61.75523271983761
+      }
+    ],
+    "intervalCoverage": 0.9044047619047619,
+    "intervalMeanWidth": 61.75523271983761
+  }
+}

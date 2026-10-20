@@ -1,30 +1,28 @@
-# A digital twin the jury can challenge
+# What distinguishes AURA Twin
 
-AURA Twin's differentiation is an inspectable experiment attached to a working clinician dashboard. It combines historical EHR and changing sensor state, reports a precisely defined future outcome, and lets the jury reproduce a selected prediction. This is a positioning choice against common prototype patterns, not a claim about unseen competing teams or a first-in-field invention.
+**A digital twin the jury can challenge.** The distinction is a coherent, inspectable demonstration: authentic source files, explicit identity boundaries, available-time prediction, visible failure handling and reproducible receipts. It is not a claim to invent digital twins, counterfactual forecasting, source provenance or uncertainty estimation.
 
-| Common prototype pattern | What AURA implements |
-|---|---|
-| Attractive fixed dashboard | Runnable search, replay, context, risk, uncertainty and exports |
-| One aggregate accuracy figure | Same-window frozen baseline comparison, FP/FN, calibration, per-routine results and patient bootstrap |
-| A convenient regular schedule | Varied routines, fresh final identities and a separate withheld factor combination |
-| A perfect example | Jury-selected cutoff, freeze/reveal, local error and persistence comparison |
-| Missing input hidden by a score | Explicit degraded data or abstention; plausible bias exposed as a blind spot |
-| Screenshot as proof | Portable JSON receipt and offline reproduction |
+## The concrete demonstration
+
+| Common prototype shortcut | AURA's implemented approach | Honest boundary |
+|---|---|---|
+| Plausible-looking generated values | Actual published CGM/HR/IBI and official Synthea exports, with hashes | Sources describe different people |
+| Every displayed field implies fusion | Exact selected input list and separate negative-control ablations | CGM-only won the primary forecast comparison |
+| One impressive aggregate metric | Participant split, persistence, calibration, horizon and participant results | Only three final participants |
+| A probability without an event | Train-audited rise20 target, horizon tolerance and current-value reference | A research label, not necessarily adverse harm |
+| A forecast with no way to challenge it | Freeze, reveal original truth, compare persistence and export a receipt | Public data are not securely blinded |
+| Missing values silently completed | Nullable EHR, unavailable channels and actual quality/abstention states | Plausible bias can still pass checks |
+| A slider labelled treatment simulation | Actual model input sensitivity with noncausal wording | Not intervention efficacy or dosing |
+| A success-only model story | Failed V4 promotion gate and its full same-cohort results retained | Earlier missed-event problem is not claimed solved |
+
+These are comparisons with design patterns, not factual claims about specific competing teams.
 
 ## Two-minute pitch
 
-“We are Black Squad from Amrita Vishwa Vidyapeetham, Chennai. AURA Twin joins a fictional patient's EHR context with a changing wearable stream to predict glucose and a precisely defined high-glucose outcome two hours ahead.
+AURA Twin lets a reviewer see the recorded patient state, inspect a forecast and test the evidence behind it. We import authentic Synthea records and actual open research wearable data. Because they are different people, the interface explicitly calls the association a Composite Research Twin.
 
-We built a clinician-style review screen, but the stronger part is what happens when you question it. Choose a patient and time. Freeze the prediction before revealing the recorded future. Compare it with persistence, inspect the band, and take a receipt you can verify offline.
+The model predicts glucose at four horizons using only the recorded past. We audited event support on training participants, kept all windows from each person together and froze the model before final evaluation. The selected model uses CGM history only because adding wearable or matched-study context did not win the primary forecasting criterion. We show that result rather than claiming fusion always helps.
 
-Our earlier model exposed routine dependence and a difficult alert tradeoff. This edition selects for missed-positive and false-positive windows together, then freezes calibration and one global policy before generating new final identities. The frozen v3 policy at 0.1550 has 74.47% recall and 37.34% precision, with 1,669 false-negative and 8,170 false-positive windows. Frozen v2 on the same cases has 1,742 FN and 8,730 FP. The primary missed-window reduction is uncertain, and misses increase slightly on the withheld combination. We show the entire routine table, uncertainty and remaining errors. These are synthetic windows, not proven clinical events or treatment benefits.
+On three final participants, the current model has 13.31 mg/dL two-hour MAE versus 16.35 for persistence. The event classifier has 66.20% recall and 22.14% precision at its frozen policy, so it is not a clinical alert system. Its uncertainty bands are broad, and we display that limitation.
 
-The system also knows when its inputs are too stale to issue a forecast, while demonstrating that a plausible bias can still fool freshness checks. The what-if controls are clearly illustrative, not causal treatment guidance.
-
-Our claim is a complete, reproducible proof of concept with evidence you can challenge. We invite the jury to choose a window, reveal the result and verify the receipt.”
-
-## Claims to avoid
-
-Do not say first digital twin, clinically accurate, guaranteed early warning, proven prevention, HIPAA/DPDP certified, or zero false alerts. Do not describe a threshold change as improved discrimination. Do not call overlapping windows unique events. Do not compare v3 with a different older cohort as a paired improvement. Do not describe the withheld combination as wholly unseen physiology.
-
-Prior work includes [GlyTwin](https://arxiv.org/abs/2504.09846). The [VVUQ perspective](https://www.nature.com/articles/s41746-025-01447-y) supports careful verification/validation as a research principle; it does not certify AURA. See the [model/data card](MODEL_DATA_CARD.md) for the measured claim and its limits.
+The jury can select a cutoff, freeze a prediction, reveal the original outcome, compare persistence and verify an exported receipt. They can also test missing or corrupted inputs and see when the application degrades or abstains. A separate synthetic V4 experiment reduced false flags but increased primary missed positives and failed its promotion gate. We retained that negative result. Our contribution is a working, transparent engineering proof of concept whose claims can be checked.

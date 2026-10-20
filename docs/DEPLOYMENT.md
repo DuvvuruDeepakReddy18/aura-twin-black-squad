@@ -1,55 +1,60 @@
-# Local and hosted demonstration
+# Local and hosted research demonstration
 
-AURA Twin is a synthetic demonstration. The hosted application accepts only the bundled synthetic patient identifiers. It is not a service for uploading or treating real patients.
+AURA serves bundled de-identified research observations and unrelated synthetic EHR context. It is not a clinical upload service. The current React research workspace and the historical synthetic application have separate model/API identities.
 
-The current public application is [aura-twin-black-squad.vercel.app](https://aura-twin-black-squad.vercel.app); source is in [aura-twin-black-squad on GitHub](https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad). Anonymous requests confirmed model `aura-synthetic-3.0.0`, public PDFs/MP4 and successful hosted freeze/reveal. The token-free receipt from that hosted run also passed the offline verifier. See [VERIFICATION.md](VERIFICATION.md) for completed checks and remaining limits.
+## Local build
 
-## Local use
+Requires Node.js **22.12 or newer**. The configured hosted runtime is Node.js 24.
 
-Run `npm start` with Node.js 20 or newer and open `http://localhost:4173`. The default host is `127.0.0.1`. `PORT` and `HOST` can be supplied through the shell; the application does not automatically load `.env` files.
-
-Local Challenge Lab sessions use a bounded, process-local memory store: at most 128 sessions, with a one-hour lifetime. Restarting the server discards them. The local prediction API also accepts a schema-validated synthetic patient object for development. That capability is disabled in the hosted adapter.
-
-## Vercel configuration
-
-The repository includes `vercel.json`. Its build command, `node scripts/build_site.mjs`, copies `public/` and `docs/` into `dist/`. Static dashboard assets and submission documents are served from that directory. Requests under `/api/` route to the Node.js function in `api/index.mjs`, which uses the same application handler as the local server. The function includes the packaged `data/*.json` files and has a configured 30-second maximum duration.
-
-The hosted adapter requires the deployment environment variable `AURA_CHALLENGE_KEY`. It must encode 32 cryptographically random bytes as exactly 64 hexadecimal characters. All instances in the same deployment must receive the same value. Missing or malformed keys fail closed; the adapter does not silently fall back to process memory.
-
-Generate the secret locally and add it as a Vercel Secret environment variable for each intended environment. Environment changes apply to a new deployment; redeploy after setting or rotating the key. One way to generate an ignored local import file without displaying the key in terminal output is:
-
-```sh
-node -e "require('node:fs').writeFileSync('.env.local','AURA_CHALLENGE_KEY='+require('node:crypto').randomBytes(32).toString('hex')+'\n',{flag:'wx'})"
+```bash
+npm ci
+npm run build
+npm start
 ```
 
-This command refuses to overwrite an existing `.env.local`. The file is excluded by `.gitignore`; it is not automatically loaded by the local application. Import the value through Vercel's environment-variable settings, then remove the temporary local file when it is no longer needed. Never put the key in source code, a receipt, a video, a public issue or documentation.
+Open `http://localhost:4173`. The historical synthetic dashboard is retained at `http://localhost:4173/legacy/index.html` and must remain labelled legacy. `PORT` and `HOST` can be supplied through the shell. `npm start` and `npm run dev` load the optional ignored `.env.auth.local` file through Node's `--env-file-if-exists` option. Direct `node server.mjs` does not load that file automatically.
+
+Current research health: `/api/research/health`. The older `/api/health` explicitly reports the legacy synthetic API and points to the research health endpoint. Do not verify a research deployment by checking only the old endpoint.
+
+## Authentication configuration
+
+Demo mode requires no account. Supabase integration reads only these public/provider settings:
+
+- `AURA_SUPABASE_URL`: HTTPS project origin under `supabase.co`.
+- `AURA_SUPABASE_PUBLISHABLE_KEY`: the provider's publishable browser key, never a service-role secret.
+- `AURA_GOOGLE_AUTH_ENABLED`: true only after the Google provider and redirect URLs are configured.
+- `AURA_PUBLIC_AUTH_EMAIL_ENABLED`: true only after public email delivery is configured and verified. It currently remains false.
+
+Current status: Supabase public configuration is connected, email confirmation is enabled, Google sign-in is disabled and custom SMTP is not configured. Public email sign-up and recovery are intentionally disabled until email delivery is configured; existing accounts use the real provider. Complete account-flow verification remains pending. Without valid configuration, the application reports sign-in unavailable. It must not simulate a successful login. Configure provider redirect URLs for the exact local and deployed origins and the callback/reset routes used by the frontend. Email confirmation, reset delivery and Google OAuth depend on provider setup and must be tested as real flows before being claimed complete.
+
+Account sessions, a local browser replay trail and a server challenge session are different state boundaries. The replay trail is browser-local, bounded to 20 entries and excludes challenge transport tokens. Provider-backed identity alone does not create a clinical record database.
+
+## Vercel build and API
+
+`node scripts/build_site.mjs` builds the React/Vite application, copies legacy static assets and copies current submission documents into `dist/`. The repository's `vercel.json` routes `/api/` to the Node handler and includes packaged `data/*.json` artifacts. The function's configured maximum duration is 30 seconds.
+
+The hosted adapter requires `AURA_CHALLENGE_KEY`: exactly 64 hexadecimal characters encoding 32 cryptographically random bytes. All instances in a deployment must receive the same secret. Keep it in the hosting environment, never in source, receipts, video or public documentation. Missing or malformed keys fail closed. Redeploy after setting or rotating environment values.
 
 ## Freeze and reveal across instances
 
-Vercel function instances are ephemeral and may scale to zero. Process memory therefore cannot be the authority for a later reveal request. The hosted path returns an AES-256-GCM encrypted and authenticated session token containing the original frozen prediction and its recorded future comparison points. Each token uses a random 12-byte initialization vector and an authenticated application context.
+Local challenge sessions use process memory, limited to 128 sessions with a one-hour lifetime. A restart discards them.
 
-Reveal decrypts and validates that snapshot. It checks the challenge identifier, one-hour expiry and current model-file hash. It never runs inference again to reconstruct a supposedly frozen prediction. Changing the deployment key invalidates older tokens. Replacing the model also invalidates a token tied to the earlier model. Start a new challenge after either change.
+Hosted instances use AES-256-GCM encrypted and authenticated portable tokens, with a random 12-byte IV and application context. The token contains the frozen result and observed comparison values. Reveal validates its identifier, expiry and model binding; it does not recompute a supposedly frozen prediction. Rotating the key or replacing the bound model invalidates older sessions.
 
-The browser sends the token back only to reveal the same challenge. Receipt downloads exclude it. The receipt remains an independently reproducible JSON record with raw model-file and canonical input hashes; it is not a digital signature, an independent timestamp or proof of authorship. Transport-token authentication does not change those receipt limitations. The public synthetic dataset also means the reveal workflow is not secure study blinding.
+Receipt export excludes the transport token. Model/input hashes and an offline numerical verifier support reproducibility; they are not author signatures or independently trusted timestamps. The dataset is public, so hiding future values in the UI is not secure study blinding.
 
-## Hosted boundaries
+The research API accepts only bundled participant identifiers. Its runtime physically truncates input to the requested prefix. The legacy local development API and the research API are distinct; do not imply arbitrary real-patient uploads are supported.
 
-- The hosted prediction API rejects arbitrary patient objects and accepts only packaged synthetic patient IDs.
-- The model and dataset are deployment artifacts. There is no database for patient records, clinical identity system or ingestion connector.
-- Care notes remain browser-local demonstration notes; do not enter real personal or clinical information.
-- Response headers include a same-origin content security policy, MIME-sniffing protection and a no-referrer policy. These controls do not constitute clinical security or privacy certification.
-- Deployment logs and hosting infrastructure are operated by the hosting provider. This application is not intended to receive PHI or other confidential records.
+## Verify a current release
 
-## Verification before sharing
-
-Run `npm test` and `npm run test:data`. Hosted-specific tests check parsed request bodies, rejection of arbitrary patient objects, freeze/reveal across separate handler instances, token tampering, expiry, changed keys, changed models and offline receipt verification after token removal.
-
-After deployment, verify `/api/health` reports the intended model version; load the dashboard, freeze a prediction, reveal its recorded future and download a receipt. Verify the downloaded receipt locally with:
-
-```sh
-node scripts/verify_receipt.mjs path/to/receipt.json
+```bash
+npm test
+npm run test:data
+node scripts/verify_research_receipt.mjs path/to/receipt.json
 ```
 
-Verify the public presentation, architecture PDF and video links in a signed-out browser. A successful build alone is not proof that the live model, session transport and documents are accessible. The completed checks and exact published model belong in [VERIFICATION.md](VERIFICATION.md).
+After deployment, anonymously request `/api/research/health` and verify `aura-research-1.0.0` and its current hash. Load the React workspace, freeze/reveal a research prediction and download a token-free receipt for offline reproduction. Confirm SPA deep links, PDFs and the current MP4 in a signed-out browser. A successful build alone is not evidence that these flows work.
 
-Official hosting context: [Vercel function lifecycle](https://vercel.com/docs/functions), [Node.js runtime](https://vercel.com/docs/functions/runtimes/node-js) and [environment variables](https://vercel.com/docs/environment-variables). The application behavior above is defined by this repository's code, not by an implied hosting-provider validation of the model.
+The [verification record](VERIFICATION.md) records completed checks. Existing public links may still show the previous edition until the current release is finished. No new publication or account-flow success is inferred from older verification.
+
+Application response headers restrict content sources, MIME sniffing and referrer behavior. These controls and de-identification do not constitute a clinical security, HIPAA or DPDP certification. Do not enter private patient information into the demo.

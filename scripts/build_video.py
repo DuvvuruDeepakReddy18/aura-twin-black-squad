@@ -13,6 +13,7 @@ parser.add_argument('--audio', required=True)
 parser.add_argument('--output', required=True)
 parser.add_argument('--minimum-seconds', type=float, default=1200, help='Required duration; default 20 minutes for the main submission. Use 0 only for an explicitly supplementary video.')
 parser.add_argument('--title', default='AURA Twin | Black Squad | Phase 1 prototype walkthrough')
+parser.add_argument('--comment', default='Presentation walkthrough with synthesized narration. Open research wearables and separate synthetic EHR context. Research prototype.')
 args = parser.parse_args()
 audio = pathlib.Path(args.audio).resolve()
 output = pathlib.Path(args.output).resolve()
@@ -41,7 +42,7 @@ if elapsed < args.minimum_seconds:
 concat = audio / 'segments.txt'
 concat.write_text('\n'.join("file '" + str(p).replace('\\', '/') + "'" for p in segments), encoding='utf-8')
 metadata = audio / 'chapters.txt'
-lines = [';FFMETADATA1', 'title='+args.title.replace('=', '-').replace(';', ',').replace('#', ''), 'artist=Black Squad', 'comment=Presentation walkthrough with synthesized narration. Synthetic data only. Research prototype.']
+lines = [';FFMETADATA1', 'title='+args.title.replace('=', '-').replace(';', ',').replace('#', ''), 'artist=Black Squad', 'comment='+args.comment.replace('=', '-').replace(';', ',').replace('#', '')]
 for chapter in timeline:
     title = chapter['title'].replace('=', '-').replace(';', ',').replace('#', '')
     lines += ['[CHAPTER]', 'TIMEBASE=1/1000', f"START={round(chapter['startSeconds'] * 1000)}", f"END={round((chapter['startSeconds'] + chapter['durationSeconds']) * 1000)}", f'title={title}']

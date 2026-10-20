@@ -1,0 +1,171 @@
+{
+  "createdAt": "2026-10-20T07:17:53.519906+00:00",
+  "primaryFamily": "cgmOnly",
+  "families": {
+    "cgmOnly": {
+      "label": "CGM history only",
+      "candidates": [
+        {
+          "config": {
+            "id": "shallow",
+            "maxIter": 120,
+            "maxLeafNodes": 7,
+            "minSamplesLeaf": 60,
+            "learningRate": 0.05,
+            "l2Regularization": 10
+          },
+          "selectionMae": 18.687781809446328,
+          "selectionBrier": 0.15683945501809732
+        },
+        {
+          "config": {
+            "id": "medium",
+            "maxIter": 180,
+            "maxLeafNodes": 15,
+            "minSamplesLeaf": 80,
+            "learningRate": 0.05,
+            "l2Regularization": 20
+          },
+          "selectionMae": 18.853695115998214,
+          "selectionBrier": 0.16065218231200468
+        }
+      ],
+      "selectedRegression": "shallow",
+      "selectedClassification": "shallow",
+      "selectionMae": 18.687781809446328,
+      "selectionBrier": 0.15683945501809732
+    },
+    "wearableOnly": {
+      "label": "CGM + HR + IBI-derived RMSSD",
+      "candidates": [
+        {
+          "config": {
+            "id": "shallow",
+            "maxIter": 120,
+            "maxLeafNodes": 7,
+            "minSamplesLeaf": 60,
+            "learningRate": 0.05,
+            "l2Regularization": 10
+          },
+          "selectionMae": 18.769316852410167,
+          "selectionBrier": 0.15495260543782818
+        },
+        {
+          "config": {
+            "id": "medium",
+            "maxIter": 180,
+            "maxLeafNodes": 15,
+            "minSamplesLeaf": 80,
+            "learningRate": 0.05,
+            "l2Regularization": 20
+          },
+          "selectionMae": 18.98247477885853,
+          "selectionBrier": 0.16017395310464075
+        }
+      ],
+      "selectedRegression": "shallow",
+      "selectedClassification": "shallow",
+      "selectionMae": 18.769316852410167,
+      "selectionBrier": 0.15495260543782818
+    },
+    "matchedFusion": {
+      "label": "Matched research HbA1c/sex + wearables",
+      "candidates": [
+        {
+          "config": {
+            "id": "shallow",
+            "maxIter": 120,
+            "maxLeafNodes": 7,
+            "minSamplesLeaf": 60,
+            "learningRate": 0.05,
+            "l2Regularization": 10
+          },
+          "selectionMae": 19.050804141610687,
+          "selectionBrier": 0.14809155236210275
+        },
+        {
+          "config": {
+            "id": "medium",
+            "maxIter": 180,
+            "maxLeafNodes": 15,
+            "minSamplesLeaf": 80,
+            "learningRate": 0.05,
+            "l2Regularization": 20
+          },
+          "selectionMae": 18.97023135783492,
+          "selectionBrier": 0.15208732990152232
+        }
+      ],
+      "selectedRegression": "medium",
+      "selectedClassification": "shallow",
+      "selectionMae": 18.97023135783492,
+      "selectionBrier": 0.14809155236210275
+    },
+    "ehrOnly": {
+      "label": "Unmatched Synthea EHR only (negative control)",
+      "candidates": [
+        {
+          "config": {
+            "id": "shallow",
+            "maxIter": 120,
+            "maxLeafNodes": 7,
+            "minSamplesLeaf": 60,
+            "learningRate": 0.05,
+            "l2Regularization": 10
+          },
+          "selectionMae": 22.21365000672935,
+          "selectionBrier": 0.1771252092187222
+        },
+        {
+          "config": {
+            "id": "medium",
+            "maxIter": 180,
+            "maxLeafNodes": 15,
+            "minSamplesLeaf": 80,
+            "learningRate": 0.05,
+            "l2Regularization": 20
+          },
+          "selectionMae": 22.229224049859713,
+          "selectionBrier": 0.17717179563821223
+        }
+      ],
+      "selectedRegression": "shallow",
+      "selectedClassification": "shallow",
+      "selectionMae": 22.21365000672935,
+      "selectionBrier": 0.1771252092187222
+    },
+    "compositeFusion": {
+      "label": "Unmatched Synthea EHR + wearables (negative control)",
+      "candidates": [
+        {
+          "config": {
+            "id": "shallow",
+            "maxIter": 120,
+            "maxLeafNodes": 7,
+            "minSamplesLeaf": 60,
+            "learningRate": 0.05,
+            "l2Regularization": 10
+          },
+          "selectionMae": 20.13135666973482,
+          "selectionBrier": 0.15726604530361393
+        },
+        {
+          "config": {
+            "id": "medium",
+            "maxIter": 180,
+            "maxLeafNodes": 15,
+            "minSamplesLeaf": 80,
+            "learningRate": 0.05,
+            "l2Regularization": 20
+          },
+          "selectionMae": 19.781158578326043,
+          "selectionBrier": 0.163936762681685
+        }
+      ],
+      "selectedRegression": "medium",
+      "selectedClassification": "shallow",
+      "selectionMae": 19.781158578326043,
+      "selectionBrier": 0.15726604530361393
+    }
+  }
+}

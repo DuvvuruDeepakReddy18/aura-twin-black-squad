@@ -1,4 +1,14 @@
-* text=auto eol=lf
+* text=auto eol=lf whitespace=cr-at-eol
+public/assets/* -whitespace
+data/**/*.json -text
+data/research-*.json -text
+data/research/PHYSIONET_SHA256SUMS.txt -text
+data/research/PHYSIONET_LICENSE.txt -text -whitespace
+ml/research_data.py -text
+ml/train_research.py -text
+lib/research-model.mjs -text
+scripts/ingest_wearable.py -text
+scripts/ingest_synthea.py -text
 data/model.json -text
 data/baseline-v1/model.json -text whitespace=cr-at-eol
 data/baseline-v2/model.json -text

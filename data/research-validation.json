@@ -1,0 +1,828 @@
+{
+  "datasetVersion": "1.1.3",
+  "processingVersion": "research-causal-1.0.0",
+  "participants": [
+    {
+      "participant": "001",
+      "glucose": {
+        "rawRows": 2573,
+        "signalRows": 2561,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 634188,
+        "signalRows": 634188,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 623610,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 60
+      },
+      "ibi": {
+        "rawRows": 266366,
+        "signalRows": 266366,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2598,
+      "missing": {
+        "glucose": 35,
+        "hr": 504,
+        "hrv": 1082
+      },
+      "firstTimestamp": "2020-02-13T17:25:00Z",
+      "lastTimestamp": "2020-02-22T17:50:00Z",
+      "sourceSHA256": {
+        "001/Dexcom_001.csv": "6333b21185f23834ab929e5d8bf9045bbed6268cdfd5030adab3c7d5ef689ef5",
+        "001/HR_001.csv": "c825593c19c5c02e8f7349ca05f730a44c60cb9b15c67fe38bb6436de3f82c97",
+        "001/IBI_001.csv": "3776d4319d412548eb5686d5abf0ebfbbcccd5884122f5abcbec1c82450802ba"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 6704,
+        "prefixTruncationCases": 36,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "002",
+      "glucose": {
+        "rawRows": 2131,
+        "signalRows": 2119,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 629672,
+        "signalRows": 629672,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 474008,
+        "signalRows": 474008,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2286,
+      "missing": {
+        "glucose": 166,
+        "hr": 242,
+        "hrv": 425
+      },
+      "firstTimestamp": "2020-02-21T11:10:00Z",
+      "lastTimestamp": "2020-02-29T09:35:00Z",
+      "sourceSHA256": {
+        "002/Dexcom_002.csv": "16a0112fa293a1be19b6cd45743faad5ec978eb36fd277781b1cbd6b8d0bf358",
+        "002/HR_002.csv": "464241c0a82c860a07c0d511da4a48247966580c54a3287d7ebe7998f173ab8b",
+        "002/IBI_002.csv": "28b541dfd0d0ae1d087ddbfef6269d431b9363c6ec5ad0fec873ffe4c94ee11d"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 6704,
+        "prefixTruncationCases": 36,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "003",
+      "glucose": {
+        "rawRows": 2314,
+        "signalRows": 2302,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 417289,
+        "signalRows": 417289,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 166216,
+        "signalRows": 166216,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2313,
+      "missing": {
+        "glucose": 10,
+        "hr": 920,
+        "hrv": 1397
+      },
+      "firstTimestamp": "2020-02-22T10:55:00Z",
+      "lastTimestamp": "2020-03-01T11:35:00Z",
+      "sourceSHA256": {
+        "003/Dexcom_003.csv": "d0cb046839157b4a1823505b99823c2f2535d1c1a080b8aad3a05883800bcf37",
+        "003/HR_003.csv": "3c73cc6234f990988dd26cedd77df4580fb4c11b93b865e0b0697b1def65d47f",
+        "003/IBI_003.csv": "f64be14ddb3ea157602ca2214af3cf696f197f99c701b6f0d2b3b3c7801dca0b"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 6704,
+        "prefixTruncationCases": 36,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "004",
+      "glucose": {
+        "rawRows": 2175,
+        "signalRows": 2164,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 449515,
+        "signalRows": 449515,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 201144,
+        "signalRows": 201144,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2256,
+      "missing": {
+        "glucose": 89,
+        "hr": 808,
+        "hrv": 1286
+      },
+      "firstTimestamp": "2020-02-27T10:55:00Z",
+      "lastTimestamp": "2020-03-06T06:50:00Z",
+      "sourceSHA256": {
+        "004/Dexcom_004.csv": "c0dc4ee5f8b3501a18d91ee6b117a518cf9bd1332f49a4281bd69e5ac841e927",
+        "004/HR_004.csv": "9a4fc3413d29e1b562d0a4d8daefe88240c3cef8bce99ab2172887423b5046e4",
+        "004/IBI_004.csv": "faa1bff921f67f638654d659047888b06c40015f63398a00d0c411f11f0af15e"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 6704,
+        "prefixTruncationCases": 36,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "005",
+      "glucose": {
+        "rawRows": 2569,
+        "signalRows": 2558,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 728477,
+        "signalRows": 728477,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 274690,
+        "signalRows": 274690,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2571,
+      "missing": {
+        "glucose": 13,
+        "hr": 169,
+        "hrv": 957
+      },
+      "firstTimestamp": "2020-02-27T13:35:00Z",
+      "lastTimestamp": "2020-03-07T11:45:00Z",
+      "sourceSHA256": {
+        "005/Dexcom_005.csv": "ae6762720b52b3a179d1a8d308e8568fea4a832b199111ca3a2b57bad4da109a",
+        "005/HR_005.csv": "b89cdc7ac373ca5cd883d51e4ed6420995201e67a82d2bfa05b4c49641e19fdc",
+        "005/IBI_005.csv": "acb3ac39bdef491e44dc2a5c651033c361bc9be85a9d36fb92d7f2a816bc33cd"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 6704,
+        "prefixTruncationCases": 36,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "006",
+      "glucose": {
+        "rawRows": 2859,
+        "signalRows": 2847,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 499927,
+        "signalRows": 499927,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 163170,
+        "signalRows": 163170,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2846,
+      "missing": {
+        "glucose": 0,
+        "hr": 1205,
+        "hrv": 1887
+      },
+      "firstTimestamp": "2020-02-28T12:20:00Z",
+      "lastTimestamp": "2020-03-09T09:25:00Z",
+      "sourceSHA256": {
+        "006/Dexcom_006.csv": "be7742cfa6755e6a200056497bae930c8a0b52f467184d1ce14ecbc4b66dd806",
+        "006/HR_006.csv": "69deab72b16dfe7340aa0b01fab8970fb66cfa5d7a2d1715a4ba6426889935e5",
+        "006/IBI_006.csv": "7c98cc41436ed13284ba559e0a226b6f95af00e63f70b0d16d3488f5f1291781"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 6704,
+        "prefixTruncationCases": 36,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "007",
+      "glucose": {
+        "rawRows": 2218,
+        "signalRows": 2207,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 648669,
+        "signalRows": 648669,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 375576,
+        "signalRows": 375576,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2285,
+      "missing": {
+        "glucose": 77,
+        "hr": 142,
+        "hrv": 474
+      },
+      "firstTimestamp": "2020-03-14T12:45:00Z",
+      "lastTimestamp": "2020-03-22T11:05:00Z",
+      "sourceSHA256": {
+        "007/Dexcom_007.csv": "c8488406134a6eefcb944058e8fb256e0d4db669920f129708e039250f7caf6b",
+        "007/HR_007.csv": "be65b34151980bb6d8f83b9477cda7dcef29a422f5b8e0aa3525e7e062c6ee15",
+        "007/IBI_007.csv": "2fb4ae6ae5a8d73896785e06e0bfa2865266410293229de191d8cfc8a3b981b3"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 6704,
+        "prefixTruncationCases": 36,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "008",
+      "glucose": {
+        "rawRows": 2516,
+        "signalRows": 2505,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 666038,
+        "signalRows": 666038,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 313612,
+        "signalRows": 313612,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2563,
+      "missing": {
+        "glucose": 49,
+        "hr": 360,
+        "hrv": 988
+      },
+      "firstTimestamp": "2020-03-14T14:05:00Z",
+      "lastTimestamp": "2020-03-23T11:35:00Z",
+      "sourceSHA256": {
+        "008/Dexcom_008.csv": "d188eec4a740f5f5cfdccfeceeaadb78da983f83cede2872dc3de5a6b1e05104",
+        "008/HR_008.csv": "33af2e5e66159f8fc4b6b4da359fd6886667ad06a40822003212e3ffadb2cbce",
+        "008/IBI_008.csv": "949175cdfddef0c456756b797147c87c7bbfe17aca691ad98eea8cb630c89a19"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 6704,
+        "prefixTruncationCases": 36,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "009",
+      "glucose": {
+        "rawRows": 2317,
+        "signalRows": 2306,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 634471,
+        "signalRows": 634471,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 223650,
+        "signalRows": 223650,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2306,
+      "missing": {
+        "glucose": 0,
+        "hr": 210,
+        "hrv": 1055
+      },
+      "firstTimestamp": "2020-03-21T10:55:00Z",
+      "lastTimestamp": "2020-03-29T11:00:00Z",
+      "sourceSHA256": {
+        "009/Dexcom_009.csv": "2609121bf35dce40477fe710ef9bc5a656276ed4624b44e821dca51d08e0487e",
+        "009/HR_009.csv": "cc0c0db86aef2f507b675ca17fe930effe32686d179bc11fd7c3c3fe0bc0137b",
+        "009/IBI_009.csv": "228b9ece41e571f01229af1a1ec8320d72793d3793f4f3c324eb5bfa1c0e37d0"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 6704,
+        "prefixTruncationCases": 36,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "010",
+      "glucose": {
+        "rawRows": 2159,
+        "signalRows": 2148,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 651643,
+        "signalRows": 651643,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 233980,
+        "signalRows": 233980,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2279,
+      "missing": {
+        "glucose": 128,
+        "hr": 122,
+        "hrv": 1011
+      },
+      "firstTimestamp": "2020-03-22T11:25:00Z",
+      "lastTimestamp": "2020-03-30T09:15:00Z",
+      "sourceSHA256": {
+        "010/Dexcom_010.csv": "7b0d819632b9d8def7b22a10fb03829d7bb2648eaed464b6884697e7b1cdfc87",
+        "010/HR_010.csv": "3f181515ca666a2fa2e5a1780349a35b229f51e28c461d5ec2297dcbc08dd3fc",
+        "010/IBI_010.csv": "1cf048cac3937966ea0df77b7d6e292969e2f2b7260cb54443ece6dec416b5a5"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 1529,
+        "prefixTruncationCases": 8,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "011",
+      "glucose": {
+        "rawRows": 2854,
+        "signalRows": 2843,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 660929,
+        "signalRows": 660929,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 262966,
+        "signalRows": 262966,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2855,
+      "missing": {
+        "glucose": 9,
+        "hr": 692,
+        "hrv": 1272
+      },
+      "firstTimestamp": "2020-04-06T09:30:00Z",
+      "lastTimestamp": "2020-04-16T07:20:00Z",
+      "sourceSHA256": {
+        "011/Dexcom_011.csv": "6cb15f7def679c0a526f32939fd07bef9458059938c2c169b0a5587e450f71c5",
+        "011/HR_011.csv": "f2247fe4b84270323c6bcf6c26f4eb1a370c9bec5dff3ae6ad908c9a9b577216",
+        "011/IBI_011.csv": "3ec1e5e60a27fcd6da11a50ad85d5c20db33c8b828434d2117637480dba97e9c"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 1529,
+        "prefixTruncationCases": 8,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "012",
+      "glucose": {
+        "rawRows": 2180,
+        "signalRows": 2169,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 597942,
+        "signalRows": 597942,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 191476,
+        "signalRows": 191476,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2204,
+      "missing": {
+        "glucose": 30,
+        "hr": 231,
+        "hrv": 1098
+      },
+      "firstTimestamp": "2020-05-03T17:55:00Z",
+      "lastTimestamp": "2020-05-11T09:30:00Z",
+      "sourceSHA256": {
+        "012/Dexcom_012.csv": "00b9a16f43eaf62118c15b23e751b34c844e8a9da0416480dde4af1c65fafa8b",
+        "012/HR_012.csv": "9418d6f330248fe8ec78adcb7a07eae08073b6c104551d04a40a4917a83bcfa8",
+        "012/IBI_012.csv": "856a3be0ef52dd10be617b3f6139302da1f436d3fa3616a7f57629186b592074"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 1277,
+        "prefixTruncationCases": 8,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "013",
+      "glucose": {
+        "rawRows": 1990,
+        "signalRows": 1979,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 698698,
+        "signalRows": 698698,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 244820,
+        "signalRows": 244820,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 1978,
+      "missing": {
+        "glucose": 0,
+        "hr": 98,
+        "hrv": 629
+      },
+      "firstTimestamp": "2020-05-28T15:25:00Z",
+      "lastTimestamp": "2020-06-04T12:10:00Z",
+      "sourceSHA256": {
+        "013/Dexcom_013.csv": "bed694aee354620e5d6c8e598dd81e37d5eca49b598d0d35e44dc45cff066ee9",
+        "013/HR_013.csv": "e8020a791aa86d5bc3c0bcc353eba74241622517fd572e601a94416fd96f0dd2",
+        "013/IBI_013.csv": "26416953775e5545e397431521d7d35a36867f711798b72eb2470b4ef8359a15"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 1277,
+        "prefixTruncationCases": 8,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "014",
+      "glucose": {
+        "rawRows": 2253,
+        "signalRows": 2240,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 472364,
+        "signalRows": 472364,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 216374,
+        "signalRows": 216374,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2239,
+      "missing": {
+        "glucose": 0,
+        "hr": 685,
+        "hrv": 1186
+      },
+      "firstTimestamp": "2020-06-05T16:30:00Z",
+      "lastTimestamp": "2020-06-13T11:00:00Z",
+      "sourceSHA256": {
+        "014/Dexcom_014.csv": "92cc01a2322b6a9b98846e30ee1eb9493a7567be938696bc705293ac9fc90f90",
+        "014/HR_014.csv": "79a92897b64c03cd3390a2c9a59aed1b580a90ceab10ef9924838aff60388a7e",
+        "014/IBI_014.csv": "102e7e0736354346196754c12a6a920d8eabdd89999b96af599c79f8365a4c66"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 1859,
+        "prefixTruncationCases": 12,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "015",
+      "glucose": {
+        "rawRows": 1684,
+        "signalRows": 1673,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 436509,
+        "signalRows": 436509,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 88419,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 225714,
+        "signalRows": 225714,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2221,
+      "missing": {
+        "glucose": 542,
+        "hr": 1632,
+        "hrv": 1719
+      },
+      "firstTimestamp": "2020-07-19T17:35:00Z",
+      "lastTimestamp": "2020-07-27T10:35:00Z",
+      "sourceSHA256": {
+        "015/Dexcom_015.csv": "a7023af9bae77133292c4a6123ec35cb8a97f58fc8b8a44c89b0850095960456",
+        "015/HR_015.csv": "2423baf3558e993dd5a0283aeea3386f73950f2578056f91c6e93ec435dee61d",
+        "015/IBI_015.csv": "6af05fa5a57ac09fbe9448bafb5f16158b26d0fb9cfdc77d26c5e4a2204e3a64"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 1859,
+        "prefixTruncationCases": 12,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    },
+    {
+      "participant": "016",
+      "glucose": {
+        "rawRows": 2288,
+        "signalRows": 2277,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record"
+      },
+      "hr": {
+        "rawRows": 558104,
+        "signalRows": 558104,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Retain minute-rounded HR samples",
+        "availabilityDelaySeconds": 0
+      },
+      "ibi": {
+        "rawRows": 317138,
+        "signalRows": 317138,
+        "invalidRows": 0,
+        "outliersRemoved": 0,
+        "repeatedTimestamps": 0,
+        "repeatedTimestampPolicy": "Keep last record",
+        "rmssdBinsOver500msRemoved": 0,
+        "rmssdDefinition": "sqrt(mean(successive accepted IBI differences squared)), ms; same completed 5min bin, adjacent gap<=10s, >=20 pairs"
+      },
+      "gridRows": 2299,
+      "missing": {
+        "glucose": 19,
+        "hr": 451,
+        "hrv": 661
+      },
+      "firstTimestamp": "2020-07-16T10:45:00Z",
+      "lastTimestamp": "2020-07-24T10:15:00Z",
+      "sourceSHA256": {
+        "016/Dexcom_016.csv": "79e5861107b3fd010694268bcd564ea9af5f434d0eda3c890495ff2e504851dc",
+        "016/HR_016.csv": "9ce87045239a700badc95223f52ced93ac3c3d4e62c652c23b1f12077ebc9aa2",
+        "016/IBI_016.csv": "607efca3fb72613f8ee95461bda09f851af7700cff24ffe0d55bab6530039a59"
+      },
+      "leakageAudit": {
+        "passed": true,
+        "checkedWindows": 1859,
+        "prefixTruncationCases": 12,
+        "splitDisjointness": true,
+        "inputSourceTimesNotFuture": true,
+        "targetsStrictlyFutureWithinTolerance": true
+      }
+    }
+  ],
+  "rules": {
+    "glucose": "OnlyEGV rows;40..400mg/dL; lastobservation <=cutoff within15min, never backwardfill",
+    "hr": "30..220bpm; completed5minmean with>=60samples; roundedminute timestamps delayed60sec",
+    "hrv": "IBI0.3..2sec; successiveacceptedpairs within10sec/samebin;>=20pairs; RMSSDmilliseconds",
+    "unavailable": "No steps, activity or sleep stages fabricated"
+  }
+}

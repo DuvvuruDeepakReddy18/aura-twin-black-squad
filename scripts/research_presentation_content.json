@@ -1,0 +1,234 @@
+[
+  {
+    "slide": 1,
+    "kind": "cover",
+    "title": "See the patient. Understand what comes next.",
+    "subtitle": "AURA Twin · Composite Research Twin",
+    "cards": [],
+    "text": "Welcome to AURA Twin, built by Black Squad at Amrita Vishwa Vidyapeetham, Chennai. Our team is Banu Sreya V., the team leader, and Duvvuru Deepak Reddy. AURA is a working research prototype for inspecting a person's recorded wearable state, forecasting future glucose, and challenging the prediction against observations. The product brings an electronic health record view and a wearable timeline into one clinician-oriented workspace. We will be precise about what that combination means. The electronic records are genuine synthetic records produced by Synthea. The wearable observations are de-identified open research data. They belong to different people, so the interface calls the association a Composite Research Twin. It is an ingestion and interaction demonstration, not a clinically matched patient record. In this presentation, we will show the data origins, the prediction boundary, the patient-aware evaluation, and the actual software workflow. We will also explain where the model fails, which channels are missing, and why a polished dashboard cannot substitute for clinical validation. Every numerical performance claim comes from a frozen artifact and a documented evaluation."
+  },
+  {
+    "slide": 2,
+    "kind": "cards",
+    "title": "A useful forecast must also be inspectable",
+    "subtitle": "The problem: disconnected context, changing signals and opaque confidence",
+    "cards": [
+      ["Understand the current state", "See recorded CGM, heart rate and IBI-derived variability with source and freshness."],
+      ["Review the possible future", "Four glucose horizons, an explicit event contract and measured uncertainty."],
+      ["Challenge the calculation", "Inspect the input cutoff, perturb sensors, freeze a prediction and reveal observed outcomes."]
+    ],
+    "text": "The healthcare use case is a clinician reviewing a patient's changing glucose pattern alongside relevant historical context. A chart can show that glucose is rising, but the next questions are harder. Which observations were available at the time? How old is the latest reading? Does the model still produce a result when a channel disappears? What does the predicted probability actually refer to? And how does its error compare with simply carrying the current glucose forward? AURA makes those questions part of the interface. The purpose is to support investigation and communicate uncertainty, rather than to prescribe treatment. The two-hour horizon is particularly challenging because a future meal, an unrecorded activity change or a sensor error can alter the trajectory after the prediction cutoff. The model does not receive those future events. We evaluate a narrowly defined forecast on recorded data, and we preserve that definition throughout the dashboard, evidence pages and exported receipt. The prototype has no dosing, diagnostic or emergency triage function. Its intended outcome is a transparent technical demonstration with a reviewable model and a reproducible data pipeline."
+  },
+  {
+    "slide": 3,
+    "kind": "sources",
+    "title": "Two sources. Two identities. One honest boundary.",
+    "subtitle": "Composite context is not a matched clinical cohort",
+    "cards": [
+      ["Official Synthea sample", "16 adult profiles · historical cutoff 2019-01-01 · source rows and missing fields retained."],
+      ["PhysioNet BIG IDEAs 1.1.3", "16 research participants · actual CGM, HR and IBI · published-source checksums."],
+      ["Target-blind association", "Source-ID rank maps to UUID-sorted synthetic profiles. No outcome-driven matching."]
+    ],
+    "text": "Our static stream comes from the official Synthea sample CSV archive. The importer pins a specific source repository commit and validates the archive's SHA-256 digest before parsing it. It selects sixteen eligible adult profiles at a chosen historical cutoff, sorts them by source identifier, and associates them with the sixteen wearable participant identifiers by rank. No glucose outcome, model score, demographic similarity or target prevalence influences that assignment. Our dynamic stream comes from version one point one point three of the BIG IDEAs dataset on PhysioNet. These are actual de-identified research observations, not signals invented to make the dashboard convincing. The association between the two sources is arbitrary, and we say so visibly. A synthetic age or diagnosis cannot be interpreted as the medical history of the research participant beside it. For the scientific comparison, unmatched Synthea-only and composite-fusion models are negative controls and cannot be selected as the primary model. Separately, the wearable study includes its own matched HbA1c and sex metadata. That matched research context is evaluated distinctly, with the missing laboratory measurement-time assumption disclosed."
+  },
+  {
+    "slide": 4,
+    "kind": "cards",
+    "title": "Missing information stays missing",
+    "subtitle": "Authentic source fields, chronological filtering and visible provenance",
+    "cards": [
+      ["Before the EHR cutoff", "Only source observations and conditions available by the historical snapshot are retained."],
+      ["Nullable clinical context", "BMI absent in 1 profile, HbA1c in 9 and LDL in 6. No invented genetics."],
+      ["Unavailable sensor channels", "No imported step count, activity or sleep stages. RMSSD is derived from accepted IBI pairs."]
+    ],
+    "text": "The EHR view is based on imported records rather than manually written biographies. Age is calculated at the selected snapshot. Laboratory values are the latest source observations on or before that date. A diagnosis or medication must have started by the cutoff, and a resolution date occurring later is withheld. The export retains source codes, units, observation times and row references, as well as counts for records retained and omitted. Some fields are genuinely unavailable. Among the sixteen selected profiles, one lacks BMI, nine lack HbA1c and six lack LDL at the chosen cutoff. Those fields stay null. Genetic context is also unavailable. On the wearable side, we imported continuous glucose, heart rate and interbeat intervals. We did not import sleep stages, step counts or activity. The application must not replace those absent channels with plausible-looking numbers. Heart-rate variability here is a derived RMSSD calculation from accepted adjacent interbeat intervals, with a minimum number of pairs and a maximum gap. It is not a claim of clinical electrocardiogram-quality HRV. These distinctions make the interface less misleading and make the source transformations reproducible."
+  },
+  {
+    "slide": 5,
+    "kind": "architecture",
+    "title": "A traceable path from source to prediction",
+    "subtitle": "Research preprocessing and runtime inference share the same contract",
+    "cards": [],
+    "text": "The architecture has four main stages. First, acquisition retrieves pinned source files and records their publisher checksums, source versions and license information. Second, preprocessing creates a regular five-minute input grid using only observations available by each grid timestamp. It does not interpolate from future readings. Third, the model pipeline constructs features from the preceding six hours, fits candidate models on training participants, selects them on different participants, and estimates probability mapping, intervals and the review threshold on a calibration partition. The chosen model is exported as numerical tree data for the JavaScript runtime. Fourth, the application presents replay, evidence and challenge workflows through the same inference contract. The visible current model is {model_version}. Its primary family is {primary_family}. The synthetic EHR is available as provenance-rich display context, but whether a field actually enters prediction is determined by the exported feature list. The interface exposes that list rather than implying that every displayed field influenced the forecast. Local and hosted boundaries, authentication configuration and any persistence service are documented separately. The prototype's research calculation remains inspectable without requiring a user to create an account."
+  },
+  {
+    "slide": 6,
+    "kind": "target",
+    "title": "State the event before showing a probability",
+    "subtitle": "{target_short}",
+    "cards": [],
+    "text": "A probability without a clear event definition is difficult to interpret. The current research target is: {target_spoken}. That choice follows a declared training-only label audit. The original absolute threshold of one hundred and eighty milligrams per deciliter was eligible only if the training data contained enough positive windows, enough prevalence and positives across at least five training participants. If that support was insufficient, the declared fallback was a rise of at least twenty milligrams per deciliter, again requiring minimum support. If neither target was supported, the classifier would be disabled instead of inventing a result. The actual decision is recorded in the label audit. The research forecasts refer to approximately thirty, sixty, ninety and one hundred and twenty minutes. Ground truth is the nearest actual CGM observation within one hundred and fifty seconds of the nominal horizon, with its real timestamp retained. There is no target interpolation. If the selected event is a rise, the reference is the latest available current glucose, which can be up to fifteen minutes old. This contract differs from the old simulator's exact timestamp label and must not be conflated with it."
+  },
+  {
+    "slide": 7,
+    "kind": "split",
+    "title": "Separate people before evaluating windows",
+    "subtitle": "9 train · 2 selection · 2 calibration · 3 final participants",
+    "cards": [],
+    "text": "This research dataset contains only sixteen participants, so the evaluation must be modest in its claims. Participants one through nine are used to fit models. Participants ten and eleven select candidate configurations and the primary eligible family. Participants twelve and thirteen estimate probability calibration, the review threshold and residual interval widths. Participants fourteen through sixteen form the final evaluation. Every window from one person stays in that person's partition. A random window split would allow highly related observations from the same person on both sides and could exaggerate generalization. We also report participant-level errors because a long recording can otherwise dominate a pooled score. The model, selected policy, interval parameters and relevant source hashes are frozen before final participants are processed for evaluation. This is a locally auditable sequence, not a third-party timestamp or a securely blinded clinical study. The calibration sample has only two people, and the same calibration partition supports several estimates. The final sample has only three people. Thousands of correlated windows do not turn those three people into thousands of independent patients, and the results cannot establish broad population validity."
+  },
+  {
+    "slide": 8,
+    "kind": "cards",
+    "title": "The model only receives the recorded past",
+    "subtitle": "Six-hour history, explicit availability times and automated prefix checks",
+    "cards": [
+      ["CGM", "Backward as-of alignment; carry forward no more than 15 minutes; age and coverage are features."],
+      ["Heart rate and IBI", "Completed past bins; minute-rounded HR delayed 60 seconds; no cross-gap HRV pairs."],
+      ["Leakage checks", "Truncating future rows must preserve features. Source timestamps cannot exceed the cutoff."]
+    ],
+    "text": "Availability is as important as measurement time. For glucose, the grid uses a backward as-of join and limits how long a reading can be carried forward. The model sees the age of that reading and the coverage of recent windows. It never fills a gap from a reading that arrives after the cutoff. Some source heart-rate timestamps are rounded to the minute, so their precise within-minute order is unknown. The pipeline delays those readings until the minute is complete before including them in a completed five-minute bin. For RMSSD, successive accepted interbeat intervals must be close enough in time and belong to the same completed bin. Long gaps are not treated as uninterrupted physiology. Feature extraction is bounded to the selected prefix. Automated checks compare features computed from the complete recording with features computed after physically truncating all future rows. The results must agree. Target observations live in a separate truth structure and are used only for evaluation and reveal. This prevents a chart's available future from silently becoming model input. It does not prove that every real-world source delay is modelled perfectly; those availability assumptions remain part of the contract."
+  },
+  {
+    "slide": 9,
+    "kind": "models",
+    "title": "Compare fusion with honest alternatives",
+    "subtitle": "Primary family selection excludes unmatched EHR negative controls",
+    "cards": [],
+    "text": "We fit several model families so that multimodal fusion is a testable question. The first uses CGM history alone. The second adds recorded heart rate and IBI-derived variability. The third adds matched HbA1c and sex from the wearable study's own metadata. Two additional families use unmatched synthetic EHR context alone or combine it with wearables. Those two are negative controls and are ineligible for primary selection. Within each family, two small histogram gradient-boosting configurations are considered. Regression configuration is selected by participant-macro error at the two-hour horizon, while classifier configuration is selected by participant-macro Brier score on the selection participants. The primary eligible family is chosen by the regression criterion, so we do not claim that its classifier family was independently optimal. The selected family is {primary_family}. We also compare against persistence, which simply repeats the latest glucose for future horizons. Persistence is an important practical baseline and can win for individual windows or participants. A deterministic persistence event flag is not called a calibrated probability. The full ablation table remains available even when it does not support the preferred fusion story."
+  },
+  {
+    "slide": 10,
+    "kind": "results",
+    "title": "Measured research results, with their denominator",
+    "subtitle": "{test_windows} final windows from {test_participants} participants",
+    "cards": [],
+    "text": "Here are the actual final results for the current research model. The evaluation includes {test_windows} eligible windows from {test_participants} final participants. The two-hour mean absolute error is {mae} milligrams per deciliter. Persistence error on the same eligible windows is {persistence_mae}. The event classifier's AUROC is {auroc}, average precision is {auprc}, and Brier score is {brier}. At its frozen review threshold, recall is {recall} percent and precision is {precision} percent. There are {false_negative} false-negative windows and {false_positive} false-positive windows. These are overlapping replay windows, not counts of unique clinical episodes, patients or alarms delivered to a doctor. A false-positive flag means that the defined future threshold event was not observed; it does not establish whether an intervention was necessary. The same table includes all eligible alternatives and negative controls. We present both pooled and participant-level results, along with slices and curves, because a single aggregate metric can hide uneven behavior. The comparison is exploratory, based on a small convenience dataset. It is evidence about this implementation and these recordings, not evidence of clinical effectiveness."
+  },
+  {
+    "slide": 11,
+    "kind": "uncertainty",
+    "title": "Confidence should be measured, not decorated",
+    "subtitle": "Calibration, residual bands and a frozen review policy",
+    "cards": [],
+    "text": "The forecast band is built from absolute residuals on the calibration participants. We take a nominal ninetieth-percentile error width for each horizon and apply those fixed widths to final predictions. At the two-hour horizon, measured final coverage is {coverage} percent and mean band width is {interval_width} milligrams per deciliter. Nominal ninety percent does not guarantee ninety percent for each patient, subgroup or changed recording condition. The bands are descriptive empirical intervals, especially limited by the two-person calibration partition. Classification uses a Platt logistic mapping fitted on calibration scores. The single review threshold is selected by maximum calibration F1 over a declared grid, with a fixed tie rule. Its value is {threshold}. This is a prototype operating policy rather than a clinician-derived cost trade-off. The evidence page shows a reliability curve and Brier score so that probability quality is assessed rather than assumed. Reusing two calibration participants for mapping, threshold and intervals can make these estimates unstable. A high discrimination score would not remove that limitation. Low-confidence or unsuitable inputs should be communicated directly instead of being hidden behind a confident visual style."
+  },
+  {
+    "slide": 12,
+    "kind": "screenshot",
+    "image": "dashboard-research.png",
+    "title": "A clinician-oriented workspace",
+    "subtitle": "Patient context, observed signals and forecast meaning in one view",
+    "cards": [
+      ["Context", "Research identity, composite provenance, source partition and replay cutoff."],
+      ["Signals", "Actual recorded channels, current values, freshness and missing-data status."],
+      ["Forecast", "Four horizons, uncertainty, explicit target and traceable inputs."]
+    ],
+    "text": "We now move from the evaluation to the working interface. The patient workspace is designed to answer three questions quickly: who is represented, what was actually observed, and what the model predicts from that observation boundary. A research participant identifier is shown together with the Composite Research Twin label. The replay cutoff remains visible so that a historical recording is not mistaken for a live connected device. The source partition and model version help the reviewer understand what kind of evidence they are inspecting. Recorded glucose and available physiological channels are shown with missingness and freshness rather than smoothed into a false appearance of completeness. The forecast panel separates history from future horizons and explains the event behind the probability. The visual design uses a dark navy foundation with cyan and violet accents, but color does not carry the entire meaning. Text labels and direct values explain the state. In the demonstration, open a participant, inspect the current cutoff, and compare the latest observation with the two-hour forecast. Then inspect the source and model inputs before accepting any interpretation of the result."
+  },
+  {
+    "slide": 13,
+    "kind": "screenshot",
+    "image": "record-research.png",
+    "title": "The record view keeps provenance close",
+    "subtitle": "Synthetic context and matched research metadata remain distinct",
+    "cards": [
+      ["Synthetic EHR", "Age, labs, diagnoses and medications from the official source, with availability."],
+      ["Research baseline", "Matched study HbA1c and sex, with unknown measurement timing disclosed."],
+      ["No invented completion", "Missing values and absent channels stay visible."]
+    ],
+    "text": "The patient record view deliberately separates synthetic EHR context from matched research metadata. This is essential because a visually unified patient page could otherwise imply a false identity match. Open a laboratory value and inspect its source timestamp, code and units. If a field is unavailable at the snapshot, the page should say that rather than silently selecting a later result. Conditions and medications reflect actual source records filtered to the historical cutoff, and the export records its retention limits. The matched research HbA1c and sex come from the wearable study, not from the Synthea profile. The study metadata does not provide a laboratory measurement timestamp, so treating HbA1c as available baseline information is an explicit modelling assumption. The explanatory view should also distinguish displayed context from selected model inputs. A diagnosis appearing on a page does not mean that the forecast model used it. For a jury demonstration, show one missing laboratory field, one source-backed observation, and the assignment note. These three details demonstrate that provenance and missingness are working parts of the product rather than statements hidden in a README."
+  },
+  {
+    "slide": 14,
+    "kind": "cards",
+    "title": "Explain the computation without claiming causality",
+    "subtitle": "Input lineage and reference sensitivity, with explicit limits",
+    "cards": [
+      ["Show inputs used", "Feature names, source channels, cutoff and availability boundary."],
+      ["Reference sensitivity", "Replace a feature group with training-reference values and recompute risk."],
+      ["Interpretation limits", "Nonadditive; not SHAP; not a treatment effect or a causal explanation."]
+    ],
+    "text": "AURA's explanation is an inspection of model behavior. It is not a statement that a particular factor medically caused the forecast event. The exported model identifies its feature groups and training reference values. The sensitivity calculation replaces one group with that reference, recomputes the calibrated probability and reports the change in percentage points. These differences are nonadditive: they need not sum to the original probability. Replacing a group can create a combination that is not realistic for a particular person. The result is therefore not a causal effect, not a treatment recommendation and not a SHAP attribution. It helps a reviewer ask whether the model is sensitive to recent glucose history, wearable physiology or available matched context. A separate input-lineage view should answer the more concrete question of which actual observations supported the calculation. That includes the cutoff, lookback duration, source timestamps and missing fields. When the selected model excludes a displayed field, the interface must not manufacture an explanatory contribution for it. This discipline makes the explanation more useful because the reader can distinguish numerical model behavior from a clinical narrative that the evidence does not support."
+  },
+  {
+    "slide": 15,
+    "kind": "challenge",
+    "title": "Freeze first. Reveal later. Compare honestly.",
+    "subtitle": "A computation boundary the jury can inspect",
+    "cards": [],
+    "text": "Challenge Lab turns the forecast into an inspectable experiment. Choose a participant, a cutoff and an available sensor case. Freeze the prediction before revealing the future. The input is physically restricted to the historical prefix, and the frozen result records the model identity, cutoff, quality state and prediction. Reveal then compares that frozen output with the original recorded observations at the requested horizons. It must not recompute the prediction after the outcome becomes available. The comparison includes persistence, error and whether the observed values fall within the forecast bands. A selected window may favor persistence, and the interface should show that result directly. The downloadable receipt makes the numerical record portable. Hashes bind the relevant model bytes and input representation so that an independent verifier can detect altered artifacts or inconsistent calculations. A hash is not a signature, an independently trusted timestamp or a clinical audit certification. The underlying dataset is publicly available, so this flow is not secure study blinding. Its value is narrower and concrete: it demonstrates that the implementation respects the prediction boundary and preserves the result it is later evaluating."
+  },
+  {
+    "slide": 16,
+    "kind": "screenshot",
+    "image": "robustness-research.png",
+    "title": "Test the failure boundary",
+    "subtitle": "Sensor stress is distinct from clinical robustness",
+    "cards": [
+      ["Perturb observed input", "Supported stress cases change the input prefix while preserving reference truth."],
+      ["Inspect quality behavior", "Degraded input, warnings and abstention must match the implemented contract."],
+      ["Admit blind spots", "Plausible bias may pass freshness checks. Missingness detection is not error detection."]
+    ],
+    "text": "The robustness workflow tests what happens when the observation stream becomes less trustworthy. Supported cases perturb the historical input while retaining the original reference future for comparison. That distinction prevents the model from being rewarded simply because the outcome was altered to match a perturbation. Gaps, stale readings, delay, noise and outliers test different failure modes; a missing channel is not equivalent to a systematically biased but fresh channel. The interface exposes quality dimensions and whether inference proceeds, becomes degraded or is withheld. The exact cases implemented and verified in this build are listed in the documentation and the laboratory itself. We do not claim a case is supported merely because it appeared in a design request. A particularly useful demonstration is a plausible sensor bias. It can pass a freshness check while changing the forecast, which shows why quality checks are incomplete. These perturbation results characterize software behavior under specified synthetic corruptions of recorded data. They do not prove robustness to all real devices, patient populations or clinical conditions. The jury can inspect both the numerical change and the reason given for any abstention."
+  },
+  {
+    "slide": 17,
+    "kind": "screenshot",
+    "image": "evidence-research.png",
+    "title": "Keep the evidence beside the experience",
+    "subtitle": "Ablations, calibration, participant slices and an explicit model contract",
+    "cards": [
+      ["Compare", "CGM-only, wearable, matched research fusion, persistence and unmatched negative controls."],
+      ["Inspect", "Error by horizon and participant; event counts; calibration and quality slices."],
+      ["Reproduce", "Versioned data, protocol, selection record, model freeze and verification commands."]
+    ],
+    "text": "The evidence workspace is intended to make the model's limitations easy to find. It presents alternatives on the same final observations and identifies which family was actually selected. A model labelled fusion is not automatically better than CGM history alone, and the table remains visible if fusion adds little or makes error worse. The participant breakdown matters because the final set contains only three people. Horizon-specific errors show how performance changes as the forecast moves further into the future. Calibration and precision-recall views help separate ranking ability from probability quality and operating-policy consequences. Quality slices reveal whether performance differs when usable heart-rate variability is scarce or glucose coverage is reduced. These are exploratory descriptions, not independently powered subgroup studies. The prediction contract, source manifest and freeze record provide the reproducibility path behind the charts. In the demonstration, identify the current model hash, show the primary family, and compare its error with persistence. Then point to one limitation that remains unresolved. This is the central product principle: the evidence should be as accessible as the attractive forecast, including evidence that does not support a stronger claim."
+  },
+  {
+    "slide": 18,
+    "kind": "cards",
+    "title": "A working demo does not require a fake login",
+    "subtitle": "Demo mode, configured authentication and persistence have separate boundaries",
+    "cards": [
+      ["Deterministic demo", "Open the bundled research workspace without an account."],
+      ["Provider-backed identity", "{auth_card}"],
+      ["Local and hosted state", "Document which actions persist locally, remotely or only for the current session."]
+    ],
+    "text": "The account experience must be truthful. The demonstration can be explored without logging in, using the bundled research records and a clear demo label. Authentication is a separate capability: {auth_spoken}. A button or a form alone does not establish that sign-up, password reset or Google sign-in works. Those flows require a configured provider, allowed redirect URLs and an actual successful verification. The application should report configuration status instead of simulating a successful account. Persistence has the same requirement. A note saved in this browser is different from a note stored under an authenticated account, and a memory-only challenge session is different from a durable database record. The documentation identifies which boundary applies. Hosted challenge tokens, when used, must preserve the frozen output and expire according to their stated policy; exported receipts should not expose authentication tokens or deployment secrets. The prototype operates on bundled de-identified research and synthetic records. It is not a production clinical record system. This separation lets the jury use the demonstration immediately while still seeing the real engineering work and the remaining configuration steps for authenticated use."
+  },
+  {
+    "slide": 19,
+    "kind": "legacy",
+    "title": "Separate research evidence from simulator progress",
+    "subtitle": "Different data and different targets cannot be compared as one accuracy claim",
+    "cards": [
+      ["Current research model", "{primary_family} · open recorded wearable data · small participant cohort."],
+      ["Legacy synthetic V3", "Preserved simulator benchmark. Its prior scores are explicitly historical."],
+      ["Independent V4 experiment", "{v4_card}"]
+    ],
+    "text": "AURA previously used a fully synthetic simulator benchmark. Those V3 results remain available as historical engineering evidence, with their model version and original cohort. The new open-research model has different data, availability rules, participants and possibly a different event target. Its recall or precision cannot be presented as an improvement over the old simulator's numbers. To address the earlier synthetic model's missed and false-positive windows, we also ran a separate experiment under the unchanged simulator and exact two-hour threshold. That experiment adds an HGB and ExtraTrees ensemble and features summarizing only prediction errors whose outcomes have already become known at the current cutoff. A past forecast does not contribute an error until its full horizon has elapsed. Candidate selection and probability calibration use separate development identities, and fresh final identities are reserved until the estimator and policy are frozen. The promotion gate requires more than a favorable threshold trade-off. The current V4 status is: {v4_spoken}. This experiment does not modify or validate the open-research model. Keeping these evidence tracks separate prevents a change of benchmark from being mistaken for a scientific improvement."
+  },
+  {
+    "slide": 20,
+    "kind": "cards",
+    "title": "Verification follows the claims",
+    "subtitle": "Numerical parity, chronology, source integrity and interaction checks",
+    "cards": [
+      ["Data and model", "Source checksums, patient split, prefix invariance and Python/JavaScript parity."],
+      ["Product behavior", "Replay boundary, quality states, frozen reveal, export and responsive interaction."],
+      ["Known limits", "Small cohort, unknown future events, imperfect sensors and no clinical validation."]
+    ],
+    "text": "Verification is organized around what the prototype claims to do. Source checksums test whether imported files match their pinned versions. Chronological filtering tests whether future EHR rows and future sensor observations are excluded. Participant partition checks guard against identity overlap between fitting and evaluation. Python and JavaScript parity checks verify that the exported numerical model agrees with its training implementation. The challenge tests check that a frozen prediction is preserved and that revealed outcomes are used only for scoring. Interface checks cover the actual recording controls, data-quality states, report export and responsive navigation that were exercised in the final build. The verification document distinguishes automated checks, browser checks and pending checks instead of treating them as interchangeable. None of these tests establishes clinical safety or effectiveness. Important limitations remain: only sixteen research participants, only two for calibration and three for final evaluation, unknown future meals and activity, uncertain metadata timing, and imperfect sensor quality. The application does not infer medical causation from its explanations. Further work would need a larger, prospectively designed and genuinely matched dataset, clinically informed operating costs, and external evaluation before any clinical deployment claim."
+  },
+  {
+    "slide": 21,
+    "kind": "cards",
+    "title": "A short, reproducible jury walkthrough",
+    "subtitle": "Use the interface to test the evidence",
+    "cards": [
+      ["First 30 seconds", "Open demo. Identify composite provenance, model version and replay cutoff."],
+      ["Next 30 seconds", "Inspect source inputs and forecast uncertainty. Freeze a prediction."],
+      ["Final 30 seconds", "Reveal actual outcomes, compare persistence, inspect a failure case and export evidence."]
+    ],
+    "text": "For a ninety-second jury walkthrough, begin in the deterministic demonstration. Select a participant and point out the Composite Research Twin label, model version and replay cutoff. Explain in one sentence that Synthea supplies unrelated synthetic EHR context while the wearable study supplies the actual observations. Next, inspect the current glucose, the two-hour forecast and the uncertainty band. Open the input details so the jury can see which channels and historical values were used. Freeze the prediction, then reveal the recorded future. Compare model error with persistence and show whether the actual reading lies inside the band. Finish with a supported sensor failure case and the receipt export. For a longer demonstration, open the model evidence page, compare all model families and show the participant-level limitation. The recording supplied with this submission uses the same current model and interface assets as the documentation. Repository instructions explain how to run the application, reproduce the preprocessing and evaluate the exported artifacts. Account-provider configuration and any pending external video upload are listed explicitly. The goal is a concrete result that a reviewer can operate, question and reproduce."
+  },
+  {
+    "slide": 22,
+    "kind": "closing",
+    "title": "A forecast you can question.",
+    "subtitle": "Black Squad · Amrita Vishwa Vidyapeetham, Chennai",
+    "cards": [],
+    "text": "AURA Twin combines a working patient-oriented interface with a traceable prediction pipeline. The static and dynamic streams are present, but their identity relationship is stated honestly. The model has a defined target, a participant-aware evaluation and an explicit boundary between historical input and future outcome. The interface carries those facts into replay, explanations, quality states and challenge workflows instead of placing all responsibility on a disclaimer. The scientific contribution is a reproducible engineering demonstration and an inspectable comparison, not an assertion that this small study has solved glucose prediction. We have preserved negative controls, persistence and failure cases because they are necessary for understanding what the model adds. The next meaningful step is a larger, genuinely matched dataset and independent evaluation under a clinically justified operating policy. Our submission includes the source code, source manifests, model and data card, architecture diagram, presentation, demonstration script, verification record and open-source application license. Third-party data terms are documented separately. We are Banu Sreya V. and Duvvuru Deepak Reddy of Black Squad. Thank you for reviewing AURA Twin, and we invite you to challenge the calculation as carefully as the interface."
+  }
+]

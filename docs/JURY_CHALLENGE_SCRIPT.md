@@ -1,22 +1,31 @@
-# Three-minute jury challenge
+# Three-minute research Challenge Lab talk track
 
-Use the current model `aura-synthetic-3.0.0`. Let the reviewer choose a synthetic patient and cutoff; do not search for a favorable outcome. The public dataset is not securely blinded.
+## 00:00–00:35 — Establish the contract
 
-| Time | Action | Say |
-|---|---|---|
-| 0:00–0:25 | Show patient, cutoff and synthetic banner | “This joins the fictional EHR with only the wearable history available now.” |
-| 0:25–0:50 | Open Challenge lab; choose Clean replay; Freeze prediction | “This prediction is frozen before we reveal its recorded future.” |
-| 0:50–1:15 | Reveal recorded future | “Compare four horizon errors, persistence and interval hits. A local loss stays visible.” |
-| 1:15–1:40 | Reset; select 10-minute CGM gap; freeze | “Short gaps can be forward-filled and marked degraded; imputation is not proof of accuracy.” |
-| 1:40–2:00 | Select 30-minute dropout; freeze | “The glucose is too stale. The system withholds risk and forecast.” |
-| 2:00–2:20 | Select Undetected sensor bias; freeze/reveal | “Freshness checks can miss plausible bias. This is a deliberate blind spot.” |
-| 2:20–2:45 | Download receipt; show verification command | “The receipt can reproduce this model and input. Hashes do not prove authorship or time.” |
-| 2:45–3:00 | Show current evidence table | “The frozen policies are compared on the same fresh windows. Inspect both missed and false-positive counts.” |
+Open the current research demo. Identify the participant, Composite Research Twin label, model version and cutoff. Say: “The Synthea EHR is a different synthetic person. These wearable observations are real de-identified research data. This replay is not a live device connection.”
 
-Primary summary if asked: The frozen v3 policy at 0.1550 has 74.47% recall and 37.34% precision, with 1,669 false-negative and 8,170 false-positive windows. Frozen v2 on the same cases has 1,742 FN and 8,730 FP. The gains are modest and mixed: the patient-bootstrap 95% interval for the FN difference includes zero, and the withheld combination has **324 → 330 missed positive windows**. This does not establish a reliable reduction in misses or improvement across every routine. The separate withheld factor combination has 12.07 mg/dL MAE, 60.99% recall and 24.11% precision. FN changes 324 → 330; FP changes 1,657 → 1,624.
+Show the current event: rise ≥20 mg/dL at approximately +120 minutes, relative to the latest available current reading. Explain that the training-only support audit selected this research label; it is not necessarily an adverse clinical event.
 
-```sh
-node scripts/verify_receipt.mjs path/to/receipt.json
+## 00:35–01:20 — Freeze and reveal
+
+Select a valid cutoff. Open the input details and show the six-hour boundary. Freeze the prediction. Point out the model hash and preserved forecast before revealing the future. Reveal the recorded outcome; compare the model with persistence and show interval hits. Report whichever model wins this window.
+
+## 01:20–02:05 — Stress the observation stream
+
+Choose one supported missing/stale case and one plausible bias case. Explain that source-quality checks can withhold a prediction for insufficient history but may not detect fresh biased data. Reference truth and the clean current rise-label reference remain fixed during the comparison. Perturbed probabilities may use a different current input; this is an audit of sensitivity, not a causal intervention experiment. Bands are not recalibrated for the corruption.
+
+## 02:05–02:40 — Inspect evidence
+
+Open model evidence. Show CGM-only as the selected primary family, all ablations, the three-participant denominator and the low precision. Distinguish a single challenge window from the 1,859-window held-out evaluation and the separate sampled runtime perturbation audit.
+
+## 02:40–03:00 — Export and conclude
+
+Download the research receipt and explain that an offline command recomputes its numerical result:
+
+```bash
+node scripts/verify_research_receipt.mjs path/to/receipt.json
 ```
 
-Hosted sessions work across instances through a temporary authenticated encrypted snapshot. Local sessions use bounded memory. Neither path reruns the prediction on reveal. If the session expired or model changed, start a new challenge and state that clearly.
+A checksum is not a signature or independent timestamp. The public dataset is not securely blinded. Finish with: “The product makes the forecast, inputs, outcomes and limitations available for inspection.”
+
+If a selected window lacks eligible future observations or inference abstains, demonstrate that state honestly instead of switching silently to a favorable result.

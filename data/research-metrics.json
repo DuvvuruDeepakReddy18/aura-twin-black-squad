@@ -1,0 +1,5005 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "aura-research-1.0.0",
+  "modelSHA256": "a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432",
+  "evaluatedAt": "2026-10-20T07:20:17.463572+00:00",
+  "dataType": "open_research",
+  "syntheticOnly": false,
+  "target": {
+    "kind": "rise",
+    "threshold": 20,
+    "horizonMinutes": 120,
+    "toleranceSeconds": 150,
+    "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within \u00b1150 seconds).",
+    "unit": "mg/dL"
+  },
+  "datasetVersion": "1.1.3",
+  "primaryFamily": "cgmOnly",
+  "models": {
+    "cgmOnly": {
+      "label": "CGM history only",
+      "windows": 1859,
+      "participants": 3,
+      "positiveWindows": 287,
+      "positiveRate": 0.15438407746100055,
+      "mae": 13.308805804146788,
+      "participantMacroMae": 12.982461478344709,
+      "rmse": 18.837320634565263,
+      "auroc": 0.6719485597255099,
+      "auprc": 0.29404053126530494,
+      "brier": 0.12359706673867157,
+      "threshold": 0.18000000000000002,
+      "recall": 0.662020905923345,
+      "precision": 0.22144522144522144,
+      "f1": 0.3318777292576419,
+      "confusionMatrix": [
+        [
+          904,
+          668
+        ],
+        [
+          97,
+          190
+        ]
+      ],
+      "intervalCoverage": 0.935449166218397,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 422,
+          "predicted": 0.06384658151265635,
+          "observed": 0.04976303317535545
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 737,
+          "predicted": 0.1539619981383763,
+          "observed": 0.14654002713704206
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 569,
+          "predicted": 0.24035378077898686,
+          "observed": 0.18980667838312829
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 111,
+          "predicted": 0.33860547852490047,
+          "observed": 0.34234234234234234
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 20,
+          "predicted": 0.4316641856738741,
+          "observed": 0.6
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.023645002399045944,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 9.867754407809853,
+          "rmse": 14.821742288168396,
+          "intervalCoverage": 0.9306078536847767,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 12.203813286808472,
+          "rmse": 17.814896614557846,
+          "intervalCoverage": 0.9365250134480904,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 12.8669344196963,
+          "rmse": 18.304482097504604,
+          "intervalCoverage": 0.9289940828402367,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 13.308805804146788,
+          "rmse": 18.837320634565263,
+          "intervalCoverage": 0.935449166218397,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    "wearableOnly": {
+      "label": "CGM + HR + IBI-derived RMSSD",
+      "windows": 1859,
+      "participants": 3,
+      "positiveWindows": 287,
+      "positiveRate": 0.15438407746100055,
+      "mae": 13.69783745792351,
+      "participantMacroMae": 13.407184496095246,
+      "rmse": 18.606193227562,
+      "auroc": 0.6896837956929187,
+      "auprc": 0.31767381407347106,
+      "brier": 0.12591305560902386,
+      "threshold": 0.15000000000000002,
+      "recall": 0.8466898954703833,
+      "precision": 0.19347133757961785,
+      "f1": 0.3149708360337006,
+      "confusionMatrix": [
+        [
+          559,
+          1013
+        ],
+        [
+          44,
+          243
+        ]
+      ],
+      "intervalCoverage": 0.9435180204410973,
+      "intervalMeanWidth": 72.47054174691863,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 323,
+          "predicted": 0.07345952039407722,
+          "observed": 0.030959752321981424
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 556,
+          "predicted": 0.15119404697673047,
+          "observed": 0.11330935251798561
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 562,
+          "predicted": 0.25026290445472765,
+          "observed": 0.1708185053380783
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 352,
+          "predicted": 0.3397756274267371,
+          "observed": 0.23863636363636365
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 66,
+          "predicted": 0.43523533141839676,
+          "observed": 0.5151515151515151
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.06472004114604803,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 9.880565895975366,
+          "rmse": 14.734395912815197,
+          "intervalCoverage": 0.9343733189887036,
+          "intervalMeanWidth": 58.10214519195887
+        },
+        {
+          "minutes": 60,
+          "mae": 12.302019251095118,
+          "rmse": 17.658417955276718,
+          "intervalCoverage": 0.9408284023668639,
+          "intervalMeanWidth": 69.85078417252214
+        },
+        {
+          "minutes": 90,
+          "mae": 13.093338636560773,
+          "rmse": 18.1177352930257,
+          "intervalCoverage": 0.935449166218397,
+          "intervalMeanWidth": 68.82807477777317
+        },
+        {
+          "minutes": 120,
+          "mae": 13.69783745792351,
+          "rmse": 18.606193227562,
+          "intervalCoverage": 0.9435180204410973,
+          "intervalMeanWidth": 72.47054174691863
+        }
+      ]
+    },
+    "matchedFusion": {
+      "label": "Matched research HbA1c/sex + wearables",
+      "windows": 1859,
+      "participants": 3,
+      "positiveWindows": 287,
+      "positiveRate": 0.15438407746100055,
+      "mae": 14.732974501007059,
+      "participantMacroMae": 14.222477259890363,
+      "rmse": 19.37576846386258,
+      "auroc": 0.7177002154427216,
+      "auprc": 0.2999891713754754,
+      "brier": 0.12144575321850447,
+      "threshold": 0.16000000000000003,
+      "recall": 0.8292682926829268,
+      "precision": 0.22884615384615384,
+      "f1": 0.35870384325546345,
+      "confusionMatrix": [
+        [
+          770,
+          802
+        ],
+        [
+          49,
+          238
+        ]
+      ],
+      "intervalCoverage": 0.9279182356105433,
+      "intervalMeanWidth": 68.83916824061191,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 401,
+          "predicted": 0.06686104028334121,
+          "observed": 0.034912718204488775
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 740,
+          "predicted": 0.15208437832006014,
+          "observed": 0.10270270270270271
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 561,
+          "predicted": 0.24133424333748296,
+          "observed": 0.2620320855614973
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 147,
+          "predicted": 0.3312818691787838,
+          "observed": 0.29931972789115646
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 10,
+          "predicted": 0.41550163260577333,
+          "observed": 0.6
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.036314483615578194,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 10.19119077723023,
+          "rmse": 14.725064287052431,
+          "intervalCoverage": 0.9327595481441635,
+          "intervalMeanWidth": 57.89408421874043
+        },
+        {
+          "minutes": 60,
+          "mae": 12.89374556211094,
+          "rmse": 17.940969256497965,
+          "intervalCoverage": 0.9273803119956966,
+          "intervalMeanWidth": 64.71987111518581
+        },
+        {
+          "minutes": 90,
+          "mae": 14.018321007730862,
+          "rmse": 18.81489016083446,
+          "intervalCoverage": 0.9090909090909091,
+          "intervalMeanWidth": 63.66172703117343
+        },
+        {
+          "minutes": 120,
+          "mae": 14.732974501007059,
+          "rmse": 19.37576846386258,
+          "intervalCoverage": 0.9279182356105433,
+          "intervalMeanWidth": 68.83916824061191
+        }
+      ]
+    },
+    "ehrOnly": {
+      "label": "Unmatched Synthea EHR only (negative control)",
+      "windows": 1859,
+      "participants": 3,
+      "positiveWindows": 287,
+      "positiveRate": 0.15438407746100055,
+      "mae": 14.804256123687107,
+      "participantMacroMae": 14.389191769533534,
+      "rmse": 20.676220642652783,
+      "auroc": 0.5486774210708301,
+      "auprc": 0.16847518393895036,
+      "brier": 0.14098125926131613,
+      "threshold": 0.18000000000000002,
+      "recall": 1.0,
+      "precision": 0.15438407746100055,
+      "f1": 0.2674743709226468,
+      "confusionMatrix": [
+        [
+          0,
+          1572
+        ],
+        [
+          0,
+          287
+        ]
+      ],
+      "intervalCoverage": 0.9359870898332436,
+      "intervalMeanWidth": 82.83085740031913,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 451,
+          "predicted": 0.18426230031281104,
+          "observed": 0.10199556541019955
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 1408,
+          "predicted": 0.28415103979009276,
+          "observed": 0.17116477272727273
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.10553359949732564,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 14.22786687158422,
+          "rmse": 19.962978221541945,
+          "intervalCoverage": 0.9300699300699301,
+          "intervalMeanWidth": 74.21435719878016
+        },
+        {
+          "minutes": 60,
+          "mae": 14.499726915814023,
+          "rmse": 20.26540891525906,
+          "intervalCoverage": 0.9349112426035503,
+          "intervalMeanWidth": 79.86072761997707
+        },
+        {
+          "minutes": 90,
+          "mae": 14.495699585976123,
+          "rmse": 20.255087277850166,
+          "intervalCoverage": 0.9370629370629371,
+          "intervalMeanWidth": 81.3757074792021
+        },
+        {
+          "minutes": 120,
+          "mae": 14.804256123687107,
+          "rmse": 20.676220642652783,
+          "intervalCoverage": 0.9359870898332436,
+          "intervalMeanWidth": 82.83085740031913
+        }
+      ]
+    },
+    "compositeFusion": {
+      "label": "Unmatched Synthea EHR + wearables (negative control)",
+      "windows": 1859,
+      "participants": 3,
+      "positiveWindows": 287,
+      "positiveRate": 0.15438407746100055,
+      "mae": 13.76273036202008,
+      "participantMacroMae": 13.445827460369827,
+      "rmse": 19.362145368241492,
+      "auroc": 0.672431754306638,
+      "auprc": 0.2597565724043823,
+      "brier": 0.12610896544693279,
+      "threshold": 0.15500000000000003,
+      "recall": 0.7665505226480837,
+      "precision": 0.20522388059701493,
+      "f1": 0.3237674760853569,
+      "confusionMatrix": [
+        [
+          720,
+          852
+        ],
+        [
+          67,
+          220
+        ]
+      ],
+      "intervalCoverage": 0.933835395373857,
+      "intervalMeanWidth": 74.87879050843236,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 466,
+          "predicted": 0.06582551235197928,
+          "observed": 0.0536480686695279
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 591,
+          "predicted": 0.15038243496632997,
+          "observed": 0.12859560067681894
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 500,
+          "predicted": 0.24511530293523026,
+          "observed": 0.204
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 237,
+          "predicted": 0.3405318187010899,
+          "observed": 0.25316455696202533
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 59,
+          "predicted": 0.4309771207506498,
+          "observed": 0.3728813559322034
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 6,
+          "predicted": 0.5188051797678143,
+          "observed": 0.3333333333333333
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.03461801050230878,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 9.86106157832685,
+          "rmse": 14.856725368953663,
+          "intervalCoverage": 0.9316837009144702,
+          "intervalMeanWidth": 57.48607742740819
+        },
+        {
+          "minutes": 60,
+          "mae": 12.287535573173505,
+          "rmse": 18.125556440802143,
+          "intervalCoverage": 0.9386767079074771,
+          "intervalMeanWidth": 72.87082101003793
+        },
+        {
+          "minutes": 90,
+          "mae": 12.940532632499629,
+          "rmse": 18.724823069592738,
+          "intervalCoverage": 0.9252286175363098,
+          "intervalMeanWidth": 72.22750791806035
+        },
+        {
+          "minutes": 120,
+          "mae": 13.76273036202008,
+          "rmse": 19.362145368241492,
+          "intervalCoverage": 0.933835395373857,
+          "intervalMeanWidth": 74.87879050843236
+        }
+      ]
+    },
+    "persistence": {
+      "label": "Latest glucose persistence (deterministic event baseline)",
+      "windows": 1859,
+      "participants": 3,
+      "positiveWindows": 287,
+      "positiveRate": 0.15438407746100055,
+      "mae": 16.346422807961268,
+      "participantMacroMae": 15.836518314567096,
+      "rmse": 23.38475340408294,
+      "auroc": 0.5,
+      "auprc": 0.15438407746100055,
+      "brier": 0.15438407746100055,
+      "threshold": 0.5,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "confusionMatrix": [
+        [
+          1572,
+          0
+        ],
+        [
+          287,
+          0
+        ]
+      ],
+      "intervalCoverage": 0.9198493813878429,
+      "intervalMeanWidth": 86.0,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 1859,
+          "predicted": 0.0,
+          "observed": 0.15438407746100055
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.15438407746100055,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 10.846691769768693,
+          "rmse": 16.186679918310535,
+          "intervalCoverage": 0.9295320064550834,
+          "intervalMeanWidth": 62.0
+        },
+        {
+          "minutes": 60,
+          "mae": 14.35449166218397,
+          "rmse": 20.937302342246227,
+          "intervalCoverage": 0.9203873050026896,
+          "intervalMeanWidth": 76.0
+        },
+        {
+          "minutes": 90,
+          "mae": 15.515330823023131,
+          "rmse": 22.262155113462352,
+          "intervalCoverage": 0.9123184507799892,
+          "intervalMeanWidth": 80.0
+        },
+        {
+          "minutes": 120,
+          "mae": 16.346422807961268,
+          "rmse": 23.38475340408294,
+          "intervalCoverage": 0.9198493813878429,
+          "intervalMeanWidth": 86.0
+        }
+      ]
+    },
+    "primary": {
+      "label": "CGM history only",
+      "windows": 1859,
+      "participants": 3,
+      "positiveWindows": 287,
+      "positiveRate": 0.15438407746100055,
+      "mae": 13.308805804146788,
+      "participantMacroMae": 12.982461478344709,
+      "rmse": 18.837320634565263,
+      "auroc": 0.6719485597255099,
+      "auprc": 0.29404053126530494,
+      "brier": 0.12359706673867157,
+      "threshold": 0.18000000000000002,
+      "recall": 0.662020905923345,
+      "precision": 0.22144522144522144,
+      "f1": 0.3318777292576419,
+      "confusionMatrix": [
+        [
+          904,
+          668
+        ],
+        [
+          97,
+          190
+        ]
+      ],
+      "intervalCoverage": 0.935449166218397,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 422,
+          "predicted": 0.06384658151265635,
+          "observed": 0.04976303317535545
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 737,
+          "predicted": 0.1539619981383763,
+          "observed": 0.14654002713704206
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 569,
+          "predicted": 0.24035378077898686,
+          "observed": 0.18980667838312829
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 111,
+          "predicted": 0.33860547852490047,
+          "observed": 0.34234234234234234
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 20,
+          "predicted": 0.4316641856738741,
+          "observed": 0.6
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.023645002399045944,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 9.867754407809853,
+          "rmse": 14.821742288168396,
+          "intervalCoverage": 0.9306078536847767,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 12.203813286808472,
+          "rmse": 17.814896614557846,
+          "intervalCoverage": 0.9365250134480904,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 12.8669344196963,
+          "rmse": 18.304482097504604,
+          "intervalCoverage": 0.9289940828402367,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 13.308805804146788,
+          "rmse": 18.837320634565263,
+          "intervalCoverage": 0.935449166218397,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ],
+      "aliasOf": "cgmOnly"
+    }
+  },
+  "splits": {
+    "train": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006",
+      "007",
+      "008",
+      "009"
+    ],
+    "selection": [
+      "010",
+      "011"
+    ],
+    "calibration": [
+      "012",
+      "013"
+    ],
+    "test": [
+      "014",
+      "015",
+      "016"
+    ]
+  },
+  "testParticipants": 3,
+  "testWindows": 1859,
+  "byParticipant": [
+    {
+      "participant": "014",
+      "windows": 715,
+      "participants": 1,
+      "positiveWindows": 128,
+      "positiveRate": 0.17902097902097902,
+      "mae": 15.53528911662543,
+      "participantMacroMae": 15.53528911662543,
+      "rmse": 22.099890298719387,
+      "auroc": 0.6604956345826235,
+      "auprc": 0.2742791975813599,
+      "brier": 0.14078050593392616,
+      "threshold": 0.18000000000000002,
+      "recall": 0.5546875,
+      "precision": 0.24738675958188153,
+      "f1": 0.3421686746987952,
+      "confusionMatrix": [
+        [
+          371,
+          216
+        ],
+        [
+          57,
+          71
+        ]
+      ],
+      "intervalCoverage": 0.9048951048951049,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 234,
+          "predicted": 0.062330457691746714,
+          "observed": 0.05982905982905983
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 251,
+          "predicted": 0.15314779959102612,
+          "observed": 0.22310756972111553
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 187,
+          "predicted": 0.23994601586292674,
+          "observed": 0.22459893048128343
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 34,
+          "predicted": 0.3421776777616281,
+          "observed": 0.38235294117647056
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 9,
+          "predicted": 0.4305706611203495,
+          "observed": 0.3333333333333333
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.03252619479031645,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 10.460040092643878,
+          "rmse": 16.408615007206695,
+          "intervalCoverage": 0.9020979020979021,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 13.43749259717816,
+          "rmse": 20.409864336653186,
+          "intervalCoverage": 0.9090909090909091,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 14.642526929775173,
+          "rmse": 21.222706073148867,
+          "intervalCoverage": 0.8993006993006993,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 15.53528911662543,
+          "rmse": 22.099890298719387,
+          "intervalCoverage": 0.9048951048951049,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "participant": "015",
+      "windows": 451,
+      "participants": 1,
+      "positiveWindows": 46,
+      "positiveRate": 0.10199556541019955,
+      "mae": 10.707618942708798,
+      "participantMacroMae": 10.707618942708798,
+      "rmse": 14.597490390355953,
+      "auroc": 0.6843800322061191,
+      "auprc": 0.26272719973129655,
+      "brier": 0.0930011594403189,
+      "threshold": 0.18000000000000002,
+      "recall": 0.6956521739130435,
+      "precision": 0.1509433962264151,
+      "f1": 0.24806201550387597,
+      "confusionMatrix": [
+        [
+          225,
+          180
+        ],
+        [
+          14,
+          32
+        ]
+      ],
+      "intervalCoverage": 0.975609756097561,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 64,
+          "predicted": 0.07204243139767325,
+          "observed": 0.03125
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 209,
+          "predicted": 0.15110359804807452,
+          "observed": 0.0861244019138756
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 152,
+          "predicted": 0.2371321691554421,
+          "observed": 0.1118421052631579
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 22,
+          "predicted": 0.34155989353423905,
+          "observed": 0.2727272727272727
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 4,
+          "predicted": 0.44986238135013623,
+          "observed": 0.75
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.08414706307201458,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 7.079922678097619,
+          "rmse": 9.918600908989362,
+          "intervalCoverage": 0.9844789356984479,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 9.295930422410885,
+          "rmse": 12.917933420519084,
+          "intervalCoverage": 0.9844789356984479,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 10.120372417414073,
+          "rmse": 13.932897814006118,
+          "intervalCoverage": 0.9800443458980045,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 10.707618942708798,
+          "rmse": 14.597490390355953,
+          "intervalCoverage": 0.975609756097561,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "participant": "016",
+      "windows": 693,
+      "participants": 1,
+      "positiveWindows": 113,
+      "positiveRate": 0.16305916305916307,
+      "mae": 12.704476375699901,
+      "participantMacroMae": 12.704476375699901,
+      "rmse": 17.58690667637895,
+      "auroc": 0.7075068660360085,
+      "auprc": 0.37895340486390655,
+      "brier": 0.12577974374725748,
+      "threshold": 0.18000000000000002,
+      "recall": 0.7699115044247787,
+      "precision": 0.24233983286908078,
+      "f1": 0.3686440677966102,
+      "confusionMatrix": [
+        [
+          308,
+          272
+        ],
+        [
+          26,
+          87
+        ]
+      ],
+      "intervalCoverage": 0.9408369408369408,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 124,
+          "predicted": 0.062477537814686804,
+          "observed": 0.04032258064516129
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 277,
+          "predicted": 0.1568564727024845,
+          "observed": 0.12274368231046931
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 230,
+          "predicted": 0.24281437645760454,
+          "observed": 0.21304347826086956
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 55,
+          "predicted": 0.3352154439020971,
+          "observed": 0.34545454545454546
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 7,
+          "predicted": 0.422671176856256,
+          "observed": 0.8571428571428571
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.0326814091778489,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 11.070969192000174,
+          "rmse": 15.732035403480667,
+          "intervalCoverage": 0.924963924963925,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 12.823401259288968,
+          "rmse": 17.69102623863578,
+          "intervalCoverage": 0.9336219336219336,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 12.82241900602082,
+          "rmse": 17.54304194825551,
+          "intervalCoverage": 0.9264069264069265,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 12.704476375699901,
+          "rmse": 17.58690667637895,
+          "intervalCoverage": 0.9408369408369408,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    }
+  ],
+  "errorAnalysis": [
+    {
+      "label": "High CGM coverage",
+      "windows": 1852,
+      "participants": 3,
+      "positiveWindows": 283,
+      "positiveRate": 0.15280777537796977,
+      "mae": 13.292435962757814,
+      "participantMacroMae": 12.965674669670507,
+      "rmse": 18.83229246099271,
+      "auroc": 0.6734162562186533,
+      "auprc": 0.29429725640723703,
+      "brier": 0.12256327365219617,
+      "threshold": 0.18000000000000002,
+      "recall": 0.6678445229681979,
+      "precision": 0.220536756126021,
+      "f1": 0.33157894736842103,
+      "confusionMatrix": [
+        [
+          901,
+          668
+        ],
+        [
+          94,
+          189
+        ]
+      ],
+      "intervalCoverage": 0.9357451403887689,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 422,
+          "predicted": 0.06384658151265635,
+          "observed": 0.04976303317535545
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 731,
+          "predicted": 0.15404781914976426,
+          "observed": 0.1436388508891929
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 568,
+          "predicted": 0.24040312613996168,
+          "observed": 0.18838028169014084
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 111,
+          "predicted": 0.33860547852490047,
+          "observed": 0.34234234234234234
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 20,
+          "predicted": 0.4316641856738741,
+          "observed": 0.6
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.02531463121737335,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 9.877693756971071,
+          "rmse": 14.842052886586474,
+          "intervalCoverage": 0.9303455723542117,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 12.219513572530987,
+          "rmse": 17.83941523455688,
+          "intervalCoverage": 0.9362850971922246,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 12.876916545494359,
+          "rmse": 18.324010063130906,
+          "intervalCoverage": 0.9287257019438445,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 13.292435962757814,
+          "rmse": 18.83229246099271,
+          "intervalCoverage": 0.9357451403887689,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "label": "Reduced CGM coverage",
+      "windows": 7,
+      "participants": 1,
+      "positiveWindows": 4,
+      "positiveRate": 0.5714285714285714,
+      "mae": 17.63979812591526,
+      "participantMacroMae": 17.63979812591526,
+      "rmse": 20.123542228246894,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "brier": 0.3971091804747327,
+      "threshold": 0.18000000000000002,
+      "recall": 0.25,
+      "precision": 1.0,
+      "f1": 0.4,
+      "confusionMatrix": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "intervalCoverage": 0.8571428571428571,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 6,
+          "predicted": 0.14350613825094485,
+          "observed": 0.5
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 1,
+          "predicted": 0.21232561574532502,
+          "observed": 1.0
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.418091079249858,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 7.238086601157046,
+          "rmse": 7.764184110728382,
+          "intervalCoverage": 1.0,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 8.049966264223439,
+          "rmse": 9.27812736714592,
+          "intervalCoverage": 1.0,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 10.225949137123944,
+          "rmse": 12.075240386836867,
+          "intervalCoverage": 1.0,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 17.63979812591526,
+          "rmse": 20.123542228246894,
+          "intervalCoverage": 0.8571428571428571,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "label": "HRV coverage <50%",
+      "windows": 801,
+      "participants": 3,
+      "positiveWindows": 120,
+      "positiveRate": 0.149812734082397,
+      "mae": 13.336465373338209,
+      "participantMacroMae": 13.095890838495398,
+      "rmse": 18.924742414601187,
+      "auroc": 0.6820362212432697,
+      "auprc": 0.2930007244134696,
+      "brier": 0.12032159706075919,
+      "threshold": 0.18000000000000002,
+      "recall": 0.6666666666666666,
+      "precision": 0.21505376344086022,
+      "f1": 0.3252032520325203,
+      "confusionMatrix": [
+        [
+          389,
+          292
+        ],
+        [
+          40,
+          80
+        ]
+      ],
+      "intervalCoverage": 0.9313358302122348,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 173,
+          "predicted": 0.06468093809726161,
+          "observed": 0.028901734104046242
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 315,
+          "predicted": 0.15230263245113926,
+          "observed": 0.1492063492063492
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 248,
+          "predicted": 0.23780733367657733,
+          "observed": 0.1774193548387097
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 54,
+          "predicted": 0.33879763417079756,
+          "observed": 0.3333333333333333
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 11,
+          "predicted": 0.4398747257361176,
+          "observed": 0.5454545454545454
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.029460425127156152,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 9.561704047509219,
+          "rmse": 14.576996386613358,
+          "intervalCoverage": 0.9300873907615481,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 11.89924655723062,
+          "rmse": 17.680735338685068,
+          "intervalCoverage": 0.9375780274656679,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 12.890772009915981,
+          "rmse": 18.57083095116072,
+          "intervalCoverage": 0.9288389513108615,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 13.336465373338209,
+          "rmse": 18.924742414601187,
+          "intervalCoverage": 0.9313358302122348,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "label": "HRV coverage >=50%",
+      "windows": 1058,
+      "participants": 3,
+      "positiveWindows": 167,
+      "positiveRate": 0.15784499054820417,
+      "mae": 13.287865052802433,
+      "participantMacroMae": 12.633835622830377,
+      "rmse": 18.77086377131162,
+      "auroc": 0.6657459491790829,
+      "auprc": 0.3029834838902901,
+      "brier": 0.12607688830011562,
+      "threshold": 0.18000000000000002,
+      "recall": 0.6586826347305389,
+      "precision": 0.22633744855967078,
+      "f1": 0.33690658499234305,
+      "confusionMatrix": [
+        [
+          515,
+          376
+        ],
+        [
+          57,
+          110
+        ]
+      ],
+      "intervalCoverage": 0.9385633270321361,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 249,
+          "predicted": 0.06326688798198683,
+          "observed": 0.0642570281124498
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 422,
+          "predicted": 0.15520062418453667,
+          "observed": 0.14454976303317535
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 321,
+          "predicted": 0.2423211293191662,
+          "observed": 0.19937694704049844
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 57,
+          "predicted": 0.3384234363340507,
+          "observed": 0.3508771929824561
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 9,
+          "predicted": 0.4216290811533543,
+          "observed": 0.6666666666666666
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.02026606163363991,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 10.099461722177347,
+          "rmse": 15.004381555951287,
+          "intervalCoverage": 0.9310018903591682,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 12.434397360902857,
+          "rmse": 17.91580039843514,
+          "intervalCoverage": 0.9357277882797732,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 12.848887246004464,
+          "rmse": 18.1002256154485,
+          "intervalCoverage": 0.9291115311909263,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 13.287865052802433,
+          "rmse": 18.77086377131162,
+          "intervalCoverage": 0.9385633270321361,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "label": "Current glucose <140",
+      "windows": 1719,
+      "participants": 3,
+      "positiveWindows": 285,
+      "positiveRate": 0.16579406631762653,
+      "mae": 12.999797473580948,
+      "participantMacroMae": 12.778798839283416,
+      "rmse": 18.69910777299782,
+      "auroc": 0.6454329687538232,
+      "auprc": 0.29501091403370805,
+      "brier": 0.13241020784957072,
+      "threshold": 0.18000000000000002,
+      "recall": 0.6666666666666666,
+      "precision": 0.22144522144522144,
+      "f1": 0.3324584426946632,
+      "confusionMatrix": [
+        [
+          766,
+          668
+        ],
+        [
+          95,
+          190
+        ]
+      ],
+      "intervalCoverage": 0.9336823734729494,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 282,
+          "predicted": 0.06954479211690269,
+          "observed": 0.0673758865248227
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 737,
+          "predicted": 0.1539619981383763,
+          "observed": 0.14654002713704206
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 569,
+          "predicted": 0.24035378077898686,
+          "observed": 0.18980667838312829
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 111,
+          "predicted": 0.33860547852490047,
+          "observed": 0.34234234234234234
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 20,
+          "predicted": 0.4316641856738741,
+          "observed": 0.6
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.022469129399913898,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 9.30528504305027,
+          "rmse": 14.146065929574197,
+          "intervalCoverage": 0.9400814426992438,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 11.77693488491364,
+          "rmse": 17.444937803033973,
+          "intervalCoverage": 0.9424083769633508,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 12.491417034265314,
+          "rmse": 18.031657084556926,
+          "intervalCoverage": 0.9325189063408958,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 12.999797473580948,
+          "rmse": 18.69910777299782,
+          "intervalCoverage": 0.9336823734729494,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "label": "Current glucose >=140",
+      "windows": 140,
+      "participants": 3,
+      "positiveWindows": 2,
+      "positiveRate": 0.014285714285714285,
+      "mae": 17.1029866630231,
+      "participantMacroMae": 15.521842894416187,
+      "rmse": 20.458398965861736,
+      "auroc": 0.7717391304347826,
+      "auprc": 0.06018518518518518,
+      "brier": 0.015384284098417236,
+      "threshold": 0.18000000000000002,
+      "recall": 0.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "confusionMatrix": [
+        [
+          138,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "intervalCoverage": 0.9571428571428572,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 140,
+          "predicted": 0.0523687572955316,
+          "observed": 0.014285714285714285
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.03808304300981732,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 16.774074679393582,
+          "rmse": 21.447863366509353,
+          "intervalCoverage": 0.8142857142857143,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 17.445270235788595,
+          "rmse": 21.852703621084572,
+          "intervalCoverage": 0.8642857142857143,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 17.477751459381068,
+          "rmse": 21.372331381969296,
+          "intervalCoverage": 0.8857142857142857,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 17.1029866630231,
+          "rmse": 20.458398965861736,
+          "intervalCoverage": 0.9571428571428572,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "label": "Rising prior-hour glucose",
+      "windows": 871,
+      "participants": 3,
+      "positiveWindows": 113,
+      "positiveRate": 0.12973593570608496,
+      "mae": 14.073329183186821,
+      "participantMacroMae": 13.610336445667953,
+      "rmse": 19.965038565784713,
+      "auroc": 0.6719359282695496,
+      "auprc": 0.2112474011247924,
+      "brier": 0.10869124460338705,
+      "threshold": 0.18000000000000002,
+      "recall": 0.48672566371681414,
+      "precision": 0.20146520146520147,
+      "f1": 0.2849740932642487,
+      "confusionMatrix": [
+        [
+          540,
+          218
+        ],
+        [
+          58,
+          55
+        ]
+      ],
+      "intervalCoverage": 0.9184845005740528,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 266,
+          "predicted": 0.06532592174618006,
+          "observed": 0.041353383458646614
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 414,
+          "predicted": 0.15095007007320566,
+          "observed": 0.15458937198067632
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 177,
+          "predicted": 0.23544252110458175,
+          "observed": 0.192090395480226
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 14,
+          "predicted": 0.3197250026493153,
+          "observed": 0.2857142857142857
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.01840739660938936,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 10.579369886337581,
+          "rmse": 15.249138996416328,
+          "intervalCoverage": 0.9207807118254879,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 12.482424777093044,
+          "rmse": 17.80680757109791,
+          "intervalCoverage": 0.9357060849598163,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 14.133907906706595,
+          "rmse": 20.12458970792689,
+          "intervalCoverage": 0.9115958668197475,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 14.073329183186821,
+          "rmse": 19.965038565784713,
+          "intervalCoverage": 0.9184845005740528,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "label": "Flat/falling prior-hour glucose",
+      "windows": 988,
+      "participants": 3,
+      "positiveWindows": 174,
+      "positiveRate": 0.17611336032388664,
+      "mae": 12.63481808841413,
+      "participantMacroMae": 12.404971204132986,
+      "rmse": 17.78393698347859,
+      "auroc": 0.6712135332824988,
+      "auprc": 0.3425953406760061,
+      "brier": 0.13673772572635662,
+      "threshold": 0.18000000000000002,
+      "recall": 0.7758620689655172,
+      "precision": 0.23076923076923078,
+      "f1": 0.3557312252964427,
+      "confusionMatrix": [
+        [
+          364,
+          450
+        ],
+        [
+          39,
+          135
+        ]
+      ],
+      "intervalCoverage": 0.9504048582995951,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 156,
+          "predicted": 0.061324116755494144,
+          "observed": 0.0641025641025641
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 323,
+          "predicted": 0.1578224879804217,
+          "observed": 0.13622291021671826
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 392,
+          "predicted": 0.24257136486666475,
+          "observed": 0.18877551020408162
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 97,
+          "predicted": 0.3413304956615829,
+          "observed": 0.35051546391752575
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 20,
+          "predicted": 0.4316641856738741,
+          "observed": 0.6
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.03315357756973754,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 9.240409183318304,
+          "rmse": 14.434466367767511,
+          "intervalCoverage": 0.9392712550607287,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 11.958195262478656,
+          "rmse": 17.822024699951076,
+          "intervalCoverage": 0.937246963562753,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 11.749997266674066,
+          "rmse": 16.534569386091608,
+          "intervalCoverage": 0.944331983805668,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 12.63481808841413,
+          "rmse": 17.78393698347859,
+          "intervalCoverage": 0.9504048582995951,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    }
+  ],
+  "errorByTime": [
+    {
+      "label": "00:00\u201306:00 source clock",
+      "windows": 485,
+      "participants": 3,
+      "positiveWindows": 38,
+      "positiveRate": 0.07835051546391752,
+      "mae": 9.286948463985594,
+      "participantMacroMae": 8.916792568014687,
+      "rmse": 16.126156701131915,
+      "auroc": 0.5557517955963736,
+      "auprc": 0.25060601343828487,
+      "brier": 0.08276018922579222,
+      "threshold": 0.18000000000000002,
+      "recall": 0.4473684210526316,
+      "precision": 0.0845771144278607,
+      "f1": 0.14225941422594143,
+      "confusionMatrix": [
+        [
+          263,
+          184
+        ],
+        [
+          21,
+          17
+        ]
+      ],
+      "intervalCoverage": 0.9628865979381444,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 71,
+          "predicted": 0.08026227211852491,
+          "observed": 0.056338028169014086
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 254,
+          "predicted": 0.15122718128667012,
+          "observed": 0.07480314960629922
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 130,
+          "predicted": 0.24407835366273006,
+          "observed": 0.05384615384615385
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 29,
+          "predicted": 0.33164801543698175,
+          "observed": 0.2413793103448276
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 1,
+          "predicted": 0.4351492501111434,
+          "observed": 1.0
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.1010786691565891,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 5.302947373593586,
+          "rmse": 7.707953988612289,
+          "intervalCoverage": 0.9917525773195877,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 7.0889389380645405,
+          "rmse": 10.834408838071479,
+          "intervalCoverage": 0.9876288659793815,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 8.236056490992407,
+          "rmse": 14.617520205388951,
+          "intervalCoverage": 0.9690721649484536,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 9.286948463985594,
+          "rmse": 16.126156701131915,
+          "intervalCoverage": 0.9628865979381444,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "label": "06:00\u201312:00 source clock",
+      "windows": 472,
+      "participants": 3,
+      "positiveWindows": 82,
+      "positiveRate": 0.17372881355932204,
+      "mae": 15.1526783394427,
+      "participantMacroMae": 14.751916197864624,
+      "rmse": 18.990066949805506,
+      "auroc": 0.6705128205128205,
+      "auprc": 0.32996946656544857,
+      "brier": 0.1358037579987477,
+      "threshold": 0.18000000000000002,
+      "recall": 0.6951219512195121,
+      "precision": 0.22709163346613545,
+      "f1": 0.34234234234234234,
+      "confusionMatrix": [
+        [
+          196,
+          194
+        ],
+        [
+          25,
+          57
+        ]
+      ],
+      "intervalCoverage": 0.9449152542372882,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 79,
+          "predicted": 0.06409071046498917,
+          "observed": 0.0759493670886076
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 182,
+          "predicted": 0.15610148239767282,
+          "observed": 0.15384615384615385
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 160,
+          "predicted": 0.24280519690700103,
+          "observed": 0.1875
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 44,
+          "predicted": 0.34316943297738445,
+          "observed": 0.3181818181818182
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 7,
+          "predicted": 0.41367988804973477,
+          "observed": 0.5714285714285714
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.026270828409786538,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 11.392117424526813,
+          "rmse": 16.88567807870428,
+          "intervalCoverage": 0.9067796610169492,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 14.333229559640076,
+          "rmse": 20.298483244981714,
+          "intervalCoverage": 0.9152542372881356,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 14.905468243320227,
+          "rmse": 19.24779080093465,
+          "intervalCoverage": 0.9152542372881356,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 15.1526783394427,
+          "rmse": 18.990066949805506,
+          "intervalCoverage": 0.9449152542372882,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "label": "12:00\u201318:00 source clock",
+      "windows": 451,
+      "participants": 3,
+      "positiveWindows": 94,
+      "positiveRate": 0.20842572062084258,
+      "mae": 15.757880579588727,
+      "participantMacroMae": 15.411726875397077,
+      "rmse": 21.450360988196383,
+      "auroc": 0.621610346266166,
+      "auprc": 0.2740084505886455,
+      "brier": 0.1602649372438303,
+      "threshold": 0.18000000000000002,
+      "recall": 0.7021276595744681,
+      "precision": 0.2619047619047619,
+      "f1": 0.3815028901734104,
+      "confusionMatrix": [
+        [
+          171,
+          186
+        ],
+        [
+          28,
+          66
+        ]
+      ],
+      "intervalCoverage": 0.9024390243902439,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 96,
+          "predicted": 0.06223489584527159,
+          "observed": 0.041666666666666664
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 152,
+          "predicted": 0.15885405498632432,
+          "observed": 0.24342105263157895
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 179,
+          "predicted": 0.2383737704874266,
+          "observed": 0.25139664804469275
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 20,
+          "predicted": 0.3401237237081809,
+          "observed": 0.35
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 4,
+          "predicted": 0.43756560014159157,
+          "observed": 0.25
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.04014992605848817,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 10.971089937474996,
+          "rmse": 15.724031509905931,
+          "intervalCoverage": 0.9135254988913526,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 13.12077974951535,
+          "rmse": 18.19927956171209,
+          "intervalCoverage": 0.926829268292683,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 14.41389475708841,
+          "rmse": 19.457815594421927,
+          "intervalCoverage": 0.9113082039911308,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 15.757880579588727,
+          "rmse": 21.450360988196383,
+          "intervalCoverage": 0.9024390243902439,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    },
+    {
+      "label": "18:00\u201324:00 source clock",
+      "windows": 451,
+      "participants": 3,
+      "positiveWindows": 73,
+      "positiveRate": 0.16186252771618626,
+      "mae": 13.255059129189354,
+      "participantMacroMae": 13.190284280174133,
+      "rmse": 18.58661223268777,
+      "auroc": 0.7792636080307314,
+      "auprc": 0.44112786917583663,
+      "brier": 0.11806961157495532,
+      "threshold": 0.18000000000000002,
+      "recall": 0.684931506849315,
+      "precision": 0.3246753246753247,
+      "f1": 0.44052863436123346,
+      "confusionMatrix": [
+        [
+          274,
+          104
+        ],
+        [
+          23,
+          50
+        ]
+      ],
+      "intervalCoverage": 0.9290465631929047,
+      "intervalMeanWidth": 71.6786661253374,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 176,
+          "predicted": 0.057993863352531226,
+          "observed": 0.03977272727272727
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 149,
+          "predicted": 0.15102015051591533,
+          "observed": 0.1610738255033557
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 100,
+          "predicted": 0.23513378864719123,
+          "observed": 0.26
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 18,
+          "predicted": 0.3369714524123865,
+          "observed": 0.5555555555555556
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 8,
+          "predicted": 0.4440141058064786,
+          "observed": 0.75
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "ece": 0.030097427203060318,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 12.078015480593681,
+          "rmse": 17.20429281277257,
+          "intervalCoverage": 0.9068736141906873,
+          "intervalMeanWidth": 56.92670425115534
+        },
+        {
+          "minutes": 60,
+          "mae": 14.558752762825076,
+          "rmse": 20.482298170293458,
+          "intervalCoverage": 0.9135254988913526,
+          "intervalMeanWidth": 68.56911775463345
+        },
+        {
+          "minutes": 90,
+          "mae": 14.16651029221748,
+          "rmse": 19.62043985765635,
+          "intervalCoverage": 0.917960088691796,
+          "intervalMeanWidth": 67.90034974484695
+        },
+        {
+          "minutes": 120,
+          "mae": 13.255059129189354,
+          "rmse": 18.58661223268777,
+          "intervalCoverage": 0.9290465631929047,
+          "intervalMeanWidth": 71.6786661253374
+        }
+      ]
+    }
+  ],
+  "residualDistribution": [
+    {
+      "lower": -105.61597276856322,
+      "upper": -98.1229657248939,
+      "count": 1
+    },
+    {
+      "lower": -98.1229657248939,
+      "upper": -90.62995868122458,
+      "count": 1
+    },
+    {
+      "lower": -90.62995868122458,
+      "upper": -83.13695163755526,
+      "count": 3
+    },
+    {
+      "lower": -83.13695163755526,
+      "upper": -75.64394459388595,
+      "count": 2
+    },
+    {
+      "lower": -75.64394459388595,
+      "upper": -68.15093755021663,
+      "count": 3
+    },
+    {
+      "lower": -68.15093755021663,
+      "upper": -60.6579305065473,
+      "count": 12
+    },
+    {
+      "lower": -60.6579305065473,
+      "upper": -53.16492346287799,
+      "count": 24
+    },
+    {
+      "lower": -53.16492346287799,
+      "upper": -45.671916419208664,
+      "count": 23
+    },
+    {
+      "lower": -45.671916419208664,
+      "upper": -38.17890937553935,
+      "count": 38
+    },
+    {
+      "lower": -38.17890937553935,
+      "upper": -30.685902331870025,
+      "count": 45
+    },
+    {
+      "lower": -30.685902331870025,
+      "upper": -23.192895288200702,
+      "count": 55
+    },
+    {
+      "lower": -23.192895288200702,
+      "upper": -15.69988824453138,
+      "count": 105
+    },
+    {
+      "lower": -15.69988824453138,
+      "upper": -8.206881200862057,
+      "count": 154
+    },
+    {
+      "lower": -8.206881200862057,
+      "upper": -0.7138741571927483,
+      "count": 331
+    },
+    {
+      "lower": -0.7138741571927483,
+      "upper": 6.7791328864765745,
+      "count": 441
+    },
+    {
+      "lower": 6.7791328864765745,
+      "upper": 14.272139930145897,
+      "count": 324
+    },
+    {
+      "lower": 14.272139930145897,
+      "upper": 21.76514697381522,
+      "count": 188
+    },
+    {
+      "lower": 21.76514697381522,
+      "upper": 29.25815401748453,
+      "count": 82
+    },
+    {
+      "lower": 29.25815401748453,
+      "upper": 36.751161061153866,
+      "count": 23
+    },
+    {
+      "lower": 36.751161061153866,
+      "upper": 44.24416810482319,
+      "count": 4
+    }
+  ],
+  "curves": {
+    "roc": [
+      {
+        "x": 0.0,
+        "y": 0.0
+      },
+      {
+        "x": 0.004452926208651399,
+        "y": 0.0313588850174216
+      },
+      {
+        "x": 0.007633587786259542,
+        "y": 0.059233449477351915
+      },
+      {
+        "x": 0.011450381679389313,
+        "y": 0.06968641114982578
+      },
+      {
+        "x": 0.015267175572519083,
+        "y": 0.09059233449477352
+      },
+      {
+        "x": 0.01717557251908397,
+        "y": 0.10104529616724739
+      },
+      {
+        "x": 0.027353689567430027,
+        "y": 0.11149825783972125
+      },
+      {
+        "x": 0.031170483460559797,
+        "y": 0.11846689895470383
+      },
+      {
+        "x": 0.035623409669211195,
+        "y": 0.13588850174216027
+      },
+      {
+        "x": 0.043256997455470736,
+        "y": 0.14285714285714285
+      },
+      {
+        "x": 0.044529262086514,
+        "y": 0.14982578397212543
+      },
+      {
+        "x": 0.04834605597964377,
+        "y": 0.16376306620209058
+      },
+      {
+        "x": 0.05216284987277354,
+        "y": 0.17421602787456447
+      },
+      {
+        "x": 0.056615776081424936,
+        "y": 0.1916376306620209
+      },
+      {
+        "x": 0.06679389312977099,
+        "y": 0.20557491289198607
+      },
+      {
+        "x": 0.0693384223918575,
+        "y": 0.21254355400696864
+      },
+      {
+        "x": 0.07633587786259542,
+        "y": 0.2229965156794425
+      },
+      {
+        "x": 0.07888040712468193,
+        "y": 0.23344947735191637
+      },
+      {
+        "x": 0.09287531806615776,
+        "y": 0.24041811846689895
+      },
+      {
+        "x": 0.09478371501272265,
+        "y": 0.2508710801393728
+      },
+      {
+        "x": 0.10368956743002544,
+        "y": 0.26480836236933797
+      },
+      {
+        "x": 0.11323155216284987,
+        "y": 0.27177700348432055
+      },
+      {
+        "x": 0.12595419847328243,
+        "y": 0.289198606271777
+      },
+      {
+        "x": 0.12849872773536897,
+        "y": 0.2961672473867596
+      },
+      {
+        "x": 0.13549618320610687,
+        "y": 0.30662020905923343
+      },
+      {
+        "x": 0.1405852417302799,
+        "y": 0.3205574912891986
+      },
+      {
+        "x": 0.14694656488549618,
+        "y": 0.32752613240418116
+      },
+      {
+        "x": 0.15330788804071246,
+        "y": 0.3344947735191638
+      },
+      {
+        "x": 0.15521628498727735,
+        "y": 0.34494773519163763
+      },
+      {
+        "x": 0.17048346055979643,
+        "y": 0.3623693379790941
+      },
+      {
+        "x": 0.17302798982188294,
+        "y": 0.37282229965156793
+      },
+      {
+        "x": 0.178117048346056,
+        "y": 0.3832752613240418
+      },
+      {
+        "x": 0.1895674300254453,
+        "y": 0.3902439024390244
+      },
+      {
+        "x": 0.19274809160305342,
+        "y": 0.40069686411149824
+      },
+      {
+        "x": 0.20737913486005088,
+        "y": 0.41114982578397213
+      },
+      {
+        "x": 0.21628498727735368,
+        "y": 0.4181184668989547
+      },
+      {
+        "x": 0.22709923664122136,
+        "y": 0.42857142857142855
+      },
+      {
+        "x": 0.2296437659033079,
+        "y": 0.43902439024390244
+      },
+      {
+        "x": 0.24681933842239187,
+        "y": 0.44947735191637633
+      },
+      {
+        "x": 0.25699745547073793,
+        "y": 0.4564459930313589
+      },
+      {
+        "x": 0.26590330788804073,
+        "y": 0.4634146341463415
+      },
+      {
+        "x": 0.2811704834605598,
+        "y": 0.47038327526132406
+      },
+      {
+        "x": 0.28498727735368956,
+        "y": 0.47735191637630664
+      },
+      {
+        "x": 0.2907124681933842,
+        "y": 0.4878048780487805
+      },
+      {
+        "x": 0.2951653944020356,
+        "y": 0.49825783972125437
+      },
+      {
+        "x": 0.30916030534351147,
+        "y": 0.5052264808362369
+      },
+      {
+        "x": 0.3104325699745547,
+        "y": 0.5156794425087108
+      },
+      {
+        "x": 0.3142493638676845,
+        "y": 0.5296167247386759
+      },
+      {
+        "x": 0.3288804071246819,
+        "y": 0.5331010452961672
+      },
+      {
+        "x": 0.3320610687022901,
+        "y": 0.5400696864111498
+      },
+      {
+        "x": 0.3416030534351145,
+        "y": 0.5505226480836237
+      },
+      {
+        "x": 0.3568702290076336,
+        "y": 0.5574912891986062
+      },
+      {
+        "x": 0.36259541984732824,
+        "y": 0.5644599303135889
+      },
+      {
+        "x": 0.3651399491094148,
+        "y": 0.5749128919860628
+      },
+      {
+        "x": 0.3791348600508906,
+        "y": 0.5853658536585366
+      },
+      {
+        "x": 0.383587786259542,
+        "y": 0.5923344947735192
+      },
+      {
+        "x": 0.388676844783715,
+        "y": 0.6062717770034843
+      },
+      {
+        "x": 0.3950381679389313,
+        "y": 0.6132404181184669
+      },
+      {
+        "x": 0.3975826972010178,
+        "y": 0.6236933797909407
+      },
+      {
+        "x": 0.4115776081424936,
+        "y": 0.6306620209059234
+      },
+      {
+        "x": 0.4198473282442748,
+        "y": 0.6376306620209059
+      },
+      {
+        "x": 0.4217557251908397,
+        "y": 0.6515679442508711
+      },
+      {
+        "x": 0.42366412213740456,
+        "y": 0.662020905923345
+      },
+      {
+        "x": 0.44211195928753183,
+        "y": 0.6724738675958188
+      },
+      {
+        "x": 0.44783715012722647,
+        "y": 0.6829268292682927
+      },
+      {
+        "x": 0.45229007633587787,
+        "y": 0.6898954703832753
+      },
+      {
+        "x": 0.47010178117048346,
+        "y": 0.6968641114982579
+      },
+      {
+        "x": 0.4751908396946565,
+        "y": 0.7073170731707317
+      },
+      {
+        "x": 0.4796437659033079,
+        "y": 0.7177700348432056
+      },
+      {
+        "x": 0.4910941475826972,
+        "y": 0.7247386759581882
+      },
+      {
+        "x": 0.494910941475827,
+        "y": 0.735191637630662
+      },
+      {
+        "x": 0.5082697201017812,
+        "y": 0.7421602787456446
+      },
+      {
+        "x": 0.5184478371501272,
+        "y": 0.7456445993031359
+      },
+      {
+        "x": 0.5260814249363868,
+        "y": 0.7560975609756098
+      },
+      {
+        "x": 0.537531806615776,
+        "y": 0.7665505226480837
+      },
+      {
+        "x": 0.5502544529262087,
+        "y": 0.7735191637630662
+      },
+      {
+        "x": 0.5515267175572519,
+        "y": 0.7839721254355401
+      },
+      {
+        "x": 0.5750636132315522,
+        "y": 0.7909407665505227
+      },
+      {
+        "x": 0.5833333333333334,
+        "y": 0.8013937282229965
+      },
+      {
+        "x": 0.589058524173028,
+        "y": 0.8118466898954704
+      },
+      {
+        "x": 0.6094147582697201,
+        "y": 0.8222996515679443
+      },
+      {
+        "x": 0.6208651399491094,
+        "y": 0.8292682926829268
+      },
+      {
+        "x": 0.628498727735369,
+        "y": 0.8466898954703833
+      },
+      {
+        "x": 0.638676844783715,
+        "y": 0.8536585365853658
+      },
+      {
+        "x": 0.6634860050890585,
+        "y": 0.8606271777003485
+      },
+      {
+        "x": 0.6774809160305344,
+        "y": 0.867595818815331
+      },
+      {
+        "x": 0.6857506361323156,
+        "y": 0.8745644599303136
+      },
+      {
+        "x": 0.6940203562340967,
+        "y": 0.8850174216027874
+      },
+      {
+        "x": 0.7010178117048346,
+        "y": 0.8989547038327527
+      },
+      {
+        "x": 0.710559796437659,
+        "y": 0.9059233449477352
+      },
+      {
+        "x": 0.7296437659033079,
+        "y": 0.9198606271777003
+      },
+      {
+        "x": 0.7404580152671756,
+        "y": 0.926829268292683
+      },
+      {
+        "x": 0.7589058524173028,
+        "y": 0.9337979094076655
+      },
+      {
+        "x": 0.7646310432569975,
+        "y": 0.9477351916376306
+      },
+      {
+        "x": 0.7665394402035624,
+        "y": 0.9547038327526133
+      },
+      {
+        "x": 0.7837150127226463,
+        "y": 0.9616724738675958
+      },
+      {
+        "x": 0.7900763358778626,
+        "y": 0.9686411149825784
+      },
+      {
+        "x": 0.8148854961832062,
+        "y": 0.975609756097561
+      },
+      {
+        "x": 0.8874045801526718,
+        "y": 0.9825783972125436
+      },
+      {
+        "x": 0.960559796437659,
+        "y": 0.9965156794425087
+      },
+      {
+        "x": 1.0,
+        "y": 1.0
+      }
+    ],
+    "precisionRecall": [
+      {
+        "x": 1.0,
+        "y": 0.15438407746100055
+      },
+      {
+        "x": 1.0,
+        "y": 0.15606307775965197
+      },
+      {
+        "x": 1.0,
+        "y": 0.15760571114772104
+      },
+      {
+        "x": 0.9965156794425087,
+        "y": 0.15871254162042175
+      },
+      {
+        "x": 0.9930313588850174,
+        "y": 0.15975336322869954
+      },
+      {
+        "x": 0.9895470383275261,
+        "y": 0.16090651558073654
+      },
+      {
+        "x": 0.9895470383275261,
+        "y": 0.16256439610761306
+      },
+      {
+        "x": 0.9895470383275261,
+        "y": 0.16435185185185186
+      },
+      {
+        "x": 0.9895470383275261,
+        "y": 0.16608187134502925
+      },
+      {
+        "x": 0.9895470383275261,
+        "y": 0.16794795978710822
+      },
+      {
+        "x": 0.9825783972125436,
+        "y": 0.16855947399880455
+      },
+      {
+        "x": 0.9825783972125436,
+        "y": 0.17049576783555018
+      },
+      {
+        "x": 0.9825783972125436,
+        "y": 0.17237163814180928
+      },
+      {
+        "x": 0.975609756097561,
+        "y": 0.17316017316017315
+      },
+      {
+        "x": 0.975609756097561,
+        "y": 0.17510944340212634
+      },
+      {
+        "x": 0.975609756097561,
+        "y": 0.17721518987341772
+      },
+      {
+        "x": 0.975609756097561,
+        "y": 0.1792573623559539
+      },
+      {
+        "x": 0.9721254355400697,
+        "y": 0.18081659105638367
+      },
+      {
+        "x": 0.9721254355400697,
+        "y": 0.18295081967213114
+      },
+      {
+        "x": 0.9616724738675958,
+        "y": 0.1833887043189369
+      },
+      {
+        "x": 0.9581881533101045,
+        "y": 0.18493611297915266
+      },
+      {
+        "x": 0.9442508710801394,
+        "y": 0.1846049046321526
+      },
+      {
+        "x": 0.926829268292683,
+        "y": 0.18344827586206897
+      },
+      {
+        "x": 0.926829268292683,
+        "y": 0.18588399720475193
+      },
+      {
+        "x": 0.9198606271777003,
+        "y": 0.18683651804670912
+      },
+      {
+        "x": 0.9128919860627178,
+        "y": 0.18794835007173602
+      },
+      {
+        "x": 0.9059233449477352,
+        "y": 0.18895348837209303
+      },
+      {
+        "x": 0.8954703832752613,
+        "y": 0.18924889543446244
+      },
+      {
+        "x": 0.8780487804878049,
+        "y": 0.1882001493651979
+      },
+      {
+        "x": 0.8745644599303136,
+        "y": 0.19015151515151515
+      },
+      {
+        "x": 0.8606271777003485,
+        "y": 0.18985395849346656
+      },
+      {
+        "x": 0.8606271777003485,
+        "y": 0.19266770670826833
+      },
+      {
+        "x": 0.8571428571428571,
+        "y": 0.19477434679334918
+      },
+      {
+        "x": 0.8501742160278746,
+        "y": 0.19598393574297188
+      },
+      {
+        "x": 0.8397212543554007,
+        "y": 0.1965742251223491
+      },
+      {
+        "x": 0.8292682926829268,
+        "y": 0.19701986754966888
+      },
+      {
+        "x": 0.8222996515679443,
+        "y": 0.1984861227922624
+      },
+      {
+        "x": 0.8118466898954704,
+        "y": 0.19897523484201537
+      },
+      {
+        "x": 0.8048780487804879,
+        "y": 0.20052083333333334
+      },
+      {
+        "x": 0.7979094076655052,
+        "y": 0.2019400352733686
+      },
+      {
+        "x": 0.7874564459930313,
+        "y": 0.20269058295964126
+      },
+      {
+        "x": 0.7839721254355401,
+        "y": 0.20510483135824978
+      },
+      {
+        "x": 0.7735191637630662,
+        "y": 0.20593692022263452
+      },
+      {
+        "x": 0.7665505226480837,
+        "y": 0.20754716981132076
+      },
+      {
+        "x": 0.7526132404181185,
+        "y": 0.207492795389049
+      },
+      {
+        "x": 0.7456445993031359,
+        "y": 0.20939334637964774
+      },
+      {
+        "x": 0.7386759581881533,
+        "y": 0.21136590229312063
+      },
+      {
+        "x": 0.7317073170731707,
+        "y": 0.2131979695431472
+      },
+      {
+        "x": 0.7177700348432056,
+        "y": 0.21347150259067357
+      },
+      {
+        "x": 0.7003484320557491,
+        "y": 0.2122492080253432
+      },
+      {
+        "x": 0.6933797909407665,
+        "y": 0.21443965517241378
+      },
+      {
+        "x": 0.6898954703832753,
+        "y": 0.2175824175824176
+      },
+      {
+        "x": 0.6759581881533101,
+        "y": 0.21748878923766815
+      },
+      {
+        "x": 0.6724738675958188,
+        "y": 0.22107674684994272
+      },
+      {
+        "x": 0.6585365853658537,
+        "y": 0.22105263157894736
+      },
+      {
+        "x": 0.6341463414634146,
+        "y": 0.21770334928229665
+      },
+      {
+        "x": 0.627177700348432,
+        "y": 0.2200488997555012
+      },
+      {
+        "x": 0.6167247386759582,
+        "y": 0.22152690863579474
+      },
+      {
+        "x": 0.5993031358885017,
+        "y": 0.22023047375160051
+      },
+      {
+        "x": 0.5853658536585366,
+        "y": 0.2204724409448819
+      },
+      {
+        "x": 0.5749128919860628,
+        "y": 0.2217741935483871
+      },
+      {
+        "x": 0.5644599303135889,
+        "y": 0.22344827586206897
+      },
+      {
+        "x": 0.554006968641115,
+        "y": 0.2248939179632249
+      },
+      {
+        "x": 0.5470383275261324,
+        "y": 0.22819767441860464
+      },
+      {
+        "x": 0.5331010452961672,
+        "y": 0.22835820895522388
+      },
+      {
+        "x": 0.5296167247386759,
+        "y": 0.23384615384615384
+      },
+      {
+        "x": 0.5087108013937283,
+        "y": 0.2310126582278481
+      },
+      {
+        "x": 0.49825783972125437,
+        "y": 0.233278955954323
+      },
+      {
+        "x": 0.4878048780487805,
+        "y": 0.23529411764705882
+      },
+      {
+        "x": 0.46689895470383275,
+        "y": 0.2326388888888889
+      },
+      {
+        "x": 0.46689895470383275,
+        "y": 0.24057450628366248
+      },
+      {
+        "x": 0.4564459930313589,
+        "y": 0.24349442379182157
+      },
+      {
+        "x": 0.4529616724738676,
+        "y": 0.25
+      },
+      {
+        "x": 0.445993031358885,
+        "y": 0.2554890219560878
+      },
+      {
+        "x": 0.43205574912891986,
+        "y": 0.2567287784679089
+      },
+      {
+        "x": 0.4181184668989547,
+        "y": 0.25862068965517243
+      },
+      {
+        "x": 0.41114982578397213,
+        "y": 0.26576576576576577
+      },
+      {
+        "x": 0.40418118466898956,
+        "y": 0.27230046948356806
+      },
+      {
+        "x": 0.3867595818815331,
+        "y": 0.2727272727272727
+      },
+      {
+        "x": 0.3797909407665505,
+        "y": 0.2802056555269923
+      },
+      {
+        "x": 0.3623693379790941,
+        "y": 0.2810810810810811
+      },
+      {
+        "x": 0.34494773519163763,
+        "y": 0.28125
+      },
+      {
+        "x": 0.3310104529616725,
+        "y": 0.2852852852852853
+      },
+      {
+        "x": 0.3205574912891986,
+        "y": 0.2920634920634921
+      },
+      {
+        "x": 0.29965156794425085,
+        "y": 0.2905405405405405
+      },
+      {
+        "x": 0.2787456445993031,
+        "y": 0.28776978417266186
+      },
+      {
+        "x": 0.27526132404181186,
+        "y": 0.305019305019305
+      },
+      {
+        "x": 0.2682926829268293,
+        "y": 0.31950207468879666
+      },
+      {
+        "x": 0.2508710801393728,
+        "y": 0.32432432432432434
+      },
+      {
+        "x": 0.23693379790940766,
+        "y": 0.3333333333333333
+      },
+      {
+        "x": 0.2229965156794425,
+        "y": 0.34594594594594597
+      },
+      {
+        "x": 0.20905923344947736,
+        "y": 0.3592814371257485
+      },
+      {
+        "x": 0.1951219512195122,
+        "y": 0.3783783783783784
+      },
+      {
+        "x": 0.17073170731707318,
+        "y": 0.3769230769230769
+      },
+      {
+        "x": 0.14634146341463414,
+        "y": 0.3783783783783784
+      },
+      {
+        "x": 0.13240418118466898,
+        "y": 0.40860215053763443
+      },
+      {
+        "x": 0.11149825783972125,
+        "y": 0.43243243243243246
+      },
+      {
+        "x": 0.10104529616724739,
+        "y": 0.5178571428571429
+      },
+      {
+        "x": 0.06968641114982578,
+        "y": 0.5405405405405406
+      },
+      {
+        "x": 0.041811846689895474,
+        "y": 0.631578947368421
+      },
+      {
+        "x": 0.0,
+        "y": 1.0
+      }
+    ]
+  },
+  "predictionExamples": [
+    {
+      "participant": "014",
+      "cursor": 72,
+      "actual": 115.0,
+      "prediction": 111.27753909808455,
+      "risk": 0.23120337789531736,
+      "absoluteError": 3.722460901915454
+    },
+    {
+      "participant": "014",
+      "cursor": 117,
+      "actual": 83.0,
+      "prediction": 111.82360102450544,
+      "risk": 0.13045135233186061,
+      "absoluteError": 28.823601024505436
+    },
+    {
+      "participant": "014",
+      "cursor": 165,
+      "actual": 124.0,
+      "prediction": 109.32295259909405,
+      "risk": 0.23953769875937442,
+      "absoluteError": 14.677047400905948
+    },
+    {
+      "participant": "014",
+      "cursor": 210,
+      "actual": 92.0,
+      "prediction": 106.76196366996106,
+      "risk": 0.21392770902785807,
+      "absoluteError": 14.761963669961062
+    },
+    {
+      "participant": "014",
+      "cursor": 258,
+      "actual": 91.0,
+      "prediction": 103.19174765914113,
+      "risk": 0.17078638357707132,
+      "absoluteError": 12.191747659141129
+    },
+    {
+      "participant": "014",
+      "cursor": 306,
+      "actual": 151.0,
+      "prediction": 91.3994824736798,
+      "risk": 0.16501175288870995,
+      "absoluteError": 59.6005175263202
+    },
+    {
+      "participant": "014",
+      "cursor": 351,
+      "actual": 129.0,
+      "prediction": 111.27405598731139,
+      "risk": 0.055236341112908365,
+      "absoluteError": 17.725944012688615
+    },
+    {
+      "participant": "014",
+      "cursor": 399,
+      "actual": 114.0,
+      "prediction": 112.22286673741725,
+      "risk": 0.24728293555034286,
+      "absoluteError": 1.7771332625827512
+    },
+    {
+      "participant": "014",
+      "cursor": 444,
+      "actual": 96.0,
+      "prediction": 109.14500122559241,
+      "risk": 0.29240017567353255,
+      "absoluteError": 13.14500122559241
+    },
+    {
+      "participant": "014",
+      "cursor": 492,
+      "actual": 95.0,
+      "prediction": 96.94044491437917,
+      "risk": 0.19520933357879222,
+      "absoluteError": 1.9404449143791709
+    },
+    {
+      "participant": "014",
+      "cursor": 540,
+      "actual": 97.0,
+      "prediction": 116.9126361366338,
+      "risk": 0.07995701266102642,
+      "absoluteError": 19.912636136633793
+    },
+    {
+      "participant": "014",
+      "cursor": 585,
+      "actual": 93.0,
+      "prediction": 107.13168478274604,
+      "risk": 0.25968752702035763,
+      "absoluteError": 14.131684782746035
+    },
+    {
+      "participant": "014",
+      "cursor": 633,
+      "actual": 138.0,
+      "prediction": 110.85627922767196,
+      "risk": 0.09263308444181959,
+      "absoluteError": 27.143720772328038
+    },
+    {
+      "participant": "014",
+      "cursor": 678,
+      "actual": 124.0,
+      "prediction": 117.28651564432566,
+      "risk": 0.09514711615092106,
+      "absoluteError": 6.713484355674339
+    },
+    {
+      "participant": "014",
+      "cursor": 726,
+      "actual": 179.0,
+      "prediction": 116.5345105105699,
+      "risk": 0.16220710068022712,
+      "absoluteError": 62.4654894894301
+    },
+    {
+      "participant": "014",
+      "cursor": 774,
+      "actual": 102.0,
+      "prediction": 107.77918672358207,
+      "risk": 0.36963203377818454,
+      "absoluteError": 5.779186723582072
+    },
+    {
+      "participant": "014",
+      "cursor": 819,
+      "actual": 103.0,
+      "prediction": 109.74991305988657,
+      "risk": 0.26123866158359754,
+      "absoluteError": 6.749913059886566
+    },
+    {
+      "participant": "014",
+      "cursor": 867,
+      "actual": 103.0,
+      "prediction": 103.346370729913,
+      "risk": 0.23975866708444382,
+      "absoluteError": 0.346370729913005
+    },
+    {
+      "participant": "014",
+      "cursor": 915,
+      "actual": 123.0,
+      "prediction": 116.1107739284231,
+      "risk": 0.05559063207170917,
+      "absoluteError": 6.8892260715769
+    },
+    {
+      "participant": "014",
+      "cursor": 960,
+      "actual": 122.0,
+      "prediction": 115.90080835042585,
+      "risk": 0.12296536465616137,
+      "absoluteError": 6.099191649574152
+    },
+    {
+      "participant": "014",
+      "cursor": 1008,
+      "actual": 109.0,
+      "prediction": 111.70915061880204,
+      "risk": 0.11407742796691173,
+      "absoluteError": 2.7091506188020418
+    },
+    {
+      "participant": "014",
+      "cursor": 1053,
+      "actual": 135.0,
+      "prediction": 113.48646708913479,
+      "risk": 0.19150572677606248,
+      "absoluteError": 21.51353291086521
+    },
+    {
+      "participant": "014",
+      "cursor": 1101,
+      "actual": 103.0,
+      "prediction": 109.58995019612067,
+      "risk": 0.2695628451755477,
+      "absoluteError": 6.589950196120668
+    },
+    {
+      "participant": "014",
+      "cursor": 1149,
+      "actual": 107.0,
+      "prediction": 99.34662598968902,
+      "risk": 0.2550248118340535,
+      "absoluteError": 7.6533740103109835
+    },
+    {
+      "participant": "014",
+      "cursor": 1194,
+      "actual": 139.0,
+      "prediction": 117.83325908540961,
+      "risk": 0.03768944933008988,
+      "absoluteError": 21.16674091459039
+    },
+    {
+      "participant": "014",
+      "cursor": 1242,
+      "actual": 103.0,
+      "prediction": 116.80467679238681,
+      "risk": 0.2517261248726339,
+      "absoluteError": 13.804676792386815
+    },
+    {
+      "participant": "014",
+      "cursor": 1287,
+      "actual": 118.0,
+      "prediction": 110.75955526809467,
+      "risk": 0.15800629798245414,
+      "absoluteError": 7.240444731905328
+    },
+    {
+      "participant": "014",
+      "cursor": 1335,
+      "actual": 100.0,
+      "prediction": 123.89322486095419,
+      "risk": 0.03073135892856656,
+      "absoluteError": 23.89322486095419
+    },
+    {
+      "participant": "014",
+      "cursor": 1383,
+      "actual": 115.0,
+      "prediction": 107.86741608652625,
+      "risk": 0.26296981420301807,
+      "absoluteError": 7.132583913473752
+    },
+    {
+      "participant": "014",
+      "cursor": 1428,
+      "actual": 89.0,
+      "prediction": 96.56972446510483,
+      "risk": 0.3214562209203317,
+      "absoluteError": 7.5697244651048265
+    },
+    {
+      "participant": "014",
+      "cursor": 1476,
+      "actual": 153.0,
+      "prediction": 93.53643532356844,
+      "risk": 0.17981666914242267,
+      "absoluteError": 59.46356467643156
+    },
+    {
+      "participant": "014",
+      "cursor": 1524,
+      "actual": 116.0,
+      "prediction": 106.59489146376586,
+      "risk": 0.05008230746158857,
+      "absoluteError": 9.405108536234138
+    },
+    {
+      "participant": "014",
+      "cursor": 1569,
+      "actual": 112.0,
+      "prediction": 115.15725939720939,
+      "risk": 0.2460093107245789,
+      "absoluteError": 3.157259397209387
+    },
+    {
+      "participant": "014",
+      "cursor": 1617,
+      "actual": 96.0,
+      "prediction": 109.15211072341988,
+      "risk": 0.26063636628678055,
+      "absoluteError": 13.15211072341988
+    },
+    {
+      "participant": "014",
+      "cursor": 1662,
+      "actual": 140.0,
+      "prediction": 110.19629997479234,
+      "risk": 0.11982691003005815,
+      "absoluteError": 29.80370002520766
+    },
+    {
+      "participant": "014",
+      "cursor": 1710,
+      "actual": 95.0,
+      "prediction": 112.10256525209789,
+      "risk": 0.22938275107224676,
+      "absoluteError": 17.10256525209789
+    },
+    {
+      "participant": "014",
+      "cursor": 1758,
+      "actual": 157.0,
+      "prediction": 126.7781868505934,
+      "risk": 0.0643153427393512,
+      "absoluteError": 30.2218131494066
+    },
+    {
+      "participant": "014",
+      "cursor": 1803,
+      "actual": 116.0,
+      "prediction": 119.4376741184652,
+      "risk": 0.057217875659238596,
+      "absoluteError": 3.437674118465196
+    },
+    {
+      "participant": "014",
+      "cursor": 1851,
+      "actual": 119.0,
+      "prediction": 115.29034625636994,
+      "risk": 0.13221525697339154,
+      "absoluteError": 3.7096537436300565
+    },
+    {
+      "participant": "014",
+      "cursor": 1896,
+      "actual": 142.0,
+      "prediction": 119.75207415782177,
+      "risk": 0.0922495162264465,
+      "absoluteError": 22.247925842178233
+    },
+    {
+      "participant": "014",
+      "cursor": 1944,
+      "actual": 102.0,
+      "prediction": 122.19778452022354,
+      "risk": 0.056286737153442686,
+      "absoluteError": 20.197784520223536
+    },
+    {
+      "participant": "014",
+      "cursor": 1992,
+      "actual": 133.0,
+      "prediction": 116.28880348249166,
+      "risk": 0.058412021634347486,
+      "absoluteError": 16.71119651750834
+    },
+    {
+      "participant": "014",
+      "cursor": 2037,
+      "actual": 155.0,
+      "prediction": 118.16603355087568,
+      "risk": 0.15514772832439816,
+      "absoluteError": 36.83396644912432
+    },
+    {
+      "participant": "014",
+      "cursor": 2085,
+      "actual": 123.0,
+      "prediction": 112.55792471294404,
+      "risk": 0.310728664016461,
+      "absoluteError": 10.442075287055957
+    },
+    {
+      "participant": "014",
+      "cursor": 2130,
+      "actual": 124.0,
+      "prediction": 121.29889124851485,
+      "risk": 0.07168090159820849,
+      "absoluteError": 2.701108751485151
+    },
+    {
+      "participant": "014",
+      "cursor": 2178,
+      "actual": 108.0,
+      "prediction": 126.37157629441786,
+      "risk": 0.23417209069133285,
+      "absoluteError": 18.371576294417864
+    },
+    {
+      "participant": "015",
+      "cursor": 399,
+      "actual": 127.0,
+      "prediction": 120.02495260716235,
+      "risk": 0.06577875792820057,
+      "absoluteError": 6.975047392837652
+    },
+    {
+      "participant": "015",
+      "cursor": 444,
+      "actual": 123.0,
+      "prediction": 120.59426034607691,
+      "risk": 0.16533610920522518,
+      "absoluteError": 2.405739653923092
+    },
+    {
+      "participant": "015",
+      "cursor": 492,
+      "actual": 108.0,
+      "prediction": 106.74651336331173,
+      "risk": 0.23247436070338665,
+      "absoluteError": 1.2534866366882653
+    },
+    {
+      "participant": "015",
+      "cursor": 540,
+      "actual": 95.0,
+      "prediction": 112.25888818733063,
+      "risk": 0.18358788367340775,
+      "absoluteError": 17.258888187330626
+    },
+    {
+      "participant": "015",
+      "cursor": 699,
+      "actual": 116.0,
+      "prediction": 121.64969443711911,
+      "risk": 0.09425961577272535,
+      "absoluteError": 5.649694437119109
+    },
+    {
+      "participant": "015",
+      "cursor": 747,
+      "actual": 102.0,
+      "prediction": 117.21559768697358,
+      "risk": 0.13351240198624567,
+      "absoluteError": 15.215597686973581
+    },
+    {
+      "participant": "015",
+      "cursor": 792,
+      "actual": 92.0,
+      "prediction": 102.68690963831548,
+      "risk": 0.24504930050962398,
+      "absoluteError": 10.686909638315484
+    },
+    {
+      "participant": "015",
+      "cursor": 840,
+      "actual": 107.0,
+      "prediction": 101.15819924431383,
+      "risk": 0.19337190453845582,
+      "absoluteError": 5.841800755686165
+    },
+    {
+      "participant": "015",
+      "cursor": 888,
+      "actual": 115.0,
+      "prediction": 100.51498226170051,
+      "risk": 0.2034763762989344,
+      "absoluteError": 14.48501773829949
+    },
+    {
+      "participant": "015",
+      "cursor": 933,
+      "actual": 126.0,
+      "prediction": 107.9227225946109,
+      "risk": 0.20660573245840647,
+      "absoluteError": 18.077277405389097
+    },
+    {
+      "participant": "015",
+      "cursor": 981,
+      "actual": 113.0,
+      "prediction": 111.92884621536689,
+      "risk": 0.1598387640674591,
+      "absoluteError": 1.0711537846331112
+    },
+    {
+      "participant": "015",
+      "cursor": 1026,
+      "actual": 106.0,
+      "prediction": 111.03619585494376,
+      "risk": 0.22505414333412552,
+      "absoluteError": 5.036195854943756
+    },
+    {
+      "participant": "015",
+      "cursor": 1074,
+      "actual": 87.0,
+      "prediction": 97.20903248826501,
+      "risk": 0.23170801462330823,
+      "absoluteError": 10.20903248826501
+    },
+    {
+      "participant": "015",
+      "cursor": 1122,
+      "actual": 155.0,
+      "prediction": 93.50365077396849,
+      "risk": 0.1709803235604324,
+      "absoluteError": 61.49634922603151
+    },
+    {
+      "participant": "015",
+      "cursor": 1167,
+      "actual": 78.0,
+      "prediction": 119.85178167151771,
+      "risk": 0.02941364681574774,
+      "absoluteError": 41.85178167151771
+    },
+    {
+      "participant": "015",
+      "cursor": 1215,
+      "actual": 112.0,
+      "prediction": 109.80559036620079,
+      "risk": 0.21738768075561535,
+      "absoluteError": 2.1944096337992107
+    },
+    {
+      "participant": "015",
+      "cursor": 1263,
+      "actual": 121.0,
+      "prediction": 107.1881662604248,
+      "risk": 0.13711991222726333,
+      "absoluteError": 13.811833739575206
+    },
+    {
+      "participant": "015",
+      "cursor": 1308,
+      "actual": 96.0,
+      "prediction": 116.22583518540883,
+      "risk": 0.09447965758506217,
+      "absoluteError": 20.225835185408826
+    },
+    {
+      "participant": "015",
+      "cursor": 1356,
+      "actual": 88.0,
+      "prediction": 108.389429066288,
+      "risk": 0.2099269411901108,
+      "absoluteError": 20.389429066288002
+    },
+    {
+      "participant": "015",
+      "cursor": 1401,
+      "actual": 91.0,
+      "prediction": 98.91402980162071,
+      "risk": 0.2684613844182198,
+      "absoluteError": 7.914029801620714
+    },
+    {
+      "participant": "015",
+      "cursor": 1449,
+      "actual": 105.0,
+      "prediction": 109.93752715501743,
+      "risk": 0.12870761822849008,
+      "absoluteError": 4.937527155017435
+    },
+    {
+      "participant": "015",
+      "cursor": 1497,
+      "actual": 106.0,
+      "prediction": 111.8030215152102,
+      "risk": 0.04441572575386133,
+      "absoluteError": 5.8030215152102045
+    },
+    {
+      "participant": "015",
+      "cursor": 1542,
+      "actual": 109.0,
+      "prediction": 112.32983110979866,
+      "risk": 0.14176910968203452,
+      "absoluteError": 3.3298311097986613
+    },
+    {
+      "participant": "015",
+      "cursor": 1590,
+      "actual": 121.0,
+      "prediction": 113.6635899560933,
+      "risk": 0.1672403403305766,
+      "absoluteError": 7.336410043906696
+    },
+    {
+      "participant": "015",
+      "cursor": 1977,
+      "actual": 103.0,
+      "prediction": 108.71504454139941,
+      "risk": 0.1330386774003377,
+      "absoluteError": 5.715044541399408
+    },
+    {
+      "participant": "015",
+      "cursor": 2025,
+      "actual": 102.0,
+      "prediction": 113.03730061507817,
+      "risk": 0.14227927531554058,
+      "absoluteError": 11.037300615078166
+    },
+    {
+      "participant": "015",
+      "cursor": 2073,
+      "actual": 108.0,
+      "prediction": 109.66529253251514,
+      "risk": 0.25606946302145417,
+      "absoluteError": 1.6652925325151386
+    },
+    {
+      "participant": "015",
+      "cursor": 2118,
+      "actual": 134.0,
+      "prediction": 113.91612378285902,
+      "risk": 0.11862208469406908,
+      "absoluteError": 20.083876217140983
+    },
+    {
+      "participant": "015",
+      "cursor": 2166,
+      "actual": 99.0,
+      "prediction": 120.64875434496649,
+      "risk": 0.1300013696974636,
+      "absoluteError": 21.64875434496649
+    },
+    {
+      "participant": "016",
+      "cursor": 87,
+      "actual": 145.0,
+      "prediction": 100.0826284736524,
+      "risk": 0.11613296361817106,
+      "absoluteError": 44.917371526347594
+    },
+    {
+      "participant": "016",
+      "cursor": 132,
+      "actual": 100.0,
+      "prediction": 111.4315277662958,
+      "risk": 0.28445969275324573,
+      "absoluteError": 11.431527766295801
+    },
+    {
+      "participant": "016",
+      "cursor": 180,
+      "actual": 95.0,
+      "prediction": 97.14487763277022,
+      "risk": 0.31429128222622127,
+      "absoluteError": 2.1448776327702177
+    },
+    {
+      "participant": "016",
+      "cursor": 225,
+      "actual": 108.0,
+      "prediction": 99.16932151304331,
+      "risk": 0.25205835277214655,
+      "absoluteError": 8.830678486956685
+    },
+    {
+      "participant": "016",
+      "cursor": 273,
+      "actual": 136.0,
+      "prediction": 100.37633164567684,
+      "risk": 0.16876640685135655,
+      "absoluteError": 35.62366835432316
+    },
+    {
+      "participant": "016",
+      "cursor": 321,
+      "actual": 123.0,
+      "prediction": 104.0564592105038,
+      "risk": 0.2532217072527518,
+      "absoluteError": 18.943540789496197
+    },
+    {
+      "participant": "016",
+      "cursor": 366,
+      "actual": 91.0,
+      "prediction": 104.05600322424804,
+      "risk": 0.22100790879615742,
+      "absoluteError": 13.056003224248045
+    },
+    {
+      "participant": "016",
+      "cursor": 414,
+      "actual": 102.0,
+      "prediction": 107.89269549402499,
+      "risk": 0.16317719695488428,
+      "absoluteError": 5.892695494024991
+    },
+    {
+      "participant": "016",
+      "cursor": 459,
+      "actual": 102.0,
+      "prediction": 99.2709850212757,
+      "risk": 0.26495340108169013,
+      "absoluteError": 2.729014978724294
+    },
+    {
+      "participant": "016",
+      "cursor": 507,
+      "actual": 118.0,
+      "prediction": 91.59279667385978,
+      "risk": 0.36302750462273237,
+      "absoluteError": 26.40720332614022
+    },
+    {
+      "participant": "016",
+      "cursor": 582,
+      "actual": 84.0,
+      "prediction": 91.75301725130558,
+      "risk": 0.1504301929247824,
+      "absoluteError": 7.753017251305579
+    },
+    {
+      "participant": "016",
+      "cursor": 627,
+      "actual": 132.0,
+      "prediction": 105.96300218414258,
+      "risk": 0.06924585533293857,
+      "absoluteError": 26.03699781585742
+    },
+    {
+      "participant": "016",
+      "cursor": 675,
+      "actual": 145.0,
+      "prediction": 107.60751593595296,
+      "risk": 0.14016102485844603,
+      "absoluteError": 37.39248406404704
+    },
+    {
+      "participant": "016",
+      "cursor": 720,
+      "actual": 114.0,
+      "prediction": 108.03203665252778,
+      "risk": 0.23612787670432633,
+      "absoluteError": 5.967963347472221
+    },
+    {
+      "participant": "016",
+      "cursor": 768,
+      "actual": 107.0,
+      "prediction": 110.01707872619365,
+      "risk": 0.18851129411694265,
+      "absoluteError": 3.0170787261936454
+    },
+    {
+      "participant": "016",
+      "cursor": 816,
+      "actual": 102.0,
+      "prediction": 109.5343826958572,
+      "risk": 0.28605365390306675,
+      "absoluteError": 7.534382695857204
+    },
+    {
+      "participant": "016",
+      "cursor": 861,
+      "actual": 105.0,
+      "prediction": 92.98269873490953,
+      "risk": 0.23516819202727504,
+      "absoluteError": 12.017301265090467
+    },
+    {
+      "participant": "016",
+      "cursor": 909,
+      "actual": 96.0,
+      "prediction": 108.36416080013966,
+      "risk": 0.15598102120959628,
+      "absoluteError": 12.364160800139658
+    },
+    {
+      "participant": "016",
+      "cursor": 957,
+      "actual": 109.0,
+      "prediction": 97.2534196290891,
+      "risk": 0.28422529264091645,
+      "absoluteError": 11.746580370910905
+    },
+    {
+      "participant": "016",
+      "cursor": 1002,
+      "actual": 91.0,
+      "prediction": 104.34340143369484,
+      "risk": 0.24341113507990253,
+      "absoluteError": 13.343401433694837
+    },
+    {
+      "participant": "016",
+      "cursor": 1050,
+      "actual": 93.0,
+      "prediction": 92.53211139331434,
+      "risk": 0.33967763169945847,
+      "absoluteError": 0.467888606685662
+    },
+    {
+      "participant": "016",
+      "cursor": 1095,
+      "actual": 81.0,
+      "prediction": 102.23902921741995,
+      "risk": 0.1063491975288249,
+      "absoluteError": 21.239029217419954
+    },
+    {
+      "participant": "016",
+      "cursor": 1143,
+      "actual": 82.0,
+      "prediction": 92.4077744551474,
+      "risk": 0.19005576724160525,
+      "absoluteError": 10.407774455147404
+    },
+    {
+      "participant": "016",
+      "cursor": 1191,
+      "actual": 108.0,
+      "prediction": 91.485325497619,
+      "risk": 0.12670804640181754,
+      "absoluteError": 16.514674502381
+    },
+    {
+      "participant": "016",
+      "cursor": 1236,
+      "actual": 99.0,
+      "prediction": 112.74445289901138,
+      "risk": 0.029943786139927504,
+      "absoluteError": 13.744452899011378
+    },
+    {
+      "participant": "016",
+      "cursor": 1383,
+      "actual": 94.0,
+      "prediction": 96.71689234266596,
+      "risk": 0.09256231474615584,
+      "absoluteError": 2.7168923426659575
+    },
+    {
+      "participant": "016",
+      "cursor": 1428,
+      "actual": 91.0,
+      "prediction": 108.598480209748,
+      "risk": 0.09041753952544647,
+      "absoluteError": 17.598480209748004
+    },
+    {
+      "participant": "016",
+      "cursor": 1476,
+      "actual": 83.0,
+      "prediction": 102.2408461623342,
+      "risk": 0.21633566964948128,
+      "absoluteError": 19.240846162334194
+    },
+    {
+      "participant": "016",
+      "cursor": 1524,
+      "actual": 83.0,
+      "prediction": 104.83326260394192,
+      "risk": 0.05630187366696594,
+      "absoluteError": 21.833262603941918
+    },
+    {
+      "participant": "016",
+      "cursor": 1569,
+      "actual": 110.0,
+      "prediction": 106.7660441280729,
+      "risk": 0.09118095625379204,
+      "absoluteError": 3.233955871927094
+    },
+    {
+      "participant": "016",
+      "cursor": 1617,
+      "actual": 101.0,
+      "prediction": 111.16806021574808,
+      "risk": 0.13344267838151744,
+      "absoluteError": 10.168060215748085
+    },
+    {
+      "participant": "016",
+      "cursor": 1665,
+      "actual": 105.0,
+      "prediction": 102.3722539052381,
+      "risk": 0.26027535194568446,
+      "absoluteError": 2.6277460947619034
+    },
+    {
+      "participant": "016",
+      "cursor": 1710,
+      "actual": 103.0,
+      "prediction": 112.31396919044617,
+      "risk": 0.07111743212573461,
+      "absoluteError": 9.313969190446173
+    },
+    {
+      "participant": "016",
+      "cursor": 1758,
+      "actual": 90.0,
+      "prediction": 104.94774133495609,
+      "risk": 0.07154861712190379,
+      "absoluteError": 14.947741334956092
+    },
+    {
+      "participant": "016",
+      "cursor": 1803,
+      "actual": 133.0,
+      "prediction": 101.59763949032248,
+      "risk": 0.18147050627607236,
+      "absoluteError": 31.40236050967752
+    },
+    {
+      "participant": "016",
+      "cursor": 1851,
+      "actual": 105.0,
+      "prediction": 103.80006114506719,
+      "risk": 0.2227909530139336,
+      "absoluteError": 1.1999388549328103
+    },
+    {
+      "participant": "016",
+      "cursor": 1899,
+      "actual": 105.0,
+      "prediction": 109.72726531173183,
+      "risk": 0.20916511186741096,
+      "absoluteError": 4.727265311731827
+    },
+    {
+      "participant": "016",
+      "cursor": 1944,
+      "actual": 111.0,
+      "prediction": 110.76911447911199,
+      "risk": 0.15934677311623766,
+      "absoluteError": 0.23088552088800895
+    },
+    {
+      "participant": "016",
+      "cursor": 1992,
+      "actual": 104.0,
+      "prediction": 116.91233214646157,
+      "risk": 0.06596749392079562,
+      "absoluteError": 12.912332146461566
+    },
+    {
+      "participant": "016",
+      "cursor": 2037,
+      "actual": 99.0,
+      "prediction": 108.48892310699539,
+      "risk": 0.21685104987584627,
+      "absoluteError": 9.488923106995387
+    },
+    {
+      "participant": "016",
+      "cursor": 2085,
+      "actual": 135.0,
+      "prediction": 111.24482525025839,
+      "risk": 0.20075955567321474,
+      "absoluteError": 23.755174749741613
+    },
+    {
+      "participant": "016",
+      "cursor": 2133,
+      "actual": 136.0,
+      "prediction": 114.38358964346911,
+      "risk": 0.06318609434465156,
+      "absoluteError": 21.616410356530892
+    },
+    {
+      "participant": "016",
+      "cursor": 2178,
+      "actual": 113.0,
+      "prediction": 110.52057849391356,
+      "risk": 0.3400604885942605,
+      "absoluteError": 2.479421506086439
+    },
+    {
+      "participant": "016",
+      "cursor": 2226,
+      "actual": 100.0,
+      "prediction": 108.08925175257825,
+      "risk": 0.16201587838468165,
+      "absoluteError": 8.08925175257825
+    },
+    {
+      "participant": "016",
+      "cursor": 2274,
+      "actual": 102.0,
+      "prediction": 105.85904159910383,
+      "risk": 0.24172609089468336,
+      "absoluteError": 3.8590415991038327
+    }
+  ],
+  "calibrationStatus": "Platt calibrated on2 separate participants; small-sample calibration is limited.",
+  "calibrationMetrics": {
+    "windows": 1277,
+    "participants": 2,
+    "positiveWindows": 192,
+    "positiveRate": 0.15035238841033674,
+    "mae": 13.76030008215895,
+    "participantMacroMae": 13.792215927784959,
+    "rmse": 21.547344677210543,
+    "auroc": 0.6579013056835636,
+    "auprc": 0.270780393371048,
+    "brier": 0.12193845824677554,
+    "threshold": 0.18000000000000002,
+    "recall": 0.5104166666666666,
+    "precision": 0.23501199040767387,
+    "f1": 0.3218390804597701,
+    "confusionMatrix": [
+      [
+        766,
+        319
+      ],
+      [
+        94,
+        98
+      ]
+    ],
+    "intervalCoverage": 0.9005481597494127,
+    "intervalMeanWidth": 71.6786661253374,
+    "calibration": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "count": 375,
+        "predicted": 0.06512495221866192,
+        "observed": 0.048
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "count": 582,
+        "predicted": 0.14941588176215506,
+        "observed": 0.17010309278350516
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.30000000000000004,
+        "count": 282,
+        "predicted": 0.23986437217887344,
+        "observed": 0.20212765957446807
+      },
+      {
+        "lower": 0.30000000000000004,
+        "upper": 0.4,
+        "count": 34,
+        "predicted": 0.32917320755313184,
+        "observed": 0.47058823529411764
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "count": 4,
+        "predicted": 0.4376401317744257,
+        "observed": 0.5
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6,
+        "count": 0,
+        "predicted": null,
+        "observed": null
+      },
+      {
+        "lower": 0.6000000000000001,
+        "upper": 0.7000000000000001,
+        "count": 0,
+        "predicted": null,
+        "observed": null
+      },
+      {
+        "lower": 0.7000000000000001,
+        "upper": 0.8,
+        "count": 0,
+        "predicted": null,
+        "observed": null
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "count": 0,
+        "predicted": null,
+        "observed": null
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "count": 0,
+        "predicted": null,
+        "observed": null
+      }
+    ],
+    "ece": 0.026751070686736184,
+    "byHorizon": [
+      {
+        "minutes": 30,
+        "mae": 10.580123928346923,
+        "rmse": 17.43570119157832,
+        "intervalCoverage": 0.9005481597494127,
+        "intervalMeanWidth": 56.92670425115534
+      },
+      {
+        "minutes": 60,
+        "mae": 12.487859179061656,
+        "rmse": 20.28724831493048,
+        "intervalCoverage": 0.9005481597494127,
+        "intervalMeanWidth": 68.56911775463345
+      },
+      {
+        "minutes": 90,
+        "mae": 13.043247871249106,
+        "rmse": 20.791149088968865,
+        "intervalCoverage": 0.9005481597494127,
+        "intervalMeanWidth": 67.90034974484695
+      },
+      {
+        "minutes": 120,
+        "mae": 13.76030008215895,
+        "rmse": 21.547344677210543,
+        "intervalCoverage": 0.9005481597494127,
+        "intervalMeanWidth": 71.6786661253374
+      }
+    ]
+  },
+  "limitations": [
+    "Only16 research participants; final evaluation has3 and calibration2.",
+    "Unmatched Synthea EHR belongs to a different simulated person and cannot establish clinical fusion.",
+    "Matched HbA1c measurement time is unspecified; treating it as baseline is an assumption.",
+    "Source HR timestamps may be minute-rounded; conservatively delayed to completed minute.",
+    "No sleep stages, step counts or activity were imported; missing channels remain unavailable.",
+    "Targets use nearest actual CGM observation within150seconds of nominal horizon; no target interpolation.",
+    "Empirical residual intervals and Platt calibration are limited by the small calibration cohort.",
+    "The primary eligible model was selected on two participants; model ranking may be unstable.",
+    "Three held-out participants do not support reliable population confidence intervals or clinical claims.",
+    "Window counts overlap in time and are not independent adverse episodes.",
+    "No genuine clinical history is linked to the wearable participants beyond supplied research metadata.",
+    "Unmatched EHR ablations test arbitrary composite assignment, not physiological fusion.",
+    "The primary event is a predeclared research label chosen from train-only prevalence, not a medical diagnosis.",
+    "Performance cannot be compared numerically with legacy synthetic v3 because cohort and possibly target differ."
+  ],
+  "legacyComparison": "Not comparable: v3 used synthetic streams and a different population/target.",
+  "environment": {
+    "numpy": "2.4.4",
+    "scikitLearn": "1.9.0"
+  },
+  "leakageAudit": {
+    "passed": true,
+    "executedChecks": {
+      "passed": true,
+      "checkedWindows": 1859,
+      "prefixTruncationCases": 12,
+      "splitDisjointness": true,
+      "inputSourceTimesNotFuture": true,
+      "targetsStrictlyFutureWithinTolerance": true
+    },
+    "featureHistory": "Only prefix observations, maximum6h",
+    "target": "Actual observation strictly aftercutoff and within150s of each nominalhorizon",
+    "participantPartitionsDisjoint": true,
+    "testOpenedAfterModelFreeze": true
+  }
+}

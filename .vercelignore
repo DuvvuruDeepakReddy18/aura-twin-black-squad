@@ -8,6 +8,7 @@ ml
 tests
 data/baseline-v1
 data/baseline-v2
+data/baseline-v3
 data/candidate-v3
 data/parity.json
 data/selection-results.json

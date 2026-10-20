@@ -1,0 +1,96 @@
+{
+  "events": [
+    {
+      "event": "estimator_calibrator_policy_and_intervals_frozen",
+      "at": "2026-10-20T07:23:58.014478+00:00"
+    },
+    {
+      "event": "fresh_final_generation_started",
+      "at": "2026-10-20T07:24:49.810984+00:00"
+    },
+    {
+      "event": "final_evaluation_completed",
+      "at": "2026-10-20T07:26:05.607089+00:00"
+    }
+  ],
+  "freeze": {
+    "at": "2026-10-20T07:23:58.014478+00:00",
+    "finalPatientsGenerated": false,
+    "baseModelSHA256": "87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4",
+    "frozenEstimatorSHA256": "5da1b677be2a8ef4ce10b681d6030f201ce09d81529ac3475e0e1b48765eed9b",
+    "protocolSHA256": "08b91cdbd052e93bd4ab82c2b47803ea7e1505bcf7990a393e452c5d420a81fe",
+    "generatorSHA256": "73146e28b49b003227f561c4babdb0e7fd00dbc4a0536a95c16d95c2fbd3c108",
+    "policy": {
+      "threshold": 0.15500000000000003,
+      "worstCountRatio": 1.0195694716242663,
+      "meanCountRatio": 0.9909097899858321,
+      "counts": {
+        "overall": {
+          "tn": 33957,
+          "fp": 3238,
+          "fn": 744,
+          "tp": 2381,
+          "recall": 0.76192,
+          "precision": 0.42374087915999287
+        },
+        "irregular": {
+          "tn": 16786,
+          "fp": 1800,
+          "fn": 521,
+          "tp": 1053,
+          "recall": 0.6689961880559085,
+          "precision": 0.36908517350157727
+        },
+        "variable": {
+          "tn": 5596,
+          "fp": 672,
+          "fn": 153,
+          "tp": 299,
+          "recall": 0.661504424778761,
+          "precision": 0.3079299691040165
+        }
+      },
+      "baselineCounts": {
+        "overall": {
+          "tn": 33809,
+          "fp": 3386,
+          "fn": 741,
+          "tp": 2384,
+          "recall": 0.76288,
+          "precision": 0.41317157712305025
+        },
+        "irregular": {
+          "tn": 16747,
+          "fp": 1839,
+          "fn": 511,
+          "tp": 1063,
+          "recall": 0.6753494282083863,
+          "precision": 0.3662991040661613
+        },
+        "variable": {
+          "tn": 5600,
+          "fp": 668,
+          "fn": 156,
+          "tp": 296,
+          "recall": 0.6548672566371682,
+          "precision": 0.3070539419087137
+        }
+      },
+      "method": "Global calibration-only threshold; worst overall/irregular/variable FP/FN ratio to fixed V3 policy."
+    },
+    "intervalHalfWidths": [
+      7.796679181103869,
+      18.236069739991834,
+      28.894855729607173,
+      31.476252552196826
+    ],
+    "calibration": {
+      "method": "Platt logistic on the logit of the selected probability mixture",
+      "slope": 1.049566532527266,
+      "intercept": -0.06094928863425247,
+      "fitPatients": 48,
+      "policyPatients": 48
+    },
+    "artifactNote": "Research estimator cache is local in work; not an active app model or a signed artifact."
+  }
+}

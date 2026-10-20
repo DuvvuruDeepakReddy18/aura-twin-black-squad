@@ -1,33 +1,48 @@
-# Current verification record
+# Current research-edition verification record
 
-Model: `aura-synthetic-3.0.0`. Raw model-file SHA-256: `87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4`.
+**Model:** `aura-research-1.0.0`
 
-The frozen V3 artifact passed **36 JavaScript tests and 5 Python data-contract tests**. An independent exported-JSON inference audit reproduced all **seven current routine cases**, including the withheld combination, without fitting or recalibration. Audit metadata is recorded in `data/stress.json`. Final browser/media and production-link checks are listed separately below; earlier V2 checks are not silently reused.
+**Raw model-file SHA-256:** `a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432`
 
-## Completed implementation and evidence checks
+This record distinguishes current research checks from older synthetic-edition checks. The current 23:52 recording replaces the historical 26:24 synthetic recording. Verification of the current public release remains pending; earlier production checks do not establish its deployed model identity.
 
-- JavaScript tests: Python/export parity, 108-feature prefix invariance, clock translation, sensor-quality states, API validation, challenge freeze/reveal, receipt consistency and hosted portable-token behavior.
-- Python data-contract tests: deterministic generator behavior, paired routine perturbations, sleep-wrap behavior and prefix-derived features.
-- Independent exported-JSON audit of every current routine, including the withheld combination, without fitting or retuning.
-- All current Markdown artifact links resolve. Code fences and localhost URL formatting remain intact.
-- Current narration contains 4,442 words across 22 chapters and identifies the frozen model. Its text is the source for the current audio; ordinary text-file newline normalization does not alter that spoken content.
-- Current desktop views were checked against the active V3 model. Five fresh screenshots are supplied in `docs/assets/`; the presentation embeds the overview, replay and record views and presents evidence/Challenge Lab as readable tables and diagrams. The 22-page presentation, three-page architecture and six-page supplement received visual inspection.
-- The current API challenge receipt for SYN-2001 passed offline verification. The patient-summary HTML was downloaded through the browser's actual Export patient summary action and records `aura-synthetic-3.0.0` with the 15.50% decision threshold.
-- The current main MP4 is **26:24.11** (1,584.109961 seconds), with H.264 video at 1280 × 720, AAC audio and 22 matching chapters. A full FFmpeg decode completed successfully. Both transcripts were regenerated from the current narration; the main transcript includes the matching chapter times.
-- Anonymous production requests to [aura-twin-black-squad.vercel.app](https://aura-twin-black-squad.vercel.app) returned HTTP 200 for the homepage, current-model health endpoint, presentation, architecture and 24,418,262-byte main MP4. The health endpoint reported `aura-synthetic-3.0.0`.
-- Anonymous hosted freeze/reveal completed successfully. Its exported token-free receipt, supplied as `docs/SAMPLE_CHALLENGE_RECEIPT.json`, passed offline reproduction against the frozen model hash above.
+## Completed data and methodology checks
 
-## Publication verified
+- Official Synthea archive pinned by source commit and SHA-256; checksum verified before publication of transformed records.
+- Three Synthea importer tests passed: future observation/resolution exclusion, missing/private field handling and checksum rejection.
+- Sixteen profiles selected and assigned without sensor/outcome matching. Missing labs remain null. Earliest wearable date is 2020-02-13, later than the chosen 2019-01-01 Synthea snapshot; the sources remain different people.
+- Research source files checked against publisher checksums. Source manifest and preprocessing audits supplied.
+- Research participant partitions disjoint; label audit training-only; numerical model frozen before final-participant evaluation.
+- Historical prefix invariance, source availability timestamps and actual future target timestamps within ±150 seconds checked by the research leakage audit.
+- Final results, negative controls and participant-level breakdown saved without retuning on the three final participants.
+- Final integration suite passed **58 JavaScript tests and 16 Python tests**.
+- Independent runtime audit sampled 496 actual-target windows across the three final participants, with 15 physical-prefix comparisons. Its forecast-availability denominator is distinct from the main 1,859-window evaluation.
+- New navy presentation has 22 pages, architecture four pages and challenge supplement six pages. Rendered tables and final screenshot pages were visually inspected. Four actual current UI captures are embedded; the record capture uses PDF clipping to exclude blank capture padding, preserving the original image.
+- Separate synthetic V4 experiment completed on fresh identities and failed its predeclared promotion gate. Its three feature-contract tests passed; candidate is not promoted.
+- Current desktop and narrow-screen interaction checks completed on the React research workspace.
+- The current [demonstration MP4](AURA_Twin_Walkthrough.mp4) is **23:52** (1,431.877687 seconds), with 22 chapters matching the current research narration. Duration probing and complete decoding passed.
 
-- Public GitHub release `faa13f4` is readable without authentication; both GitHub Actions jobs passed. Vercel automatically deployed that same Git revision to production in the READY state.
-- The public MP4 loaded in Chrome with the expected 1,584.109961-second duration, advanced beyond five seconds, and reported no media error. Anonymous byte-range delivery returned HTTP206 with the expected 24,418,262-byte total. Full local decoding also passed.
+## Final product verification pending
 
-Fresh V3 mobile-browser verification is not claimed: the attempted viewport override did not change the browser's actual viewport. Earlier mobile checks belong to the prior revision.
+- Actual research receipt export and offline reproduction.
+- Current patient-summary export.
+- End-to-end account-flow verification after the required provider configuration.
+- Anonymous current-release links and deployed model hash.
 
-## Privacy review already completed
+Supabase public configuration is connected, with email confirmation enabled. Public email sign-up and recovery are intentionally disabled pending SMTP/email delivery. Google sign-in is disabled pending OAuth credentials. Existing-account sign-in is provider-backed, but no end-to-end account flow has been verified. Demo access requires no account.
 
-Before V3 additions, targeted scans covered four commits and 121 unique text blobs, plus PDF text/metadata and MP4 metadata. The final tracked/unignored text scan covered 104 files, including V3 additions. No private contact/path/credential finding remained; Python matrix multiplication caused three reviewed false positives. This is a targeted review, not a comprehensive security audit or clinical compliance certification.
+## Reproduction
 
-## Evidence boundaries
+```bash
+npm test
+python -m pip install -r ml/requirements.txt
+npm run test:data
+node scripts/verify_research_receipt.mjs path/to/receipt.json
+python scripts/build_research_docs.py --auth-status configured-unverified
+```
 
-The frozen v3 policy at 0.1550 has 74.47% recall and 37.34% precision, with 1,669 false-negative and 8,170 false-positive windows. Frozen v2 on the same cases has 1,742 FN and 8,730 FP. The separate withheld factor combination has 12.07 mg/dL MAE, 60.99% recall and 24.11% precision. FN changes 324 → 330; FP changes 1,657 → 1,624. The final test is synthetic; repeated windows and variants are correlated. Passing implementation tests does not establish clinical safety, real-device validity, treatment efficacy or secure study blinding. Receipt hashes are not signatures. Hosted snapshot encryption protects transport integrity, not clinical validity.
+Change authentication status only when supported by configuration and verification evidence. Narration and PDFs must be regenerated together after a material model or status change.
+
+## Scope
+
+Source integrity and numerical tests do not establish clinical safety, population validity or causal explanations. Hashes are not signatures or independent timestamps. Public data are not securely blinded by hiding the future. Plausible sensor bias can pass freshness checks. Perturbation comparisons preserve original future truth and the clean current reference for the rise label; the perturbed model probability may use a different current input. Residual bands are not recalibrated or guaranteed under perturbation.

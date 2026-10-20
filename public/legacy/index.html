@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#142b2b" />
+  <meta name="description" content="AURA Twin — a synthetic patient digital twin research prototype that combines health records and wearable data to forecast glucose two hours ahead." />
+  <title>AURA Twin · Legacy synthetic sandbox · model v3</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23142b2b'/%3E%3Cpath d='M16 44 32 15l16 29M24 32h16' fill='none' stroke='%23a9dcc6' stroke-width='5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to patient workspace</a>
+  <div id="app">
+    <aside class="sidebar" id="sidebar" aria-label="Workspace navigation">
+      <a class="brand" href="/" aria-label="AURA Twin home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M7 31 20 7l13 24M13 21h14"/></svg></span><span>AURA<span class="brand-divider">/</span><span class="brand-twin">TWIN</span><small>See what comes next.</small></span></a>
+      <div class="workspace-tag"><span class="live-dot"></span> RESEARCH WORKSPACE <span>01</span></div>
+      <div class="sidebar-caption">YOUR WORKSPACE</div>
+      <nav class="primary-nav" aria-label="Patient views">
+        <button data-tab="overview" class="nav-button active" aria-current="page"><span data-icon="grid"></span>Overview<span class="nav-arrow">↗</span></button>
+        <button data-tab="record" class="nav-button"><span data-icon="record"></span>Patient record</button>
+        <button data-tab="evidence" class="nav-button"><span data-icon="layers"></span>Model evidence</button>
+        <button data-tab="challenge" class="nav-button nav-challenge"><span data-icon="flask"></span>Challenge lab<span class="lab-nav-tag">LAB</span></button>
+      </nav>
+      <div class="patient-list-heading"><span class="sidebar-caption">PATIENT TWINS</span><span id="patient-count" class="count-badge">—</span></div>
+      <label class="patient-search"><span data-icon="search"></span><input id="patient-search" type="search" placeholder="Find a patient" aria-label="Search synthetic patients" autocomplete="off" /><kbd>/</kbd></label>
+      <div id="patient-list" class="patient-list" aria-label="Synthetic patient list"><div class="sidebar-loading">Loading your workspace…</div></div>
+      <div class="sidebar-bottom"><div class="simulation-badge"><span data-icon="shield"></span><div>Synthetic by design<small>No real patient data</small></div></div><div class="team-signature"><span class="team-avatar">BS</span><div>Black Squad<small>Amrita · Chennai</small></div><span class="small-circle">↗</span></div></div>
+    </aside>
+    <div class="main-shell">
+      <header class="topbar"><div class="breadcrumbs"><button id="menu-toggle" class="icon-button menu-toggle" aria-label="Open navigation" aria-expanded="false"><span data-icon="menu"></span></button><span class="workspace-name">Legacy synthetic sandbox · model v3</span><span class="crumb-separator">/</span><span id="breadcrumb-view">Overview</span></div><div class="topbar-actions"><span class="prototype-label"><span class="live-dot"></span>Legacy synthetic sandbox · model v3</span><button id="guide-button" class="icon-button" aria-label="Open guide"><span data-icon="help"></span></button><span class="user-avatar" title="Demo clinician">DR</span></div></header>
+      <main id="main" tabindex="-1">
+        <div class="page-heading"><div><div class="eyebrow">THE PATIENT, IN PERSPECTIVE</div><h1>A clearer view of what’s next.</h1><p>Historical context. Simulated physiology. One patient view.</p></div><button id="export-button" class="button button-secondary" disabled><span data-icon="download"></span>Export patient summary</button></div>
+        <div id="error-banner" class="error-banner" role="alert" hidden></div>
+        <section id="patient-header" class="patient-header" aria-label="Selected patient"><div class="loading-pulse">Preparing your patient twin…</div></section>
+        <div class="view-tabs" role="tablist" aria-label="Patient workspace tabs"><button id="tab-overview" data-tab="overview" role="tab" aria-selected="true" aria-controls="overview-view" class="active">Twin overview</button><button id="tab-record" data-tab="record" role="tab" aria-selected="false" aria-controls="record-view">Patient record</button><button id="tab-evidence" data-tab="evidence" role="tab" aria-selected="false" aria-controls="evidence-view">Model evidence</button><button id="tab-challenge" data-tab="challenge" role="tab" aria-selected="false" aria-controls="challenge-view">Challenge lab <span class="tab-lab-dot"></span></button><div class="view-tabs-end"><span class="live-dot"></span><span id="simulation-time">Preparing simulation</span></div></div>
+        <section id="overview-view" role="tabpanel" aria-labelledby="tab-overview">
+          <div class="overview-grid">
+            <div class="primary-column">
+              <section class="card forecast-card" aria-labelledby="forecast-title">
+                <div class="card-heading"><div><div class="eyebrow">LOOKING TWO HOURS AHEAD</div><h2 id="forecast-title">Glucose trajectory</h2></div><span class="neutral-tag"><span data-icon="activity"></span>CGM + EHR</span></div>
+                <div class="metric-row" id="metric-row"><div class="metric-skeleton"></div><div class="metric-skeleton"></div><div class="metric-skeleton"></div><div class="metric-skeleton"></div></div>
+                <div class="chart-toolbar"><div class="chart-legend"><span><i class="legend-line"></i>Observed</span><span><i class="legend-dashed"></i>Forecast</span><span><i class="legend-area"></i>90% interval</span></div><span class="chart-unit">GLUCOSE · mg/dL</span></div>
+                <div id="glucose-chart" class="glucose-chart" aria-label="Glucose history and two hour prediction chart"><div class="chart-loading"><span class="loading-ring"></span>Fusing the two data streams…</div></div>
+                <div class="timeline"><button id="play-button" class="play-button" aria-label="Play simulated data stream" disabled><span data-icon="play"></span></button><div class="timeline-control"><div class="timeline-caption"><span>REPLAY PATIENT DAY</span><strong id="replay-time">—</strong></div><input id="timeline-slider" type="range" min="24" max="287" value="24" step="1" aria-label="Simulation time" disabled /></div><span class="replay-badge">5 min / step</span></div>
+                <div class="chart-footnote"><span data-icon="info"></span><span id="chart-note">Forecast uses only observations available at the selected time.</span></div>
+              </section>
+              <section class="card fusion-card" aria-labelledby="fusion-title"><div class="card-heading compact"><div><div class="eyebrow">TWO STREAMS. ONE TWIN.</div><h2 id="fusion-title">The context behind the curve</h2></div><span class="section-number">01 / 02</span></div><div id="fusion-content" class="fusion-content"></div><div class="fusion-footer"><span class="live-dot"></span><span id="quality-label">Checking data quality</span><button class="text-button" data-tab="record">Explore patient record <span aria-hidden="true">↗</span></button></div></section>
+              <section class="card notes-card" aria-labelledby="notes-title"><div class="card-heading compact"><div><div class="eyebrow">CLINICIAN WORKSPACE</div><h2 id="notes-title">Observation notes</h2></div><span class="neutral-tag">Saved on this device</span></div><label class="sr-only" for="clinical-notes">Observation notes for selected synthetic patient</label><textarea id="clinical-notes" rows="3" placeholder="Add a care-team observation for this simulated patient…"></textarea><div class="notes-footer"><span id="notes-status" aria-live="polite">Private to this browser. Avoid personal information.</span><button id="save-notes" class="button button-small">Save note</button></div></section>
+            </div>
+            <div class="insights-column">
+              <section id="risk-card" class="card risk-card" aria-labelledby="risk-title"><div class="risk-top"><span class="eyebrow">EARLY INSIGHT</span><span data-icon="radar"></span></div><h2 id="risk-title">A window to act.</h2><div id="risk-content"><div class="risk-placeholder">Reading the patient twin…</div></div></section>
+              <section class="card scenario-card" aria-labelledby="scenario-title"><div class="card-heading compact"><div><div class="eyebrow">EXPLORE A POSSIBILITY</div><h2 id="scenario-title">What if?</h2></div><span class="scenario-icon" data-icon="sliders"></span></div><p class="scenario-description">Explore how the simulated trajectory responds to a different input.</p><label class="slider-label" for="meal-slider"><span>Additional carbohydrates</span><output id="meal-value" for="meal-slider">0 g</output></label><input id="meal-slider" type="range" min="0" max="100" step="5" value="0" /><div class="range-endpoints"><span>0 g</span><span>100 g</span></div><label class="slider-label" for="activity-slider"><span>Additional activity</span><output id="activity-value" for="activity-slider">0 min</output></label><input id="activity-slider" type="range" min="0" max="60" step="5" value="0" /><div class="range-endpoints"><span>0 min</span><span>60 min</span></div><div id="scenario-result" class="scenario-result" hidden></div><div class="scenario-actions"><button id="apply-scenario" class="button" disabled>Explore scenario <span aria-hidden="true">↗</span></button><button id="reset-scenario" class="icon-button" aria-label="Reset scenario"><span data-icon="reset"></span></button></div><p class="scenario-disclaimer"><span data-icon="info"></span>Illustrative sensitivity only. Not a causal estimate or treatment recommendation.</p></section>
+              <section class="evidence-link"><div class="evidence-orbit" aria-hidden="true"><span data-icon="layers"></span></div><div><h3>Open by design.</h3><p>See the model, its evaluation,<br>and where it stops.</p><button class="text-button" data-tab="evidence">View model evidence <span aria-hidden="true">↗</span></button></div></section>
+            </div>
+          </div>
+        </section>
+        <section id="record-view" role="tabpanel" aria-labelledby="tab-record" hidden></section>
+        <section id="evidence-view" role="tabpanel" aria-labelledby="tab-evidence" hidden></section>
+        <section id="challenge-view" role="tabpanel" aria-labelledby="tab-challenge" hidden></section>
+        <footer class="workspace-footer"><span><strong>AURA TWIN</strong> · A little foresight goes a long way.</span><span>Synthetic demonstration · Not for clinical use</span></footer>
+      </main>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="guide-dialog" aria-labelledby="guide-title"><button id="close-guide" class="icon-button dialog-close" aria-label="Close guide"><span data-icon="close"></span></button><div class="eyebrow">WELCOME TO AURA TWIN</div><h2 id="guide-title">See the whole picture.<br>Then look ahead.</h2><p class="guide-intro">An interactive, synthetic patient digital twin for exploring two-hour glucose forecasts.</p><ol class="guide-steps"><li><span>01</span><div><h3>Choose a patient</h3><p>Each fictional patient combines a historical health record with a five-minute wearable stream.</p></div></li><li><span>02</span><div><h3>Move through their day</h3><p>Play or scrub the timeline. The model only sees observations at or before the selected moment.</p></div></li><li><span>03</span><div><h3>Understand the forecast</h3><p>Inspect the future curve, uncertainty interval, contributing inputs and model evidence. Scenario changes are illustrative.</p></div></li><li><span>04</span><div><h3>Document the observation</h3><p>Acknowledge an insight, save a note locally and export a summary for your prototype walkthrough.</p></div></li></ol><nav class="guide-resources" aria-label="Submission resources"><div class="eyebrow">SUBMISSION RESOURCES</div><p>Open the project materials in a new tab.</p><div class="guide-resource-links"><a href="/docs/AURA_Twin_Presentation.pdf" target="_blank" rel="noopener noreferrer"><span>Presentation<small>PDF · project and outcomes</small></span><span aria-hidden="true">↗</span></a><a href="/docs/AURA_Twin_Architecture.pdf" target="_blank" rel="noopener noreferrer"><span>Architecture<small>PDF · how the twin works</small></span><span aria-hidden="true">↗</span></a><a href="https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad" target="_blank" rel="noopener noreferrer"><span>Source repository<small>GitHub · code and documentation</small></span><span aria-hidden="true">↗</span></a></div></nav><div class="guide-disclaimer"><span data-icon="shield"></span>All patients and measurements are synthetic. This research prototype is not clinically validated and does not recommend treatment.</div><button id="start-exploring" class="button">Explore the patient twin <span aria-hidden="true">↗</span></button></dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

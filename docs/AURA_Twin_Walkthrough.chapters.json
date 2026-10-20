@@ -1,138 +1,138 @@
 {
-  "durationSeconds": 1583.7401360544218,
+  "durationSeconds": 1431.6019501133787,
   "narration": "Microsoft Zira, local synthesized voice",
   "chapters": [
     {
       "slide": 1,
-      "title": "A forecast measured by its missed and false flags.",
+      "title": "See the patient. Understand what comes next.",
       "startSeconds": 0,
-      "durationSeconds": 73.21
+      "durationSeconds": 61.33
     },
     {
       "slide": 2,
-      "title": "Give changing signals their historical context.",
-      "startSeconds": 73.21,
-      "durationSeconds": 61.32
+      "title": "A useful forecast must also be inspectable",
+      "startSeconds": 61.33,
+      "durationSeconds": 59.77
     },
     {
       "slide": 3,
-      "title": "Predict a defined event, at a defined time.",
-      "startSeconds": 134.54,
-      "durationSeconds": 58.98
+      "title": "Two sources. Two identities. One honest boundary.",
+      "startSeconds": 121.1,
+      "durationSeconds": 63.31
     },
     {
       "slide": 4,
-      "title": "Synthetic data with deliberately varied routines.",
-      "startSeconds": 193.51,
-      "durationSeconds": 79.56
+      "title": "Missing information stays missing",
+      "startSeconds": 184.41,
+      "durationSeconds": 65.31
     },
     {
       "slide": 5,
-      "title": "Only the available past enters the prediction.",
-      "startSeconds": 273.08,
-      "durationSeconds": 67.04
+      "title": "A traceable path from source to prediction",
+      "startSeconds": 249.72,
+      "durationSeconds": 69.52
     },
     {
       "slide": 6,
-      "title": "Two streams. One inspectable inference path.",
-      "startSeconds": 340.12,
-      "durationSeconds": 81.45
+      "title": "State the event before showing a probability",
+      "startSeconds": 319.24,
+      "durationSeconds": 65.77
     },
     {
       "slide": 7,
-      "title": "Freeze the policy before generating fresh final patients.",
-      "startSeconds": 421.57,
-      "durationSeconds": 71.86
+      "title": "Separate people before evaluating windows",
+      "startSeconds": 385.01,
+      "durationSeconds": 64.68
     },
     {
       "slide": 8,
-      "title": "Select for the actual missed-versus-false tradeoff.",
-      "startSeconds": 493.43,
-      "durationSeconds": 68.17
+      "title": "The model only receives the recorded past",
+      "startSeconds": 449.69,
+      "durationSeconds": 59.74
     },
     {
       "slide": 9,
-      "title": "Measure error and the review-policy tradeoff.",
-      "startSeconds": 561.6,
-      "durationSeconds": 85.89
+      "title": "Compare fusion with honest alternatives",
+      "startSeconds": 509.44,
+      "durationSeconds": 64.78
     },
     {
       "slide": 10,
-      "title": "Compare fixed policies on identical new windows.",
-      "startSeconds": 647.49,
-      "durationSeconds": 97.79
+      "title": "Measured research results, with their denominator",
+      "startSeconds": 574.22,
+      "durationSeconds": 69.36
     },
     {
       "slide": 11,
-      "title": "Show uncertainty without promising coverage.",
-      "startSeconds": 745.29,
-      "durationSeconds": 67.21
+      "title": "Confidence should be measured, not decorated",
+      "startSeconds": 643.58,
+      "durationSeconds": 65.23
     },
     {
       "slide": 12,
-      "title": "An overview designed for a clinical review.",
-      "startSeconds": 812.5,
-      "durationSeconds": 62.39
+      "title": "A clinician-oriented workspace",
+      "startSeconds": 708.81,
+      "durationSeconds": 57.9
     },
     {
       "slide": 13,
-      "title": "Replay makes the information boundary tangible.",
-      "startSeconds": 874.88,
-      "durationSeconds": 63.08
+      "title": "The record view keeps provenance close",
+      "startSeconds": 766.71,
+      "durationSeconds": 60.11
     },
     {
       "slide": 14,
-      "title": "Inspect context without turning it into a cause.",
-      "startSeconds": 937.96,
-      "durationSeconds": 79.12
+      "title": "Explain the computation without claiming causality",
+      "startSeconds": 826.83,
+      "durationSeconds": 61.92
     },
     {
       "slide": 15,
-      "title": "Explore an assumption. Do not infer a treatment.",
-      "startSeconds": 1017.09,
-      "durationSeconds": 67.55
+      "title": "Freeze first. Reveal later. Compare honestly.",
+      "startSeconds": 888.75,
+      "durationSeconds": 62.79
     },
     {
       "slide": 16,
-      "title": "Freeze the prediction. Then reveal the outcome.",
-      "startSeconds": 1084.64,
-      "durationSeconds": 66.3
+      "title": "Test the failure boundary",
+      "startSeconds": 951.54,
+      "durationSeconds": 61.26
     },
     {
       "slide": 17,
-      "title": "Four sensor cases expose different failure modes.",
-      "startSeconds": 1150.94,
-      "durationSeconds": 62.92
+      "title": "Keep the evidence beside the experience",
+      "startSeconds": 1012.79,
+      "durationSeconds": 64.77
     },
     {
       "slide": 18,
-      "title": "Make the experiment reproducible offline.",
-      "startSeconds": 1213.86,
-      "durationSeconds": 71.68
+      "title": "A working demo does not require a fake login",
+      "startSeconds": 1077.56,
+      "durationSeconds": 74.52
     },
     {
       "slide": 19,
-      "title": "The evidence travels with the implementation.",
-      "startSeconds": 1285.55,
-      "durationSeconds": 76.5
+      "title": "Separate research evidence from simulator progress",
+      "startSeconds": 1152.08,
+      "durationSeconds": 79.98
     },
     {
       "slide": 20,
-      "title": "A better benchmark is still a bounded claim.",
-      "startSeconds": 1362.05,
-      "durationSeconds": 72.73
+      "title": "Verification follows the claims",
+      "startSeconds": 1232.06,
+      "durationSeconds": 69.71
     },
     {
       "slide": 21,
-      "title": "Use the remaining failures to guide validation.",
-      "startSeconds": 1434.77,
-      "durationSeconds": 75.7
+      "title": "A short, reproducible jury walkthrough",
+      "startSeconds": 1301.77,
+      "durationSeconds": 63.1
     },
     {
       "slide": 22,
-      "title": "A working application, with its evidence attached.",
-      "startSeconds": 1510.48,
-      "durationSeconds": 73.26
+      "title": "A forecast you can question.",
+      "startSeconds": 1364.87,
+      "durationSeconds": 66.73
     }
   ]
 }

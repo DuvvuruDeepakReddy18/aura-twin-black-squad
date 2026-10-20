@@ -1,0 +1,5804 @@
+{
+  "schemaVersion": 3,
+  "seed": 20261019,
+  "syntheticOnly": true,
+  "modelVersion": "aura-synthetic-3.0.0",
+  "modelSHA256": "87fb0df0832c2db76b03c55c81298ab717200c3dc60048b9b4586dc7061d81b4",
+  "modelKind": "hist_gradient_boosting",
+  "featureSet": "trajectory_v3",
+  "target": "CGM glucose >=180 mg/dL at exactly +120 minutes; not any excursion within two hours",
+  "cohort": {
+    "patients": 1064,
+    "days": 4,
+    "routines": 6,
+    "heldOutStressRoutines": 1,
+    "cadenceMinutes": 5,
+    "windowStrideMinutes": 30,
+    "trainPatients": 768,
+    "validationPatients": 176,
+    "selectionPatients": 80,
+    "calibrationPatients": 96,
+    "testPatients": 120,
+    "windows": {
+      "train": 322560,
+      "selection": 67200,
+      "calibration": 80640,
+      "validation": 147840,
+      "test": 100800,
+      "heldOutCombination": 16800
+    },
+    "positiveRate": {
+      "test": 0.0648611111111111
+    }
+  },
+  "splits": {
+    "train": [
+      "SYN-001",
+      "SYN-002",
+      "SYN-003",
+      "SYN-004",
+      "SYN-005",
+      "SYN-006",
+      "SYN-007",
+      "SYN-008",
+      "SYN-009",
+      "SYN-010",
+      "SYN-011",
+      "SYN-012",
+      "SYN-013",
+      "SYN-014",
+      "SYN-015",
+      "SYN-016",
+      "SYN-017",
+      "SYN-018",
+      "SYN-019",
+      "SYN-020",
+      "SYN-021",
+      "SYN-022",
+      "SYN-023",
+      "SYN-024",
+      "SYN-025",
+      "SYN-026",
+      "SYN-027",
+      "SYN-028",
+      "SYN-029",
+      "SYN-030",
+      "SYN-031",
+      "SYN-032",
+      "SYN-033",
+      "SYN-034",
+      "SYN-035",
+      "SYN-036",
+      "SYN-037",
+      "SYN-038",
+      "SYN-039",
+      "SYN-040",
+      "SYN-041",
+      "SYN-042",
+      "SYN-043",
+      "SYN-044",
+      "SYN-045",
+      "SYN-046",
+      "SYN-047",
+      "SYN-048",
+      "SYN-049",
+      "SYN-050",
+      "SYN-051",
+      "SYN-052",
+      "SYN-053",
+      "SYN-054",
+      "SYN-055",
+      "SYN-056",
+      "SYN-057",
+      "SYN-058",
+      "SYN-059",
+      "SYN-060",
+      "SYN-061",
+      "SYN-062",
+      "SYN-063",
+      "SYN-064",
+      "SYN-065",
+      "SYN-066",
+      "SYN-067",
+      "SYN-068",
+      "SYN-069",
+      "SYN-070",
+      "SYN-071",
+      "SYN-072",
+      "SYN-073",
+      "SYN-074",
+      "SYN-075",
+      "SYN-076",
+      "SYN-077",
+      "SYN-078",
+      "SYN-079",
+      "SYN-080",
+      "SYN-081",
+      "SYN-082",
+      "SYN-083",
+      "SYN-084",
+      "SYN-085",
+      "SYN-086",
+      "SYN-087",
+      "SYN-088",
+      "SYN-089",
+      "SYN-090",
+      "SYN-091",
+      "SYN-092",
+      "SYN-093",
+      "SYN-094",
+      "SYN-095",
+      "SYN-096",
+      "SYN-097",
+      "SYN-098",
+      "SYN-099",
+      "SYN-100",
+      "SYN-101",
+      "SYN-102",
+      "SYN-103",
+      "SYN-104",
+      "SYN-105",
+      "SYN-106",
+      "SYN-107",
+      "SYN-108",
+      "SYN-109",
+      "SYN-110",
+      "SYN-111",
+      "SYN-112",
+      "SYN-113",
+      "SYN-114",
+      "SYN-115",
+      "SYN-116",
+      "SYN-117",
+      "SYN-118",
+      "SYN-119",
+      "SYN-120",
+      "SYN-121",
+      "SYN-122",
+      "SYN-123",
+      "SYN-124",
+      "SYN-125",
+      "SYN-126",
+      "SYN-127",
+      "SYN-128",
+      "SYN-129",
+      "SYN-130",
+      "SYN-131",
+      "SYN-132",
+      "SYN-133",
+      "SYN-134",
+      "SYN-135",
+      "SYN-136",
+      "SYN-137",
+      "SYN-138",
+      "SYN-139",
+      "SYN-140",
+      "SYN-141",
+      "SYN-142",
+      "SYN-143",
+      "SYN-144",
+      "SYN-145",
+      "SYN-146",
+      "SYN-147",
+      "SYN-148",
+      "SYN-149",
+      "SYN-150",
+      "SYN-151",
+      "SYN-152",
+      "SYN-153",
+      "SYN-154",
+      "SYN-155",
+      "SYN-156",
+      "SYN-157",
+      "SYN-158",
+      "SYN-159",
+      "SYN-160",
+      "SYN-161",
+      "SYN-162",
+      "SYN-163",
+      "SYN-164",
+      "SYN-165",
+      "SYN-166",
+      "SYN-167",
+      "SYN-168",
+      "SYN-169",
+      "SYN-170",
+      "SYN-171",
+      "SYN-172",
+      "SYN-173",
+      "SYN-174",
+      "SYN-175",
+      "SYN-176",
+      "SYN-177",
+      "SYN-178",
+      "SYN-179",
+      "SYN-180",
+      "SYN-181",
+      "SYN-182",
+      "SYN-183",
+      "SYN-184",
+      "SYN-185",
+      "SYN-186",
+      "SYN-187",
+      "SYN-188",
+      "SYN-189",
+      "SYN-190",
+      "SYN-191",
+      "SYN-192",
+      "SYN-193",
+      "SYN-194",
+      "SYN-195",
+      "SYN-196",
+      "SYN-197",
+      "SYN-198",
+      "SYN-199",
+      "SYN-200",
+      "SYN-201",
+      "SYN-202",
+      "SYN-203",
+      "SYN-204",
+      "SYN-205",
+      "SYN-206",
+      "SYN-207",
+      "SYN-208",
+      "SYN-209",
+      "SYN-210",
+      "SYN-211",
+      "SYN-212",
+      "SYN-213",
+      "SYN-214",
+      "SYN-215",
+      "SYN-216",
+      "SYN-217",
+      "SYN-218",
+      "SYN-219",
+      "SYN-220",
+      "SYN-221",
+      "SYN-222",
+      "SYN-223",
+      "SYN-224",
+      "SYN-225",
+      "SYN-226",
+      "SYN-227",
+      "SYN-228",
+      "SYN-229",
+      "SYN-230",
+      "SYN-231",
+      "SYN-232",
+      "SYN-233",
+      "SYN-234",
+      "SYN-235",
+      "SYN-236",
+      "SYN-237",
+      "SYN-238",
+      "SYN-239",
+      "SYN-240",
+      "SYN-241",
+      "SYN-242",
+      "SYN-243",
+      "SYN-244",
+      "SYN-245",
+      "SYN-246",
+      "SYN-247",
+      "SYN-248",
+      "SYN-249",
+      "SYN-250",
+      "SYN-251",
+      "SYN-252",
+      "SYN-253",
+      "SYN-254",
+      "SYN-255",
+      "SYN-256",
+      "SYN-257",
+      "SYN-258",
+      "SYN-259",
+      "SYN-260",
+      "SYN-261",
+      "SYN-262",
+      "SYN-263",
+      "SYN-264",
+      "SYN-265",
+      "SYN-266",
+      "SYN-267",
+      "SYN-268",
+      "SYN-269",
+      "SYN-270",
+      "SYN-271",
+      "SYN-272",
+      "SYN-273",
+      "SYN-274",
+      "SYN-275",
+      "SYN-276",
+      "SYN-277",
+      "SYN-278",
+      "SYN-279",
+      "SYN-280",
+      "SYN-281",
+      "SYN-282",
+      "SYN-283",
+      "SYN-284",
+      "SYN-285",
+      "SYN-286",
+      "SYN-287",
+      "SYN-288",
+      "SYN-289",
+      "SYN-290",
+      "SYN-291",
+      "SYN-292",
+      "SYN-293",
+      "SYN-294",
+      "SYN-295",
+      "SYN-296",
+      "SYN-297",
+      "SYN-298",
+      "SYN-299",
+      "SYN-300",
+      "SYN-301",
+      "SYN-302",
+      "SYN-303",
+      "SYN-304",
+      "SYN-305",
+      "SYN-306",
+      "SYN-307",
+      "SYN-308",
+      "SYN-309",
+      "SYN-310",
+      "SYN-311",
+      "SYN-312",
+      "SYN-313",
+      "SYN-314",
+      "SYN-315",
+      "SYN-316",
+      "SYN-317",
+      "SYN-318",
+      "SYN-319",
+      "SYN-320",
+      "SYN-321",
+      "SYN-322",
+      "SYN-323",
+      "SYN-324",
+      "SYN-325",
+      "SYN-326",
+      "SYN-327",
+      "SYN-328",
+      "SYN-329",
+      "SYN-330",
+      "SYN-331",
+      "SYN-332",
+      "SYN-333",
+      "SYN-334",
+      "SYN-335",
+      "SYN-336",
+      "SYN-337",
+      "SYN-338",
+      "SYN-339",
+      "SYN-340",
+      "SYN-341",
+      "SYN-342",
+      "SYN-343",
+      "SYN-344",
+      "SYN-345",
+      "SYN-346",
+      "SYN-347",
+      "SYN-348",
+      "SYN-349",
+      "SYN-350",
+      "SYN-351",
+      "SYN-352",
+      "SYN-353",
+      "SYN-354",
+      "SYN-355",
+      "SYN-356",
+      "SYN-357",
+      "SYN-358",
+      "SYN-359",
+      "SYN-360",
+      "SYN-361",
+      "SYN-362",
+      "SYN-363",
+      "SYN-364",
+      "SYN-365",
+      "SYN-366",
+      "SYN-367",
+      "SYN-368",
+      "SYN-369",
+      "SYN-370",
+      "SYN-371",
+      "SYN-372",
+      "SYN-373",
+      "SYN-374",
+      "SYN-375",
+      "SYN-376",
+      "SYN-377",
+      "SYN-378",
+      "SYN-379",
+      "SYN-380",
+      "SYN-381",
+      "SYN-382",
+      "SYN-383",
+      "SYN-384",
+      "SYN-385",
+      "SYN-386",
+      "SYN-387",
+      "SYN-388",
+      "SYN-389",
+      "SYN-390",
+      "SYN-391",
+      "SYN-392",
+      "SYN-393",
+      "SYN-394",
+      "SYN-395",
+      "SYN-396",
+      "SYN-397",
+      "SYN-398",
+      "SYN-399",
+      "SYN-400",
+      "SYN-401",
+      "SYN-402",
+      "SYN-403",
+      "SYN-404",
+      "SYN-405",
+      "SYN-406",
+      "SYN-407",
+      "SYN-408",
+      "SYN-409",
+      "SYN-410",
+      "SYN-411",
+      "SYN-412",
+      "SYN-413",
+      "SYN-414",
+      "SYN-415",
+      "SYN-416",
+      "SYN-417",
+      "SYN-418",
+      "SYN-419",
+      "SYN-420",
+      "SYN-421",
+      "SYN-422",
+      "SYN-423",
+      "SYN-424",
+      "SYN-425",
+      "SYN-426",
+      "SYN-427",
+      "SYN-428",
+      "SYN-429",
+      "SYN-430",
+      "SYN-431",
+      "SYN-432",
+      "SYN-433",
+      "SYN-434",
+      "SYN-435",
+      "SYN-436",
+      "SYN-437",
+      "SYN-438",
+      "SYN-439",
+      "SYN-440",
+      "SYN-441",
+      "SYN-442",
+      "SYN-443",
+      "SYN-444",
+      "SYN-445",
+      "SYN-446",
+      "SYN-447",
+      "SYN-448",
+      "SYN-449",
+      "SYN-450",
+      "SYN-451",
+      "SYN-452",
+      "SYN-453",
+      "SYN-454",
+      "SYN-455",
+      "SYN-456",
+      "SYN-457",
+      "SYN-458",
+      "SYN-459",
+      "SYN-460",
+      "SYN-461",
+      "SYN-462",
+      "SYN-463",
+      "SYN-464",
+      "SYN-465",
+      "SYN-466",
+      "SYN-467",
+      "SYN-468",
+      "SYN-469",
+      "SYN-470",
+      "SYN-471",
+      "SYN-472",
+      "SYN-473",
+      "SYN-474",
+      "SYN-475",
+      "SYN-476",
+      "SYN-477",
+      "SYN-478",
+      "SYN-479",
+      "SYN-480",
+      "SYN-481",
+      "SYN-482",
+      "SYN-483",
+      "SYN-484",
+      "SYN-485",
+      "SYN-486",
+      "SYN-487",
+      "SYN-488",
+      "SYN-489",
+      "SYN-490",
+      "SYN-491",
+      "SYN-492",
+      "SYN-493",
+      "SYN-494",
+      "SYN-495",
+      "SYN-496",
+      "SYN-497",
+      "SYN-498",
+      "SYN-499",
+      "SYN-500",
+      "SYN-501",
+      "SYN-502",
+      "SYN-503",
+      "SYN-504",
+      "SYN-505",
+      "SYN-506",
+      "SYN-507",
+      "SYN-508",
+      "SYN-509",
+      "SYN-510",
+      "SYN-511",
+      "SYN-512",
+      "SYN-513",
+      "SYN-514",
+      "SYN-515",
+      "SYN-516",
+      "SYN-517",
+      "SYN-518",
+      "SYN-519",
+      "SYN-520",
+      "SYN-521",
+      "SYN-522",
+      "SYN-523",
+      "SYN-524",
+      "SYN-525",
+      "SYN-526",
+      "SYN-527",
+      "SYN-528",
+      "SYN-529",
+      "SYN-530",
+      "SYN-531",
+      "SYN-532",
+      "SYN-533",
+      "SYN-534",
+      "SYN-535",
+      "SYN-536",
+      "SYN-537",
+      "SYN-538",
+      "SYN-539",
+      "SYN-540",
+      "SYN-541",
+      "SYN-542",
+      "SYN-543",
+      "SYN-544",
+      "SYN-545",
+      "SYN-546",
+      "SYN-547",
+      "SYN-548",
+      "SYN-549",
+      "SYN-550",
+      "SYN-551",
+      "SYN-552",
+      "SYN-553",
+      "SYN-554",
+      "SYN-555",
+      "SYN-556",
+      "SYN-557",
+      "SYN-558",
+      "SYN-559",
+      "SYN-560",
+      "SYN-561",
+      "SYN-562",
+      "SYN-563",
+      "SYN-564",
+      "SYN-565",
+      "SYN-566",
+      "SYN-567",
+      "SYN-568",
+      "SYN-569",
+      "SYN-570",
+      "SYN-571",
+      "SYN-572",
+      "SYN-573",
+      "SYN-574",
+      "SYN-575",
+      "SYN-576",
+      "SYN-577",
+      "SYN-578",
+      "SYN-579",
+      "SYN-580",
+      "SYN-581",
+      "SYN-582",
+      "SYN-583",
+      "SYN-584",
+      "SYN-585",
+      "SYN-586",
+      "SYN-587",
+      "SYN-588",
+      "SYN-589",
+      "SYN-590",
+      "SYN-591",
+      "SYN-592",
+      "SYN-593",
+      "SYN-594",
+      "SYN-595",
+      "SYN-596",
+      "SYN-597",
+      "SYN-598",
+      "SYN-599",
+      "SYN-600",
+      "SYN-601",
+      "SYN-602",
+      "SYN-603",
+      "SYN-604",
+      "SYN-605",
+      "SYN-606",
+      "SYN-607",
+      "SYN-608",
+      "SYN-609",
+      "SYN-610",
+      "SYN-611",
+      "SYN-612",
+      "SYN-613",
+      "SYN-614",
+      "SYN-615",
+      "SYN-616",
+      "SYN-617",
+      "SYN-618",
+      "SYN-619",
+      "SYN-620",
+      "SYN-621",
+      "SYN-622",
+      "SYN-623",
+      "SYN-624",
+      "SYN-625",
+      "SYN-626",
+      "SYN-627",
+      "SYN-628",
+      "SYN-629",
+      "SYN-630",
+      "SYN-631",
+      "SYN-632",
+      "SYN-633",
+      "SYN-634",
+      "SYN-635",
+      "SYN-636",
+      "SYN-637",
+      "SYN-638",
+      "SYN-639",
+      "SYN-640",
+      "SYN-641",
+      "SYN-642",
+      "SYN-643",
+      "SYN-644",
+      "SYN-645",
+      "SYN-646",
+      "SYN-647",
+      "SYN-648",
+      "SYN-649",
+      "SYN-650",
+      "SYN-651",
+      "SYN-652",
+      "SYN-653",
+      "SYN-654",
+      "SYN-655",
+      "SYN-656",
+      "SYN-657",
+      "SYN-658",
+      "SYN-659",
+      "SYN-660",
+      "SYN-661",
+      "SYN-662",
+      "SYN-663",
+      "SYN-664",
+      "SYN-665",
+      "SYN-666",
+      "SYN-667",
+      "SYN-668",
+      "SYN-669",
+      "SYN-670",
+      "SYN-671",
+      "SYN-672",
+      "SYN-673",
+      "SYN-674",
+      "SYN-675",
+      "SYN-676",
+      "SYN-677",
+      "SYN-678",
+      "SYN-679",
+      "SYN-680",
+      "SYN-681",
+      "SYN-682",
+      "SYN-683",
+      "SYN-684",
+      "SYN-685",
+      "SYN-686",
+      "SYN-687",
+      "SYN-688",
+      "SYN-689",
+      "SYN-690",
+      "SYN-691",
+      "SYN-692",
+      "SYN-693",
+      "SYN-694",
+      "SYN-695",
+      "SYN-696",
+      "SYN-697",
+      "SYN-698",
+      "SYN-699",
+      "SYN-700",
+      "SYN-701",
+      "SYN-702",
+      "SYN-703",
+      "SYN-704",
+      "SYN-705",
+      "SYN-706",
+      "SYN-707",
+      "SYN-708",
+      "SYN-709",
+      "SYN-710",
+      "SYN-711",
+      "SYN-712",
+      "SYN-713",
+      "SYN-714",
+      "SYN-715",
+      "SYN-716",
+      "SYN-717",
+      "SYN-718",
+      "SYN-719",
+      "SYN-720",
+      "SYN-721",
+      "SYN-722",
+      "SYN-723",
+      "SYN-724",
+      "SYN-725",
+      "SYN-726",
+      "SYN-727",
+      "SYN-728",
+      "SYN-729",
+      "SYN-730",
+      "SYN-731",
+      "SYN-732",
+      "SYN-733",
+      "SYN-734",
+      "SYN-735",
+      "SYN-736",
+      "SYN-737",
+      "SYN-738",
+      "SYN-739",
+      "SYN-740",
+      "SYN-741",
+      "SYN-742",
+      "SYN-743",
+      "SYN-744",
+      "SYN-745",
+      "SYN-746",
+      "SYN-747",
+      "SYN-748",
+      "SYN-749",
+      "SYN-750",
+      "SYN-751",
+      "SYN-752",
+      "SYN-753",
+      "SYN-754",
+      "SYN-755",
+      "SYN-756",
+      "SYN-757",
+      "SYN-758",
+      "SYN-759",
+      "SYN-760",
+      "SYN-761",
+      "SYN-762",
+      "SYN-763",
+      "SYN-764",
+      "SYN-765",
+      "SYN-766",
+      "SYN-767",
+      "SYN-768"
+    ],
+    "validation": [
+      "SYN-1201",
+      "SYN-1202",
+      "SYN-1203",
+      "SYN-1204",
+      "SYN-1205",
+      "SYN-1206",
+      "SYN-1207",
+      "SYN-1208",
+      "SYN-1209",
+      "SYN-1210",
+      "SYN-1211",
+      "SYN-1212",
+      "SYN-1213",
+      "SYN-1214",
+      "SYN-1215",
+      "SYN-1216",
+      "SYN-1217",
+      "SYN-1218",
+      "SYN-1219",
+      "SYN-1220",
+      "SYN-1221",
+      "SYN-1222",
+      "SYN-1223",
+      "SYN-1224",
+      "SYN-1225",
+      "SYN-1226",
+      "SYN-1227",
+      "SYN-1228",
+      "SYN-1229",
+      "SYN-1230",
+      "SYN-1231",
+      "SYN-1232",
+      "SYN-1233",
+      "SYN-1234",
+      "SYN-1235",
+      "SYN-1236",
+      "SYN-1237",
+      "SYN-1238",
+      "SYN-1239",
+      "SYN-1240",
+      "SYN-1241",
+      "SYN-1242",
+      "SYN-1243",
+      "SYN-1244",
+      "SYN-1245",
+      "SYN-1246",
+      "SYN-1247",
+      "SYN-1248",
+      "SYN-1249",
+      "SYN-1250",
+      "SYN-1251",
+      "SYN-1252",
+      "SYN-1253",
+      "SYN-1254",
+      "SYN-1255",
+      "SYN-1256",
+      "SYN-1257",
+      "SYN-1258",
+      "SYN-1259",
+      "SYN-1260",
+      "SYN-1261",
+      "SYN-1262",
+      "SYN-1263",
+      "SYN-1264",
+      "SYN-1265",
+      "SYN-1266",
+      "SYN-1267",
+      "SYN-1268",
+      "SYN-1269",
+      "SYN-1270",
+      "SYN-1271",
+      "SYN-1272",
+      "SYN-1273",
+      "SYN-1274",
+      "SYN-1275",
+      "SYN-1276",
+      "SYN-1277",
+      "SYN-1278",
+      "SYN-1279",
+      "SYN-1280",
+      "SYN-1401",
+      "SYN-1402",
+      "SYN-1403",
+      "SYN-1404",
+      "SYN-1405",
+      "SYN-1406",
+      "SYN-1407",
+      "SYN-1408",
+      "SYN-1409",
+      "SYN-1410",
+      "SYN-1411",
+      "SYN-1412",
+      "SYN-1413",
+      "SYN-1414",
+      "SYN-1415",
+      "SYN-1416",
+      "SYN-1417",
+      "SYN-1418",
+      "SYN-1419",
+      "SYN-1420",
+      "SYN-1421",
+      "SYN-1422",
+      "SYN-1423",
+      "SYN-1424",
+      "SYN-1425",
+      "SYN-1426",
+      "SYN-1427",
+      "SYN-1428",
+      "SYN-1429",
+      "SYN-1430",
+      "SYN-1431",
+      "SYN-1432",
+      "SYN-1433",
+      "SYN-1434",
+      "SYN-1435",
+      "SYN-1436",
+      "SYN-1437",
+      "SYN-1438",
+      "SYN-1439",
+      "SYN-1440",
+      "SYN-1441",
+      "SYN-1442",
+      "SYN-1443",
+      "SYN-1444",
+      "SYN-1445",
+      "SYN-1446",
+      "SYN-1447",
+      "SYN-1448",
+      "SYN-1449",
+      "SYN-1450",
+      "SYN-1451",
+      "SYN-1452",
+      "SYN-1453",
+      "SYN-1454",
+      "SYN-1455",
+      "SYN-1456",
+      "SYN-1457",
+      "SYN-1458",
+      "SYN-1459",
+      "SYN-1460",
+      "SYN-1461",
+      "SYN-1462",
+      "SYN-1463",
+      "SYN-1464",
+      "SYN-1465",
+      "SYN-1466",
+      "SYN-1467",
+      "SYN-1468",
+      "SYN-1469",
+      "SYN-1470",
+      "SYN-1471",
+      "SYN-1472",
+      "SYN-1473",
+      "SYN-1474",
+      "SYN-1475",
+      "SYN-1476",
+      "SYN-1477",
+      "SYN-1478",
+      "SYN-1479",
+      "SYN-1480",
+      "SYN-1481",
+      "SYN-1482",
+      "SYN-1483",
+      "SYN-1484",
+      "SYN-1485",
+      "SYN-1486",
+      "SYN-1487",
+      "SYN-1488",
+      "SYN-1489",
+      "SYN-1490",
+      "SYN-1491",
+      "SYN-1492",
+      "SYN-1493",
+      "SYN-1494",
+      "SYN-1495",
+      "SYN-1496"
+    ],
+    "test": [
+      "SYN-2001",
+      "SYN-2002",
+      "SYN-2003",
+      "SYN-2004",
+      "SYN-2005",
+      "SYN-2006",
+      "SYN-2007",
+      "SYN-2008",
+      "SYN-2009",
+      "SYN-2010",
+      "SYN-2011",
+      "SYN-2012",
+      "SYN-2013",
+      "SYN-2014",
+      "SYN-2015",
+      "SYN-2016",
+      "SYN-2017",
+      "SYN-2018",
+      "SYN-2019",
+      "SYN-2020",
+      "SYN-2021",
+      "SYN-2022",
+      "SYN-2023",
+      "SYN-2024",
+      "SYN-2025",
+      "SYN-2026",
+      "SYN-2027",
+      "SYN-2028",
+      "SYN-2029",
+      "SYN-2030",
+      "SYN-2031",
+      "SYN-2032",
+      "SYN-2033",
+      "SYN-2034",
+      "SYN-2035",
+      "SYN-2036",
+      "SYN-2037",
+      "SYN-2038",
+      "SYN-2039",
+      "SYN-2040",
+      "SYN-2041",
+      "SYN-2042",
+      "SYN-2043",
+      "SYN-2044",
+      "SYN-2045",
+      "SYN-2046",
+      "SYN-2047",
+      "SYN-2048",
+      "SYN-2049",
+      "SYN-2050",
+      "SYN-2051",
+      "SYN-2052",
+      "SYN-2053",
+      "SYN-2054",
+      "SYN-2055",
+      "SYN-2056",
+      "SYN-2057",
+      "SYN-2058",
+      "SYN-2059",
+      "SYN-2060",
+      "SYN-2061",
+      "SYN-2062",
+      "SYN-2063",
+      "SYN-2064",
+      "SYN-2065",
+      "SYN-2066",
+      "SYN-2067",
+      "SYN-2068",
+      "SYN-2069",
+      "SYN-2070",
+      "SYN-2071",
+      "SYN-2072",
+      "SYN-2073",
+      "SYN-2074",
+      "SYN-2075",
+      "SYN-2076",
+      "SYN-2077",
+      "SYN-2078",
+      "SYN-2079",
+      "SYN-2080",
+      "SYN-2081",
+      "SYN-2082",
+      "SYN-2083",
+      "SYN-2084",
+      "SYN-2085",
+      "SYN-2086",
+      "SYN-2087",
+      "SYN-2088",
+      "SYN-2089",
+      "SYN-2090",
+      "SYN-2091",
+      "SYN-2092",
+      "SYN-2093",
+      "SYN-2094",
+      "SYN-2095",
+      "SYN-2096",
+      "SYN-2097",
+      "SYN-2098",
+      "SYN-2099",
+      "SYN-2100",
+      "SYN-2101",
+      "SYN-2102",
+      "SYN-2103",
+      "SYN-2104",
+      "SYN-2105",
+      "SYN-2106",
+      "SYN-2107",
+      "SYN-2108",
+      "SYN-2109",
+      "SYN-2110",
+      "SYN-2111",
+      "SYN-2112",
+      "SYN-2113",
+      "SYN-2114",
+      "SYN-2115",
+      "SYN-2116",
+      "SYN-2117",
+      "SYN-2118",
+      "SYN-2119",
+      "SYN-2120"
+    ]
+  },
+  "developmentSplits": {
+    "selection": [
+      "SYN-1201",
+      "SYN-1202",
+      "SYN-1203",
+      "SYN-1204",
+      "SYN-1205",
+      "SYN-1206",
+      "SYN-1207",
+      "SYN-1208",
+      "SYN-1209",
+      "SYN-1210",
+      "SYN-1211",
+      "SYN-1212",
+      "SYN-1213",
+      "SYN-1214",
+      "SYN-1215",
+      "SYN-1216",
+      "SYN-1217",
+      "SYN-1218",
+      "SYN-1219",
+      "SYN-1220",
+      "SYN-1221",
+      "SYN-1222",
+      "SYN-1223",
+      "SYN-1224",
+      "SYN-1225",
+      "SYN-1226",
+      "SYN-1227",
+      "SYN-1228",
+      "SYN-1229",
+      "SYN-1230",
+      "SYN-1231",
+      "SYN-1232",
+      "SYN-1233",
+      "SYN-1234",
+      "SYN-1235",
+      "SYN-1236",
+      "SYN-1237",
+      "SYN-1238",
+      "SYN-1239",
+      "SYN-1240",
+      "SYN-1241",
+      "SYN-1242",
+      "SYN-1243",
+      "SYN-1244",
+      "SYN-1245",
+      "SYN-1246",
+      "SYN-1247",
+      "SYN-1248",
+      "SYN-1249",
+      "SYN-1250",
+      "SYN-1251",
+      "SYN-1252",
+      "SYN-1253",
+      "SYN-1254",
+      "SYN-1255",
+      "SYN-1256",
+      "SYN-1257",
+      "SYN-1258",
+      "SYN-1259",
+      "SYN-1260",
+      "SYN-1261",
+      "SYN-1262",
+      "SYN-1263",
+      "SYN-1264",
+      "SYN-1265",
+      "SYN-1266",
+      "SYN-1267",
+      "SYN-1268",
+      "SYN-1269",
+      "SYN-1270",
+      "SYN-1271",
+      "SYN-1272",
+      "SYN-1273",
+      "SYN-1274",
+      "SYN-1275",
+      "SYN-1276",
+      "SYN-1277",
+      "SYN-1278",
+      "SYN-1279",
+      "SYN-1280"
+    ],
+    "calibration": [
+      "SYN-1401",
+      "SYN-1402",
+      "SYN-1403",
+      "SYN-1404",
+      "SYN-1405",
+      "SYN-1406",
+      "SYN-1407",
+      "SYN-1408",
+      "SYN-1409",
+      "SYN-1410",
+      "SYN-1411",
+      "SYN-1412",
+      "SYN-1413",
+      "SYN-1414",
+      "SYN-1415",
+      "SYN-1416",
+      "SYN-1417",
+      "SYN-1418",
+      "SYN-1419",
+      "SYN-1420",
+      "SYN-1421",
+      "SYN-1422",
+      "SYN-1423",
+      "SYN-1424",
+      "SYN-1425",
+      "SYN-1426",
+      "SYN-1427",
+      "SYN-1428",
+      "SYN-1429",
+      "SYN-1430",
+      "SYN-1431",
+      "SYN-1432",
+      "SYN-1433",
+      "SYN-1434",
+      "SYN-1435",
+      "SYN-1436",
+      "SYN-1437",
+      "SYN-1438",
+      "SYN-1439",
+      "SYN-1440",
+      "SYN-1441",
+      "SYN-1442",
+      "SYN-1443",
+      "SYN-1444",
+      "SYN-1445",
+      "SYN-1446",
+      "SYN-1447",
+      "SYN-1448",
+      "SYN-1449",
+      "SYN-1450",
+      "SYN-1451",
+      "SYN-1452",
+      "SYN-1453",
+      "SYN-1454",
+      "SYN-1455",
+      "SYN-1456",
+      "SYN-1457",
+      "SYN-1458",
+      "SYN-1459",
+      "SYN-1460",
+      "SYN-1461",
+      "SYN-1462",
+      "SYN-1463",
+      "SYN-1464",
+      "SYN-1465",
+      "SYN-1466",
+      "SYN-1467",
+      "SYN-1468",
+      "SYN-1469",
+      "SYN-1470",
+      "SYN-1471",
+      "SYN-1472",
+      "SYN-1473",
+      "SYN-1474",
+      "SYN-1475",
+      "SYN-1476",
+      "SYN-1477",
+      "SYN-1478",
+      "SYN-1479",
+      "SYN-1480",
+      "SYN-1481",
+      "SYN-1482",
+      "SYN-1483",
+      "SYN-1484",
+      "SYN-1485",
+      "SYN-1486",
+      "SYN-1487",
+      "SYN-1488",
+      "SYN-1489",
+      "SYN-1490",
+      "SYN-1491",
+      "SYN-1492",
+      "SYN-1493",
+      "SYN-1494",
+      "SYN-1495",
+      "SYN-1496"
+    ]
+  },
+  "models": {
+    "fused": {
+      "mae": 10.84957223579676,
+      "rmse": 17.68393094361897,
+      "auroc": 0.9339966202257904,
+      "averagePrecision": 0.5648063210789578,
+      "brier": 0.04004536544768137,
+      "precision": 0.37341820691770844,
+      "recall": 0.7447231569287244,
+      "f1": 0.4974204423558257,
+      "confusionMatrix": [
+        [
+          86092,
+          8170
+        ],
+        [
+          1669,
+          4869
+        ]
+      ],
+      "positiveRate": 0.0648611111111111,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 4.307434437446499,
+          "rmse": 7.925608719470259,
+          "intervalCoverage": 0.900922619047619,
+          "intervalMeanWidth": 15.367465014871215
+        },
+        {
+          "minutes": 60,
+          "mae": 7.436453431038988,
+          "rmse": 13.999339218503927,
+          "intervalCoverage": 0.9019345238095238,
+          "intervalMeanWidth": 34.996542232152706
+        },
+        {
+          "minutes": 90,
+          "mae": 9.517171266752513,
+          "rmse": 16.463937012297578,
+          "intervalCoverage": 0.9048214285714286,
+          "intervalMeanWidth": 54.5895398874336
+        },
+        {
+          "minutes": 120,
+          "mae": 10.84957223579676,
+          "rmse": 17.68393094361897,
+          "intervalCoverage": 0.9059821428571428,
+          "intervalMeanWidth": 61.75523271983761
+        }
+      ],
+      "intervalCoverage": 0.9059821428571428,
+      "intervalMeanWidth": 61.75523271983761,
+      "threshold": 0.155,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 84083,
+          "predicted": 0.011843888801725507,
+          "observed": 0.013831571185614214
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 5993,
+          "predicted": 0.14534000661165175,
+          "observed": 0.15117637243450693
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 3495,
+          "predicted": 0.24548674034886234,
+          "observed": 0.22718168812589412
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 2405,
+          "predicted": 0.3463262402416043,
+          "observed": 0.3239085239085239
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 1661,
+          "predicted": 0.44836169158907646,
+          "observed": 0.44431065623118604
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 1240,
+          "predicted": 0.5469589470139763,
+          "observed": 0.5451612903225806
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 777,
+          "predicted": 0.6454012512862204,
+          "observed": 0.6576576576576577
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 394,
+          "predicted": 0.7439035835568093,
+          "observed": 0.7081218274111675
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 270,
+          "predicted": 0.8537513155920402,
+          "observed": 0.8555555555555555
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 482,
+          "predicted": 0.9522976019281157,
+          "observed": 0.9564315352697096
+        }
+      ],
+      "maePatientBootstrap95CI": [
+        10.462093458452413,
+        11.259415049204744
+      ],
+      "alertPolicy": {
+        "threshold": 0.155,
+        "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+        "worstCountRatioToV2": 0.9502617801047121,
+        "meanCountRatioToV2": 0.936456878724021,
+        "simultaneouslyLower": true,
+        "counts": {
+          "all": {
+            "tn": 66231,
+            "fp": 7868,
+            "fn": 1337,
+            "tp": 5204,
+            "recall": 0.7955970035162819,
+            "precision": 0.3981028151774786
+          },
+          "irregular": {
+            "tn": 32694,
+            "fp": 4312,
+            "fn": 988,
+            "tp": 2326,
+            "recall": 0.7018708509354254,
+            "precision": 0.3504067490207894
+          },
+          "variableRoutine": {
+            "tn": 10898,
+            "fp": 1507,
+            "fn": 363,
+            "tp": 672,
+            "recall": 0.6492753623188405,
+            "precision": 0.30839834786599357
+          }
+        },
+        "v2Counts": {
+          "all": {
+            "tn": 65776,
+            "fp": 8323,
+            "fn": 1428,
+            "tp": 5113,
+            "recall": 0.7816847576823116,
+            "precision": 0.3805448050014885
+          },
+          "irregular": {
+            "tn": 32287,
+            "fp": 4719,
+            "fn": 1065,
+            "tp": 2249,
+            "recall": 0.6786360893180446,
+            "precision": 0.32276119402985076
+          },
+          "variableRoutine": {
+            "tn": 10811,
+            "fp": 1594,
+            "fn": 382,
+            "tp": 653,
+            "recall": 0.6309178743961352,
+            "precision": 0.2906097018246551
+          }
+        },
+        "v2Threshold": 0.16,
+        "calibrationRecall": 0.7955970035162819,
+        "calibrationPrecision": 0.3981028151774786,
+        "testRecall": 0.7447231569287244,
+        "testPrecision": 0.37341820691770844,
+        "testF1": 0.4974204423558257,
+        "testConfusionMatrix": [
+          [
+            86092,
+            8170
+          ],
+          [
+            1669,
+            4869
+          ]
+        ]
+      }
+    },
+    "sensorOnly": {
+      "mae": 10.924518245042968,
+      "rmse": 17.772131572289446,
+      "auroc": 0.9316487558394984,
+      "averagePrecision": 0.5545884444313783,
+      "brier": 0.04060979441963737,
+      "precision": 0.35985401459854016,
+      "recall": 0.754053227286632,
+      "f1": 0.4872022927166716,
+      "confusionMatrix": [
+        [
+          85492,
+          8770
+        ],
+        [
+          1608,
+          4930
+        ]
+      ],
+      "positiveRate": 0.0648611111111111,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 4.33045504841108,
+          "rmse": 7.942609707180489,
+          "intervalCoverage": 0.9001289682539683,
+          "intervalMeanWidth": 15.423917202897599
+        },
+        {
+          "minutes": 60,
+          "mae": 7.469755410737159,
+          "rmse": 13.995239663494608,
+          "intervalCoverage": 0.9019146825396825,
+          "intervalMeanWidth": 35.33394230434044
+        },
+        {
+          "minutes": 90,
+          "mae": 9.53800458288592,
+          "rmse": 16.465898670452972,
+          "intervalCoverage": 0.9053075396825396,
+          "intervalMeanWidth": 54.7641488424473
+        },
+        {
+          "minutes": 120,
+          "mae": 10.924518245042968,
+          "rmse": 17.772131572289446,
+          "intervalCoverage": 0.9063392857142857,
+          "intervalMeanWidth": 62.01382316887242
+        }
+      ],
+      "intervalCoverage": 0.9063392857142857,
+      "intervalMeanWidth": 62.01382316887242,
+      "threshold": 0.14750000000000002,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 83587,
+          "predicted": 0.012512456361100936,
+          "observed": 0.01386579252754615
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 6212,
+          "predicted": 0.14413871594386415,
+          "observed": 0.14890534449452672
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 3519,
+          "predicted": 0.2466726038583189,
+          "observed": 0.21113952827507815
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 2385,
+          "predicted": 0.346675641326631,
+          "observed": 0.3262054507337526
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 1709,
+          "predicted": 0.44656891864719533,
+          "observed": 0.40198946752486836
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 1312,
+          "predicted": 0.546909675571903,
+          "observed": 0.53125
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 885,
+          "predicted": 0.6478456005304846,
+          "observed": 0.6361581920903955
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 491,
+          "predicted": 0.7431813482775705,
+          "observed": 0.7087576374745418
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 301,
+          "predicted": 0.8529544230169412,
+          "observed": 0.8471760797342193
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 399,
+          "predicted": 0.9496738771082619,
+          "observed": 0.9598997493734336
+        }
+      ],
+      "maePatientBootstrap95CI": [
+        10.531613097638683,
+        11.333229647214603
+      ],
+      "alertPolicy": {
+        "threshold": 0.14750000000000002,
+        "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+        "worstCountRatioToV2": 0.974047819295927,
+        "meanCountRatioToV2": 0.9554204855732378,
+        "simultaneouslyLower": true,
+        "counts": {
+          "all": {
+            "tn": 65992,
+            "fp": 8107,
+            "fn": 1387,
+            "tp": 5154,
+            "recall": 0.7879529123987158,
+            "precision": 0.38865847221174876
+          },
+          "irregular": {
+            "tn": 32540,
+            "fp": 4466,
+            "fn": 996,
+            "tp": 2318,
+            "recall": 0.6994568497284248,
+            "precision": 0.341686320754717
+          },
+          "variableRoutine": {
+            "tn": 10853,
+            "fp": 1552,
+            "fn": 356,
+            "tp": 679,
+            "recall": 0.6560386473429952,
+            "precision": 0.30434782608695654
+          }
+        },
+        "v2Counts": {
+          "all": {
+            "tn": 65776,
+            "fp": 8323,
+            "fn": 1428,
+            "tp": 5113,
+            "recall": 0.7816847576823116,
+            "precision": 0.3805448050014885
+          },
+          "irregular": {
+            "tn": 32287,
+            "fp": 4719,
+            "fn": 1065,
+            "tp": 2249,
+            "recall": 0.6786360893180446,
+            "precision": 0.32276119402985076
+          },
+          "variableRoutine": {
+            "tn": 10811,
+            "fp": 1594,
+            "fn": 382,
+            "tp": 653,
+            "recall": 0.6309178743961352,
+            "precision": 0.2906097018246551
+          }
+        },
+        "v2Threshold": 0.16,
+        "calibrationRecall": 0.7879529123987158,
+        "calibrationPrecision": 0.38865847221174876,
+        "testRecall": 0.754053227286632,
+        "testPrecision": 0.35985401459854016,
+        "testF1": 0.4872022927166716,
+        "testConfusionMatrix": [
+          [
+            85492,
+            8770
+          ],
+          [
+            1608,
+            4930
+          ]
+        ]
+      }
+    },
+    "staticOnly": {
+      "mae": 17.903716025550512,
+      "rmse": 24.062444806428235,
+      "auroc": 0.8198538566954732,
+      "averagePrecision": 0.18407548869591878,
+      "brier": 0.05550416844928756,
+      "precision": 0.19506802721088434,
+      "recall": 0.3508718262465586,
+      "f1": 0.2507377855503334,
+      "confusionMatrix": [
+        [
+          84796,
+          9466
+        ],
+        [
+          4244,
+          2294
+        ]
+      ],
+      "positiveRate": 0.0648611111111111,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 17.86607363475445,
+          "rmse": 24.147596206811986,
+          "intervalCoverage": 0.9107142857142857,
+          "intervalMeanWidth": 85.19907267094433
+        },
+        {
+          "minutes": 60,
+          "mae": 17.86547649557038,
+          "rmse": 24.121122084853255,
+          "intervalCoverage": 0.9121130952380953,
+          "intervalMeanWidth": 85.67532502512978
+        },
+        {
+          "minutes": 90,
+          "mae": 17.839271217635464,
+          "rmse": 24.089234403914862,
+          "intervalCoverage": 0.9106646825396826,
+          "intervalMeanWidth": 85.05564221102799
+        },
+        {
+          "minutes": 120,
+          "mae": 17.903716025550512,
+          "rmse": 24.062444806428235,
+          "intervalCoverage": 0.9135912698412698,
+          "intervalMeanWidth": 85.4569659131572
+        }
+      ],
+      "intervalCoverage": 0.9135912698412698,
+      "intervalMeanWidth": 85.4569659131572,
+      "threshold": 0.16,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 68880,
+          "predicted": 0.01850103122258865,
+          "observed": 0.022459349593495936
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 26880,
+          "predicted": 0.14254652340081694,
+          "observed": 0.14371279761904762
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 5040,
+          "predicted": 0.2318768247548254,
+          "observed": 0.22380952380952382
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "maePatientBootstrap95CI": [
+        17.093975861863196,
+        18.734029219181675
+      ],
+      "alertPolicy": {
+        "threshold": 0.16,
+        "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+        "worstCountRatioToV2": 1.8585434173669468,
+        "meanCountRatioToV2": 1.5625739090263584,
+        "simultaneouslyLower": false,
+        "counts": {
+          "all": {
+            "tn": 58666,
+            "fp": 15433,
+            "fn": 2654,
+            "tp": 3887,
+            "recall": 0.5942516434795903,
+            "precision": 0.2011904761904762
+          },
+          "irregular": {
+            "tn": 29292,
+            "fp": 7714,
+            "fn": 1368,
+            "tp": 1946,
+            "recall": 0.5872057936028968,
+            "precision": 0.20144927536231885
+          },
+          "variableRoutine": {
+            "tn": 9797,
+            "fp": 2608,
+            "fn": 423,
+            "tp": 612,
+            "recall": 0.591304347826087,
+            "precision": 0.19006211180124225
+          }
+        },
+        "v2Counts": {
+          "all": {
+            "tn": 65776,
+            "fp": 8323,
+            "fn": 1428,
+            "tp": 5113,
+            "recall": 0.7816847576823116,
+            "precision": 0.3805448050014885
+          },
+          "irregular": {
+            "tn": 32287,
+            "fp": 4719,
+            "fn": 1065,
+            "tp": 2249,
+            "recall": 0.6786360893180446,
+            "precision": 0.32276119402985076
+          },
+          "variableRoutine": {
+            "tn": 10811,
+            "fp": 1594,
+            "fn": 382,
+            "tp": 653,
+            "recall": 0.6309178743961352,
+            "precision": 0.2906097018246551
+          }
+        },
+        "v2Threshold": 0.16,
+        "calibrationRecall": 0.5942516434795903,
+        "calibrationPrecision": 0.2011904761904762,
+        "testRecall": 0.3508718262465586,
+        "testPrecision": 0.19506802721088434,
+        "testF1": 0.2507377855503334,
+        "testConfusionMatrix": [
+          [
+            84796,
+            9466
+          ],
+          [
+            4244,
+            2294
+          ]
+        ]
+      }
+    },
+    "legacyV2": {
+      "mae": 11.392336555982622,
+      "rmse": 18.137134800394648,
+      "auroc": 0.9243373020126099,
+      "averagePrecision": 0.5211035850696755,
+      "brier": 0.04224815154728783,
+      "precision": 0.3545763714327961,
+      "recall": 0.7335576628938514,
+      "f1": 0.4780701754385965,
+      "confusionMatrix": [
+        [
+          85532,
+          8730
+        ],
+        [
+          1742,
+          4796
+        ]
+      ],
+      "positiveRate": 0.0648611111111111,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 4.560887787071795,
+          "rmse": 8.245534713235932,
+          "intervalCoverage": 0.8977876984126985,
+          "intervalMeanWidth": 16.624557157892355
+        },
+        {
+          "minutes": 60,
+          "mae": 7.782230933346572,
+          "rmse": 14.166886972055012,
+          "intervalCoverage": 0.900625,
+          "intervalMeanWidth": 36.94980896410476
+        },
+        {
+          "minutes": 90,
+          "mae": 9.997877807653714,
+          "rmse": 16.731163249883387,
+          "intervalCoverage": 0.900952380952381,
+          "intervalMeanWidth": 55.125390355484285
+        },
+        {
+          "minutes": 120,
+          "mae": 11.392336555982622,
+          "rmse": 18.137134800394648,
+          "intervalCoverage": 0.9009623015873016,
+          "intervalMeanWidth": 61.659650458173246
+        }
+      ],
+      "intervalCoverage": 0.9009623015873016,
+      "intervalMeanWidth": 61.659650458173246,
+      "threshold": 0.16,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 82851,
+          "predicted": 0.01288055702588815,
+          "observed": 0.014363133818541719
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 6433,
+          "predicted": 0.14347042082026165,
+          "observed": 0.14021451888698896
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 3623,
+          "predicted": 0.24674767411721363,
+          "observed": 0.21584322384764007
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 2548,
+          "predicted": 0.3469282623794278,
+          "observed": 0.28728414442700156
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 1847,
+          "predicted": 0.44651462969929917,
+          "observed": 0.39252842447211694
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 1286,
+          "predicted": 0.5474005186475325,
+          "observed": 0.5147744945567652
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 993,
+          "predicted": 0.6453639700581993,
+          "observed": 0.6062437059415912
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 593,
+          "predicted": 0.7448363041742433,
+          "observed": 0.684654300168634
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 327,
+          "predicted": 0.8456847916005208,
+          "observed": 0.7981651376146789
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 299,
+          "predicted": 0.9460508647782229,
+          "observed": 0.9230769230769231
+        }
+      ],
+      "maePatientBootstrap95CI": [
+        10.979729374165366,
+        11.811398853658911
+      ],
+      "alertPolicy": {
+        "threshold": 0.16,
+        "selection": "Highest 0.01-grid threshold achieving >=80% recall on separate calibration identities",
+        "calibrationRecall": 0.8092150170648464,
+        "calibrationPrecision": 0.42106197833422127,
+        "testRecall": 0.7335576628938514,
+        "testPrecision": 0.3545763714327961,
+        "testF1": 0.4780701754385965,
+        "testConfusionMatrix": [
+          [
+            85532,
+            8730
+          ],
+          [
+            1742,
+            4796
+          ]
+        ]
+      }
+    },
+    "persistence": {
+      "mae": 20.08061607142857,
+      "rmse": 27.08634807579887,
+      "auroc": 0.5505829303417233,
+      "averagePrecision": 0.07995951883606632,
+      "brier": 0.10895833333333334,
+      "precision": 0.15959565017613722,
+      "recall": 0.15937595594983175,
+      "f1": 0.15948572740491315,
+      "confusionMatrix": [
+        [
+          88775,
+          5487
+        ],
+        [
+          5496,
+          1042
+        ]
+      ],
+      "positiveRate": 0.0648611111111111,
+      "byHorizon": [
+        {
+          "minutes": 30,
+          "mae": 6.943941468253969,
+          "rmse": 10.742398627578922
+        },
+        {
+          "minutes": 60,
+          "mae": 12.25265376984127,
+          "rmse": 18.14118101204838
+        },
+        {
+          "minutes": 90,
+          "mae": 16.663619047619047,
+          "rmse": 23.41656715789736
+        },
+        {
+          "minutes": 120,
+          "mae": 20.08061607142857,
+          "rmse": 27.08634807579887
+        }
+      ],
+      "threshold": 0.5,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 94271,
+          "predicted": 0.0,
+          "observed": 0.058300007425401236
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 6529,
+          "predicted": 1.0,
+          "observed": 0.15959565017613722
+        }
+      ],
+      "maePatientBootstrap95CI": [
+        19.35477619047619,
+        20.902687003968254
+      ],
+      "alertPolicy": {
+        "threshold": 0.5,
+        "testRecall": 0.15937595594983175,
+        "testPrecision": 0.15959565017613722,
+        "testF1": 0.15948572740491315,
+        "testConfusionMatrix": [
+          [
+            88775,
+            5487
+          ],
+          [
+            5496,
+            1042
+          ]
+        ]
+      }
+    }
+  },
+  "probabilityThreshold": 0.155,
+  "aggregateWeighting": "Equal weights across six familiar routine families and120 fresh identities; the held-out combination is separate.",
+  "pairedDecisionDifferences": {
+    "falsePositiveWindows": {
+      "difference": -560.0,
+      "patientBootstrap95CI": [
+        -980.025,
+        -157.97500000000002
+      ],
+      "direction": "v3 minus frozen v2; negative favors v3 for error counts, positive favors v3 for recall/precision"
+    },
+    "falseNegativeWindows": {
+      "difference": -73.0,
+      "patientBootstrap95CI": [
+        -192.025,
+        27.024999999999977
+      ],
+      "direction": "v3 minus frozen v2; negative favors v3 for error counts, positive favors v3 for recall/precision"
+    },
+    "recall": {
+      "difference": 0.011165494034872991,
+      "patientBootstrap95CI": [
+        -0.004945441306651155,
+        0.02793868911541409
+      ],
+      "direction": "v3 minus frozen v2; negative favors v3 for error counts, positive favors v3 for recall/precision"
+    },
+    "precision": {
+      "difference": 0.01884183548491236,
+      "patientBootstrap95CI": [
+        0.009660740618101163,
+        0.029314377583093146
+      ],
+      "direction": "v3 minus frozen v2; negative favors v3 for error counts, positive favors v3 for recall/precision"
+    }
+  },
+  "slices": [
+    {
+      "id": "currently_below_180",
+      "title": "Currently below180: future threshold event",
+      "windows": 94271,
+      "models": {
+        "fused": {
+          "mae": 11.110705271159961,
+          "rmse": 17.998148444155465,
+          "auroc": 0.9340541442904945,
+          "averagePrecision": 0.5118737394265551,
+          "brier": 0.03807606524847431,
+          "precision": 0.3508039982616254,
+          "recall": 0.7343522561863173,
+          "f1": 0.4747956002588083,
+          "confusionMatrix": [
+            [
+              81306,
+              7469
+            ],
+            [
+              1460,
+              4036
+            ]
+          ],
+          "positiveRate": 0.058300007425401236,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.345808405481552,
+              "rmse": 8.07223147587977,
+              "intervalCoverage": 0.901093655525029,
+              "intervalMeanWidth": 15.367465014871215
+            },
+            {
+              "minutes": 60,
+              "mae": 7.595773617143796,
+              "rmse": 14.319391988832638,
+              "intervalCoverage": 0.8973173086102831,
+              "intervalMeanWidth": 34.996542232152706
+            },
+            {
+              "minutes": 90,
+              "mae": 9.756692681729763,
+              "rmse": 16.812660888971084,
+              "intervalCoverage": 0.899884375895026,
+              "intervalMeanWidth": 54.5895398874336
+            },
+            {
+              "minutes": 120,
+              "mae": 11.110705271159961,
+              "rmse": 17.998148444155465,
+              "intervalCoverage": 0.9015603950313458,
+              "intervalMeanWidth": 61.75523271983761
+            }
+          ],
+          "intervalCoverage": 0.9015603950313458,
+          "intervalMeanWidth": 61.75523271983761,
+          "threshold": 0.155,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 79506,
+              "predicted": 0.010804693700437797,
+              "observed": 0.012552511760118732
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 5366,
+              "predicted": 0.14574445856499943,
+              "observed": 0.15393216548639582
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 3235,
+              "predicted": 0.24569321659021773,
+              "observed": 0.22565687789799072
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 2228,
+              "predicted": 0.34640636905091826,
+              "observed": 0.3218132854578097
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 1529,
+              "predicted": 0.4481264726958876,
+              "observed": 0.4421190320470896
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 1135,
+              "predicted": 0.5466937782745226,
+              "observed": 0.5427312775330396
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 679,
+              "predicted": 0.6444403300921789,
+              "observed": 0.6656848306332842
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 279,
+              "predicted": 0.7404739715518612,
+              "observed": 0.7096774193548387
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 138,
+              "predicted": 0.8507087952195118,
+              "observed": 0.8260869565217391
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 176,
+              "predicted": 0.9460635780198619,
+              "observed": 0.9602272727272727
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.155,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 0.9502617801047121,
+            "meanCountRatioToV2": 0.936456878724021,
+            "simultaneouslyLower": true,
+            "counts": {
+              "all": {
+                "tn": 66231,
+                "fp": 7868,
+                "fn": 1337,
+                "tp": 5204,
+                "recall": 0.7955970035162819,
+                "precision": 0.3981028151774786
+              },
+              "irregular": {
+                "tn": 32694,
+                "fp": 4312,
+                "fn": 988,
+                "tp": 2326,
+                "recall": 0.7018708509354254,
+                "precision": 0.3504067490207894
+              },
+              "variableRoutine": {
+                "tn": 10898,
+                "fp": 1507,
+                "fn": 363,
+                "tp": 672,
+                "recall": 0.6492753623188405,
+                "precision": 0.30839834786599357
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.7955970035162819,
+            "calibrationPrecision": 0.3981028151774786,
+            "testRecall": 0.7343522561863173,
+            "testPrecision": 0.3508039982616254,
+            "testF1": 0.4747956002588083,
+            "testConfusionMatrix": [
+              [
+                81306,
+                7469
+              ],
+              [
+                1460,
+                4036
+              ]
+            ]
+          }
+        },
+        "sensorOnly": {
+          "mae": 11.177936946072167,
+          "rmse": 18.081558198912177,
+          "auroc": 0.9317481421679606,
+          "averagePrecision": 0.501400060167834,
+          "brier": 0.038547759752913496,
+          "precision": 0.3391846921797005,
+          "recall": 0.7418122270742358,
+          "f1": 0.46551724137931033,
+          "confusionMatrix": [
+            [
+              80832,
+              7943
+            ],
+            [
+              1419,
+              4077
+            ]
+          ],
+          "positiveRate": 0.058300007425401236,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.366982136177421,
+              "rmse": 8.089643653335134,
+              "intervalCoverage": 0.9004253694137115,
+              "intervalMeanWidth": 15.423917202897599
+            },
+            {
+              "minutes": 60,
+              "mae": 7.624012102743977,
+              "rmse": 14.3107623244645,
+              "intervalCoverage": 0.8972854854621252,
+              "intervalMeanWidth": 35.33394230434044
+            },
+            {
+              "minutes": 90,
+              "mae": 9.77214117652822,
+              "rmse": 16.809663976882693,
+              "intervalCoverage": 0.9004784079939748,
+              "intervalMeanWidth": 54.7641488424473
+            },
+            {
+              "minutes": 120,
+              "mae": 11.177936946072167,
+              "rmse": 18.081558198912177,
+              "intervalCoverage": 0.9019634882413468,
+              "intervalMeanWidth": 62.01382316887242
+            }
+          ],
+          "intervalCoverage": 0.9019634882413468,
+          "intervalMeanWidth": 62.01382316887242,
+          "threshold": 0.14750000000000002,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 79116,
+              "predicted": 0.011481411432720677,
+              "observed": 0.012690227008443298
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 5578,
+              "predicted": 0.14426863833450274,
+              "observed": 0.15077088562208676
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 3198,
+              "predicted": 0.24694710571192197,
+              "observed": 0.20762976860537835
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 2205,
+              "predicted": 0.34644387042313357,
+              "observed": 0.3287981859410431
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 1555,
+              "predicted": 0.44647993219135307,
+              "observed": 0.3954983922829582
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 1191,
+              "predicted": 0.5466733281618265,
+              "observed": 0.5382031905961377
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 775,
+              "predicted": 0.6476252795382613,
+              "observed": 0.6477419354838709
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 366,
+              "predicted": 0.7404392255288998,
+              "observed": 0.6775956284153005
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 165,
+              "predicted": 0.8507382064674964,
+              "observed": 0.8363636363636363
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 122,
+              "predicted": 0.9378374391099787,
+              "observed": 0.9672131147540983
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.14750000000000002,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 0.974047819295927,
+            "meanCountRatioToV2": 0.9554204855732378,
+            "simultaneouslyLower": true,
+            "counts": {
+              "all": {
+                "tn": 65992,
+                "fp": 8107,
+                "fn": 1387,
+                "tp": 5154,
+                "recall": 0.7879529123987158,
+                "precision": 0.38865847221174876
+              },
+              "irregular": {
+                "tn": 32540,
+                "fp": 4466,
+                "fn": 996,
+                "tp": 2318,
+                "recall": 0.6994568497284248,
+                "precision": 0.341686320754717
+              },
+              "variableRoutine": {
+                "tn": 10853,
+                "fp": 1552,
+                "fn": 356,
+                "tp": 679,
+                "recall": 0.6560386473429952,
+                "precision": 0.30434782608695654
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.7879529123987158,
+            "calibrationPrecision": 0.38865847221174876,
+            "testRecall": 0.7418122270742358,
+            "testPrecision": 0.3391846921797005,
+            "testF1": 0.46551724137931033,
+            "testConfusionMatrix": [
+              [
+                80832,
+                7943
+              ],
+              [
+                1419,
+                4077
+              ]
+            ]
+          }
+        },
+        "staticOnly": {
+          "mae": 17.416332249100744,
+          "rmse": 23.527118232076862,
+          "auroc": 0.8280699985284093,
+          "averagePrecision": 0.1763884874449873,
+          "brier": 0.05031424683017995,
+          "precision": 0.1908284023668639,
+          "recall": 0.32860262008733626,
+          "f1": 0.2414438502673797,
+          "confusionMatrix": [
+            [
+              81117,
+              7658
+            ],
+            [
+              3690,
+              1806
+            ]
+          ],
+          "positiveRate": 0.058300007425401236,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 15.331032229000751,
+              "rmse": 19.936953519219333,
+              "intervalCoverage": 0.9556809623320003,
+              "intervalMeanWidth": 85.19907267094433
+            },
+            {
+              "minutes": 60,
+              "mae": 15.998244408807176,
+              "rmse": 21.399091407902567,
+              "intervalCoverage": 0.9400770120185423,
+              "intervalMeanWidth": 85.67532502512978
+            },
+            {
+              "minutes": 90,
+              "mae": 16.670848312435716,
+              "rmse": 22.623544911254648,
+              "intervalCoverage": 0.9246958237421901,
+              "intervalMeanWidth": 85.05564221102799
+            },
+            {
+              "minutes": 120,
+              "mae": 17.416332249100744,
+              "rmse": 23.527118232076862,
+              "intervalCoverage": 0.9174825768263836,
+              "intervalMeanWidth": 85.4569659131572
+            }
+          ],
+          "intervalCoverage": 0.9174825768263836,
+          "intervalMeanWidth": 85.4569659131572,
+          "threshold": 0.16,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 67333,
+              "predicted": 0.01749698444663183,
+              "observed": 0.021222877340976935
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 23023,
+              "predicted": 0.14163512410226017,
+              "observed": 0.1383399209486166
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 3915,
+              "predicted": 0.23154711317576904,
+              "observed": 0.22528735632183908
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.16,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 1.8585434173669468,
+            "meanCountRatioToV2": 1.5625739090263584,
+            "simultaneouslyLower": false,
+            "counts": {
+              "all": {
+                "tn": 58666,
+                "fp": 15433,
+                "fn": 2654,
+                "tp": 3887,
+                "recall": 0.5942516434795903,
+                "precision": 0.2011904761904762
+              },
+              "irregular": {
+                "tn": 29292,
+                "fp": 7714,
+                "fn": 1368,
+                "tp": 1946,
+                "recall": 0.5872057936028968,
+                "precision": 0.20144927536231885
+              },
+              "variableRoutine": {
+                "tn": 9797,
+                "fp": 2608,
+                "fn": 423,
+                "tp": 612,
+                "recall": 0.591304347826087,
+                "precision": 0.19006211180124225
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.5942516434795903,
+            "calibrationPrecision": 0.2011904761904762,
+            "testRecall": 0.32860262008733626,
+            "testPrecision": 0.1908284023668639,
+            "testF1": 0.2414438502673797,
+            "testConfusionMatrix": [
+              [
+                81117,
+                7658
+              ],
+              [
+                3690,
+                1806
+              ]
+            ]
+          }
+        },
+        "legacyV2": {
+          "mae": 11.635579465156189,
+          "rmse": 18.44401139252397,
+          "auroc": 0.9250576779528248,
+          "averagePrecision": 0.46795459525008315,
+          "brier": 0.03992842611363975,
+          "precision": 0.33397409109903886,
+          "recall": 0.7270742358078602,
+          "f1": 0.45770574422999827,
+          "confusionMatrix": [
+            [
+              80806,
+              7969
+            ],
+            [
+              1500,
+              3996
+            ]
+          ],
+          "positiveRate": 0.058300007425401236,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.58422074994822,
+              "rmse": 8.376824675476671,
+              "intervalCoverage": 0.8981765336105483,
+              "intervalMeanWidth": 16.624557157892355
+            },
+            {
+              "minutes": 60,
+              "mae": 7.925833470853696,
+              "rmse": 14.467455250210422,
+              "intervalCoverage": 0.896118636696333,
+              "intervalMeanWidth": 36.94980896410476
+            },
+            {
+              "minutes": 90,
+              "mae": 10.221184620326454,
+              "rmse": 17.06537683230762,
+              "intervalCoverage": 0.8958322283629112,
+              "intervalMeanWidth": 55.125390355484285
+            },
+            {
+              "minutes": 120,
+              "mae": 11.635579465156189,
+              "rmse": 18.44401139252397,
+              "intervalCoverage": 0.8963095755852807,
+              "intervalMeanWidth": 61.659650458173246
+            }
+          ],
+          "intervalCoverage": 0.8963095755852807,
+          "intervalMeanWidth": 61.659650458173246,
+          "threshold": 0.16,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 78443,
+              "predicted": 0.01181447117765216,
+              "observed": 0.012977576074346978
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 5657,
+              "predicted": 0.14389041437980574,
+              "observed": 0.14018030758352484
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 3340,
+              "predicted": 0.24690229015792037,
+              "observed": 0.21437125748502994
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 2356,
+              "predicted": 0.346965393386306,
+              "observed": 0.2835314091680815
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 1693,
+              "predicted": 0.4464028881242509,
+              "observed": 0.38747784997046664
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 1151,
+              "predicted": 0.5478105884677672,
+              "observed": 0.5091225021720244
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 877,
+              "predicted": 0.6450722405085593,
+              "observed": 0.6009122006841505
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 481,
+              "predicted": 0.7436806865756075,
+              "observed": 0.6611226611226612
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 181,
+              "predicted": 0.8431261506990646,
+              "observed": 0.7348066298342542
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 92,
+              "predicted": 0.9378147548193089,
+              "observed": 0.8804347826086957
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.16,
+            "selection": "Highest 0.01-grid threshold achieving >=80% recall on separate calibration identities",
+            "calibrationRecall": 0.8092150170648464,
+            "calibrationPrecision": 0.42106197833422127,
+            "testRecall": 0.7270742358078602,
+            "testPrecision": 0.33397409109903886,
+            "testF1": 0.45770574422999827,
+            "testConfusionMatrix": [
+              [
+                80806,
+                7969
+              ],
+              [
+                1500,
+                3996
+              ]
+            ]
+          }
+        },
+        "persistence": {
+          "mae": 18.995430195924516,
+          "rmse": 26.080928106903354,
+          "auroc": 0.5,
+          "averagePrecision": 0.058300007425401236,
+          "brier": 0.058300007425401236,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "confusionMatrix": [
+            [
+              88775,
+              0
+            ],
+            [
+              5496,
+              0
+            ]
+          ],
+          "positiveRate": 0.058300007425401236,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 6.759301375820772,
+              "rmse": 10.677157210440734
+            },
+            {
+              "minutes": 60,
+              "mae": 11.84881352695951,
+              "rmse": 17.946810231218347
+            },
+            {
+              "minutes": 90,
+              "mae": 15.949378918225117,
+              "rmse": 22.894964111704375
+            },
+            {
+              "minutes": 120,
+              "mae": 18.995430195924516,
+              "rmse": 26.080928106903354
+            }
+          ],
+          "threshold": 0.5,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 94271,
+              "predicted": 0.0,
+              "observed": 0.058300007425401236
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.5,
+            "testRecall": 0.0,
+            "testPrecision": 0.0,
+            "testF1": 0.0,
+            "testConfusionMatrix": [
+              [
+                88775,
+                0
+              ],
+              [
+                5496,
+                0
+              ]
+            ]
+          }
+        }
+      },
+      "uncertaintyNote": "MAE interval omitted: this observed-state slice has unequal window counts per patient."
+    },
+    {
+      "id": "currently_at_least_180",
+      "title": "Already at or above180 at cutoff",
+      "windows": 6529,
+      "models": {
+        "fused": {
+          "mae": 7.079121573103469,
+          "rmse": 12.281466338707766,
+          "auroc": 0.9099064023951919,
+          "averagePrecision": 0.7684292862479187,
+          "brier": 0.06847971972543428,
+          "precision": 0.5430247718383312,
+          "recall": 0.7994241842610365,
+          "f1": 0.6467391304347826,
+          "confusionMatrix": [
+            [
+              4786,
+              701
+            ],
+            [
+              209,
+              833
+            ]
+          ],
+          "positiveRate": 0.15959565017613722,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 3.7533599481476023,
+              "rmse": 5.380233512211871,
+              "intervalCoverage": 0.8984530555981007,
+              "intervalMeanWidth": 15.367465014871215
+            },
+            {
+              "minutes": 60,
+              "mae": 5.136059302644703,
+              "rmse": 8.069417498664498,
+              "intervalCoverage": 0.9686016235258079,
+              "intervalMeanWidth": 34.996542232152706
+            },
+            {
+              "minutes": 90,
+              "mae": 6.058766716083139,
+              "rmse": 10.173902085091385,
+              "intervalCoverage": 0.9761066013172002,
+              "intervalMeanWidth": 54.5895398874336
+            },
+            {
+              "minutes": 120,
+              "mae": 7.079121573103469,
+              "rmse": 12.281466338707766,
+              "intervalCoverage": 0.9698269260223618,
+              "intervalMeanWidth": 61.75523271983761
+            }
+          ],
+          "intervalCoverage": 0.9698269260223618,
+          "intervalMeanWidth": 61.75523271983761,
+          "threshold": 0.155,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 4577,
+              "predicted": 0.029895504646816343,
+              "observed": 0.03604981428883548
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 627,
+              "predicted": 0.14187862035700463,
+              "observed": 0.12759170653907495
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 260,
+              "predicted": 0.2429176994227677,
+              "observed": 0.24615384615384617
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 177,
+              "predicted": 0.34531761319555015,
+              "observed": 0.3502824858757062
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 132,
+              "predicted": 0.4510863104351802,
+              "observed": 0.4696969696969697
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 105,
+              "predicted": 0.5498252948166424,
+              "observed": 0.5714285714285714
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 98,
+              "predicted": 0.652059062416364,
+              "observed": 0.6020408163265306
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 115,
+              "predicted": 0.7522241205079434,
+              "observed": 0.7043478260869566
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 132,
+              "predicted": 0.856932132345138,
+              "observed": 0.8863636363636364
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 306,
+              "predicted": 0.9558831843067194,
+              "observed": 0.954248366013072
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.155,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 0.9502617801047121,
+            "meanCountRatioToV2": 0.936456878724021,
+            "simultaneouslyLower": true,
+            "counts": {
+              "all": {
+                "tn": 66231,
+                "fp": 7868,
+                "fn": 1337,
+                "tp": 5204,
+                "recall": 0.7955970035162819,
+                "precision": 0.3981028151774786
+              },
+              "irregular": {
+                "tn": 32694,
+                "fp": 4312,
+                "fn": 988,
+                "tp": 2326,
+                "recall": 0.7018708509354254,
+                "precision": 0.3504067490207894
+              },
+              "variableRoutine": {
+                "tn": 10898,
+                "fp": 1507,
+                "fn": 363,
+                "tp": 672,
+                "recall": 0.6492753623188405,
+                "precision": 0.30839834786599357
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.7955970035162819,
+            "calibrationPrecision": 0.3981028151774786,
+            "testRecall": 0.7994241842610365,
+            "testPrecision": 0.5430247718383312,
+            "testF1": 0.6467391304347826,
+            "testConfusionMatrix": [
+              [
+                4786,
+                701
+              ],
+              [
+                209,
+                833
+              ]
+            ]
+          }
+        },
+        "sensorOnly": {
+          "mae": 7.265453401311398,
+          "rmse": 12.476507547123667,
+          "auroc": 0.9072169185794936,
+          "averagePrecision": 0.758770474697926,
+          "brier": 0.07038312418939173,
+          "precision": 0.5077380952380952,
+          "recall": 0.8186180422264875,
+          "f1": 0.6267450404114622,
+          "confusionMatrix": [
+            [
+              4660,
+              827
+            ],
+            [
+              189,
+              853
+            ]
+          ],
+          "positiveRate": 0.15959565017613722,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 3.8030473150949984,
+              "rmse": 5.389679805317217,
+              "intervalCoverage": 0.8958492877929238,
+              "intervalMeanWidth": 15.423917202897599
+            },
+            {
+              "minutes": 60,
+              "mae": 5.242472118935221,
+              "rmse": 8.179916622341882,
+              "intervalCoverage": 0.9687547863378771,
+              "intervalMeanWidth": 35.33394230434044
+            },
+            {
+              "minutes": 90,
+              "mae": 6.157350452199262,
+              "rmse": 10.293710989628678,
+              "intervalCoverage": 0.9750344616327156,
+              "intervalMeanWidth": 54.7641488424473
+            },
+            {
+              "minutes": 120,
+              "mae": 7.265453401311398,
+              "rmse": 12.476507547123667,
+              "intervalCoverage": 0.9695206003982233,
+              "intervalMeanWidth": 62.01382316887242
+            }
+          ],
+          "intervalCoverage": 0.9695206003982233,
+          "intervalMeanWidth": 62.01382316887242,
+          "threshold": 0.14750000000000002,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 4471,
+              "predicted": 0.03075717802375639,
+              "observed": 0.034667859539252964
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 634,
+              "predicted": 0.14299564481613225,
+              "observed": 0.13249211356466878
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 321,
+              "predicted": 0.2439378470738248,
+              "observed": 0.24610591900311526
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 180,
+              "predicted": 0.34951483489447477,
+              "observed": 0.29444444444444445
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 154,
+              "predicted": 0.44746745071755023,
+              "observed": 0.4675324675324675
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 121,
+              "predicted": 0.5492360372694323,
+              "observed": 0.4628099173553719
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 110,
+              "predicted": 0.6493978620666025,
+              "observed": 0.5545454545454546
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 125,
+              "predicted": 0.7512102836856785,
+              "observed": 0.8
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 136,
+              "predicted": 0.855643215154136,
+              "observed": 0.8602941176470589
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 277,
+              "predicted": 0.9548870375262781,
+              "observed": 0.9566787003610109
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.14750000000000002,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 0.974047819295927,
+            "meanCountRatioToV2": 0.9554204855732378,
+            "simultaneouslyLower": true,
+            "counts": {
+              "all": {
+                "tn": 65992,
+                "fp": 8107,
+                "fn": 1387,
+                "tp": 5154,
+                "recall": 0.7879529123987158,
+                "precision": 0.38865847221174876
+              },
+              "irregular": {
+                "tn": 32540,
+                "fp": 4466,
+                "fn": 996,
+                "tp": 2318,
+                "recall": 0.6994568497284248,
+                "precision": 0.341686320754717
+              },
+              "variableRoutine": {
+                "tn": 10853,
+                "fp": 1552,
+                "fn": 356,
+                "tp": 679,
+                "recall": 0.6560386473429952,
+                "precision": 0.30434782608695654
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.7879529123987158,
+            "calibrationPrecision": 0.38865847221174876,
+            "testRecall": 0.8186180422264875,
+            "testPrecision": 0.5077380952380952,
+            "testF1": 0.6267450404114622,
+            "testConfusionMatrix": [
+              [
+                4660,
+                827
+              ],
+              [
+                189,
+                853
+              ]
+            ]
+          }
+        },
+        "staticOnly": {
+          "mae": 24.94095848070386,
+          "rmse": 30.770827105898757,
+          "auroc": 0.6372178945383732,
+          "averagePrecision": 0.22053452918491692,
+          "brier": 0.13044046818200206,
+          "precision": 0.21254355400696864,
+          "recall": 0.46833013435700577,
+          "f1": 0.2923906530856801,
+          "confusionMatrix": [
+            [
+              3679,
+              1808
+            ],
+            [
+              554,
+              488
+            ]
+          ],
+          "positiveRate": 0.15959565017613722,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 54.46905852705137,
+              "rmse": 57.12530510598415,
+              "intervalCoverage": 0.2614489202021749,
+              "intervalMeanWidth": 85.19907267094433
+            },
+            {
+              "minutes": 60,
+              "mae": 44.82608854201757,
+              "rmse": 48.69193332255901,
+              "intervalCoverage": 0.508347373257773,
+              "intervalMeanWidth": 85.67532502512978
+            },
+            {
+              "minutes": 90,
+              "mae": 34.70990924736213,
+              "rmse": 39.608901592615176,
+              "intervalCoverage": 0.7080716801960484,
+              "intervalMeanWidth": 85.05564221102799
+            },
+            {
+              "minutes": 120,
+              "mae": 24.94095848070386,
+              "rmse": 30.770827105898757,
+              "intervalCoverage": 0.8574054219635473,
+              "intervalMeanWidth": 85.4569659131572
+            }
+          ],
+          "intervalCoverage": 0.8574054219635473,
+          "intervalMeanWidth": 85.4569659131572,
+          "threshold": 0.16,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 1547,
+              "predicted": 0.062202053566157475,
+              "observed": 0.07627666451195864
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 3857,
+              "predicted": 0.14798679979456153,
+              "observed": 0.17578428830697435
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 1125,
+              "predicted": 0.23302422104994158,
+              "observed": 0.21866666666666668
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.16,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 1.8585434173669468,
+            "meanCountRatioToV2": 1.5625739090263584,
+            "simultaneouslyLower": false,
+            "counts": {
+              "all": {
+                "tn": 58666,
+                "fp": 15433,
+                "fn": 2654,
+                "tp": 3887,
+                "recall": 0.5942516434795903,
+                "precision": 0.2011904761904762
+              },
+              "irregular": {
+                "tn": 29292,
+                "fp": 7714,
+                "fn": 1368,
+                "tp": 1946,
+                "recall": 0.5872057936028968,
+                "precision": 0.20144927536231885
+              },
+              "variableRoutine": {
+                "tn": 9797,
+                "fp": 2608,
+                "fn": 423,
+                "tp": 612,
+                "recall": 0.591304347826087,
+                "precision": 0.19006211180124225
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.5942516434795903,
+            "calibrationPrecision": 0.2011904761904762,
+            "testRecall": 0.46833013435700577,
+            "testPrecision": 0.21254355400696864,
+            "testF1": 0.2923906530856801,
+            "testConfusionMatrix": [
+              [
+                3679,
+                1808
+              ],
+              [
+                554,
+                488
+              ]
+            ]
+          }
+        },
+        "legacyV2": {
+          "mae": 7.880198052275879,
+          "rmse": 12.917702645014016,
+          "auroc": 0.8898051475359489,
+          "averagePrecision": 0.7232739656779514,
+          "brier": 0.07574222971476187,
+          "precision": 0.5124919923126201,
+          "recall": 0.7677543186180422,
+          "f1": 0.6146753745678064,
+          "confusionMatrix": [
+            [
+              4726,
+              761
+            ],
+            [
+              242,
+              800
+            ]
+          ],
+          "positiveRate": 0.15959565017613722,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.223987535375742,
+              "rmse": 6.039728295266919,
+              "intervalCoverage": 0.8921733803032623,
+              "intervalMeanWidth": 16.624557157892355
+            },
+            {
+              "minutes": 60,
+              "mae": 5.7087809695949705,
+              "rmse": 8.742538170595711,
+              "intervalCoverage": 0.9656915300964926,
+              "intervalMeanWidth": 36.94980896410476
+            },
+            {
+              "minutes": 90,
+              "mae": 6.7735928425025635,
+              "rmse": 10.809331835018353,
+              "intervalCoverage": 0.9748812988206463,
+              "intervalMeanWidth": 55.125390355484285
+            },
+            {
+              "minutes": 120,
+              "mae": 7.880198052275879,
+              "rmse": 12.917702645014016,
+              "intervalCoverage": 0.9681421350896002,
+              "intervalMeanWidth": 61.659650458173246
+            }
+          ],
+          "intervalCoverage": 0.9681421350896002,
+          "intervalMeanWidth": 61.659650458173246,
+          "threshold": 0.16,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 4408,
+              "predicted": 0.03185219318586446,
+              "observed": 0.03901996370235935
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 776,
+              "predicted": 0.14040868942033768,
+              "observed": 0.1404639175257732
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 283,
+              "predicted": 0.2449228770290139,
+              "observed": 0.2332155477031802
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 192,
+              "predicted": 0.34647263398252653,
+              "observed": 0.3333333333333333
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 154,
+              "predicted": 0.44774306143018777,
+              "observed": 0.44805194805194803
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 135,
+              "predicted": 0.543904293735753,
+              "observed": 0.562962962962963
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 116,
+              "predicted": 0.6475695460498756,
+              "observed": 0.646551724137931
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 112,
+              "predicted": 0.7497992690398136,
+              "observed": 0.7857142857142857
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 146,
+              "predicted": 0.8488568053208199,
+              "observed": 0.8767123287671232
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 207,
+              "predicted": 0.9497113580932958,
+              "observed": 0.9420289855072463
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.16,
+            "selection": "Highest 0.01-grid threshold achieving >=80% recall on separate calibration identities",
+            "calibrationRecall": 0.8092150170648464,
+            "calibrationPrecision": 0.42106197833422127,
+            "testRecall": 0.7677543186180422,
+            "testPrecision": 0.5124919923126201,
+            "testF1": 0.6146753745678064,
+            "testConfusionMatrix": [
+              [
+                4726,
+                761
+              ],
+              [
+                242,
+                800
+              ]
+            ]
+          }
+        },
+        "persistence": {
+          "mae": 35.749410323173535,
+          "rmse": 38.800815563665346,
+          "auroc": 0.5,
+          "averagePrecision": 0.15959565017613722,
+          "brier": 0.8404043498238628,
+          "precision": 0.15959565017613722,
+          "recall": 1.0,
+          "f1": 0.2752608638224805,
+          "confusionMatrix": [
+            [
+              0,
+              5487
+            ],
+            [
+              0,
+              1042
+            ]
+          ],
+          "positiveRate": 0.15959565017613722,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 9.609924950222085,
+              "rmse": 11.643733610570742
+            },
+            {
+              "minutes": 60,
+              "mae": 18.0836268953898,
+              "rmse": 20.745669054044107
+            },
+            {
+              "minutes": 90,
+              "mae": 26.97639761066013,
+              "rmse": 29.952010808080793
+            },
+            {
+              "minutes": 120,
+              "mae": 35.749410323173535,
+              "rmse": 38.800815563665346
+            }
+          ],
+          "threshold": 0.5,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 6529,
+              "predicted": 1.0,
+              "observed": 0.15959565017613722
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.5,
+            "testRecall": 1.0,
+            "testPrecision": 0.15959565017613722,
+            "testF1": 0.2752608638224805,
+            "testConfusionMatrix": [
+              [
+                0,
+                5487
+              ],
+              [
+                0,
+                1042
+              ]
+            ]
+          }
+        }
+      },
+      "uncertaintyNote": "MAE interval omitted: this observed-state slice has unequal window counts per patient."
+    },
+    {
+      "id": "rising",
+      "title": "Positive past30-minute CGM slope",
+      "windows": 38926,
+      "models": {
+        "fused": {
+          "mae": 9.747245624022725,
+          "rmse": 15.910687814627192,
+          "auroc": 0.944848512782329,
+          "averagePrecision": 0.6691064904983082,
+          "brier": 0.03816899740085671,
+          "precision": 0.4385463454471213,
+          "recall": 0.768790264853257,
+          "f1": 0.5585023400936038,
+          "confusionMatrix": [
+            [
+              33382,
+              2750
+            ],
+            [
+              646,
+              2148
+            ]
+          ],
+          "positiveRate": 0.07177721831166829,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.479652701650411,
+              "rmse": 7.837183311749075,
+              "intervalCoverage": 0.8842932744181267,
+              "intervalMeanWidth": 15.367465014871215
+            },
+            {
+              "minutes": 60,
+              "mae": 7.258420313623863,
+              "rmse": 13.0890157027024,
+              "intervalCoverage": 0.9059497508092278,
+              "intervalMeanWidth": 34.996542232152706
+            },
+            {
+              "minutes": 90,
+              "mae": 8.886695572834974,
+              "rmse": 15.113266617990167,
+              "intervalCoverage": 0.920644299439963,
+              "intervalMeanWidth": 54.5895398874336
+            },
+            {
+              "minutes": 120,
+              "mae": 9.747245624022725,
+              "rmse": 15.910687814627192,
+              "intervalCoverage": 0.9282741612289986,
+              "intervalMeanWidth": 61.75523271983761
+            }
+          ],
+          "intervalCoverage": 0.9282741612289986,
+          "intervalMeanWidth": 61.75523271983761,
+          "threshold": 0.155,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 32700,
+              "predicted": 0.011794316902140875,
+              "observed": 0.013853211009174311
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 2099,
+              "predicted": 0.14380272033027597,
+              "observed": 0.16912815626488803
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 1203,
+              "predicted": 0.24366180020077421,
+              "observed": 0.22693266832917705
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 776,
+              "predicted": 0.3471787083518864,
+              "observed": 0.30670103092783507
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 516,
+              "predicted": 0.4465883509628194,
+              "observed": 0.45348837209302323
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 363,
+              "predicted": 0.5473430341628069,
+              "observed": 0.5564738292011019
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 269,
+              "predicted": 0.6480531329972157,
+              "observed": 0.6394052044609665
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 253,
+              "predicted": 0.751663624009784,
+              "observed": 0.7075098814229249
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 266,
+              "predicted": 0.8543717021193125,
+              "observed": 0.8571428571428571
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 481,
+              "predicted": 0.9523009145296848,
+              "observed": 0.9563409563409564
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.155,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 0.9502617801047121,
+            "meanCountRatioToV2": 0.936456878724021,
+            "simultaneouslyLower": true,
+            "counts": {
+              "all": {
+                "tn": 66231,
+                "fp": 7868,
+                "fn": 1337,
+                "tp": 5204,
+                "recall": 0.7955970035162819,
+                "precision": 0.3981028151774786
+              },
+              "irregular": {
+                "tn": 32694,
+                "fp": 4312,
+                "fn": 988,
+                "tp": 2326,
+                "recall": 0.7018708509354254,
+                "precision": 0.3504067490207894
+              },
+              "variableRoutine": {
+                "tn": 10898,
+                "fp": 1507,
+                "fn": 363,
+                "tp": 672,
+                "recall": 0.6492753623188405,
+                "precision": 0.30839834786599357
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.7955970035162819,
+            "calibrationPrecision": 0.3981028151774786,
+            "testRecall": 0.768790264853257,
+            "testPrecision": 0.4385463454471213,
+            "testF1": 0.5585023400936038,
+            "testConfusionMatrix": [
+              [
+                33382,
+                2750
+              ],
+              [
+                646,
+                2148
+              ]
+            ]
+          }
+        },
+        "sensorOnly": {
+          "mae": 9.871933817474709,
+          "rmse": 15.989421069525868,
+          "auroc": 0.9413401755006162,
+          "averagePrecision": 0.6498288859322892,
+          "brier": 0.03945576829908269,
+          "precision": 0.4200895464278762,
+          "recall": 0.772369362920544,
+          "f1": 0.5441936704072626,
+          "confusionMatrix": [
+            [
+              33153,
+              2979
+            ],
+            [
+              636,
+              2158
+            ]
+          ],
+          "positiveRate": 0.07177721831166829,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.519975926116054,
+              "rmse": 7.866663287555752,
+              "intervalCoverage": 0.8825977495761188,
+              "intervalMeanWidth": 15.423917202897599
+            },
+            {
+              "minutes": 60,
+              "mae": 7.34813303393247,
+              "rmse": 13.144413707819664,
+              "intervalCoverage": 0.9052561270102245,
+              "intervalMeanWidth": 35.33394230434044
+            },
+            {
+              "minutes": 90,
+              "mae": 8.967172098868803,
+              "rmse": 15.160029493153637,
+              "intervalCoverage": 0.9206956789806299,
+              "intervalMeanWidth": 54.7641488424473
+            },
+            {
+              "minutes": 120,
+              "mae": 9.871933817474709,
+              "rmse": 15.989421069525868,
+              "intervalCoverage": 0.9284282998509993,
+              "intervalMeanWidth": 62.01382316887242
+            }
+          ],
+          "intervalCoverage": 0.9284282998509993,
+          "intervalMeanWidth": 62.01382316887242,
+          "threshold": 0.14750000000000002,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 32454,
+              "predicted": 0.012310869870562402,
+              "observed": 0.014050656313551489
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 2236,
+              "predicted": 0.14210814023249202,
+              "observed": 0.16234347048300538
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 1229,
+              "predicted": 0.2466820557081205,
+              "observed": 0.21806346623270953
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 784,
+              "predicted": 0.3456798148573839,
+              "observed": 0.3354591836734694
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 560,
+              "predicted": 0.446848038255727,
+              "observed": 0.4035714285714286
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 416,
+              "predicted": 0.5471473236431181,
+              "observed": 0.5192307692307693
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 291,
+              "predicted": 0.6502679948403804,
+              "observed": 0.6151202749140894
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 269,
+              "predicted": 0.7491640617788149,
+              "observed": 0.7323420074349443
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 289,
+              "predicted": 0.8543985518098469,
+              "observed": 0.8442906574394463
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 398,
+              "predicted": 0.9496737202649029,
+              "observed": 0.9597989949748744
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.14750000000000002,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 0.974047819295927,
+            "meanCountRatioToV2": 0.9554204855732378,
+            "simultaneouslyLower": true,
+            "counts": {
+              "all": {
+                "tn": 65992,
+                "fp": 8107,
+                "fn": 1387,
+                "tp": 5154,
+                "recall": 0.7879529123987158,
+                "precision": 0.38865847221174876
+              },
+              "irregular": {
+                "tn": 32540,
+                "fp": 4466,
+                "fn": 996,
+                "tp": 2318,
+                "recall": 0.6994568497284248,
+                "precision": 0.341686320754717
+              },
+              "variableRoutine": {
+                "tn": 10853,
+                "fp": 1552,
+                "fn": 356,
+                "tp": 679,
+                "recall": 0.6560386473429952,
+                "precision": 0.30434782608695654
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.7879529123987158,
+            "calibrationPrecision": 0.38865847221174876,
+            "testRecall": 0.772369362920544,
+            "testPrecision": 0.4200895464278762,
+            "testF1": 0.5441936704072626,
+            "testConfusionMatrix": [
+              [
+                33153,
+                2979
+              ],
+              [
+                636,
+                2158
+              ]
+            ]
+          }
+        },
+        "staticOnly": {
+          "mae": 19.31411351290626,
+          "rmse": 25.028159954323296,
+          "auroc": 0.8556044572826542,
+          "averagePrecision": 0.2472050164263903,
+          "brier": 0.05877371008761825,
+          "precision": 0.2591522157996146,
+          "recall": 0.3851109520400859,
+          "f1": 0.3098186006334581,
+          "confusionMatrix": [
+            [
+              33056,
+              3076
+            ],
+            [
+              1718,
+              1076
+            ]
+          ],
+          "positiveRate": 0.07177721831166829,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 22.967327288608963,
+              "rmse": 30.46165982570963,
+              "intervalCoverage": 0.8256949082875199,
+              "intervalMeanWidth": 85.19907267094433
+            },
+            {
+              "minutes": 60,
+              "mae": 23.01836052714204,
+              "rmse": 30.00431260069558,
+              "intervalCoverage": 0.8387196218465807,
+              "intervalMeanWidth": 85.67532502512978
+            },
+            {
+              "minutes": 90,
+              "mae": 21.441435025108287,
+              "rmse": 27.726492087789826,
+              "intervalCoverage": 0.8717052869547346,
+              "intervalMeanWidth": 85.05564221102799
+            },
+            {
+              "minutes": 120,
+              "mae": 19.31411351290626,
+              "rmse": 25.028159954323296,
+              "intervalCoverage": 0.9100344242922468,
+              "intervalMeanWidth": 85.4569659131572
+            }
+          ],
+          "intervalCoverage": 0.9100344242922468,
+          "intervalMeanWidth": 85.4569659131572,
+          "threshold": 0.16,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 27401,
+              "predicted": 0.01737821674596687,
+              "observed": 0.01897740958359184
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 9750,
+              "predicted": 0.14235319641436006,
+              "observed": 0.17764102564102563
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 1775,
+              "predicted": 0.2319044117340771,
+              "observed": 0.30535211267605633
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.16,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 1.8585434173669468,
+            "meanCountRatioToV2": 1.5625739090263584,
+            "simultaneouslyLower": false,
+            "counts": {
+              "all": {
+                "tn": 58666,
+                "fp": 15433,
+                "fn": 2654,
+                "tp": 3887,
+                "recall": 0.5942516434795903,
+                "precision": 0.2011904761904762
+              },
+              "irregular": {
+                "tn": 29292,
+                "fp": 7714,
+                "fn": 1368,
+                "tp": 1946,
+                "recall": 0.5872057936028968,
+                "precision": 0.20144927536231885
+              },
+              "variableRoutine": {
+                "tn": 9797,
+                "fp": 2608,
+                "fn": 423,
+                "tp": 612,
+                "recall": 0.591304347826087,
+                "precision": 0.19006211180124225
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.5942516434795903,
+            "calibrationPrecision": 0.2011904761904762,
+            "testRecall": 0.3851109520400859,
+            "testPrecision": 0.2591522157996146,
+            "testF1": 0.3098186006334581,
+            "testConfusionMatrix": [
+              [
+                33056,
+                3076
+              ],
+              [
+                1718,
+                1076
+              ]
+            ]
+          }
+        },
+        "legacyV2": {
+          "mae": 10.346548082844105,
+          "rmse": 16.428849159983173,
+          "auroc": 0.9355763090809718,
+          "averagePrecision": 0.6094118495883996,
+          "brier": 0.04176597929761497,
+          "precision": 0.41080132579450185,
+          "recall": 0.7541159627773801,
+          "f1": 0.5318692414489461,
+          "confusionMatrix": [
+            [
+              33110,
+              3022
+            ],
+            [
+              687,
+              2107
+            ]
+          ],
+          "positiveRate": 0.07177721831166829,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.933906448690162,
+              "rmse": 8.506888031485007,
+              "intervalCoverage": 0.8726044289164054,
+              "intervalMeanWidth": 16.624557157892355
+            },
+            {
+              "minutes": 60,
+              "mae": 7.820430266470017,
+              "rmse": 13.585841053809668,
+              "intervalCoverage": 0.8985254071828598,
+              "intervalMeanWidth": 36.94980896410476
+            },
+            {
+              "minutes": 90,
+              "mae": 9.467922718354915,
+              "rmse": 15.552430898039466,
+              "intervalCoverage": 0.9149925499666033,
+              "intervalMeanWidth": 55.125390355484285
+            },
+            {
+              "minutes": 120,
+              "mae": 10.346548082844105,
+              "rmse": 16.428849159983173,
+              "intervalCoverage": 0.9236243127986435,
+              "intervalMeanWidth": 61.659650458173246
+            }
+          ],
+          "intervalCoverage": 0.9236243127986435,
+          "intervalMeanWidth": 61.659650458173246,
+          "threshold": 0.16,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 32248,
+              "predicted": 0.012147341243736138,
+              "observed": 0.014698585958819151
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 2292,
+              "predicted": 0.1439354294922903,
+              "observed": 0.16448516579406633
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 1250,
+              "predicted": 0.2460035439794792,
+              "observed": 0.2192
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 871,
+              "predicted": 0.3468867062568238,
+              "observed": 0.3168771526980482
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 654,
+              "predicted": 0.4473717033253901,
+              "observed": 0.39908256880733944
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 448,
+              "predicted": 0.5470912780480232,
+              "observed": 0.5178571428571429
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 321,
+              "predicted": 0.6474422260774796,
+              "observed": 0.6105919003115264
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 264,
+              "predicted": 0.7497602670230414,
+              "observed": 0.7424242424242424
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 279,
+              "predicted": 0.8483489880288578,
+              "observed": 0.8315412186379928
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 299,
+              "predicted": 0.9460508647782229,
+              "observed": 0.9230769230769231
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.16,
+            "selection": "Highest 0.01-grid threshold achieving >=80% recall on separate calibration identities",
+            "calibrationRecall": 0.8092150170648464,
+            "calibrationPrecision": 0.42106197833422127,
+            "testRecall": 0.7541159627773801,
+            "testPrecision": 0.41080132579450185,
+            "testF1": 0.5318692414489461,
+            "testConfusionMatrix": [
+              [
+                33110,
+                3022
+              ],
+              [
+                687,
+                2107
+              ]
+            ]
+          }
+        },
+        "persistence": {
+          "mae": 17.889508297795818,
+          "rmse": 24.963667829545383,
+          "auroc": 0.6210020131386539,
+          "averagePrecision": 0.1278401775318501,
+          "brier": 0.11719673226121359,
+          "precision": 0.24957507082152974,
+          "recall": 0.31531853972798857,
+          "f1": 0.2786211258697027,
+          "confusionMatrix": [
+            [
+              33483,
+              2649
+            ],
+            [
+              1913,
+              881
+            ]
+          ],
+          "positiveRate": 0.07177721831166829,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 7.487920669989212,
+              "rmse": 12.160849902829284
+            },
+            {
+              "minutes": 60,
+              "mae": 11.679453321687303,
+              "rmse": 18.156395304086864
+            },
+            {
+              "minutes": 90,
+              "mae": 15.033422391203823,
+              "rmse": 21.96916318194823
+            },
+            {
+              "minutes": 120,
+              "mae": 17.889508297795818,
+              "rmse": 24.963667829545383
+            }
+          ],
+          "threshold": 0.5,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 35396,
+              "predicted": 0.0,
+              "observed": 0.054045654876257204
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 3530,
+              "predicted": 1.0,
+              "observed": 0.24957507082152974
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.5,
+            "testRecall": 0.31531853972798857,
+            "testPrecision": 0.24957507082152974,
+            "testF1": 0.2786211258697027,
+            "testConfusionMatrix": [
+              [
+                33483,
+                2649
+              ],
+              [
+                1913,
+                881
+              ]
+            ]
+          }
+        }
+      },
+      "uncertaintyNote": "MAE interval omitted: this observed-state slice has unequal window counts per patient."
+    },
+    {
+      "id": "falling_or_flat",
+      "title": "Nonpositive past30-minute CGM slope",
+      "windows": 61874,
+      "models": {
+        "fused": {
+          "mae": 11.543064909454774,
+          "rmse": 18.713600005855586,
+          "auroc": 0.925722938914546,
+          "averagePrecision": 0.4572779973515401,
+          "brier": 0.041225820931256,
+          "precision": 0.33423412357204274,
+          "recall": 0.7267628205128205,
+          "f1": 0.45788809423643245,
+          "confusionMatrix": [
+            [
+              52710,
+              5420
+            ],
+            [
+              1023,
+              2721
+            ]
+          ],
+          "positiveRate": 0.060510068849597566,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.1990889586928795,
+              "rmse": 7.980736612610566,
+              "intervalCoverage": 0.9113844264149724,
+              "intervalMeanWidth": 15.367465014871215
+            },
+            {
+              "minutes": 60,
+              "mae": 7.548457134185723,
+              "rmse": 14.542867849023162,
+              "intervalCoverage": 0.8994084752884896,
+              "intervalMeanWidth": 34.996542232152706
+            },
+            {
+              "minutes": 90,
+              "mae": 9.913814394098962,
+              "rmse": 17.25958632407412,
+              "intervalCoverage": 0.894866987749297,
+              "intervalMeanWidth": 54.5895398874336
+            },
+            {
+              "minutes": 120,
+              "mae": 11.543064909454774,
+              "rmse": 18.713600005855586,
+              "intervalCoverage": 0.8919578498238355,
+              "intervalMeanWidth": 61.75523271983761
+            }
+          ],
+          "intervalCoverage": 0.8919578498238355,
+          "intervalMeanWidth": 61.75523271983761,
+          "threshold": 0.155,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 51383,
+              "predicted": 0.011875436222398053,
+              "observed": 0.013817799661366599
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 3894,
+              "predicted": 0.14616865681827929,
+              "observed": 0.14149974319465844
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 2292,
+              "predicted": 0.24644459506009714,
+              "observed": 0.22731239092495636
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 1629,
+              "predicted": 0.3459201535297694,
+              "observed": 0.33210558624923264
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 1145,
+              "predicted": 0.44916085644772147,
+              "observed": 0.440174672489083
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 877,
+              "predicted": 0.5467999690949049,
+              "observed": 0.540478905359179
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 508,
+              "predicted": 0.643997006836894,
+              "observed": 0.6673228346456693
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 141,
+              "predicted": 0.7299795393397687,
+              "observed": 0.7092198581560284
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 4,
+              "predicted": 0.8124956115284302,
+              "observed": 0.75
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 1,
+              "predicted": 0.9507042405734142,
+              "observed": 1.0
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.155,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 0.9502617801047121,
+            "meanCountRatioToV2": 0.936456878724021,
+            "simultaneouslyLower": true,
+            "counts": {
+              "all": {
+                "tn": 66231,
+                "fp": 7868,
+                "fn": 1337,
+                "tp": 5204,
+                "recall": 0.7955970035162819,
+                "precision": 0.3981028151774786
+              },
+              "irregular": {
+                "tn": 32694,
+                "fp": 4312,
+                "fn": 988,
+                "tp": 2326,
+                "recall": 0.7018708509354254,
+                "precision": 0.3504067490207894
+              },
+              "variableRoutine": {
+                "tn": 10898,
+                "fp": 1507,
+                "fn": 363,
+                "tp": 672,
+                "recall": 0.6492753623188405,
+                "precision": 0.30839834786599357
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.7955970035162819,
+            "calibrationPrecision": 0.3981028151774786,
+            "testRecall": 0.7267628205128205,
+            "testPrecision": 0.33423412357204274,
+            "testF1": 0.45788809423643245,
+            "testConfusionMatrix": [
+              [
+                52710,
+                5420
+              ],
+              [
+                1023,
+                2721
+              ]
+            ]
+          }
+        },
+        "sensorOnly": {
+          "mae": 11.586717253148509,
+          "rmse": 18.807269517425983,
+          "auroc": 0.9243850887378864,
+          "averagePrecision": 0.45860930490764357,
+          "brier": 0.04133581214547878,
+          "precision": 0.323718323017634,
+          "recall": 0.7403846153846154,
+          "f1": 0.4504753392378321,
+          "confusionMatrix": [
+            [
+              52339,
+              5791
+            ],
+            [
+              972,
+              2772
+            ]
+          ],
+          "positiveRate": 0.060510068849597566,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.21122419723702,
+              "rmse": 7.9900189865136815,
+              "intervalCoverage": 0.9111581601318809,
+              "intervalMeanWidth": 15.423917202897599
+            },
+            {
+              "minutes": 60,
+              "mae": 7.546270144542946,
+              "rmse": 14.504956250719909,
+              "intervalCoverage": 0.8998125222225813,
+              "intervalMeanWidth": 35.33394230434044
+            },
+            {
+              "minutes": 90,
+              "mae": 9.897125138738948,
+              "rmse": 17.236819201375766,
+              "intervalCoverage": 0.8956265959853896,
+              "intervalMeanWidth": 54.7641488424473
+            },
+            {
+              "minutes": 120,
+              "mae": 11.586717253148509,
+              "rmse": 18.807269517425983,
+              "intervalCoverage": 0.8924427061447457,
+              "intervalMeanWidth": 62.01382316887242
+            }
+          ],
+          "intervalCoverage": 0.8924427061447457,
+          "intervalMeanWidth": 62.01382316887242,
+          "threshold": 0.14750000000000002,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 51133,
+              "predicted": 0.012640402852876063,
+              "observed": 0.013748459898695558
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 3976,
+              "predicted": 0.14528065942742255,
+              "observed": 0.14134808853118713
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 2290,
+              "predicted": 0.24666753122801063,
+              "observed": 0.2074235807860262
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 1601,
+              "predicted": 0.34716329151519415,
+              "observed": 0.3216739537788882
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 1149,
+              "predicted": 0.44643288124007807,
+              "observed": 0.4012184508268059
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 896,
+              "predicted": 0.5467993389674103,
+              "observed": 0.5368303571428571
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 594,
+              "predicted": 0.6466588720049294,
+              "observed": 0.6464646464646465
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 222,
+              "predicted": 0.7359320242602969,
+              "observed": 0.6801801801801802
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 12,
+              "predicted": 0.8181749879211343,
+              "observed": 0.9166666666666666
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 1,
+              "predicted": 0.9497363007651091,
+              "observed": 1.0
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.14750000000000002,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 0.974047819295927,
+            "meanCountRatioToV2": 0.9554204855732378,
+            "simultaneouslyLower": true,
+            "counts": {
+              "all": {
+                "tn": 65992,
+                "fp": 8107,
+                "fn": 1387,
+                "tp": 5154,
+                "recall": 0.7879529123987158,
+                "precision": 0.38865847221174876
+              },
+              "irregular": {
+                "tn": 32540,
+                "fp": 4466,
+                "fn": 996,
+                "tp": 2318,
+                "recall": 0.6994568497284248,
+                "precision": 0.341686320754717
+              },
+              "variableRoutine": {
+                "tn": 10853,
+                "fp": 1552,
+                "fn": 356,
+                "tp": 679,
+                "recall": 0.6560386473429952,
+                "precision": 0.30434782608695654
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.7879529123987158,
+            "calibrationPrecision": 0.38865847221174876,
+            "testRecall": 0.7403846153846154,
+            "testPrecision": 0.323718323017634,
+            "testF1": 0.4504753392378321,
+            "testConfusionMatrix": [
+              [
+                52339,
+                5791
+              ],
+              [
+                972,
+                2772
+              ]
+            ]
+          }
+        },
+        "staticOnly": {
+          "mae": 17.016410653458685,
+          "rmse": 23.43451192204282,
+          "auroc": 0.7941769024372133,
+          "averagePrecision": 0.15068306528542025,
+          "brier": 0.053447243443410127,
+          "precision": 0.16009463722397477,
+          "recall": 0.32532051282051283,
+          "f1": 0.21458773784355178,
+          "confusionMatrix": [
+            [
+              51740,
+              6390
+            ],
+            [
+              2526,
+              1218
+            ]
+          ],
+          "positiveRate": 0.060510068849597566,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 14.656787024385945,
+              "rmse": 19.135903553969992,
+              "intervalCoverage": 0.9642014416394609,
+              "intervalMeanWidth": 85.19907267094433
+            },
+            {
+              "minutes": 60,
+              "mae": 14.623708324562225,
+              "rmse": 19.531988504610087,
+              "intervalCoverage": 0.9582861945243559,
+              "intervalMeanWidth": 85.67532502512978
+            },
+            {
+              "minutes": 90,
+              "mae": 15.573087871323812,
+              "rmse": 21.48774724533485,
+              "intervalCoverage": 0.9351747098943013,
+              "intervalMeanWidth": 85.05564221102799
+            },
+            {
+              "minutes": 120,
+              "mae": 17.016410653458685,
+              "rmse": 23.43451192204282,
+              "intervalCoverage": 0.9158289426899828,
+              "intervalMeanWidth": 85.4569659131572
+            }
+          ],
+          "intervalCoverage": 0.9158289426899828,
+          "intervalMeanWidth": 85.4569659131572,
+          "threshold": 0.16,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 41479,
+              "predicted": 0.019242761724141574,
+              "observed": 0.024759516863955253
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 17130,
+              "predicted": 0.1426565606523029,
+              "observed": 0.12440163455925277
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 3265,
+              "predicted": 0.23186182723930573,
+              "observed": 0.17947932618683002
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.16,
+            "selection": "One global threshold minimizing the worst FP/FN count ratio to frozen v2 across all six regimes, pooled irregular regimes, and variable-routine windows; 0.0025 grid, calibration identities only for deployment",
+            "worstCountRatioToV2": 1.8585434173669468,
+            "meanCountRatioToV2": 1.5625739090263584,
+            "simultaneouslyLower": false,
+            "counts": {
+              "all": {
+                "tn": 58666,
+                "fp": 15433,
+                "fn": 2654,
+                "tp": 3887,
+                "recall": 0.5942516434795903,
+                "precision": 0.2011904761904762
+              },
+              "irregular": {
+                "tn": 29292,
+                "fp": 7714,
+                "fn": 1368,
+                "tp": 1946,
+                "recall": 0.5872057936028968,
+                "precision": 0.20144927536231885
+              },
+              "variableRoutine": {
+                "tn": 9797,
+                "fp": 2608,
+                "fn": 423,
+                "tp": 612,
+                "recall": 0.591304347826087,
+                "precision": 0.19006211180124225
+              }
+            },
+            "v2Counts": {
+              "all": {
+                "tn": 65776,
+                "fp": 8323,
+                "fn": 1428,
+                "tp": 5113,
+                "recall": 0.7816847576823116,
+                "precision": 0.3805448050014885
+              },
+              "irregular": {
+                "tn": 32287,
+                "fp": 4719,
+                "fn": 1065,
+                "tp": 2249,
+                "recall": 0.6786360893180446,
+                "precision": 0.32276119402985076
+              },
+              "variableRoutine": {
+                "tn": 10811,
+                "fp": 1594,
+                "fn": 382,
+                "tp": 653,
+                "recall": 0.6309178743961352,
+                "precision": 0.2906097018246551
+              }
+            },
+            "v2Threshold": 0.16,
+            "calibrationRecall": 0.5942516434795903,
+            "calibrationPrecision": 0.2011904761904762,
+            "testRecall": 0.32532051282051283,
+            "testPrecision": 0.16009463722397477,
+            "testF1": 0.21458773784355178,
+            "testConfusionMatrix": [
+              [
+                51740,
+                6390
+              ],
+              [
+                2526,
+                1218
+              ]
+            ]
+          }
+        },
+        "legacyV2": {
+          "mae": 12.050260112005992,
+          "rmse": 19.133847877380354,
+          "auroc": 0.9161062287078329,
+          "averagePrecision": 0.4340644053326113,
+          "brier": 0.04255149442136686,
+          "precision": 0.3202334166964392,
+          "recall": 0.718215811965812,
+          "f1": 0.4429618647557862,
+          "confusionMatrix": [
+            [
+              52422,
+              5708
+            ],
+            [
+              1055,
+              2689
+            ]
+          ],
+          "positiveRate": 0.060510068849597566,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 4.326215316855604,
+              "rmse": 8.076780169226971,
+              "intervalCoverage": 0.9136309273685231,
+              "intervalMeanWidth": 16.624557157892355
+            },
+            {
+              "minutes": 60,
+              "mae": 7.758199074388635,
+              "rmse": 14.520522900086833,
+              "intervalCoverage": 0.9019458900345865,
+              "intervalMeanWidth": 36.94980896410476
+            },
+            {
+              "minutes": 90,
+              "mae": 10.331281689834352,
+              "rmse": 17.43192682832665,
+              "intervalCoverage": 0.8921194685974723,
+              "intervalMeanWidth": 55.125390355484285
+            },
+            {
+              "minutes": 120,
+              "mae": 12.050260112005992,
+              "rmse": 19.133847877380354,
+              "intervalCoverage": 0.8867052396806413,
+              "intervalMeanWidth": 61.659650458173246
+            }
+          ],
+          "intervalCoverage": 0.8867052396806413,
+          "intervalMeanWidth": 61.659650458173246,
+          "threshold": 0.16,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 50603,
+              "predicted": 0.013347816724776319,
+              "observed": 0.014149358733671917
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 4141,
+              "predicted": 0.14321304340507457,
+              "observed": 0.12678097078000483
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 2373,
+              "predicted": 0.2471396516444652,
+              "observed": 0.21407501053518752
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 1677,
+              "predicted": 0.346949845791943,
+              "observed": 0.27191413237924866
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 1193,
+              "predicted": 0.446044783805365,
+              "observed": 0.3889354568315172
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 838,
+              "predicted": 0.5475658405909455,
+              "observed": 0.513126491646778
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 672,
+              "predicted": 0.6443712316918468,
+              "observed": 0.6041666666666666
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 329,
+              "predicted": 0.7408851607332625,
+              "observed": 0.6382978723404256
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 48,
+              "predicted": 0.8301991498608127,
+              "observed": 0.6041666666666666
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.16,
+            "selection": "Highest 0.01-grid threshold achieving >=80% recall on separate calibration identities",
+            "calibrationRecall": 0.8092150170648464,
+            "calibrationPrecision": 0.42106197833422127,
+            "testRecall": 0.718215811965812,
+            "testPrecision": 0.3202334166964392,
+            "testF1": 0.4429618647557862,
+            "testConfusionMatrix": [
+              [
+                52422,
+                5708
+              ],
+              [
+                1055,
+                2689
+              ]
+            ]
+          }
+        },
+        "persistence": {
+          "mae": 21.459079742702915,
+          "rmse": 28.34040596463229,
+          "auroc": 0.4970902650043154,
+          "averagePrecision": 0.060216557450029295,
+          "brier": 0.10377541455215437,
+          "precision": 0.05368456152050684,
+          "recall": 0.04300213675213675,
+          "f1": 0.047753225567254934,
+          "confusionMatrix": [
+            [
+              55292,
+              2838
+            ],
+            [
+              3583,
+              161
+            ]
+          ],
+          "positiveRate": 0.060510068849597566,
+          "byHorizon": [
+            {
+              "minutes": 30,
+              "mae": 6.601714775188286,
+              "rmse": 9.744788718395922
+            },
+            {
+              "minutes": 60,
+              "mae": 12.613264052752369,
+              "rmse": 18.131602896499277
+            },
+            {
+              "minutes": 90,
+              "mae": 17.689203865921066,
+              "rmse": 24.28298301388757
+            },
+            {
+              "minutes": 120,
+              "mae": 21.459079742702915,
+              "rmse": 28.34040596463229
+            }
+          ],
+          "threshold": 0.5,
+          "calibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 58875,
+              "predicted": 0.0,
+              "observed": 0.06085774946921444
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.30000000000000004,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.30000000000000004,
+              "upper": 0.4,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.6000000000000001,
+              "upper": 0.7000000000000001,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.7000000000000001,
+              "upper": 0.8,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 2999,
+              "predicted": 1.0,
+              "observed": 0.05368456152050684
+            }
+          ],
+          "alertPolicy": {
+            "threshold": 0.5,
+            "testRecall": 0.04300213675213675,
+            "testPrecision": 0.05368456152050684,
+            "testF1": 0.047753225567254934,
+            "testConfusionMatrix": [
+              [
+                55292,
+                2838
+              ],
+              [
+                3583,
+                161
+              ]
+            ]
+          }
+        }
+      },
+      "uncertaintyNote": "MAE interval omitted: this observed-state slice has unequal window counts per patient."
+    }
+  ],
+  "environment": {
+    "python": "3.12.2",
+    "numpy": "2.4.4",
+    "scikitLearn": "1.9.0"
+  },
+  "limitations": [
+    "All outcomes remain synthetic. Simultaneous FP/FN reductions are sought, not guaranteed on fresh patients.",
+    "The seven-regime aggregate includes six training families and one held-out parameter combination, not a new physiological simulator.",
+    "Unannounced future meals remain partly unpredictable from current observations.",
+    "No future meal annotations, latent simulator terms, routine labels or absolute clock values are predictors.",
+    "Synthetic HR includes contemporaneous meal response by simulator design; improved HR feature utility is not evidence of real-world meal detection.",
+    "FP and FN counts are overlapping exact-horizon windows, not deduplicated events or alarms per patient-day.",
+    "The alert threshold is an experimental error-tradeoff policy, not a clinically established action threshold.",
+    "The variable-routine and unseen-combination results must be read separately; pooled improvements do not establish uniform gains.",
+    "Confidence intervals resample identities and keep routine variants paired; they do not quantify simulator-to-clinic uncertainty.",
+    "Scenario controls remain illustrative arithmetic, not learned treatment effects."
+  ],
+  "reportingCorrections": [
+    {
+      "at": "2026-10-19T17:14:33.484811+00:00",
+      "kind": "reporting_only",
+      "detail": "Removed MAE confidence intervals from observed-CGM/trajectory slices because the equal-window bootstrap helper does not match their unequal per-patient window counts. Point metrics, paired aggregate/case intervals, fitted model and policy are unchanged."
+    }
+  ]
+}

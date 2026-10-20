@@ -1,199 +1,108 @@
 # AURA Twin
 
-### See what comes next. Inspect the evidence.
+### See the patient. Understand what comes next.
 
-**A working synthetic patient digital twin that fuses historical EHR context with wearable time series to forecast glucose two hours ahead.** Built by **Black Squad**, Amrita Vishwa Vidyapeetham, Chennai, for Happiest Health Phase 1.
+**A clinician-oriented Composite Research Twin with actual open research wearables, authentic Synthea EHR context and an inspectable glucose forecast.** Built by **Black Squad**, Amrita Vishwa Vidyapeetham, Chennai.
 
-**Current model: `aura-synthetic-3.0.0`.** This edition targets missed-positive and false-positive windows together using richer past-derived features, decision-aligned model selection and a new final cohort. On the same 100,800 fresh final windows, missed positives changed from **1,742 to 1,669**, and false-positive flags from **8,730 to 8,170**. The comparison is between frozen policies on identical observations, not different cohorts or a threshold tuned on the final test. The gains are modest and mixed: the patient-bootstrap 95% interval for the FN difference includes zero, and the withheld combination has **324 → 330 missed positive windows**. This does not establish a reliable reduction in misses or improvement across every routine.
+**Current local rebuild:** `aura-research-1.0.0` · **Primary model:** CGM history only. The EHR and wearable records belong to different people. Their target-blind association demonstrates ingestion and interaction, not physiologically matched clinical fusion.
 
-**[Open the live prototype](https://aura-twin-black-squad.vercel.app)** · **[Watch the 26-minute demonstration](https://aura-twin-black-squad.vercel.app/docs/AURA_Twin_Walkthrough.mp4)** · **[Public GitHub repository](https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad)**
+> This is a research prototype, not clinical validation. The final evaluation has only **three participants**. No diagnosis, dosing, treatment or emergency triage recommendation is provided. Missing sensor channels are not invented.
 
-![Current AURA Twin workspace](docs/assets/dashboard-current.png)
+![Current AURA research workspace](docs/assets/dashboard-research.png)
 
-> Every patient and observation is generated. This is synthetic benchmark evidence, not clinical validation. The app does not diagnose, prescribe or recommend treatment, and receives no future meal schedule. Counts below are overlapping windows, not unique clinical events.
+**[Live demo](https://aura-twin-black-squad.vercel.app)** · **[Public repository](https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad)**. Verification of the current public release is pending. Exact release checks, including the deployed model identity, are listed in [VERIFICATION.md](docs/VERIFICATION.md).
 
 ## Run locally
 
-Requires **Node.js 20+**. After downloading the package, the local dashboard needs no npm dependency installation, external model account or internet connection.
+Requires Node.js **22.12 or newer**. The current hosted runtime is Node.js 24.
 
 ```bash
-node server.mjs
+npm ci
+npm run build
+npm start
 ```
 
-Open **http://localhost:4173**. On Windows, double-click `START-DEMO.cmd`. The server binds to localhost by default.
+Open **http://localhost:4173**. The bundled research demo requires no account. Authentication status: **Supabase connected. Email confirmation on; Google off. Account-flow verification pending.** See [deployment and configuration](docs/DEPLOYMENT.md).
+
+Public email sign-up and password recovery are intentionally disabled until SMTP/email delivery is configured. Google OAuth is disabled pending provider credentials. Existing-account sign-in is provider-backed; no end-to-end account flow has been verified.
 
 ```bash
 npm test
+python -m pip install -r ml/requirements.txt
 npm run test:data
 ```
 
-Optional Docker: `docker build -t aura-twin .`, then `docker run --rm -p 127.0.0.1:4173:4173 aura-twin`. Hosted configuration and its synthetic-only input boundary are in [DEPLOYMENT.md](docs/DEPLOYMENT.md).
+The final integration suite passed **58 JavaScript tests and 16 Python tests**. Current desktop and narrow-screen UI checks are complete; see the verification record for scope and remaining checks.
 
-## Team and college
+## Team
 
-| Item | Detail |
-|---|---|
-| Team | Black Squad |
-| College | Amrita Vishwa Vidyapeetham, Chennai |
-| Leader | Banu Sreya V. |
-| Member | Duvvuru Deepak Reddy |
-| Project | AURA Twin — Multimodal Patient Digital Twin |
+| Role | Name | Roll number |
+|---|---|---|
+| Leader | Banu Sreya V. | CH.EN.U4ECE23009 |
+| Member | Duvvuru Deepak Reddy | CH.EN.U4ECE23015 |
 
-Leader phone/email belong in the submission platform and are not published here.
+**Team:** Black Squad · **College:** Amrita Vishwa Vidyapeetham, Chennai. Leader phone/email are for the submission platform and are not published in the repository.
 
 ## Problem and healthcare use case
 
-A current glucose reading lacks historical context and the recent trajectory needed to interpret changing state. AURA combines a fictional EHR with simulated wearable observations, forecasts a future state and lets a clinician inspect the evidence.
+A reviewer needs to understand current recorded physiology, possible future glucose and the limits of the prediction. AURA places source context, replay, quality, uncertainty, explanations and a freeze/reveal challenge in one workspace. The model predicts at approximately +30, +60, +90 and +120 minutes.
 
-**Task:** glucose at +30, +60, +90 and +120 minutes, plus probability of **glucose ≥180 mg/dL at exactly +120 minutes**. This is not any excursion during two hours or necessarily a new onset. Inclusive 180 is a prototype convention; [NIDDK](https://www.niddk.nih.gov/health-information/professionals/diabetes-discoveries-practice/clinical-targets-for-continuous-glucose-monitoring-data) provides the common 70–180 mg/dL context. Individual clinical targets are outside scope.
+**Current event:** Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within ±150 seconds).
 
-## Implemented product
+The target was selected by a predeclared **training-only** support audit. The actual future CGM sample must be within ±150 seconds of the nominal horizon; outcomes are not interpolated. It is not an arbitrary probability or a guaranteed new adverse episode.
 
-- Clinician overview, searchable patient selection, record view, model evidence and Challenge Lab.
-- Five-minute replay, pause/scrub controls, four forecast horizons and descriptive residual bands.
-- Fusion through **108 clock-free past-only features**: EHR, glucose trajectory, HR/HRV, activity, sleep and observed previous-day history.
-- Degraded-data handling and abstention for substantial missing or stale observations.
-- Nonadditive group-reference sensitivity in risk percentage points; not SHAP or causal attribution.
-- Illustrative meal/activity arithmetic sandbox with trained risk unchanged.
-- Browser-local notes/acknowledgements and downloadable patient summary.
-- Freeze → reveal → compare with persistence → export a reproducible receipt.
-- Four sensor cases: clean replay, 10-minute gap, 30-minute dropout and plausible CGM bias.
-- Hosted freeze/reveal across instances using a temporary authenticated encrypted snapshot; public API restricted to packaged synthetic IDs.
+## Data origins and identity boundary
 
-This is a runnable conceptual clinician workflow. Usability benefit, clinical outcomes and intervention efficacy have not been measured.
+- **Wearables:** [PhysioNet BIG IDEAs v1.1.3](https://physionet.org/content/big-ideas-glycemic-wearable/1.1.3/), 16 de-identified research participants, actual CGM/HR/IBI with publisher checksum verification.
+- **EHR context:** Official Synthea sample CSV, pinned source commit, 16 adult profiles filtered to 2019-01-01. [Provenance and selection](docs/SYNTHEA_PROVENANCE.md).
+- **Composite association:** Independent source-ID/UUID rank assignment. These are different people. Unmatched EHR model families are negative controls, excluded from primary selection.
+- **Matched study context:** Source HbA1c and sex are linked to wearable participants; HbA1c measurement timing is unspecified and treated as a baseline assumption.
+- **Unavailable:** Sleep stages, steps, activity and genetics are not fabricated. RMSSD is derived from accepted IBI differences, not clinical ECG HRV.
 
-## Data and model
+## Measured evidence
 
-The seeded [generator](ml/generate.py) produces all fictional EHR and five-minute glucose, HR, HRV, steps and asleep/awake observations. No real records, PHI, Synthea exports, MIMIC data or device accounts are used. Genetic-marker and medication text are display context only. Sleep is not clinical sleep-stage classification.
+Participants are split **9 fit / 2 selection / 2 calibration / 3 final**, with all windows from one person kept together. Primary selection uses participant-macro +120-minute MAE. The model and policy are frozen before final evaluation.
 
-There are **1,064 identities** across fitting, selection, calibration and final evaluation. Six routine families are used during development. A separate final case combines a 3-hour meal shift, 1-hour jitter, day-shift SD 1.4 hours, skip probability 0.25 and variable sleep/activity. This exact combination is withheld; its factors are familiar. The simulator is unchanged for the v2/v3 comparison.
-
-No future meals, routine labels or hidden simulator states enter inference. Horizon-aligned previous-day readings were observed 22–23.5 hours earlier. They can describe recurrence, not reveal today's unannounced meal. Simulated HR includes a contemporaneous meal response, which may favor prediction under this generator.
-
-| Layer | Implementation |
-|---|---|
-| Frontend | HTML/CSS, vanilla JavaScript, SVG charts |
-| Runtime | Native Node.js HTTP handler; zero third-party runtime packages |
-| Hosting | Vercel static files and Node.js function; same model evaluator |
-| Training | Python, NumPy, scikit-learn histogram gradient boosting |
-| Forecast | Four absolute-error regressors; 360 iterations, 63 leaves |
-| Risk | 300-iteration, 31-leaf classifier plus separate Platt calibration |
-| Inputs | 108 raw, clock-free past-only features |
-| Policy | One global threshold selected on calibration identities |
-| Uncertainty | Per-horizon 90th-percentile absolute calibration residuals |
-| Explanation | Feature-group replacement by training medians |
-
-## Evaluation protocol
-
-| Role | Identities | Windows | Purpose |
-|---|---:|---:|---|
-| Fit | 768 | 322,560 | Fit candidates; 60-minute stride |
-| Select | 80 | 67,200 | Select candidate; 30-minute stride |
-| Calibrate | 96 | 80,640 | Probability mapping, bands and global threshold |
-| Primary final | 120 | 100,800 | Six familiar routine families |
-| Withheld combination | Same 120 | 16,800 | Separate stress result, excluded from primary aggregate |
-
-Final identities **SYN-2001–SYN-2120** are generated after model, calibration, threshold and interval bytes are frozen. All variants/windows of one identity stay together. The local hash/code sequence is auditable, not independent preregistration or a trusted timestamp. See [protocol](data/robustness-protocol.json), [selection evidence](data/selection-results.json), [freeze record](data/model-freeze.json), [audit](data/training-audit.json), [metrics](data/metrics.json) and [robustness results](data/robustness.json).
-
-Classifier selection minimizes the worst FP/FN count ratio to frozen v2 across overall, pooled irregular and variable-routine windows, with one threshold. Regression selection minimizes +120-minute MAE. Calibration is separate from fitting/selection, and final evaluation never chooses another winner. This is a prototype objective, not a clinically established error-cost function.
-
-## Measured current outcome
-
-| Frozen policy | Threshold | Recall | Precision | FN windows | FP windows | +120 MAE mg/dL |
-|---|---|---|---|---|---|---|
-| Previous v2 | 0.1600 | 73.36% | 35.46% | 1,742 | 8,730 | 11.39 |
-| Current v3 | 0.1550 | 74.47% | 37.34% | 1,669 | 8,170 | 10.85 |
-
-The frozen v3 policy at 0.1550 has 74.47% recall and 37.34% precision, with 1,669 false-negative and 8,170 false-positive windows. Frozen v2 on the same cases has 1,742 FN and 8,730 FP. The gains are modest and mixed: the patient-bootstrap 95% interval for the FN difference includes zero, and the withheld combination has **324 → 330 missed positive windows**. This does not establish a reliable reduction in misses or improvement across every routine. Event prevalence is 6.49%. These are correlated exact-horizon windows. Lowering a threshold alone cannot establish improved discrimination; paired final counts, ranking metrics and calibration evidence are all retained.
-
-| V3 minus V2 | Difference | Patient-bootstrap 95% interval |
-|---|---|---|
-| False-positive windows | −560 | −980.025 to −157.975 |
-| False-negative windows | −73 | −192.025 to +27.025 |
-| Recall, percentage points | +1.12 | −0.49 to +2.79 |
-| Precision, percentage points | +1.88 | +0.97 to +2.93 |
-
-Differences are v3 minus frozen v2; negative favors v3 for FP/FN, positive for recall/precision. Bootstrap resamples patient identities and preserves paired routine variants.
-
-| Routine | V2 → V3 FN | V2 → V3 FP | V3 recall | V3 precision | V3 MAE |
-|---|---|---|---|---|---|
-| Regular routine | 211 → 212 | 1,207 → 1,134 | 82.57% | 46.96% | 9.38 |
-| Meals delayed by 2 hours | 164 → 159 | 1,366 → 1,370 | 85.64% | 40.90% | 9.10 |
-| Meals delayed by 4 hours | 132 → 142 | 1,332 → 1,195 | 84.58% | 39.46% | 9.01 |
-| Irregular meal timing | 491 → 452 | 1,541 → 1,384 | 65.26% | 38.02% | 13.05 |
-| Daily timing changes and skipped meals | 324 → 313 | 1,627 → 1,490 | 69.13% | 31.99% | 11.97 |
-| Variable sleep, activity and meals | 420 → 391 | 1,657 → 1,597 | 60.06% | 26.91% | 12.59 |
-| Held-out combination of shifted and variable routines | 324 → 330 | 1,657 → 1,624 | 60.99% | 24.11% | 12.07 |
-
-The final row is the separate withheld combination, not part of the primary mean. The separate withheld factor combination has 12.07 mg/dL MAE, 60.99% recall and 24.11% precision. FN changes 324 → 330; FP changes 1,657 → 1,624. A combined improvement does not guarantee improvement in every family or window.
-
-| Model | +120 MAE mg/dL | AUROC | AP | Brier |
+| Model family | +120 MAE mg/dL | Recall | Precision | FN / FP windows |
 |---|---|---|---|---|
-| Current fused | 10.850 | 0.9340 | 0.5648 | 0.0400 |
-| Frozen v2 | 11.392 | 0.9243 | 0.5211 | 0.0422 |
-| Sensor only | 10.925 | 0.9316 | 0.5546 | 0.0406 |
-| EHR only | 17.904 | 0.8199 | 0.1841 | 0.0555 |
-| Persistence | 20.081 | 0.5506 | 0.0800 | 0.1090 |
+| CGM only | 13.31 | 66.20% | 22.14% | 97 / 668 |
+| CGM + HR + RMSSD | 13.70 | 84.67% | 19.35% | 44 / 1,013 |
+| Matched research fusion | 14.73 | 82.93% | 22.88% | 49 / 802 |
+| Unmatched EHR only | 14.80 | 100.00% | 15.44% | 0 / 1,572 |
+| Unmatched composite | 13.76 | 76.66% | 20.52% | 67 / 852 |
+| Persistence | 16.35 | 0.00% | 0.00% | 287 / 0 |
 
-Sensor-only minus fused MAE is **0.075 mg/dL**; the EHR increment is measured rather than assumed. Persistence has a hard 0/1 event output, not comparable probability calibration. At +120 minutes, nominal 90% bands have **90.60%** primary coverage and **61.76 mg/dL** mean width. No per-patient or shifted-population coverage guarantee is made.
+These results use the same **1,859 final windows**. FN and FP are overlapping windows, not unique clinical events. Current +120-minute empirical interval coverage is **93.54%** and mean width **71.68 mg/dL**. The review threshold **0.180** is selected on calibration participants, not final outcomes.
 
-Current-below-threshold, already-high and rising/falling slices, full uncertainty, hyperparameters and limitations are in the [model/data card](docs/MODEL_DATA_CARD.md) and [stress audit](docs/STRESS_AUDIT.md). Historical artifacts remain under `data/baseline-v1/` and `data/baseline-v2/`; their old scores are not current results.
+The small selection/calibration/final samples limit generalization. See the [current model and data card](docs/MODEL_DATA_CARD.md), [machine-readable metrics](data/research-metrics.json), [protocol](data/research-protocol.json), [freeze record](data/research-freeze.json) and [source manifest](data/research-manifest.json).
 
-## Challenge Lab and receipts
+The separate [runtime perturbation audit](docs/ROBUSTNESS_AUDIT.md) samples 496 windows and includes withheld forecasts in its denominator. It is not the same evaluation as the 1,859-window model comparison.
 
-Choose a patient, cutoff and sensor case, then **Freeze prediction → Reveal recorded future → Download receipt**. Inference sees a physically truncated perturbed prefix. Reveal compares the saved output with original future readings without recomputing it. Public data makes this a computation boundary, not secure study blinding. Missing futures or abstention do not receive fabricated scores. Persistence sees the same perturbed current value; plausible bias can pass quality gates.
+## Product and technical stack
 
-```bash
-node scripts/verify_receipt.mjs path/to/receipt.json
-```
+React, Vite, React Router, Three.js / React Three Fiber / Drei, a Node.js API, exported numerical tree inference, Python/scikit-learn training and ReportLab submission documents. Supabase authentication is configuration-dependent; demo access remains separate. The current UI exposes recorded sources and the prediction contract. Explanations are nonadditive reference sensitivity, not causal effects or SHAP.
 
-The verifier checks raw-model-byte and canonical-input SHA-256 plus recomputed predictions/reveals. Hashes are not signatures or trusted timestamps. Local sessions are memory-only, capped at 128 and expire after an hour. Hosted snapshots use authenticated encryption, expire after an hour, and are invalidated by key/model changes; their transport token is omitted from receipts. See [deployment behavior](docs/DEPLOYMENT.md).
+Challenge Lab freezes a cutoff-bounded prediction, reveals original recorded truth, compares persistence and exports evidence. Hashes detect inconsistent artifacts; they do not provide trusted signatures or independent timestamps. The verification record lists exact implemented stress cases and tested UI flows.
 
-## Reproduce training
+## Legacy synthetic evidence
 
-Python is optional for the dashboard. Use a fresh output/cache directory for reproduction:
+V3 synthetic artifacts remain historical engineering evidence and cannot be numerically compared with the new research target/cohort. The full earlier synthetic application is available locally at **http://localhost:4173/legacy/index.html**, clearly labelled legacy.
 
-```bash
-python -m venv .venv
-# Activate the environment for your platform.
-python -m pip install -r ml/requirements.txt
-npm run train
-npm run train:freeze
-npm run train:evaluate
-npm test
-npm run test:data
-```
+The independent V4 experiment has its own protocol and fresh synthetic identities. **Predeclared promotion gate failed; not promoted.** It does not validate the open-research model. On the same fresh synthetic cohort it reduced false-positive windows but increased primary false-negative windows. [Same-cohort V4 comparison](docs/SYNTHETIC_V4_EXPERIMENT.md) · [Machine-readable results](data/synthetic-v4-experiment/results.json).
 
-These scripts execute the `develop`, `freeze` and `evaluate` phases of `ml/train_v3.py`, writing to `work/reproduced-v3` with `work/reproduced-v3-cache`. They do not overwrite shipped or archived artifacts. The fixed seed is 20261019. Final locks prevent retuning and rerunning the same final evaluation. Reproduction after reading results does not make those identities untouched for a new experiment. `npm run train:legacy` remains an isolated v1 reproduction.
+## Submission material
 
-## API
+- [Architecture PDF](docs/AURA_Twin_Architecture.pdf)
+- [Presentation PDF](docs/AURA_Twin_Presentation.pdf)
+- [Timed demonstration runbook](docs/DEMO_RUNBOOK.md)
+- [Current model/data card](docs/MODEL_DATA_CARD.md)
+- [Source provenance](docs/SYNTHEA_PROVENANCE.md)
+- [Verification record](docs/VERIFICATION.md)
+- [Requirements traceability](docs/REQUIREMENTS_TRACEABILITY.md)
+- [Submission checklist](docs/SUBMISSION_CHECKLIST.md)
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| GET | `/api/health` | Version and synthetic flag |
-| GET | `/api/patients`, `/api/patients/:id` | Packaged fictional records |
-| GET | `/api/metrics`, `/api/robustness`, `/api/stress` | Current evaluation and comparisons |
-| POST | `/api/predict` | Past-only prediction |
-| GET | `/api/challenge/modes` | Sensor conditions |
-| POST | `/api/challenge` | Freeze patient/cursor/mode |
-| POST | `/api/challenge/reveal` | Compare original frozen output with future |
+**[Current demonstration MP4](docs/AURA_Twin_Walkthrough.mp4): 23:52** (1,431.877687 seconds), with 22 chapters matching the current research edition. Duration and complete decoding are verified. The external unlisted video URL remains pending.
 
-Prediction accepts `{"patientId":"<API patient ID>","cursor":600}`. Local development also accepts a validated synthetic `patient` object; the hosted adapter rejects arbitrary patient objects. See [schema](data/SCHEMA.md). Do not enter real patient information.
+## License and attribution
 
-## Required submission artifacts
-
-- [Architecture PDF](docs/AURA_Twin_Architecture.pdf), [22-slide presentation PDF](docs/AURA_Twin_Presentation.pdf), [Challenge Lab supplement](docs/AURA_Twin_Challenge_Lab.pdf).
-- [Full narration](docs/narration.json), [video transcript](docs/VIDEO_TRANSCRIPT.md), [demo runbook](docs/DEMO_RUNBOOK.md), [three-minute challenge](docs/JURY_CHALLENGE_SCRIPT.md).
-- [Differentiation and pitch](docs/DIFFERENTIATION.md), [model/data card](docs/MODEL_DATA_CARD.md), [jury Q&A](docs/JUDGE_QA.md), [verification](docs/VERIFICATION.md).
-- [Submission checklist](docs/SUBMISSION_CHECKLIST.md), [requirements map](docs/REQUIREMENTS_TRACEABILITY.md), [document/video sources](scripts/README.md), [deployment guide](docs/DEPLOYMENT.md).
-- [MIT license](LICENSE); dependencies retain their own licenses.
-
-**Current demonstration video:** [watch the public walkthrough — 26:24](https://aura-twin-black-squad.vercel.app/docs/AURA_Twin_Walkthrough.mp4), or use the [repository MP4](docs/AURA_Twin_Walkthrough.mp4). The 22-chapter recording uses the current V3 slides and locally synthesized Microsoft Zira narration. Its exact duration is 1,584.109961 seconds; the complete file passed decoding verification and the public host serves it without authentication. An unlisted YouTube upload has not been created.
-
-**Live prototype:** [aura-twin-black-squad.vercel.app](https://aura-twin-black-squad.vercel.app). Anonymous API checks confirm the current V3 model, hosted freeze/reveal and offline verification of its downloaded receipt. The [presentation](https://aura-twin-black-squad.vercel.app/docs/AURA_Twin_Presentation.pdf), [architecture](https://aura-twin-black-squad.vercel.app/docs/AURA_Twin_Architecture.pdf) and main MP4 are served publicly. The local folder is `Black Squad_Amrita Vishwa Vidyapeetham Chennai`. The team must provide leader contact details on the submission platform; see the [final checklist](docs/SUBMISSION_CHECKLIST.md) for remaining submission steps.
-
-## Limits and related work
-
-Unknown future meals, abrupt changes, plausible sensor bias, medication effects, new devices/generators and real-world complexity remain unresolved. Local notes are demo state. No clinical authentication, outcome study, compliance certification or treatment recommendation is provided.
-
-Prior twin/counterfactual work includes [GlyTwin](https://arxiv.org/abs/2504.09846); no first-in-field or cross-dataset accuracy claim is made. The [VVUQ perspective](https://www.nature.com/articles/s41746-025-01447-y) motivates verification and validation, not certification of this implementation. [Threshold selection](https://scikit-learn.org/stable/modules/classification_threshold.html) and [probability calibration](https://scikit-learn.org/stable/modules/calibration.html) are distinct. [Unannounced-meal detection research](https://pmc.ncbi.nlm.nih.gov/articles/PMC5876595/) concerns observing a response after a meal, not foreknowledge of future meals. [Synthea](https://synthetichealth.github.io/synthea/) is a possible future integration, not a source used here.
+Application code is under the [MIT License](LICENSE). Third-party datasets have their own terms: BIG IDEAs uses the [Open Data Commons Attribution License 1.0](https://physionet.org/content/big-ideas-glycemic-wearable/view-license/1.1.3/); official Synthea sample terms and the [Walonoski et al. citation](https://doi.org/10.1093/jamia/ocx079) are documented separately. [Complete source references](docs/SOURCE_REFERENCES.md) include the original wearable study and platform citations. Application licensing does not replace source-data attribution.

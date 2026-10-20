@@ -1,4 +1,6 @@
-# Data and inference contract
+# Historical synthetic V3 data and inference contract
+
+This file describes only the legacy synthetic application and its `data/model.json` / `data/patients.json` artifacts. The current research workspace uses separate `research-*.json` artifacts; see [research/README.md](research/README.md) and the [current model/data card](../docs/MODEL_DATA_CARD.md). The statements below about fictional people do not describe the open research wearable source.
 
 All supplied people, measurements, diagnoses and names are fictional. `patients.json` contains eight demonstration records from fresh final identities SYN-2001 onward, with routine/default-cutoff choices fixed independently of favorable outcomes. The current experiment has 1,064 distinct identities across fit/selection/calibration/final partitions. Six routine families support development and the primary final evaluation; an additional withheld factor combination is evaluated separately on the same 120 final identities. A display name has no connection to a real person. Each identity’s variants stay in its partition.
 
