@@ -66,6 +66,8 @@ def context(model, metrics, auth_status):
                            'the provider integration is implemented, but an identity provider is not yet connected, so account sign-in is unavailable'),
         'configured-unverified': ('Supabase connected. Email confirmation on; Google configured. Account-flow verification pending.',
                                  'Supabase is connected with email confirmation enabled. Its Google provider is configured and enabled, but complete real account-flow verification remains pending. Public email sign-up and recovery are disabled pending SMTP and verified email delivery'),
+        'google-verified': ('Google sign-in, profile display and session persistence verified on production.',
+                            'Google sign-in completed on the production website. The account profile and signed-in header were visible, and the session persisted after a full page reload. Public email sign-up and password recovery remain disabled pending SMTP delivery'),
         'verified': ('Configured provider-backed flows; see the verification record for tested paths.',
                      'configured provider-backed flows are available, with the exact paths actually tested listed in the verification record'),
     }[auth_status]
@@ -88,7 +90,9 @@ def context(model, metrics, auth_status):
         'coverage':percent(f['intervalCoverage']), 'interval_width':number(f['intervalMeanWidth']),
         'threshold':number(f['threshold'], 3), 'auth_card':auth[0], 'auth_spoken':auth[1],
         'auth_detail':('Public email sign-up and password recovery are intentionally disabled until SMTP/email delivery is configured. The Supabase Google provider is now enabled after secure credential configuration, and the public Google feature flag is enabled for Vercel production and preview. Existing-account sign-in is provider-backed; no end-to-end account flow, including Google sign-in, has been verified.'
-                       if auth_status == 'configured-unverified' else ''),
+                       if auth_status == 'configured-unverified' else
+                       'Google sign-in, account profile display and session persistence after reload were verified on production. Email/password registration, recovery, sign-out and token refresh were not verified. Public email sign-up and recovery remain disabled pending SMTP delivery.'
+                       if auth_status == 'google-verified' else ''),
         'v4_card':v4_card, 'v4_spoken':v4_spoken, 'model_rows':rows,
     }
 
@@ -430,7 +434,7 @@ See [machine-readable audit](../data/research-runtime-audit.json), [current mode
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--auth-status', choices=['not-configured', 'configured-unverified', 'verified'], default='not-configured')
+    parser.add_argument('--auth-status', choices=['not-configured', 'configured-unverified', 'google-verified', 'verified'], default='not-configured')
     parser.add_argument('--no-pdf', action='store_true', help='Write truthful text/narration while final UI screenshots are pending.')
     parser.add_argument('--assets', type=Path, default=DOCS/'assets')
     args = parser.parse_args()

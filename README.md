@@ -22,9 +22,9 @@ npm run build
 npm start
 ```
 
-Open **http://localhost:4173**. The bundled research demo requires no account. Authentication status: **Supabase connected. Email confirmation on; Google configured. Account-flow verification pending.** See [deployment and configuration](docs/DEPLOYMENT.md).
+Open **http://localhost:4173**. The bundled research demo requires no account. Authentication status: **Google sign-in, profile display and session persistence verified on production.** See [deployment and configuration](docs/DEPLOYMENT.md).
 
-Public email sign-up and password recovery are intentionally disabled until SMTP/email delivery is configured. The Supabase Google provider is now enabled after secure credential configuration, and the public Google feature flag is enabled for Vercel production and preview. Existing-account sign-in is provider-backed; no end-to-end account flow, including Google sign-in, has been verified.
+Public email sign-up and password recovery are intentionally disabled until SMTP/email delivery is configured. The Supabase Google provider is now enabled after secure credential configuration, and the public Google feature flag is enabled for Vercel production and preview. Google sign-in completed on production; the signed-in header, account profile and session persistence after a full reload were verified. Email/password registration, recovery, sign-out and token refresh were not verified.
 
 Recording note: Google was not configured when the current PDFs and 23:52 video were recorded. Those assets retain that historical configuration status; [current authentication documentation](docs/DEPLOYMENT.md#authentication-configuration) is authoritative.
 

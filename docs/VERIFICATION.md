@@ -36,11 +36,13 @@ The API-produced receipt was copied byte-for-byte into the repository and indepe
 
 ## Remaining manual checks
 
+The Google callback fix was published in application commit `24d7aa2ad648ab303cf568d3ba6992e62d198ee6`. [CI run 39393685661](https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad/actions/runs/39393685661) passed; Vercel deployment `dpl_8uyBRCqYHzXs628msAGCaRbtD5n4` served frontend `index-CtkPKUS2.js`. The Google sign-in and reload checks below used that production release.
+
 - Confirm the browser receipt-download file on the filesystem.
 - Confirm and open the current patient-summary file; the button's success toast alone does not verify its payload or download.
-- End-to-end account-flow verification after the required provider configuration.
+- Email/password registration and recovery after SMTP configuration; sign-out and token-refresh verification.
 
-Supabase public configuration is connected, with email confirmation enabled. Public email sign-up and recovery are intentionally disabled pending SMTP/email delivery. The Supabase Google provider is now enabled, confirmed through its public provider settings after secure credential configuration. The public Google feature flag is enabled for Vercel production and preview. Existing-account sign-in is provider-backed, but no end-to-end account flow, including Google sign-in, has been verified. Demo access requires no account.
+Supabase public configuration is connected, with email confirmation enabled. Public email sign-up and recovery are intentionally disabled pending SMTP/email delivery. The Supabase Google provider is now enabled, confirmed through its public provider settings after secure credential configuration. The public Google feature flag is enabled for Vercel production and preview. Google sign-in completed on production on 20 October 2026. The callback returned to `/app`, the header showed Account settings, Settings displayed the signed-in profile and Sign out control, and a full reload restored the same session. No tokens or credentials were inspected. Sign-out, token refresh and email/password flows remain unverified. Demo access requires no account.
 
 ## Reproduction
 
@@ -50,7 +52,7 @@ python -m pip install -r ml/requirements.txt
 npm run test:data
 node scripts/verify_research_receipt.mjs path/to/receipt.json
 node scripts/verify_research_receipt.mjs docs/SAMPLE_RESEARCH_RECEIPT.json
-python scripts/build_research_docs.py --auth-status configured-unverified
+python scripts/build_research_docs.py --auth-status google-verified
 ```
 
 Change authentication status only when supported by configuration and verification evidence. The current PDFs and 23:52 recording were produced before Google configuration; their Google-unconfigured wording is historical. The current status in this record and [deployment documentation](DEPLOYMENT.md#authentication-configuration) is authoritative. The frozen scientific content, PDFs and video remain unchanged; future regenerated assets should use the then-current verified status.
