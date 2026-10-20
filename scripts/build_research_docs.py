@@ -64,8 +64,8 @@ def context(model, metrics, auth_status):
     auth = {
         'not-configured': ('Integration implemented; provider not connected. Sign-in is unavailable.',
                            'the provider integration is implemented, but an identity provider is not yet connected, so account sign-in is unavailable'),
-        'configured-unverified': ('Supabase connected. Email confirmation on; Google off. Account-flow verification pending.',
-                                 'Supabase is connected with email confirmation enabled. Complete real account-flow verification remains pending. Google sign-in is disabled because its OAuth credentials are not configured, and public email delivery still depends on provider setup'),
+        'configured-unverified': ('Supabase connected. Email confirmation on; Google configured. Account-flow verification pending.',
+                                 'Supabase is connected with email confirmation enabled. Its Google provider is configured and enabled, but complete real account-flow verification remains pending. Public email sign-up and recovery are disabled pending SMTP and verified email delivery'),
         'verified': ('Configured provider-backed flows; see the verification record for tested paths.',
                      'configured provider-backed flows are available, with the exact paths actually tested listed in the verification record'),
     }[auth_status]
@@ -87,7 +87,7 @@ def context(model, metrics, auth_status):
         'false_negative':f'{fn:,}', 'false_positive':f'{fp:,}',
         'coverage':percent(f['intervalCoverage']), 'interval_width':number(f['intervalMeanWidth']),
         'threshold':number(f['threshold'], 3), 'auth_card':auth[0], 'auth_spoken':auth[1],
-        'auth_detail':('Public email sign-up and password recovery are intentionally disabled until SMTP/email delivery is configured. Google OAuth is disabled pending provider credentials. Existing-account sign-in is provider-backed; no end-to-end account flow has been verified.'
+        'auth_detail':('Public email sign-up and password recovery are intentionally disabled until SMTP/email delivery is configured. The Supabase Google provider is now enabled after secure credential configuration, and the public Google feature flag is enabled for Vercel production and preview. Existing-account sign-in is provider-backed; no end-to-end account flow, including Google sign-in, has been verified.'
                        if auth_status == 'configured-unverified' else ''),
         'v4_card':v4_card, 'v4_spoken':v4_spoken, 'model_rows':rows,
     }
@@ -229,7 +229,7 @@ def write_readme(model, metrics, ctx):
 
 ![Current AURA research workspace](docs/assets/dashboard-research.png)
 
-**[Live demo](https://aura-twin-black-squad.vercel.app)** · **[Public repository](https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad)**. Verification of the current public release is pending. Exact release checks, including the deployed model identity, are listed in [VERIFICATION.md](docs/VERIFICATION.md).
+**[Live demo](https://aura-twin-black-squad.vercel.app)** · **[Public repository](https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad)**. The current research release at commit `664bc5e7be882153285c31281d2e4c9c25157ecc` was verified on 2026-10-20. Exact release checks, including the deployed model identity and remaining authentication limits, are listed in [VERIFICATION.md](docs/VERIFICATION.md).
 
 ## Run locally
 
@@ -244,6 +244,8 @@ npm start
 Open **http://localhost:4173**. The bundled research demo requires no account. Authentication status: **{ctx['auth_card']}** See [deployment and configuration](docs/DEPLOYMENT.md).
 
 {ctx['auth_detail']}
+
+Recording note: Google was not configured when the current PDFs and 23:52 video were recorded. Those assets retain that historical configuration status; [current authentication documentation](docs/DEPLOYMENT.md#authentication-configuration) is authoritative.
 
 ```bash
 npm test

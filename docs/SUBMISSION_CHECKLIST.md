@@ -1,6 +1,6 @@
 # AURA Twin — current rebuild submission checklist
 
-Local verification of the research rebuild is complete within the scope below. Verification of the current public release is pending. Existing public links may still serve the earlier edition until release checks are completed.
+The current research release is public and verified at commit `664bc5e7be882153285c31281d2e4c9c25157ecc`. Production checks confirmed the current frontend/model identity, public PDFs/MP4 and API freeze/reveal receipt. Remaining manual export, authentication and submission steps are listed below.
 
 | Requirement | Current status / evidence |
 |---|---|
@@ -20,10 +20,14 @@ Local verification of the research rebuild is complete within the scope below. V
 | External video link | Pending actual unlisted upload |
 | License | Application MIT; separate dataset attribution and terms |
 | Automated tests and UI QA | **58 JavaScript / 16 Python tests passed**; current desktop and narrow-screen UI checks complete |
-| Authentication | Supabase connected; signup/recovery disabled pending SMTP/email delivery; Google disabled pending OAuth credentials; no end-to-end account verification |
-| Public GitHub current edition | Pending current release |
-| Public links accessible | Check after current release |
+| Authentication | Supabase connected; signup/recovery disabled pending SMTP/email delivery; Google provider configured and enabled; no end-to-end account verification |
+| Public GitHub current edition | Release commit `664bc5e7be882153285c31281d2e4c9c25157ecc`; CI run 39391935412 succeeded |
+| Public links accessible | Canonical Vercel site, current PDFs and MP4 verified anonymously |
+| Production receipt | [API receipt](SAMPLE_RESEARCH_RECEIPT.json) reproduced offline, including recorded future truth; browser-download file still unconfirmed |
+| Patient summary | Live button displayed a download-success toast; actual payload/file opening remains unverified |
 | Submission fields | Leader name, phone, email and public repository URL; private contacts stay outside this repository |
+
+Recording note: the current PDFs and video retain their earlier Google-unconfigured status. [Current authentication configuration](DEPLOYMENT.md#authentication-configuration) is authoritative; Google account-flow verification remains pending.
 
 The original brief requires a **minimum 20-minute video**. Meet that stricter requirement rather than relying on the form screenshot's 15–20-minute wording.
 

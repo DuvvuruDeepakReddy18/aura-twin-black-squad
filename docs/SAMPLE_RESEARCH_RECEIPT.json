@@ -1,0 +1,1369 @@
+{
+  "schemaVersion": 2,
+  "challenge": {
+    "challengeId": "a6e4503c-8ba9-4971-b27a-4fd0e8a27d6b",
+    "mode": "baseline",
+    "modeLabel": "Recorded stream",
+    "perturbation": {
+      "mode": "baseline",
+      "description": "Use the recorded aligned inputs without an artificial alteration.",
+      "changedPoints": 0,
+      "note": "Deterministic, artificial alteration of recorded inputs. Future observations remain unchanged. This selected-window experiment is not an aggregate robustness estimate."
+    },
+    "prediction": {
+      "available": true,
+      "reason": null,
+      "modelVersion": "aura-research-1.0.0",
+      "modelKind": "hist_gradient_boosting",
+      "timestamp": "2020-02-13T23:25:00Z",
+      "current": {
+        "glucose": 110,
+        "hr": 69.81506666666667,
+        "hrv": 97.61892773879511,
+        "activity": null,
+        "steps": null,
+        "sleep": null,
+        "sourceTimestamp": "2020-02-13T23:23:32Z",
+        "carriedForward": false
+      },
+      "riskThreshold": 0.18000000000000002,
+      "eventDefinition": {
+        "kind": "rise",
+        "threshold": 20,
+        "horizonMinutes": 120,
+        "toleranceSeconds": 150,
+        "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within ±150 seconds).",
+        "unit": "mg/dL"
+      },
+      "quality": {
+        "score": 99,
+        "coverage": 1,
+        "missing": 0,
+        "stale": false,
+        "glucoseAgeMinutes": 1.4666666666666666,
+        "hrCoverage": 1,
+        "hrvCoverage": 0.9230769230769231,
+        "outliers": 0,
+        "dimensions": {
+          "cgmCoverage": 1,
+          "hrCoverage": 1,
+          "hrvCoverage": 0.9230769230769231
+        },
+        "scoreDefinition": "80% recent CGM coverage +10% HR coverage +10% IBI-RMSSD coverage; data availability score, not clinical confidence",
+        "outsideTrainingRange": [
+          "lag360"
+        ],
+        "status": "good",
+        "rangeNote": "Observed feature outside train 1st–99th percentile; descriptive shift warning, not a validated OOD detector."
+      },
+      "forecast": [
+        {
+          "minutes": 30,
+          "value": 107.97639141635237,
+          "low": 79.5130392907747,
+          "high": 136.43974354193006,
+          "glucose": 107.97639141635237,
+          "lower": 79.5130392907747,
+          "upper": 136.43974354193006
+        },
+        {
+          "minutes": 60,
+          "value": 106.67716273159553,
+          "low": 72.3926038542788,
+          "high": 140.96172160891226,
+          "glucose": 106.67716273159553,
+          "lower": 72.3926038542788,
+          "upper": 140.96172160891226
+        },
+        {
+          "minutes": 90,
+          "value": 105.76666238012635,
+          "low": 71.81648750770287,
+          "high": 139.71683725254982,
+          "glucose": 105.76666238012635,
+          "lower": 71.81648750770287,
+          "upper": 139.71683725254982
+        },
+        {
+          "minutes": 120,
+          "value": 106.07986867261233,
+          "low": 70.24053560994363,
+          "high": 141.91920173528104,
+          "glucose": 106.07986867261233,
+          "lower": 70.24053560994363,
+          "upper": 141.91920173528104
+        }
+      ],
+      "risk": 0.08458321087630101,
+      "drivers": [
+        {
+          "name": "Recent glucose trajectory",
+          "source": "Open research CGM",
+          "value": 36,
+          "contribution": -15.366376352826155,
+          "unit": "percentage_points",
+          "method": "group_reference_sensitivity"
+        }
+      ],
+      "features": {
+        "glucose": 110,
+        "glucoseAgeMinutes": 1.4666666666666666,
+        "lag15": 111,
+        "lag30": 106,
+        "lag60": 96,
+        "lag90": 89,
+        "lag120": 86,
+        "lag180": 113,
+        "lag360": 61,
+        "gMean30": 109.85714285714286,
+        "gStd30": 1.7261494247992246,
+        "gMin30": 106,
+        "gMax30": 112,
+        "gSlope30": 0.07142857142857142,
+        "gCoverage30": 1,
+        "gMean60": 106,
+        "gStd60": 4.673986932604096,
+        "gMin60": 96,
+        "gMax60": 112,
+        "gSlope60": 0.22087912087912087,
+        "gCoverage60": 1,
+        "gMean120": 97.92,
+        "gStd120": 9.221366493096347,
+        "gMin120": 85,
+        "gMax120": 112,
+        "gSlope120": 0.22661538461538464,
+        "gCoverage120": 1,
+        "gMean360": 100.38356164383562,
+        "gStd360": 21.201337601241494,
+        "gMin360": 58,
+        "gMax360": 143,
+        "gSlope360": 0.037461434036776486,
+        "gCoverage360": 1,
+        "gRiseFraction60": 0.4166666666666667,
+        "gMeanAbsChange60": 1.6666666666666667,
+        "gAboveMean360": 9.61643835616438
+      },
+      "contract": {
+        "predictionTimestamp": "2020-02-13T23:25:00Z",
+        "forecastHorizonsMinutes": [
+          30,
+          60,
+          90,
+          120
+        ],
+        "target": {
+          "kind": "rise",
+          "threshold": 20,
+          "horizonMinutes": 120,
+          "toleranceSeconds": 150,
+          "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within ±150 seconds).",
+          "unit": "mg/dL"
+        },
+        "inputWindowMinutes": 360,
+        "inputStart": "2020-02-13T17:25:00Z",
+        "latestUsableObservation": "2020-02-13T23:23:32Z",
+        "latestUsedTimestamp": "2020-02-13T23:25:00Z",
+        "dataUsed": [
+          "Open research CGM"
+        ],
+        "model": "hist_gradient_boosting",
+        "modelVersion": "aura-research-1.0.0",
+        "split": {
+          "train": [
+            "001",
+            "002",
+            "003",
+            "004",
+            "005",
+            "006",
+            "007",
+            "008",
+            "009"
+          ],
+          "selection": [
+            "010",
+            "011"
+          ],
+          "calibration": [
+            "012",
+            "013"
+          ],
+          "test": [
+            "014",
+            "015",
+            "016"
+          ]
+        },
+        "nominalIntervalCoverage": 0.9,
+        "uncertainty": "Empirical residual bands from separate calibration participants. Coverage under artificial missingness is not calibrated or guaranteed.",
+        "timestampNote": "Date-shifted source local times, timezone unspecified; Z used only as neutral timestamp encoding.",
+        "matchedContextTimingAssumption": "Source has no lab timestamp; HbA1c is treated as available baseline research context, not proven pre-replay EHR."
+      },
+      "predictionContract": {
+        "predictionTimestamp": "2020-02-13T23:25:00Z",
+        "forecastHorizonsMinutes": [
+          30,
+          60,
+          90,
+          120
+        ],
+        "target": {
+          "kind": "rise",
+          "threshold": 20,
+          "horizonMinutes": 120,
+          "toleranceSeconds": 150,
+          "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within ±150 seconds).",
+          "unit": "mg/dL"
+        },
+        "inputWindowMinutes": 360,
+        "inputStart": "2020-02-13T17:25:00Z",
+        "latestUsableObservation": "2020-02-13T23:23:32Z",
+        "latestUsedTimestamp": "2020-02-13T23:25:00Z",
+        "dataUsed": [
+          "Open research CGM"
+        ],
+        "model": "hist_gradient_boosting",
+        "modelVersion": "aura-research-1.0.0",
+        "split": {
+          "train": [
+            "001",
+            "002",
+            "003",
+            "004",
+            "005",
+            "006",
+            "007",
+            "008",
+            "009"
+          ],
+          "selection": [
+            "010",
+            "011"
+          ],
+          "calibration": [
+            "012",
+            "013"
+          ],
+          "test": [
+            "014",
+            "015",
+            "016"
+          ]
+        },
+        "nominalIntervalCoverage": 0.9,
+        "uncertainty": "Empirical residual bands from separate calibration participants. Coverage under artificial missingness is not calibrated or guaranteed.",
+        "timestampNote": "Date-shifted source local times, timezone unspecified; Z used only as neutral timestamp encoding.",
+        "matchedContextTimingAssumption": "Source has no lab timestamp; HbA1c is treated as available baseline research context, not proven pre-replay EHR."
+      },
+      "usedFeatureNames": [
+        "glucose",
+        "glucoseAgeMinutes",
+        "lag15",
+        "lag30",
+        "lag60",
+        "lag90",
+        "lag120",
+        "lag180",
+        "lag360",
+        "gMean30",
+        "gStd30",
+        "gMin30",
+        "gMax30",
+        "gSlope30",
+        "gCoverage30",
+        "gMean60",
+        "gStd60",
+        "gMin60",
+        "gMax60",
+        "gSlope60",
+        "gCoverage60",
+        "gMean120",
+        "gStd120",
+        "gMin120",
+        "gMax120",
+        "gSlope120",
+        "gCoverage120",
+        "gMean360",
+        "gStd360",
+        "gMin360",
+        "gMax360",
+        "gSlope360",
+        "gCoverage360",
+        "gRiseFraction60",
+        "gMeanAbsChange60",
+        "gAboveMean360"
+      ],
+      "source": "Open research replay",
+      "syntheticEhrUsed": false,
+      "matchedResearchContextUsed": false,
+      "alert": {
+        "triggered": false,
+        "threshold": 0.18000000000000002,
+        "label": "Below review threshold"
+      },
+      "driverMethod": "group_reference_sensitivity",
+      "explanationNote": "Risk change after replacing one feature group with training medians. Non-additive model sensitivity; not causality or SHAP.",
+      "patientId": "research-001",
+      "cursor": 72,
+      "abstained": false,
+      "modelSHA256": "a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432",
+      "inputTimestamp": "2020-02-13T23:25:00Z",
+      "dataQuality": {
+        "windowMinutes": 120,
+        "timestamp": "2020-02-13T23:25:00Z",
+        "streams": [
+          {
+            "key": "glucose",
+            "label": "Interstitial glucose",
+            "unit": "mg/dL",
+            "provenance": "OPEN RESEARCH DATA",
+            "minimum": 40,
+            "maximum": 400,
+            "observed": 24,
+            "expected": 24,
+            "coverage": 1,
+            "missingness": 0,
+            "observationSemantics": "Available aligned grid values; not independent raw sample counts.",
+            "sourceObservationCount": 24,
+            "latestObservation": "2020-02-13T23:23:32Z",
+            "minutesSinceObservation": 1.4666666666666666,
+            "outliers": 0,
+            "status": "good"
+          },
+          {
+            "key": "hr",
+            "label": "Heart rate",
+            "unit": "bpm",
+            "provenance": "OPEN RESEARCH DATA",
+            "minimum": 30,
+            "maximum": 220,
+            "observed": 24,
+            "expected": 24,
+            "coverage": 1,
+            "missingness": 0,
+            "observationSemantics": "Available aligned grid values; not independent raw sample counts.",
+            "sourceObservationCount": null,
+            "latestObservation": "2020-02-13T23:25:00Z",
+            "minutesSinceObservation": 0,
+            "outliers": 0,
+            "status": "good"
+          },
+          {
+            "key": "hrv",
+            "label": "IBI-derived RMSSD",
+            "unit": "ms",
+            "provenance": "DERIVED FEATURE",
+            "minimum": 0,
+            "maximum": 500,
+            "observed": 23,
+            "expected": 24,
+            "coverage": 0.958,
+            "missingness": 0.042,
+            "observationSemantics": "Available aligned grid values; not independent raw sample counts.",
+            "sourceObservationCount": null,
+            "latestObservation": "2020-02-13T23:25:00Z",
+            "minutesSinceObservation": 0,
+            "outliers": 0,
+            "status": "good"
+          }
+        ],
+        "unavailable": [
+          "Sleep-stage data unavailable in the selected research source.",
+          "Activity and step measurements are not included in this processed subset."
+        ],
+        "note": "Coverage counts finite aligned values against a 5-minute grid, including CGM carried forward from sufficiently recent source observations. SourceObservationCount counts distinct CGM source timestamps. Recency is relative to replay time. Range checks are data plausibility checks, not clinical diagnoses.",
+        "status": "good"
+      },
+      "baseline": {
+        "method": "Recent two-hour mean versus preceding available history, up to 24 hours. No future observations used.",
+        "timestamp": "2020-02-13T23:25:00Z",
+        "values": [
+          {
+            "key": "glucose",
+            "label": "Interstitial glucose",
+            "unit": "mg/dL",
+            "provenance": "DERIVED FEATURE",
+            "baseline": 101.347,
+            "current": 98.417,
+            "delta": -2.93,
+            "baselineObservations": 49,
+            "currentObservations": 24
+          },
+          {
+            "key": "hr",
+            "label": "Heart rate",
+            "unit": "bpm",
+            "provenance": "DERIVED FEATURE",
+            "baseline": 76.541,
+            "current": 67.798,
+            "delta": -8.743,
+            "baselineObservations": 49,
+            "currentObservations": 24
+          },
+          {
+            "key": "hrv",
+            "label": "IBI-derived RMSSD",
+            "unit": "ms",
+            "provenance": "DERIVED FEATURE",
+            "baseline": 90.067,
+            "current": 83.96,
+            "delta": -6.106,
+            "baselineObservations": 39,
+            "currentObservations": 23
+          }
+        ]
+      },
+      "researchPrototype": true,
+      "replay": true
+    },
+    "baseline": {
+      "available": true,
+      "reason": null,
+      "modelVersion": "aura-research-1.0.0",
+      "modelKind": "hist_gradient_boosting",
+      "timestamp": "2020-02-13T23:25:00Z",
+      "current": {
+        "glucose": 110,
+        "hr": 69.81506666666667,
+        "hrv": 97.61892773879511,
+        "activity": null,
+        "steps": null,
+        "sleep": null,
+        "sourceTimestamp": "2020-02-13T23:23:32Z",
+        "carriedForward": false
+      },
+      "riskThreshold": 0.18000000000000002,
+      "eventDefinition": {
+        "kind": "rise",
+        "threshold": 20,
+        "horizonMinutes": 120,
+        "toleranceSeconds": 150,
+        "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within ±150 seconds).",
+        "unit": "mg/dL"
+      },
+      "quality": {
+        "score": 99,
+        "coverage": 1,
+        "missing": 0,
+        "stale": false,
+        "glucoseAgeMinutes": 1.4666666666666666,
+        "hrCoverage": 1,
+        "hrvCoverage": 0.9230769230769231,
+        "outliers": 0,
+        "dimensions": {
+          "cgmCoverage": 1,
+          "hrCoverage": 1,
+          "hrvCoverage": 0.9230769230769231
+        },
+        "scoreDefinition": "80% recent CGM coverage +10% HR coverage +10% IBI-RMSSD coverage; data availability score, not clinical confidence",
+        "outsideTrainingRange": [
+          "lag360"
+        ],
+        "status": "good",
+        "rangeNote": "Observed feature outside train 1st–99th percentile; descriptive shift warning, not a validated OOD detector."
+      },
+      "forecast": [
+        {
+          "minutes": 30,
+          "value": 107.97639141635237,
+          "low": 79.5130392907747,
+          "high": 136.43974354193006,
+          "glucose": 107.97639141635237,
+          "lower": 79.5130392907747,
+          "upper": 136.43974354193006
+        },
+        {
+          "minutes": 60,
+          "value": 106.67716273159553,
+          "low": 72.3926038542788,
+          "high": 140.96172160891226,
+          "glucose": 106.67716273159553,
+          "lower": 72.3926038542788,
+          "upper": 140.96172160891226
+        },
+        {
+          "minutes": 90,
+          "value": 105.76666238012635,
+          "low": 71.81648750770287,
+          "high": 139.71683725254982,
+          "glucose": 105.76666238012635,
+          "lower": 71.81648750770287,
+          "upper": 139.71683725254982
+        },
+        {
+          "minutes": 120,
+          "value": 106.07986867261233,
+          "low": 70.24053560994363,
+          "high": 141.91920173528104,
+          "glucose": 106.07986867261233,
+          "lower": 70.24053560994363,
+          "upper": 141.91920173528104
+        }
+      ],
+      "risk": 0.08458321087630101,
+      "drivers": [
+        {
+          "name": "Recent glucose trajectory",
+          "source": "Open research CGM",
+          "value": 36,
+          "contribution": -15.366376352826155,
+          "unit": "percentage_points",
+          "method": "group_reference_sensitivity"
+        }
+      ],
+      "features": {
+        "glucose": 110,
+        "glucoseAgeMinutes": 1.4666666666666666,
+        "lag15": 111,
+        "lag30": 106,
+        "lag60": 96,
+        "lag90": 89,
+        "lag120": 86,
+        "lag180": 113,
+        "lag360": 61,
+        "gMean30": 109.85714285714286,
+        "gStd30": 1.7261494247992246,
+        "gMin30": 106,
+        "gMax30": 112,
+        "gSlope30": 0.07142857142857142,
+        "gCoverage30": 1,
+        "gMean60": 106,
+        "gStd60": 4.673986932604096,
+        "gMin60": 96,
+        "gMax60": 112,
+        "gSlope60": 0.22087912087912087,
+        "gCoverage60": 1,
+        "gMean120": 97.92,
+        "gStd120": 9.221366493096347,
+        "gMin120": 85,
+        "gMax120": 112,
+        "gSlope120": 0.22661538461538464,
+        "gCoverage120": 1,
+        "gMean360": 100.38356164383562,
+        "gStd360": 21.201337601241494,
+        "gMin360": 58,
+        "gMax360": 143,
+        "gSlope360": 0.037461434036776486,
+        "gCoverage360": 1,
+        "gRiseFraction60": 0.4166666666666667,
+        "gMeanAbsChange60": 1.6666666666666667,
+        "gAboveMean360": 9.61643835616438
+      },
+      "contract": {
+        "predictionTimestamp": "2020-02-13T23:25:00Z",
+        "forecastHorizonsMinutes": [
+          30,
+          60,
+          90,
+          120
+        ],
+        "target": {
+          "kind": "rise",
+          "threshold": 20,
+          "horizonMinutes": 120,
+          "toleranceSeconds": 150,
+          "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within ±150 seconds).",
+          "unit": "mg/dL"
+        },
+        "inputWindowMinutes": 360,
+        "inputStart": "2020-02-13T17:25:00Z",
+        "latestUsableObservation": "2020-02-13T23:23:32Z",
+        "latestUsedTimestamp": "2020-02-13T23:25:00Z",
+        "dataUsed": [
+          "Open research CGM"
+        ],
+        "model": "hist_gradient_boosting",
+        "modelVersion": "aura-research-1.0.0",
+        "split": {
+          "train": [
+            "001",
+            "002",
+            "003",
+            "004",
+            "005",
+            "006",
+            "007",
+            "008",
+            "009"
+          ],
+          "selection": [
+            "010",
+            "011"
+          ],
+          "calibration": [
+            "012",
+            "013"
+          ],
+          "test": [
+            "014",
+            "015",
+            "016"
+          ]
+        },
+        "nominalIntervalCoverage": 0.9,
+        "uncertainty": "Empirical residual bands from separate calibration participants. Coverage under artificial missingness is not calibrated or guaranteed.",
+        "timestampNote": "Date-shifted source local times, timezone unspecified; Z used only as neutral timestamp encoding.",
+        "matchedContextTimingAssumption": "Source has no lab timestamp; HbA1c is treated as available baseline research context, not proven pre-replay EHR."
+      },
+      "predictionContract": {
+        "predictionTimestamp": "2020-02-13T23:25:00Z",
+        "forecastHorizonsMinutes": [
+          30,
+          60,
+          90,
+          120
+        ],
+        "target": {
+          "kind": "rise",
+          "threshold": 20,
+          "horizonMinutes": 120,
+          "toleranceSeconds": 150,
+          "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within ±150 seconds).",
+          "unit": "mg/dL"
+        },
+        "inputWindowMinutes": 360,
+        "inputStart": "2020-02-13T17:25:00Z",
+        "latestUsableObservation": "2020-02-13T23:23:32Z",
+        "latestUsedTimestamp": "2020-02-13T23:25:00Z",
+        "dataUsed": [
+          "Open research CGM"
+        ],
+        "model": "hist_gradient_boosting",
+        "modelVersion": "aura-research-1.0.0",
+        "split": {
+          "train": [
+            "001",
+            "002",
+            "003",
+            "004",
+            "005",
+            "006",
+            "007",
+            "008",
+            "009"
+          ],
+          "selection": [
+            "010",
+            "011"
+          ],
+          "calibration": [
+            "012",
+            "013"
+          ],
+          "test": [
+            "014",
+            "015",
+            "016"
+          ]
+        },
+        "nominalIntervalCoverage": 0.9,
+        "uncertainty": "Empirical residual bands from separate calibration participants. Coverage under artificial missingness is not calibrated or guaranteed.",
+        "timestampNote": "Date-shifted source local times, timezone unspecified; Z used only as neutral timestamp encoding.",
+        "matchedContextTimingAssumption": "Source has no lab timestamp; HbA1c is treated as available baseline research context, not proven pre-replay EHR."
+      },
+      "usedFeatureNames": [
+        "glucose",
+        "glucoseAgeMinutes",
+        "lag15",
+        "lag30",
+        "lag60",
+        "lag90",
+        "lag120",
+        "lag180",
+        "lag360",
+        "gMean30",
+        "gStd30",
+        "gMin30",
+        "gMax30",
+        "gSlope30",
+        "gCoverage30",
+        "gMean60",
+        "gStd60",
+        "gMin60",
+        "gMax60",
+        "gSlope60",
+        "gCoverage60",
+        "gMean120",
+        "gStd120",
+        "gMin120",
+        "gMax120",
+        "gSlope120",
+        "gCoverage120",
+        "gMean360",
+        "gStd360",
+        "gMin360",
+        "gMax360",
+        "gSlope360",
+        "gCoverage360",
+        "gRiseFraction60",
+        "gMeanAbsChange60",
+        "gAboveMean360"
+      ],
+      "source": "Open research replay",
+      "syntheticEhrUsed": false,
+      "matchedResearchContextUsed": false,
+      "alert": {
+        "triggered": false,
+        "threshold": 0.18000000000000002,
+        "label": "Below review threshold"
+      },
+      "driverMethod": "group_reference_sensitivity",
+      "explanationNote": "Risk change after replacing one feature group with training medians. Non-additive model sensitivity; not causality or SHAP.",
+      "patientId": "research-001",
+      "cursor": 72,
+      "abstained": false,
+      "modelSHA256": "a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432",
+      "inputTimestamp": "2020-02-13T23:25:00Z",
+      "dataQuality": {
+        "windowMinutes": 120,
+        "timestamp": "2020-02-13T23:25:00Z",
+        "streams": [
+          {
+            "key": "glucose",
+            "label": "Interstitial glucose",
+            "unit": "mg/dL",
+            "provenance": "OPEN RESEARCH DATA",
+            "minimum": 40,
+            "maximum": 400,
+            "observed": 24,
+            "expected": 24,
+            "coverage": 1,
+            "missingness": 0,
+            "observationSemantics": "Available aligned grid values; not independent raw sample counts.",
+            "sourceObservationCount": 24,
+            "latestObservation": "2020-02-13T23:23:32Z",
+            "minutesSinceObservation": 1.4666666666666666,
+            "outliers": 0,
+            "status": "good"
+          },
+          {
+            "key": "hr",
+            "label": "Heart rate",
+            "unit": "bpm",
+            "provenance": "OPEN RESEARCH DATA",
+            "minimum": 30,
+            "maximum": 220,
+            "observed": 24,
+            "expected": 24,
+            "coverage": 1,
+            "missingness": 0,
+            "observationSemantics": "Available aligned grid values; not independent raw sample counts.",
+            "sourceObservationCount": null,
+            "latestObservation": "2020-02-13T23:25:00Z",
+            "minutesSinceObservation": 0,
+            "outliers": 0,
+            "status": "good"
+          },
+          {
+            "key": "hrv",
+            "label": "IBI-derived RMSSD",
+            "unit": "ms",
+            "provenance": "DERIVED FEATURE",
+            "minimum": 0,
+            "maximum": 500,
+            "observed": 23,
+            "expected": 24,
+            "coverage": 0.958,
+            "missingness": 0.042,
+            "observationSemantics": "Available aligned grid values; not independent raw sample counts.",
+            "sourceObservationCount": null,
+            "latestObservation": "2020-02-13T23:25:00Z",
+            "minutesSinceObservation": 0,
+            "outliers": 0,
+            "status": "good"
+          }
+        ],
+        "unavailable": [
+          "Sleep-stage data unavailable in the selected research source.",
+          "Activity and step measurements are not included in this processed subset."
+        ],
+        "note": "Coverage counts finite aligned values against a 5-minute grid, including CGM carried forward from sufficiently recent source observations. SourceObservationCount counts distinct CGM source timestamps. Recency is relative to replay time. Range checks are data plausibility checks, not clinical diagnoses.",
+        "status": "good"
+      },
+      "baseline": {
+        "method": "Recent two-hour mean versus preceding available history, up to 24 hours. No future observations used.",
+        "timestamp": "2020-02-13T23:25:00Z",
+        "values": [
+          {
+            "key": "glucose",
+            "label": "Interstitial glucose",
+            "unit": "mg/dL",
+            "provenance": "DERIVED FEATURE",
+            "baseline": 101.347,
+            "current": 98.417,
+            "delta": -2.93,
+            "baselineObservations": 49,
+            "currentObservations": 24
+          },
+          {
+            "key": "hr",
+            "label": "Heart rate",
+            "unit": "bpm",
+            "provenance": "DERIVED FEATURE",
+            "baseline": 76.541,
+            "current": 67.798,
+            "delta": -8.743,
+            "baselineObservations": 49,
+            "currentObservations": 24
+          },
+          {
+            "key": "hrv",
+            "label": "IBI-derived RMSSD",
+            "unit": "ms",
+            "provenance": "DERIVED FEATURE",
+            "baseline": 90.067,
+            "current": 83.96,
+            "delta": -6.106,
+            "baselineObservations": 39,
+            "currentObservations": 23
+          }
+        ]
+      },
+      "researchPrototype": true,
+      "replay": true
+    },
+    "receipt": {
+      "schemaVersion": 2,
+      "dataKind": "open-research-composite",
+      "patientId": "research-001",
+      "cursor": 72,
+      "cutoffTimestamp": "2020-02-13T23:25:00Z",
+      "modelVersion": "aura-research-1.0.0",
+      "modelSHA256": "a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432",
+      "inputSHA256": "4376b7d610c49549df4d5d9bdabbdbbc62885b05f532876e04e27e8885be8cac",
+      "hashEncoding": {
+        "model": "raw-file-bytes",
+        "input": "canonical-json-sorted-keys-v1"
+      },
+      "createdAt": "2026-10-20T08:15:44.391Z",
+      "expiresAt": "2026-10-20T09:15:44.391Z",
+      "targetDefinition": {
+        "kind": "rise",
+        "threshold": 20,
+        "horizonMinutes": 120,
+        "toleranceSeconds": 150,
+        "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within ±150 seconds).",
+        "unit": "mg/dL"
+      },
+      "latestUsedTimestamp": "2020-02-13T23:25:00Z",
+      "limitations": [
+        "Research prototype — not for diagnosis or treatment.",
+        "Recorded, date-shifted wearable data and arbitrarily paired synthetic EHR are different people. This composite is not a linked longitudinal patient record.",
+        "This audit describes one recorded window; it does not establish cohort performance.",
+        "Input and model SHA-256 hashes identify bytes. They are not signatures or independent timestamping. The public research dataset is not secret."
+      ]
+    },
+    "inputWindow": [
+      {
+        "timestamp": "2020-02-13T21:25:00Z",
+        "glucose": 86,
+        "hr": 71.13093333333333,
+        "hrv": 68.97233152218764,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T21:23:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 122,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      },
+      {
+        "timestamp": "2020-02-13T21:30:00Z",
+        "glucose": 90,
+        "hr": 82.33346666666667,
+        "hrv": 110.28779480265864,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T21:28:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 60,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      },
+      {
+        "timestamp": "2020-02-13T21:35:00Z",
+        "glucose": 93,
+        "hr": 62.084900000000005,
+        "hrv": 81.24374183411506,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T21:33:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 120,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      },
+      {
+        "timestamp": "2020-02-13T21:40:00Z",
+        "glucose": 93,
+        "hr": 74.67566666666667,
+        "hrv": 104.6003246194321,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T21:38:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 53,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      },
+      {
+        "timestamp": "2020-02-13T21:45:00Z",
+        "glucose": 91,
+        "hr": 66.2062,
+        "hrv": 76.48357665499057,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T21:43:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 216,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      },
+      {
+        "timestamp": "2020-02-13T21:50:00Z",
+        "glucose": 90,
+        "hr": 65.73296666666667,
+        "hrv": 104.73249149610228,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T21:48:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 106,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      },
+      {
+        "timestamp": "2020-02-13T21:55:00Z",
+        "glucose": 89,
+        "hr": 64.6928,
+        "hrv": 94.23528268180857,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T21:53:31Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 108,
+          "glucoseAgeMinutes": 1.4833333333333334
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:00:00Z",
+        "glucose": 89,
+        "hr": 65.62033333333333,
+        "hrv": 85.06068152885827,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T21:58:31Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 169,
+          "glucoseAgeMinutes": 1.4833333333333334
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:05:00Z",
+        "glucose": 88,
+        "hr": 66.76266666666666,
+        "hrv": 86.39898901578329,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:03:31Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 178,
+          "glucoseAgeMinutes": 1.4833333333333334
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:10:00Z",
+        "glucose": 86,
+        "hr": 59.6204,
+        "hrv": 119.531321541101,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:08:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 116,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:15:00Z",
+        "glucose": 85,
+        "hr": 60.82246666666667,
+        "hrv": 121.8299648173958,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:13:31Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 76,
+          "glucoseAgeMinutes": 1.4833333333333334
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:20:00Z",
+        "glucose": 90,
+        "hr": 67.7497,
+        "hrv": 101.12545462724344,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:18:31Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 60,
+          "glucoseAgeMinutes": 1.4833333333333334
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:25:00Z",
+        "glucose": 96,
+        "hr": 64.96156666666667,
+        "hrv": 41.295048958275885,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:23:31Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 253,
+          "glucoseAgeMinutes": 1.4833333333333334
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:30:00Z",
+        "glucose": 103,
+        "hr": 65.71373333333332,
+        "hrv": 48.81316998970237,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:28:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 257,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:35:00Z",
+        "glucose": 103,
+        "hr": 60.531699999999994,
+        "hrv": 41.909998246987556,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:33:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 160,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:40:00Z",
+        "glucose": 102,
+        "hr": 59.255433333333336,
+        "hrv": 77.64800477432735,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:38:31Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 212,
+          "glucoseAgeMinutes": 1.4833333333333334
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:45:00Z",
+        "glucose": 102,
+        "hr": 62.487166666666674,
+        "hrv": 66.06531495620388,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:43:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 282,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:50:00Z",
+        "glucose": 103,
+        "hr": 60.80026666666667,
+        "hrv": 58.7013515322235,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:48:31Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 248,
+          "glucoseAgeMinutes": 1.4833333333333334
+        }
+      },
+      {
+        "timestamp": "2020-02-13T22:55:00Z",
+        "glucose": 106,
+        "hr": 69.19449999999999,
+        "hrv": 59.319578352692105,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:53:31Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 119,
+          "glucoseAgeMinutes": 1.4833333333333334
+        }
+      },
+      {
+        "timestamp": "2020-02-13T23:00:00Z",
+        "glucose": 110,
+        "hr": 64.65889999999999,
+        "hrv": 136.91809959126186,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T22:58:31Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 104,
+          "glucoseAgeMinutes": 1.4833333333333334
+        }
+      },
+      {
+        "timestamp": "2020-02-13T23:05:00Z",
+        "glucose": 112,
+        "hr": 69.58436666666667,
+        "hrv": 82.00502363745571,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T23:03:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 118,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      },
+      {
+        "timestamp": "2020-02-13T23:10:00Z",
+        "glucose": 111,
+        "hr": 72.92866666666666,
+        "hrv": 79.93077344490047,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T23:08:33Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 54,
+          "glucoseAgeMinutes": 1.45
+        }
+      },
+      {
+        "timestamp": "2020-02-13T23:15:00Z",
+        "glucose": 110,
+        "hr": 72.8072,
+        "hrv": 55.33450782456526,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T23:13:33Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 198,
+          "glucoseAgeMinutes": 1.45
+        }
+      },
+      {
+        "timestamp": "2020-02-13T23:20:00Z",
+        "glucose": 110,
+        "hr": 98.11926666666666,
+        "hrv": null,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T23:18:33Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 16,
+          "glucoseAgeMinutes": 1.45
+        }
+      },
+      {
+        "timestamp": "2020-02-13T23:25:00Z",
+        "glucose": 110,
+        "hr": 69.81506666666667,
+        "hrv": 97.61892773879511,
+        "activity": null,
+        "sleep": null,
+        "steps": null,
+        "sourceTimestamp": "2020-02-13T23:23:32Z",
+        "quality": {
+          "hrSamples": 300,
+          "ibiPairs": 172,
+          "glucoseAgeMinutes": 1.4666666666666666
+        }
+      }
+    ],
+    "revealAvailable": true
+  },
+  "reveal": {
+    "challengeId": "a6e4503c-8ba9-4971-b27a-4fd0e8a27d6b",
+    "mode": "baseline",
+    "receipt": {
+      "schemaVersion": 2,
+      "dataKind": "open-research-composite",
+      "patientId": "research-001",
+      "cursor": 72,
+      "cutoffTimestamp": "2020-02-13T23:25:00Z",
+      "modelVersion": "aura-research-1.0.0",
+      "modelSHA256": "a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432",
+      "inputSHA256": "4376b7d610c49549df4d5d9bdabbdbbc62885b05f532876e04e27e8885be8cac",
+      "hashEncoding": {
+        "model": "raw-file-bytes",
+        "input": "canonical-json-sorted-keys-v1"
+      },
+      "createdAt": "2026-10-20T08:15:44.391Z",
+      "expiresAt": "2026-10-20T09:15:44.391Z",
+      "targetDefinition": {
+        "kind": "rise",
+        "threshold": 20,
+        "horizonMinutes": 120,
+        "toleranceSeconds": 150,
+        "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within ±150 seconds).",
+        "unit": "mg/dL"
+      },
+      "latestUsedTimestamp": "2020-02-13T23:25:00Z",
+      "limitations": [
+        "Research prototype — not for diagnosis or treatment.",
+        "Recorded, date-shifted wearable data and arbitrarily paired synthetic EHR are different people. This composite is not a linked longitudinal patient record.",
+        "This audit describes one recorded window; it does not establish cohort performance.",
+        "Input and model SHA-256 hashes identify bytes. They are not signatures or independent timestamping. The public research dataset is not secret."
+      ]
+    },
+    "abstained": false,
+    "status": "revealed",
+    "comparisons": [
+      {
+        "minutes": 30,
+        "timestamp": "2020-02-13T23:55:00.000Z",
+        "observedTimestamp": "2020-02-13T23:53:31Z",
+        "observed": 113,
+        "targetToleranceSeconds": 150,
+        "predicted": 107.97639141635237,
+        "lower": 79.5130392907747,
+        "upper": 136.43974354193006,
+        "absoluteError": 5.024,
+        "covered": true,
+        "persistence": 110,
+        "persistenceAbsoluteError": 3
+      },
+      {
+        "minutes": 60,
+        "timestamp": "2020-02-14T00:25:00.000Z",
+        "observedTimestamp": "2020-02-14T00:23:32Z",
+        "observed": 111,
+        "targetToleranceSeconds": 150,
+        "predicted": 106.67716273159553,
+        "lower": 72.3926038542788,
+        "upper": 140.96172160891226,
+        "absoluteError": 4.323,
+        "covered": true,
+        "persistence": 110,
+        "persistenceAbsoluteError": 1
+      },
+      {
+        "minutes": 90,
+        "timestamp": "2020-02-14T00:55:00.000Z",
+        "observedTimestamp": "2020-02-14T00:53:31Z",
+        "observed": 105,
+        "targetToleranceSeconds": 150,
+        "predicted": 105.76666238012635,
+        "lower": 71.81648750770287,
+        "upper": 139.71683725254982,
+        "absoluteError": 0.767,
+        "covered": true,
+        "persistence": 110,
+        "persistenceAbsoluteError": 5
+      },
+      {
+        "minutes": 120,
+        "timestamp": "2020-02-14T01:25:00.000Z",
+        "observedTimestamp": "2020-02-14T01:23:31Z",
+        "observed": 101,
+        "targetToleranceSeconds": 150,
+        "predicted": 106.07986867261233,
+        "lower": 70.24053560994363,
+        "upper": 141.91920173528104,
+        "absoluteError": 5.08,
+        "covered": true,
+        "persistence": 110,
+        "persistenceAbsoluteError": 9
+      }
+    ],
+    "event": {
+      "risk": 0.08458321087630101,
+      "riskSource": "Frozen unmodified baseline prediction",
+      "outcome": false,
+      "threshold": 0.18000000000000002,
+      "alert": false,
+      "targetDefinition": {
+        "kind": "rise",
+        "threshold": 20,
+        "horizonMinutes": 120,
+        "toleranceSeconds": 150,
+        "definition": "Observed CGM glucose rise >=20 mg/dL from the latest available current value by approximately +120 minutes (nearest measurement within ±150 seconds).",
+        "unit": "mg/dL"
+      },
+      "minutes": 120,
+      "observed": 101,
+      "targetTimestamp": "2020-02-14T01:25:00.000Z",
+      "observedTimestamp": "2020-02-14T01:23:31Z",
+      "referenceGlucose": 110,
+      "referenceSourceTimestamp": "2020-02-13T23:23:32Z",
+      "observedChange": -9,
+      "perturbedRisk": 0.08458321087630101,
+      "modelInputReferenceGlucose": 110,
+      "perturbedReferenceOutcome": false,
+      "note": "The recorded event uses the unmodified baseline current glucose as its fixed rise reference. The altered-input probability remains frozen separately; changing current glucose also changes the rise reference understood by that model input. Neither one outcome nor an artificial perturbation establishes calibration."
+    },
+    "summary": {
+      "availableHorizons": 4,
+      "mae": 3.799,
+      "persistenceMae": 4.5,
+      "intervalCoverage": 1
+    },
+    "limitations": [
+      "Research prototype — not for diagnosis or treatment.",
+      "Recorded, date-shifted wearable data and arbitrarily paired synthetic EHR are different people. This composite is not a linked longitudinal patient record.",
+      "This audit describes one recorded window; it does not establish cohort performance.",
+      "Input and model SHA-256 hashes identify bytes. They are not signatures or independent timestamping. The public research dataset is not secret."
+    ],
+    "comparisonNote": "Frozen prediction compared with recorded future observations; no inference is rerun during reveal. Persistence uses the same possibly altered current glucose available to the frozen forecast. Event outcome separately uses the unmodified baseline current glucose as its fixed reference."
+  }
+}

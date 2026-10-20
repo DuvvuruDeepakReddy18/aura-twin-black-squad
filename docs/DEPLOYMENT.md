@@ -22,10 +22,12 @@ Demo mode requires no account. Supabase integration reads only these public/prov
 
 - `AURA_SUPABASE_URL`: HTTPS project origin under `supabase.co`.
 - `AURA_SUPABASE_PUBLISHABLE_KEY`: the provider's publishable browser key, never a service-role secret.
-- `AURA_GOOGLE_AUTH_ENABLED`: true only after the Google provider and redirect URLs are configured.
+- `AURA_GOOGLE_AUTH_ENABLED`: enables the public Google action after provider configuration. It is now true in Vercel production and preview; real account-flow verification remains pending.
 - `AURA_PUBLIC_AUTH_EMAIL_ENABLED`: true only after public email delivery is configured and verified. It currently remains false.
 
-Current status: Supabase public configuration is connected, email confirmation is enabled, Google sign-in is disabled and custom SMTP is not configured. Public email sign-up and recovery are intentionally disabled until email delivery is configured; existing accounts use the real provider. Complete account-flow verification remains pending. Without valid configuration, the application reports sign-in unavailable. It must not simulate a successful login. Configure provider redirect URLs for the exact local and deployed origins and the callback/reset routes used by the frontend. Email confirmation, reset delivery and Google OAuth depend on provider setup and must be tested as real flows before being claimed complete.
+Current status: Supabase public configuration is connected and email confirmation is enabled. The Google provider is enabled, confirmed through public provider settings after credentials were saved securely. Custom SMTP is not configured. Public email sign-up and recovery are intentionally disabled until email delivery is configured; existing accounts use the real provider. Complete account-flow verification remains pending. Without valid configuration, the application reports sign-in unavailable. It must not simulate a successful login. Configure provider redirect URLs for the exact local and deployed origins and the callback/reset routes used by the frontend. Email confirmation, reset delivery and Google OAuth depend on provider setup and must be tested as real flows before being claimed complete.
+
+The current PDFs and 23:52 video were recorded while Google was unconfigured. Their configuration description is historical; this section records the current authentication status.
 
 Account sessions, a local browser replay trail and a server challenge session are different state boundaries. The replay trail is browser-local, bounded to 20 entries and excludes challenge transport tokens. Provider-backed identity alone does not create a clinical record database.
 
@@ -55,6 +57,14 @@ node scripts/verify_research_receipt.mjs path/to/receipt.json
 
 After deployment, anonymously request `/api/research/health` and verify `aura-research-1.0.0` and its current hash. Load the React workspace, freeze/reveal a research prediction and download a token-free receipt for offline reproduction. Confirm SPA deep links, PDFs and the current MP4 in a signed-out browser. A successful build alone is not evidence that these flows work.
 
-The [verification record](VERIFICATION.md) records completed checks. Existing public links may still show the previous edition until the current release is finished. No new publication or account-flow success is inferred from older verification.
+## Verified current deployment
+
+The [canonical site](https://aura-twin-black-squad.vercel.app) was verified against release commit `664bc5e7be882153285c31281d2e4c9c25157ecc`, Vercel deployment `dpl_2L1qRGTATeVAU46JcDg5kgsnyUKF` (READY), frontend `index-CUQ3klm5.js` and research model SHA-256 `a4371ed5c7c768bf2d210917d6e7bf28ce89da7147ead0a98c14f48568abf432`.
+
+The [GitHub CI run](https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad/actions/runs/39391935412) passed 58 JavaScript and 16 Python tests. Anonymous production checks confirmed the homepage, legacy route, current PDFs and MP4. An actual production API freeze/reveal receipt passed offline reproduction, including recorded future truth. The [sample receipt](SAMPLE_RESEARCH_RECEIPT.json) contains no transport token.
+
+Live browser QA loaded participant 001, the current model and the 3D research scene. The **Generate review summary** action displayed “Structured review summary downloaded,” but its payload/file opening was not verified. The browser's receipt-download file also has not been confirmed on the filesystem. Those checks are distinct from successful API receipt verification. Supabase and its Google provider are configured, while public email signup/recovery remains disabled pending SMTP/email delivery. No end-to-end authentication success, including Google sign-in, is inferred.
+
+The [verification record](VERIFICATION.md) records the exact completed checks and remaining limits.
 
 Application response headers restrict content sources, MIME sniffing and referrer behavior. These controls and de-identification do not constitute a clinical security, HIPAA or DPDP certification. Do not enter private patient information into the demo.

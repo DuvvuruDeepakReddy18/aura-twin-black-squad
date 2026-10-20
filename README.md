@@ -10,7 +10,7 @@
 
 ![Current AURA research workspace](docs/assets/dashboard-research.png)
 
-**[Live demo](https://aura-twin-black-squad.vercel.app)** · **[Public repository](https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad)**. Verification of the current public release is pending. Exact release checks, including the deployed model identity, are listed in [VERIFICATION.md](docs/VERIFICATION.md).
+**[Live demo](https://aura-twin-black-squad.vercel.app)** · **[Public repository](https://github.com/DuvvuruDeepakReddy18/aura-twin-black-squad)**. The current research release at commit `664bc5e7be882153285c31281d2e4c9c25157ecc` was verified on 2026-10-20. Exact release checks, including the deployed model identity and remaining authentication limits, are listed in [VERIFICATION.md](docs/VERIFICATION.md).
 
 ## Run locally
 
@@ -22,9 +22,11 @@ npm run build
 npm start
 ```
 
-Open **http://localhost:4173**. The bundled research demo requires no account. Authentication status: **Supabase connected. Email confirmation on; Google off. Account-flow verification pending.** See [deployment and configuration](docs/DEPLOYMENT.md).
+Open **http://localhost:4173**. The bundled research demo requires no account. Authentication status: **Supabase connected. Email confirmation on; Google configured. Account-flow verification pending.** See [deployment and configuration](docs/DEPLOYMENT.md).
 
-Public email sign-up and password recovery are intentionally disabled until SMTP/email delivery is configured. Google OAuth is disabled pending provider credentials. Existing-account sign-in is provider-backed; no end-to-end account flow has been verified.
+Public email sign-up and password recovery are intentionally disabled until SMTP/email delivery is configured. The Supabase Google provider is now enabled after secure credential configuration, and the public Google feature flag is enabled for Vercel production and preview. Existing-account sign-in is provider-backed; no end-to-end account flow, including Google sign-in, has been verified.
+
+Recording note: Google was not configured when the current PDFs and 23:52 video were recorded. Those assets retain that historical configuration status; [current authentication documentation](docs/DEPLOYMENT.md#authentication-configuration) is authoritative.
 
 ```bash
 npm test
